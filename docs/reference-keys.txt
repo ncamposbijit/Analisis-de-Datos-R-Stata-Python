@@ -1,3 +1,5 @@
+prólogo
+análisis-de-datos-con-r
 introducción-a-r-y-rstudio
 interfaz-rstudio
 cuatro-secciones-en-rstudio
@@ -20,5 +22,9 @@ vectores
 matrices
 definir-matrices
 unir-matrices
-the-pool-of-tears
-a-caucus-race-and-a-long-tale
+herramientas-de-programación
+objetos-adicionales
+curso-de-stata
+curso-de-python
+referencias
+including-plots

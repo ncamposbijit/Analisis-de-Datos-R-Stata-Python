@@ -1,0 +1,574 @@
+
+```{r global options, include=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+# Análisis de datos con R
+
+## Introducción a R y RStudio
+
+### Interfaz RStudio
+
+#### Cuatro secciones en Rstudio
+
+Las "más importantes" son: *scripts, consola y environment/files/plots/packages*.
+
+Para personalizar RStudio hay que ir a: **Tools -\> Global Options**. Allí pueden cambiar el color del ambiente, tipo de letra, orden, etc. La idea es utilizar RStudio de la forma mas intuitiva para ustedes.
+
+#### Escribir comentarios
+
+`(#)` para escribir comentarios en el script. Si quiero marcar varias lineas como comentario: `ctrl + shift + c`
+
+#### Índices
+
+Es importante escribir índices para documentar sus códigos. Para observarlo debo escribir: `ctrl + shift + o`
+
+Los títulos pueden estar jerarquizados:
+
+```{r message=FALSE}
+# El mas importante
+## Este es un poco menos importante
+### Este es un poco menos importante que el anterior
+#### El menos importante
+```
+
+Es importante actualizarlo constantemente para no perder funcionalidad.
+
+### Instalación de paquetes y ayuda
+
+Los paquetes son basicamente conjuntos de funciones. Los paquetes se instalan una vez, pero se llaman siempre que se vayan a utilizar.
+
+#### Librerías
+
+Esto se puede hacer de dos maneras:
+
+1.  Desde la pestaña *packages* en la esquina inferior derecha.
+
+2.  Con comandos
+
+```{r message = FALSE, warning = FALSE, results="hide"}
+install.packages("dplyr")
+```
+
+Varios paquetes a la vez:
+
+```{r}
+install.packages(c("dplyr","ggplot2","rio"))
+```
+
+Error común:
+
+```{r}
+install.packages("dplyr", "ggplot2")
+```
+
+Por lo general es bueno instalarlas desde el inicio del trabajo dado que comúnmente usamos las mismas librerías al realizar análisis de datos. Con esta función le decimos a R que instale el paquete si este no está instalado (algo típico cuando cambiamos de computador):
+
+```{r}
+if(!require(dplyr)) {install.packages("dplyr")}
+```
+
+Cargar librerías:
+
+```{r}
+library(dplyr)
+```
+
+Si queremos ver que hay dentro de cada paquete:
+
+```{r results = "hide"}
+ls("package:dplyr", all = TRUE) #ls = list objects
+```
+
+**Importante**: el paquete debe ser instalado una vez, pero cargado cada vez que se utilice. Muchas veces hay actualizaciones. Para revisar e instalarlas.
+
+```{r}
+update.packages()
+```
+
+Alternativamente puedo conectar paquete con función utilizando `::`. Si hago esto no es necesario llamar a la librería para utilizar esa función en particular. No obstante, lo recomendable es cargar todas las librerías de los paquetes que voy a utilizar al inicio.
+
+#### Función de ayuda
+
+Sobre una función en particular:
+
+```{r}
+help(mean) 
+?mean 
+mean #pulsar la tecla F1 
+sd
+```
+
+Sobre un paquete en particular:
+
+```{r}
+help("dplyr") 
+library(help="dplyr")
+```
+
+#### *Shortcuts* útiles
+
+-   `Esc`: interrumpir el comando actual
+-   `Ctrl + s`: guardar
+-   `tab`: autocompletar
+-   `Ctrl + Enter`: ejecutar línea
+-   `Ctrl + Shift + C`: comentar
+-   `<-`: Alt + - / option + -
+-   `%>%`: ctrl + shift + m (*pipe*)
+-   `Ctrl + l`: limpiar
+-   `Ctrl + alt + b`: ejecutar todo hasta aquí (flechas en la consola me permiten ver los últimos comandos utilizados).
+-   `Shift + lineas`: seleccionar varias lineas
+-   `Ctrl + f`: buscar/remplazar
+-   `Ctrl + "flecha arriba" en la consola`: ver comandos utilizados.
+
+#### Limpiar *"environment"* en R
+
+Eliminar todos los objetos:
+
+```{r}
+rm(list=ls())
+```
+
+Eliminar sólo un objeto:
+
+```{r}
+rm(data1)
+```
+
+Si quiero limpiar la consola tengo que apretar `Ctrl + L`.
+
+#### Identificar el paquete de una función
+
+Hay ocasiones en que queremos saber de que paquete es una función determinada. Para ello, revisar: <https://sebastiansauer.github.io/finds_funs/>
+
+#### Error común
+
+Por ejemplo:
+
+```{r}
+x <- "hola"
+```
+
+Noten que en la consola aparece un signo `+`. En estos casos RStudio se detiene porque probablemente se les olvido un `)` o bien un `#`. En estos casos hay que corregir el error para ejecutar nuevamente y luego apretar `esc` en la consola para seguir ejecutando los comandos.
+
+### Manipulación de objetos
+
+#### Usar R como calculadora/ejecutar comandos
+
+De manera separada (seleccionar las `ordenes+ctrl+Enter`):
+
+```{r}
+2+2 
+3*5^(1/2)
+```
+
+Ejecutar todas las instrucciones:
+
+```{r}
+2+2 ; 3*5^(1/2)
+3+4 
+5*4 
+8/4 
+6^7
+6^77
+
+log(10) 
+log(1)
+
+sqrt(91) # raiz cuadrada
+
+round(7.3) # redondear
+```
+
+Incluso grandes operaciones:
+
+```{r}
+sqrt(91) + 4892788*673 - (log(4)*round(67893.9181, digits = 2))
+```
+
+Incluso uso de números imaginarios:
+
+```{r}
+2i+5i+sqrt(25i)
+```
+
+#### Creacion de objetos: asignaciones y funciones
+
+con el signo `<-` asignamos valores. También se puede utilizar `=`, pero no es recomendable, ya que confunde.
+
+```{r}
+y <- 2 + 4 
+y
+```
+
+Las asignaciones son MUDAS. Si no las llamo, no aparecen en la consola. Lo anterior es una operación sencilla, pero lo que queremos es generar asignaciones con funciones.
+
+Podemos utilizar funciones. Las funciones son la parte central del uso de R. Algunas funciones vienen instaladas en R. Otras funciones hay que obtenerlas desde paquetes. También es posible escribir tus propias funciones `()`. Las funciones estan por lo general escritas en paréntesis, por ejemplo `filter()`. Hay ocasiones en que las funciones estan relacionadas con un paquete específico `dplyr::filter()`.
+
+-   Ejemplo 1: función simple
+
+```{r}
+sqrt(49)
+```
+
+-   Ejemplo 2: sobre una base de datos
+
+```{r}
+summary(mtcars$mpg)
+```
+
+*Nota:* mtcars viene incluidad en R.
+
+Para ver mas:
+
+```{r}
+data()
+```
+
+Otra función:
+
+```{r}
+x <- 2 
+y <- 3
+z <-c(x,y) 
+z
+```
+
+Uso de funciones aritméticas:
+
+```{r}
+mean(z) 
+median(z)
+```
+
+Relaciones entre objetos:
+
+```{r}
+w <- mean(z)
+```
+
+Creación de objetos por asignación:
+
+```{r}
+a <- 3+10 
+b <- 2*4
+```
+
+Comparar objetos:
+
+```{r}
+a > b
+```
+
+Notar que las asignaciones son silenciosas:
+
+```{r}
+a 
+b 
+# o altenativamente utilizar print 
+print(a) 
+print(b)
+```
+
+Creación de objetos usando funciones:
+
+```{r}
+valores <- c(a,b)
+promedio <- mean(valores)
+print(promedio)
+promedio
+```
+
+Podemos escribir un promedio aquí usando función `mean():`
+
+```{r}
+a <- 2 
+b <- 5
+valores1 <- c(a,b)
+promedio1 <-mean(valores1)
+print(promedio1)
+```
+
+Limpiamos datos nuevamente:
+
+```{r}
+rm(list = ls()) 
+rm(promedio)
+```
+
+#### Creacion de objetos y asignaciones
+
+Es importante espaciar codigos. Definimos dos vectores utilizando la función `c()`
+
+```{r}
+educ <- c(8,12,8,11,16,14,8,10,14,12)
+ingreso <- c(325,415,360,380,670,545,350,420,680,465)
+```
+
+Calculamos promedio, desviación estándar y correlación
+
+```{r}
+mean(ingreso)
+promedioingreso <- mean(ingreso)
+
+sd(ingreso)
+sdingreso <- sd(ingreso)
+
+cor(educ, ingreso)
+coreduing <- cor(educ,ingreso)
+```
+
+Graficamos
+
+```{r}
+plot(educ, ingreso)
+```
+
+Estimar una regresión lineal
+
+```{r}
+lm(ingreso ~ educ)
+```
+
+#### Ejercicio 1: nombrar objetos
+
+De los siguientes ejemplos, ¿Cuáles son nombres de variables válidas en R?
+
+```{r}
+# min_height
+# max.height
+# _age
+# .mass
+# MaxLength
+# Min-length
+# 2widths
+# Calsius2kelvin
+```
+
+### Tipos de objetos
+
+#### Vectores
+
+R opera componente por componente, por lo que es muy sencillo poder trabajar con vectores y matrices.
+
+Para crear un vector utilizamos la funcion `c()`
+
+```{r}
+x <- c(1,2,3,4,5)
+#o bien
+y <- c(6:8)
+```
+
+Veamos los vectores
+
+```{r}
+z <- x + y 
+z
+```
+
+Supongamos los siguientes vectores:
+
+```{r}
+x<-c(1:4)
+y<-c(1:3)
+```
+
+¿Cuál es su longitud?
+
+```{r}
+length(x)
+length(y)
+```
+
+Si no tienen la misma longitud, ¿cual sería el resultado de `x + y`?
+
+```{r}
+z <- x + y 
+z
+```
+
+**IMPORTANTE**: En este caso R realiza la operación de todos modos, pero nos indica que hay una advertencia de que sus dimensiones difieren. Lo relevante de los vectores es que sólo se puede concatenar elementos del mismo tipo, de lo contrario R nos arroja error.
+
+```{r}
+x <- rep(1.5:9.5,4) #genera repeticiones de los valores definidos 
+y <- c(20:30)
+x1 <- c(1,2)
+x2 <- c(3,4)
+x3 <- c(x1,x2)
+x4 <- c(c(1,2), c(3,4))
+```
+
+Subconjunto de un vector
+
+```{r}
+y[3] # obtener el tercer elemento 
+y[2:4] 
+y[4:2]
+y[c(2,6)]
+y[c(2,16)]
+```
+
+#### Matrices
+
+##### Definir matrices
+
+Sintaxis general
+
+```{r}
+mi.matriz <- matrix(vector,
+                    ncol = num_columnas, nrow = num_filas,
+                    byrow = valor_logico,
+                    dimnames = list(vector_nombres_filas,
+                                   vector_nombres_columnas)
+)
+
+```
+
+Para crear matrices utilizamos la función `matrix()`
+
+```{r}
+x <- matrix (data = c(1,2,3,4), 
+             nrow = 2, 
+             ncol = 2) 
+
+
+x1 <- matrix(c(1,2,3,4), 
+             2, 
+             2)
+```
+
+No es necesario poner `data=`, pero por orden mental es mejor hacerlo.
+
+```{r}
+x 
+x1
+```
+
+Notar que por DEFECTO rellena columna por columna. Podemos explicitar que queremos realizar la matriz fila por fila
+
+```{r}
+y <- matrix(data = c(1:4),
+          nrow = 3, 
+          ncol = 2, 
+          byrow = TRUE)
+y
+```
+
+Podemos saber cual es la dimensión de `x`
+
+```{r}
+dim(y)
+dim(y)[1] # cantidad de filas
+dim(y)[2] # cantidad de columnas
+
+y<- matrix(c(1,2,3,4), nrow=2, ncol=2, byrow=2)
+y
+```
+
+Los va a repetir!
+
+```{r}
+y <- matrix(c(1,2,3,4), nrow=2, ncol=3, byrow= 2) 
+y
+```
+
+Notar que el orden en cualquier matrix es **filas x columnas**. Podemos también omitir la cantidad de filas o columnas en la matriz y obtenemos el mismo resultado
+
+```{r}
+y <- matrix(c(1:4), 2, byrow=T)
+y 
+```
+
+En el caso de crear matrices vacías hay que definir las dimensiones
+
+```{r}
+y <- matrix(nrow=3, ncol=3)
+y #útil para los loops
+```
+
+Darle nombre a las filas y columnas
+
+```{r}
+y <- matrix (c(1:4), 2, byrow = FALSE, 
+             dimnames=list(c("X1","X2"),c("Y1", "Y2")))
+y
+```
+
+Se puede realizar desde las funciones colnames y rownames
+
+```{r}
+colnames(x) <- c("Variable 1", "Variable 2")
+rownames(x) <- c("a1", "a2")
+x
+```
+
+Añadir filas o columnas a una matriz
+
+```{r}
+w <- c(5,6)
+```
+
+##### Unir matrices
+
+Unir mediante filas (queda con el nombre del vector la observación)
+
+```{r}
+z <- rbind(x,w) 
+z
+```
+
+Unir mediante columnas
+
+```{r}
+z <- cbind(x,w) 
+z
+```
+
+¿Y si tienen diferente cantidad de filas y/o columnas? repite el vector o observaci?n con menor longitud
+
+```{r}
+x <- matrix(c(1:9),3)
+x
+y <- c(5,6)
+y
+
+z<-rbind(x,y)
+z 
+```
+
+Podemos pasar un vector a una matriz
+
+```{r}
+x<-1:10
+x
+
+dim(x)<-c(2,5)
+x
+
+```
+
+Trasponer matrices:
+
+```{r}
+x <- matrix(c(1:9),3)
+xtraspuesta <- t(x)
+```
+
+Potencialmente se pueden hacer muchas más operaciones que involucren matrices. Por ejemplo, subconjuntos de una matriz: segundo y cuarto elemento de la segunda fila:
+
+```{r}
+M <- matrix(1:8, nrow=2)
+M
+M[1,1]
+M[1,]
+M[,2]
+M[2,c(2,4)]
+```
+
+## Herramientas de programación
+
+### Objetos adicionales
+
