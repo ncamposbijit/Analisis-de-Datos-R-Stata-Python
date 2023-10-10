@@ -14,26 +14,25 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 
 ### ¿Por qué utilizar R como lenguaje de programación?
 
-1.  **Código abierto:** Licencia no tiene costo.
+-  **Código abierto:** Licencia no tiene costo.
 
-2.  **Versátil:** análisis estadístico y econométrico + tareas de
+-  **Versátil:** análisis estadístico y econométrico + tareas de
     programación útiles (ej. web - scraping).
 
-3.  **Flexible y reproducible:** garantiza reproducibilidad, es flexible
+-  **Flexible y reproducible:** garantiza reproducibilidad, es flexible
     ante cambios y detección de errores. 
     
-4.  **Demandado:** Lenguajes de programación de código abierto son solicitados cada vez más en el mercado laboral.
+-  **Demandado:** Lenguajes de programación de código abierto son solicitados cada vez más en el mercado laboral.
 
 ### Términos clave y recurrentes a lo largo del curso
 
 -   **RStudio:** Interfaz Gráfica para el usuario. Esta diseñada para un
     uso más sencillo de R.
 -   **Objetos:** Cualquier cosa que guardes en R. Por ejemplo: bases de
-    datos, variables, listasdenombres, gráficos.
+    datos, variables, listas de nombres, gráficos.
 -   **Funciones:** Una operación producida por un código tal que acepta
     insumos y retorna productos.
--   **Paquetes:** Básicamente es un conjunto de funciones útiles para
-    distintos propósitos.
+-   **Paquetes:** Es un conjunto de funciones agrupadas según su objetivo. 
 -   **Scripts/Códigos:** Documento que contiene todos los comandos
     utilizados en un proceso de análisis de datos.
 
@@ -59,14 +58,23 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 
 #### Cuatro secciones en Rstudio
 
-Las "más importantes" son: *scripts, consola y
-environment/files/plots/packages*.
+Las fundamentales son: *Scripts, Console, 
+Environment/Files/Help*.
+
+- **Scripts:** Donde desarrollaremos los códigos. Es un cuarderno. 
+- **Console:** Donde veremos los resultados.
+- **Environment:** Donde veremos los datos y la información que vamos generando.
+- **Files:** Donde veremos los archivos asociados a nuestros proyectos.
+- **Help:** Donde desarrollaremos los códigos. Es un cuarderno. 
 
 Para personalizar RStudio hay que ir a: **Tools -\> Global Options**.
-Allí pueden cambiar el color del ambiente, tipo de letra, orden, etc. La
-idea es utilizar RStudio de la forma mas intuitiva para ustedes.
+Allí pueden cambiar el color del ambiente, tipo de letra, orden. La
+idea es utilizar RStudio de la forma mas intuitiva posible. 
 
 #### Escribir comentarios
+
+Es muy importante escribir comentarios a lo largo de los códigos. Tambíen es importante saber escribir **buenos** comentarios. Una buena guía que habla un poco de eso y de muchas cosas más es: [Code and Data for the Social Sciences: A Practitioner's Guide](https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf).
+
 
 `(#)` para escribir comentarios en el script. Si quiero marcar varias
 lineas como comentario: `ctrl + shift + c`

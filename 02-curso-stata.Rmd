@@ -6,7 +6,7 @@ pacman::p_load(Statamarkdown)
 knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRUE, results="hide", eval = FALSE)
 ```
 
-# Análisis de datos con STATA
+# Análisis de datos con Stata
 
 ## Buenas prácticas de programación y visualización (Parte I)
 
