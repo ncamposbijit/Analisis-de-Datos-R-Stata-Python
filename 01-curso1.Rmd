@@ -14,13 +14,15 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 
 ### ¿Por qué utilizar R como lenguaje de programación?
 
-1.  **Código abierto:** no tiene costo.
+1.  **Código abierto:** Licencia no tiene costo.
+
 2.  **Versátil:** análisis estadístico y econométrico + tareas de
-    programación.
+    programación útiles (ej. web - scraping).
+
 3.  **Flexible y reproducible:** garantiza reproducibilidad, es flexible
-    ante cambios y detección de errores de forma más sencilla
-    (ej.Excel).
-4.  **Demandado:** solicitado en el mercado laboral.
+    ante cambios y detección de errores. 
+    
+4.  **Demandado:** Lenguajes de programación de código abierto son solicitados cada vez más en el mercado laboral.
 
 ### Términos clave y recurrentes a lo largo del curso
 
