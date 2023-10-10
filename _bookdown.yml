@@ -1,8 +1,6 @@
 book_filename: "bookdownproj"
-output_dir: docs
+output_dir: "docs" 
 delete_merged_file: true
-edit: https://github.com/bepint/Bookdown-Cursos/edit/master/%s
-view: https://github.com/bepint/Bookdown-Cursos/blob/master/%s
 language:
   ui:
     chapter_name:

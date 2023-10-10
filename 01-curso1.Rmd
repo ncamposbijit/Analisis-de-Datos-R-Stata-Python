@@ -1,3 +1,8 @@
+---
+editor_options:
+  markdown:
+    wrap: 72
+---
 
 ```{r global options, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRUE, results="hide", eval = FALSE)
@@ -9,48 +14,65 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 
 ### ¿Por qué utilizar R como lenguaje de programación?
 
-1. **Código abierto:** no tiene costo.
-2. **Versátil:** análisis estadístico y econométrico + tareas de programación.
-3. **Flexible y reproducible:** garantiza reproducibilidad, es flexible ante cambios y detección de errores de forma más sencilla (ej.Excel).
-4. **Demandado:** solicitado en el mercado laboral.
+1.  **Código abierto:** no tiene costo.
+2.  **Versátil:** análisis estadístico y econométrico + tareas de
+    programación.
+3.  **Flexible y reproducible:** garantiza reproducibilidad, es flexible
+    ante cambios y detección de errores de forma más sencilla
+    (ej.Excel).
+4.  **Demandado:** solicitado en el mercado laboral.
 
 ### Términos clave y recurrentes a lo largo del curso
 
-- **RStudio:** Interfaz Gráfica para el usuario. Esta diseñada para un uso más sencillo de R.
-- **Objetos:** Cualquier cosa que guardes en R. Por ejemplo: bases de datos, variables, listasdenombres, gráficos.
-- **Funciones:** Una operación producida por un código tal que acepta insumos y retorna productos.
-- **Paquetes:** Básicamente es un conjunto de funciones útiles para distintos propósitos.
-- **Scripts/Códigos:** Documento que contiene todos los comandos utilizados en un proceso de análisis de datos.
-
+-   **RStudio:** Interfaz Gráfica para el usuario. Esta diseñada para un
+    uso más sencillo de R.
+-   **Objetos:** Cualquier cosa que guardes en R. Por ejemplo: bases de
+    datos, variables, listasdenombres, gráficos.
+-   **Funciones:** Una operación producida por un código tal que acepta
+    insumos y retorna productos.
+-   **Paquetes:** Básicamente es un conjunto de funciones útiles para
+    distintos propósitos.
+-   **Scripts/Códigos:** Documento que contiene todos los comandos
+    utilizados en un proceso de análisis de datos.
 
 ### Recursos de Aprendizaje
-<div style="text-align: justify">
-* Hojas de resumen: material disponible con un resumen de los principales comandos/paquetes/funciones para distintos temas. Disponibles en: https://www.rstudio.com/resources/cheatsheets/
-</div>
-* Foros y sitios web:
-  + [Stackoverflow.](https://stackoverflow.com/questions/tagged/r)
-  + [Medium.](https://preettheman.medium.com/awesome-tricks-every-r-coder-should-know-c4220cd2cfbc)
-  + [El Blog de RStudio.](https://posit.co/)
-* Libros:
-  + [R for Data Science.](https://r4ds.had.co.nz/)
-  + [Recursos sobre R en español.](https://posit.co/resources/videos/)
-  + [Bookdown.](https://bookdown.org/)
-  
+
+::: {style="text-align: justify"}
+-   Hojas de resumen: material disponible con un resumen de los
+    principales comandos/paquetes/funciones para distintos temas.
+    Disponibles en: <https://www.rstudio.com/resources/cheatsheets/>
+:::
+
+-   Foros y sitios web:
+    -   [Stackoverflow.](https://stackoverflow.com/questions/tagged/r)
+    -   [Medium.](https://preettheman.medium.com/awesome-tricks-every-r-coder-should-know-c4220cd2cfbc)
+    -   [El Blog de RStudio.](https://posit.co/)
+-   Libros:
+    -   [R for Data Science.](https://r4ds.had.co.nz/)
+    -   [Recursos sobre R en
+        español.](https://posit.co/resources/videos/)
+    -   [Bookdown.](https://bookdown.org/)
+
 ### Interfaz RStudio
 
 #### Cuatro secciones en Rstudio
 
-Las "más importantes" son: *scripts, consola y environment/files/plots/packages*.
+Las "más importantes" son: *scripts, consola y
+environment/files/plots/packages*.
 
-Para personalizar RStudio hay que ir a: **Tools -\> Global Options**. Allí pueden cambiar el color del ambiente, tipo de letra, orden, etc. La idea es utilizar RStudio de la forma mas intuitiva para ustedes.
+Para personalizar RStudio hay que ir a: **Tools -\> Global Options**.
+Allí pueden cambiar el color del ambiente, tipo de letra, orden, etc. La
+idea es utilizar RStudio de la forma mas intuitiva para ustedes.
 
 #### Escribir comentarios
 
-`(#)` para escribir comentarios en el script. Si quiero marcar varias lineas como comentario: `ctrl + shift + c`
+`(#)` para escribir comentarios en el script. Si quiero marcar varias
+lineas como comentario: `ctrl + shift + c`
 
 #### Índices
 
-Es importante escribir índices para documentar sus códigos. Para observarlo debo escribir: `ctrl + shift + o`
+Es importante escribir índices para documentar sus códigos. Para
+observarlo debo escribir: `ctrl + shift + o`
 
 Los títulos pueden estar jerarquizados:
 
@@ -65,7 +87,8 @@ Es importante actualizarlo constantemente para no perder funcionalidad.
 
 ### Instalación de paquetes y ayuda
 
-Los paquetes son basicamente conjuntos de funciones. Los paquetes se instalan una vez, pero se llaman siempre que se vayan a utilizar.
+Los paquetes son basicamente conjuntos de funciones. Los paquetes se
+instalan una vez, pero se llaman siempre que se vayan a utilizar.
 
 #### Librerías
 
@@ -91,7 +114,10 @@ Error común:
 install.packages("dplyr", "ggplot2")
 ```
 
-Por lo general es bueno instalarlas desde el inicio del trabajo dado que comúnmente usamos las mismas librerías al realizar análisis de datos. Con esta función le decimos a R que instale el paquete si este no está instalado (algo típico cuando cambiamos de computador):
+Por lo general es bueno instalarlas desde el inicio del trabajo dado que
+comúnmente usamos las mismas librerías al realizar análisis de datos.
+Con esta función le decimos a R que instale el paquete si este no está
+instalado (algo típico cuando cambiamos de computador):
 
 ```{r}
 if(!require(dplyr)) {install.packages("dplyr")}
@@ -109,13 +135,18 @@ Si queremos ver que hay dentro de cada paquete:
 ls("package:dplyr", all = TRUE) #ls = list objects
 ```
 
-**Importante**: el paquete debe ser instalado una vez, pero cargado cada vez que se utilice. Muchas veces hay actualizaciones. Para revisar e instalarlas.
+**Importante**: el paquete debe ser instalado una vez, pero cargado cada
+vez que se utilice. Muchas veces hay actualizaciones. Para revisar e
+instalarlas.
 
 ```{r}
 update.packages()
 ```
 
-Alternativamente puedo conectar paquete con función utilizando `::`. Si hago esto no es necesario llamar a la librería para utilizar esa función en particular. No obstante, lo recomendable es cargar todas las librerías de los paquetes que voy a utilizar al inicio.
+Alternativamente puedo conectar paquete con función utilizando `::`. Si
+hago esto no es necesario llamar a la librería para utilizar esa función
+en particular. No obstante, lo recomendable es cargar todas las
+librerías de los paquetes que voy a utilizar al inicio.
 
 #### Función de ayuda
 
@@ -145,7 +176,8 @@ library(help="dplyr")
 -   `<-`: Alt + - / option + -
 -   `%>%`: ctrl + shift + m (*pipe*)
 -   `Ctrl + l`: limpiar
--   `Ctrl + alt + b`: ejecutar todo hasta aquí (flechas en la consola me permiten ver los últimos comandos utilizados).
+-   `Ctrl + alt + b`: ejecutar todo hasta aquí (flechas en la consola me
+    permiten ver los últimos comandos utilizados).
 -   `Shift + lineas`: seleccionar varias lineas
 -   `Ctrl + f`: buscar/remplazar
 -   `Ctrl + "flecha arriba" en la consola`: ver comandos utilizados.
@@ -168,7 +200,9 @@ Si quiero limpiar la consola tengo que apretar `Ctrl + L`.
 
 #### Identificar el paquete de una función
 
-Hay ocasiones en que queremos saber de que paquete es una función determinada. Para ello, revisar: <https://sebastiansauer.github.io/finds_funs/>
+Hay ocasiones en que queremos saber de que paquete es una función
+determinada. Para ello, revisar:
+<https://sebastiansauer.github.io/finds_funs/>
 
 #### Error común
 
@@ -178,7 +212,10 @@ Por ejemplo:
 x <- "hola"
 ```
 
-Noten que en la consola aparece un signo `+`. En estos casos RStudio se detiene porque probablemente se les olvido un `)` o bien un `#`. En estos casos hay que corregir el error para ejecutar nuevamente y luego apretar `esc` en la consola para seguir ejecutando los comandos.
+Noten que en la consola aparece un signo `+`. En estos casos RStudio se
+detiene porque probablemente se les olvido un `)` o bien un `#`. En
+estos casos hay que corregir el error para ejecutar nuevamente y luego
+apretar `esc` en la consola para seguir ejecutando los comandos.
 
 ### Manipulación de objetos
 
@@ -223,16 +260,24 @@ Incluso uso de números imaginarios:
 
 #### Creacion de objetos: asignaciones y funciones
 
-con el signo `<-` asignamos valores. También se puede utilizar `=`, pero no es recomendable, ya que confunde.
+con el signo `<-` asignamos valores. También se puede utilizar `=`, pero
+no es recomendable, ya que confunde.
 
 ```{r}
 y <- 2 + 4 
 y
 ```
 
-Las asignaciones son MUDAS. Si no las llamo, no aparecen en la consola. Lo anterior es una operación sencilla, pero lo que queremos es generar asignaciones con funciones.
+Las asignaciones son MUDAS. Si no las llamo, no aparecen en la consola.
+Lo anterior es una operación sencilla, pero lo que queremos es generar
+asignaciones con funciones.
 
-Podemos utilizar funciones. Las funciones son la parte central del uso de R. Algunas funciones vienen instaladas en R. Otras funciones hay que obtenerlas desde paquetes. También es posible escribir tus propias funciones `()`. Las funciones estan por lo general escritas en paréntesis, por ejemplo `filter()`. Hay ocasiones en que las funciones estan relacionadas con un paquete específico `dplyr::filter()`.
+Podemos utilizar funciones. Las funciones son la parte central del uso
+de R. Algunas funciones vienen instaladas en R. Otras funciones hay que
+obtenerlas desde paquetes. También es posible escribir tus propias
+funciones `()`. Las funciones estan por lo general escritas en
+paréntesis, por ejemplo `filter()`. Hay ocasiones en que las funciones
+estan relacionadas con un paquete específico `dplyr::filter()`.
 
 -   Ejemplo 1: función simple
 
@@ -327,7 +372,8 @@ rm(promedio)
 
 #### Creacion de objetos y asignaciones
 
-Es importante espaciar codigos. Definimos dos vectores utilizando la función `c()`
+Es importante espaciar codigos. Definimos dos vectores utilizando la
+función `c()`
 
 ```{r}
 educ <- c(8,12,8,11,16,14,8,10,14,12)
@@ -359,10 +405,12 @@ Estimar una regresión lineal
 lm(ingreso ~ educ)
 ```
 
-<div class="alert alert-block alert-warning">
+::: {.alert .alert-block .alert-warning}
 <b>Ejercicio 2.1.1:</b> Nombrar objetos
 
-De los siguientes ejemplos, ¿Cuáles son nombres de variables válidas en R?
+De los siguientes ejemplos, ¿Cuáles son nombres de variables válidas en
+R?
+
 ```{r}
 # min_height
 # max.height
@@ -373,13 +421,14 @@ De los siguientes ejemplos, ¿Cuáles son nombres de variables válidas en R?
 # 2widths
 # Calsius2kelvin
 ```
-</div>
+:::
 
 ### Tipos de objetos
 
 #### Vectores
 
-R opera componente por componente, por lo que es muy sencillo poder trabajar con vectores y matrices.
+R opera componente por componente, por lo que es muy sencillo poder
+trabajar con vectores y matrices.
 
 Para crear un vector utilizamos la funcion `c()`
 
@@ -417,7 +466,10 @@ z <- x + y
 z
 ```
 
-**IMPORTANTE**: En este caso R realiza la operación de todos modos, pero nos indica que hay una advertencia de que sus dimensiones difieren. Lo relevante de los vectores es que sólo se puede concatenar elementos del mismo tipo, de lo contrario R nos arroja error.
+**IMPORTANTE**: En este caso R realiza la operación de todos modos, pero
+nos indica que hay una advertencia de que sus dimensiones difieren. Lo
+relevante de los vectores es que sólo se puede concatenar elementos del
+mismo tipo, de lo contrario R nos arroja error.
 
 ```{r}
 x <- rep(1.5:9.5,4) #genera repeticiones de los valores definidos 
@@ -474,7 +526,8 @@ x
 x1
 ```
 
-Notar que por DEFECTO rellena columna por columna. Podemos explicitar que queremos realizar la matriz fila por fila
+Notar que por DEFECTO rellena columna por columna. Podemos explicitar
+que queremos realizar la matriz fila por fila
 
 ```{r}
 y <- matrix(data = c(1:4),
@@ -502,7 +555,9 @@ y <- matrix(c(1,2,3,4), nrow=2, ncol=3, byrow= 2)
 y
 ```
 
-Notar que el orden en cualquier matrix es **filas x columnas**. Podemos también omitir la cantidad de filas o columnas en la matriz y obtenemos el mismo resultado
+Notar que el orden en cualquier matrix es **filas x columnas**. Podemos
+también omitir la cantidad de filas o columnas en la matriz y obtenemos
+el mismo resultado
 
 ```{r}
 y <- matrix(c(1:4), 2, byrow=T)
@@ -554,7 +609,8 @@ z <- cbind(x,w)
 z
 ```
 
-¿Y si tienen diferente cantidad de filas y/o columnas? repite el vector o observaci?n con menor longitud
+¿Y si tienen diferente cantidad de filas y/o columnas? repite el vector
+o observaci?n con menor longitud
 
 ```{r}
 x <- matrix(c(1:9),3)
@@ -584,7 +640,9 @@ x <- matrix(c(1:9),3)
 xtraspuesta <- t(x)
 ```
 
-Potencialmente se pueden hacer muchas más operaciones que involucren matrices. Por ejemplo, subconjuntos de una matriz: segundo y cuarto elemento de la segunda fila:
+Potencialmente se pueden hacer muchas más operaciones que involucren
+matrices. Por ejemplo, subconjuntos de una matriz: segundo y cuarto
+elemento de la segunda fila:
 
 ```{r}
 M <- matrix(1:8, nrow=2)
@@ -595,39 +653,46 @@ M[,2]
 M[2,c(2,4)]
 ```
 
-
 ## Herramientas de programación
 
 ### Objetos adicionales
 
 #### Arreglos
 
-Crear arreglos: La única diferencia con matrices es que acepta mas de dos dimensiones.
+Crear arreglos: La única diferencia con matrices es que acepta mas de
+dos dimensiones.
 
 Para generarlos:
+
 ```{r}
 mi.arreglo <-array(vector, 
                    dimensiones, 
                    dimnames = etiquetas_dim)
 ```
 
-Para nombrarlos definimos etiquetas y luego las agregamos. Es mucho mejor y mas ordenado hacerlo así:
+Para nombrarlos definimos etiquetas y luego las agregamos. Es mucho
+mejor y mas ordenado hacerlo así:
+
 ```{r}
 dim1 <- c("A1", "A2")
 dim2 <- c("B1", "B2", "B3", "B4")
 dim3 <- c("C1", "C2", "C3")
 ```
 
-**Ejemplo de arreglo:** Defino un arreglo de 3 matrices de 2 (filas) x 4 (columnas)
+**Ejemplo de arreglo:** Defino un arreglo de 3 matrices de 2 (filas) x 4
+(columnas)
+
 ```{r}
 x <- array(1:24,
            c(2,4,3),
            dimnames = list(dim1, dim2, dim3))
 x
 ```
-Notar la tercera dimensión! 
+
+Notar la tercera dimensión!
 
 **Subconjuntos de un arreglo:** x[Fila,Columna, Matriz]
+
 ```{r}
 x[1,2,3]       # 1 fila, 2da columna, 3ra matriz
 x[,,3]         # 3era matriz completa
@@ -640,26 +705,33 @@ x[,,1]*2
 
 #### Listas
 
-Las listas contienen elementos de diferente tipo: matrices, objetos, dataframes, vectores, etc. 
+Las listas contienen elementos de diferente tipo: matrices, objetos,
+dataframes, vectores, etc.
+
 ```{r}
 x <- list(c(1:8), "R", TRUE, 2+3i, 5L)
 x #separa todo componente
 ```
 
-Para acceder a un objeto dentro de la lista se debe utilizar DOBLE CORCHETE:
+Para acceder a un objeto dentro de la lista se debe utilizar DOBLE
+CORCHETE:
+
 ```{r}
 x[[5]]
 x[5]
 ```
 
 Veamos un ejemplo de cómo trabaja:
+
 ```{r}
 x <- list(Titulacion = c("Economia", "Administracion", "Politica"), 
            Edad =c(25,23,27))
 x
 ```
 
-Al nombrar los componentes dentro de la lista, podemos llamarlos sin necesidad de los corchetes:
+Al nombrar los componentes dentro de la lista, podemos llamarlos sin
+necesidad de los corchetes:
+
 ```{r}
 x$Titulacion
 x[[1]]
@@ -669,19 +741,24 @@ x$Edad
 x[[2]]
 ```
 
-Como los componentes dentro de las listas tienen definida una naturaleza, podemos hacer operaciones con ellas también:
+Como los componentes dentro de las listas tienen definida una
+naturaleza, podemos hacer operaciones con ellas también:
+
 ```{r}
 x[["Edad"]]*3
 
 x$Edad[c(1,3)]*3
 ```
 
-Finalmente, tambien podemos crear listas vacias (útil para rellenar utilizando iteradores):
+Finalmente, tambien podemos crear listas vacias (útil para rellenar
+utilizando iteradores):
+
 ```{r}
 x <-vector("list", length = 10)
 ```
 
 **Ejemplo de una lista:** Definimos una lista
+
 ```{r}
 milista <- list(
   
@@ -699,6 +776,7 @@ milista
 ```
 
 Llamar a subconjuntos
+
 ```{r}
 # Retorna el elemento de la lista
 milista$hospitales
@@ -717,9 +795,12 @@ milista[[2]][1,2]
 
 Notar que es importante saber el tipo de dato.
 
-#### Dataframes 
+#### Dataframes
 
-**Crear un dataframe:** Es básicamente una matriz donde filas y columnas tienen significado. Contiene tanto valores numericos, carácteres, variables categóricas, etc.
+**Crear un dataframe:** Es básicamente una matriz donde filas y columnas
+tienen significado. Contiene tanto valores numericos, carácteres,
+variables categóricas, etc.
+
 ```{r}
 datos <- data.frame(Titulacion = c("Economia", "Administracion", 
                                    "Administracion"),
@@ -728,9 +809,12 @@ datos <- data.frame(Titulacion = c("Economia", "Administracion",
 datos
 ```
 
-Esto es lo mas cercano a una base de datos. Es uno de los objetos básicos que veremos muchas veces a lo largo del curso. 
+Esto es lo mas cercano a una base de datos. Es uno de los objetos
+básicos que veremos muchas veces a lo largo del curso.
 
-**Dimensiones de un dataframe:** Para ver las dimensiones hay que utilizar nrow(), ncol() o bien dim().
+**Dimensiones de un dataframe:** Para ver las dimensiones hay que
+utilizar nrow(), ncol() o bien dim().
+
 ```{r}
 nrow(datos)
 ncol(datos)
@@ -739,7 +823,9 @@ dim(datos)
 
 Notar que nrow() y ncol() tambien sirven para matrices.
 
-**Subconjuntos de un dataframe:** Al igual que en las matrices, utilizamos `[ ]` para acceder a elementos dentro de la base.
+**Subconjuntos de un dataframe:** Al igual que en las matrices,
+utilizamos `[ ]` para acceder a elementos dentro de la base.
+
 ```{r}
 datos[1,1]
 datos[,1]
@@ -756,14 +842,18 @@ summary(datos[,2])[3]
 summary(datos[,2])["Max."]
 ```
 
-**Tibbles:** Una version mas moderna de dataframes. Es la misma idea: lista de vectores con nombres.
+**Tibbles:** Una version mas moderna de dataframes. Es la misma idea:
+lista de vectores con nombres.
+
 ```{r}
 Altura <- c(168, 177, 177, 177, 178, 172, 165, 171, 178, 170)
 Peso  <- c(88, 72, 85, 95, 71, 69, 61, 61, 51, 75)
 M <- cbind(Altura, Peso)
 ```
 
-Paquete para trabajar con bases de datos (más detalles en secciones 2.3 y 2.4)
+Paquete para trabajar con bases de datos (más detalles en secciones 2.3
+y 2.4)
+
 ```{r}
 install.packages("tidyverse") 
 library(tibble) # Una libreria dentro de tidyverse. 
@@ -775,7 +865,9 @@ names(misdatos)
 summary(misdatos)
 ```
 
-**Agregar columnas a un dataframe:** Podemos agregar variables a la base. Dos opciones: 
+**Agregar columnas a un dataframe:** Podemos agregar variables a la
+base. Dos opciones:
+
 ```{r}
 # Opción 1: utilizando $nombre_columna<-vector
 datos$id <- c(1:3)
@@ -787,15 +879,18 @@ datos1 <- cbind(id2,datos)
 datos1
 ```
 
-**Attach:** 
+**Attach:**
 
 Notación muy inconveniente
+
 ```{r}
 misdatos$Altura
 misdatos$Peso
 ```
 
-Para evitar escribir datos cada vez que quiera llamar a una variable voy a utilizar la funcion `attach()`:
+Para evitar escribir datos cada vez que quiera llamar a una variable voy
+a utilizar la funcion `attach()`:
+
 ```{r}
 attach(datos) # para comenzar
 
@@ -807,16 +902,18 @@ nueva
 detach(datos) # para terminar
 ```
 
-Esta es una forma mucho mas conveniente de trabajar con dataframes o tibble en R.
+Esta es una forma mucho mas conveniente de trabajar con dataframes o
+tibble en R.
 
-<div class="alert alert-block alert-warning">
+::: {.alert .alert-block .alert-warning}
 <b>Ejercicio 2.2.1:</b> Crear un dataframe
 
-Cree su primera base de datos. Debe armar una tabla igual a la figura. Tiene 5 minutos.
-![Ejercicio](ejercicio2.PNG)
-</div>
+Cree su primera base de datos. Debe armar una tabla igual a la figura.
+Tiene 5 minutos. ![Ejercicio](01figuras/ejercicio2.PNG)
+:::
 
 Respuesta:
+
 ```{r}
 ejer <- data.frame(Tipo_animal = c("Perro", "Perro","Gato","Perro", 
                                    "Gato","Gato","Gato"),
@@ -829,7 +926,9 @@ ejer <- data.frame(Tipo_animal = c("Perro", "Perro","Gato","Perro",
 
 #### Vectores
 
-Para acceder a los elementos de un objeto debemos utilizar los corchetes `[ ]`
+Para acceder a los elementos de un objeto debemos utilizar los corchetes
+`[ ]`
+
 ```{r}
 # Veamos en un vector
 
@@ -841,7 +940,9 @@ x[1]
 x[3]
 ```
 
-De esta manera podemos extraerlo o utilizarlo en diferentes operaciones. Pero sólo debe ser entre observaciones numericas:
+De esta manera podemos extraerlo o utilizarlo en diferentes operaciones.
+Pero sólo debe ser entre observaciones numericas:
+
 ```{r}
 x[1]+x[6] #de lo contrario R nos arroja un error 
 y<-c(1:6, 1+2i)
@@ -858,6 +959,7 @@ x1 <- x[-1]
 #### Matrices
 
 Si analizamos los objetos de una matriz:
+
 ```{r}
 w<-matrix(1:9,3)
 w
@@ -877,12 +979,15 @@ w[-1,]
 #### Listas
 
 Si queremos llamar a un objeto dentro de una lista:
+
 ```{r}
 z <- list(c(1:8), "R", T, 2+3i, 5L)
 z #separa todo componente
 ```
 
-Para acceder a un objeto dentro de la lista se debe utilizar doble corchete:
+Para acceder a un objeto dentro de la lista se debe utilizar doble
+corchete:
+
 ```{r}
 z[[1]]
 
@@ -901,24 +1006,30 @@ z[[1]][3]*z[[1]][5]
 #### Identificar tipos de objetos
 
 Veamos en un vector cualquiera
+
 ```{r}
 x<-c("T", FALSE, 1:9,1+2i,"t", "c","a",6)
 class(x)
 ```
 
-Como bien sabemos todo en R es un objeto. Para saber que tipo de objeto es puedo utilizar la función `class()`:
+Como bien sabemos todo en R es un objeto. Para saber que tipo de objeto
+es puedo utilizar la función `class()`:
+
 ```{r}
 class(datos)
 class (x)
 ```
 
-Note que `class()` identifico que es un "data.frame" y una lista. También puedo ver los tipos de elementos dentro de un determinado objeto. Para datos, existen 5 tipos principales, llamados: 
+Note que `class()` identifico que es un "data.frame" y una lista.
+También puedo ver los tipos de elementos dentro de un determinado
+objeto. Para datos, existen 5 tipos principales, llamados:
 
-1. **carácteres:** texto. Se escriben con comillas (ej: "3", "swc").
-2. **numéricos:** numeros reales (ej. 2, 15.5).
-3. **enteros:** numeros enteros ("L" le dice a R que guarde esto como un entero).
-4. **logical:** valores logicos (ej. TRUE, FALSE).
-5. **complejos:** 1 + 4i (Numero complejos).
+1.  **carácteres:** texto. Se escriben con comillas (ej: "3", "swc").
+2.  **numéricos:** numeros reales (ej. 2, 15.5).
+3.  **enteros:** numeros enteros ("L" le dice a R que guarde esto como
+    un entero).
+4.  **logical:** valores logicos (ej. TRUE, FALSE).
+5.  **complejos:** 1 + 4i (Numero complejos).
 
 #### Identificar tipos de datos
 
@@ -950,11 +1061,16 @@ t<-c(1+2i,1+3i)
 class(t)
 ```
 
-Hay más clases: Date(fechas), Factor(variables categóricas), data.frame, tibble, list. 
+Hay más clases: Date(fechas), Factor(variables categóricas), data.frame,
+tibble, list.
 
 #### ¿Importan los tipos de los objetos?
 
-R intenta mantener dentro de un vector el tipo de objeto. Si es que tratamos de juntar distintos tipos de datos en un vector. Igualar a la clase. Por ejemplo, si intentamos generar un vector con texto y número/logical todo será texto:
+R intenta mantener dentro de un vector el tipo de objeto. Si es que
+tratamos de juntar distintos tipos de datos en un vector. Igualar a la
+clase. Por ejemplo, si intentamos generar un vector con texto y
+número/logical todo será texto:
+
 ```{r}
 h <- c(TRUE,"a", TRUE, 2)
 h
@@ -962,6 +1078,7 @@ class(h)
 ```
 
 Si intentamos juntar un "Logical" con un número todo será número:
+
 ```{r}
 h1 <- c(TRUE,2,3)
 h1
@@ -969,6 +1086,7 @@ class(h1)
 ```
 
 Aquí carácter todo se va a caracter:
+
 ```{r}
 x <- c("T", "FALSE", 1:3, 1+2i, "t", "c", "a")
 class(x)
@@ -980,29 +1098,34 @@ y <- c(1,2,3,4)
 class(y)
 ```
 
-Si utilizo el operador `:` para crear vectores lo interpreta como un *integer*.
+Si utilizo el operador `:` para crear vectores lo interpreta como un
+*integer*.
 
 #### Forzar a R para que utilice un tipo de dato
 
 Forzar a R a llevar el vector solo a numérico:
+
 ```{r}
 z <- as.numeric(x)
 class(z)
 z 
 ```
 
-`as.numeric()` fuerza al vector a solo tener números. Noten que remplaza los que no son numérico por NA. 
+`as.numeric()` fuerza al vector a solo tener números. Noten que remplaza
+los que no son numérico por NA.
 
 Forzar a R a llevar el vector solo a carácteres:
+
 ```{r}
 z1 <- as.character(y)
 class(z1)
 z1
 ```
 
-Noten que ahora se agregaron las dobles comillas. 
+Noten que ahora se agregaron las dobles comillas.
 
-Forzar a R a llevar el vector sólo a carácter. 
+Forzar a R a llevar el vector sólo a carácter.
+
 ```{r}
 x
 z2 <- as.logical(x)
@@ -1013,6 +1136,7 @@ z2
 Noten que "T" fue aceptado como TRUE!
 
 #### ¿Cómo saber que tipo de datos tengo?
+
 ```{r}
 # Puedo preguntar a R sobre el tipo. 
 
@@ -1029,7 +1153,10 @@ typeof(y)
 
 #### Mayúsculas importan
 
-Como vimos en lasección anterior, R es sensible a las mayúsculas. Esto aplica para nombres de funciones, paquetes, comando y también para los datos. Por ejemplo: 
+Como vimos en lasección anterior, R es sensible a las mayúsculas. Esto
+aplica para nombres de funciones, paquetes, comando y también para los
+datos. Por ejemplo:
+
 ```{r}
 x <- c("A", "a","a","a", "B", "B","b", "A")
 length(x)
@@ -1042,12 +1169,14 @@ Para R las minúsculas y mayúsculas SI IMPORTAN!.
 
 #### Carácteres especiales
 
-Vimos que existen nombres de variables no validos en R. Tambien existe un conjunto de caracteres invalidos. 
+Vimos que existen nombres de variables no validos en R. Tambien existe
+un conjunto de caracteres invalidos.
 
-* **NA:** Not Available (missing values)
-* **NaN:** Not a Numbers (ej. 0/0)
-* **Inf:** Infinito (1/0)
-* **-Inf:** Menos infinito 
+-   **NA:** Not Available (missing values)
+-   **NaN:** Not a Numbers (ej. 0/0)
+-   **Inf:** Infinito (1/0)
+-   **-Inf:** Menos infinito
+
 ```{r}
 0/0
 -1/0 
@@ -1055,7 +1184,10 @@ Vimos que existen nombres de variables no validos en R. Tambien existe un conjun
 
 #### Missing values
 
-En R, los valores perdidos ("missing values") se representan con el valor especial `NA` (letras mayusculas N y A - sin comillas). Para saber si tengo valores `NA` en un objeto, puedo ocupar la funcion `is.na()`:
+En R, los valores perdidos ("missing values") se representan con el
+valor especial `NA` (letras mayusculas N y A - sin comillas). Para saber
+si tengo valores `NA` en un objeto, puedo ocupar la funcion `is.na()`:
+
 ```{r}
 ejemplo <- c(1,3,NA,4)
 is.na(ejemplo)
@@ -1068,7 +1200,9 @@ mean(ejemplo)
 mean(ejemplo, na.rm = TRUE)
 ```
 
-No funciona en el primer caso, si en el segundo. Veremos mas detalles sobre como tratar missing values (ej. recodificar) en las clases de manipulacion y analisis de datos. 
+No funciona en el primer caso, si en el segundo. Veremos mas detalles
+sobre como tratar missing values (ej. recodificar) en las clases de
+manipulacion y analisis de datos.
 
 #### Funciones útiles
 
@@ -1125,21 +1259,26 @@ detach(misdatos)
 
 Algunos comentarios con respecto a la escritura de codigos:
 
-1. Siempre escribir comentarios autocontenidos. 
-2. Siempre utilizar índice.
-  + Me permite reducir el código. 
-  + Me permite ver donde estoy también en un código largo. 
-  + Puedo verlo con ctrl + shift + O o bien en la esquina inferior izquierda del script. 
+1.  Siempre escribir comentarios autocontenidos.
+2.  Siempre utilizar índice.
 
-3. Separar códigos largos en varios códigos. Cada código debe tener un objetivo claro que debe explicar en una oración.
-4. Escribir códigos en bloques. 
-5. Tres consejos básicos de estilo: 
-  + utilizar `_` para generar variables o bien otra convención.
-  + separar entre objetos y operaciones. 
+-   Me permite reducir el código.
+-   Me permite ver donde estoy también en un código largo.
+-   Puedo verlo con ctrl + shift + O o bien en la esquina inferior
+    izquierda del script.
+
+3.  Separar códigos largos en varios códigos. Cada código debe tener un
+    objetivo claro que debe explicar en una oración.
+4.  Escribir códigos en bloques.
+5.  Tres consejos básicos de estilo:
+
+-   utilizar `_` para generar variables o bien otra convención.
+-   separar entre objetos y operaciones.
 
 #### Condicionales y controladores de flujo
 
 Operadores básicos:
+
 ```{r}
 rm(list=ls())
 
@@ -1194,7 +1333,9 @@ matrix
 matrix > 10
 ```
 
-Operador %in%: Un operador muy útil para comparar valores y para evaluar rápidamente si un valor está dentro de un vector o marco de datos.
+Operador %in%: Un operador muy útil para comparar valores y para evaluar
+rápidamente si un valor está dentro de un vector o marco de datos.
+
 ```{r}
 rm(list=ls())
 
@@ -1226,6 +1367,7 @@ b %in% a
 ```
 
 Operadores para seleccionar subconjuntos de datos:
+
 ```{r}
 y <- c(2,3,3,4,NA,8)
 y
@@ -1238,6 +1380,7 @@ y1
 ```
 
 Operadores lógicos:
+
 ```{r}
 # Operador (&): operador "y"
 TRUE & TRUE 
@@ -1280,6 +1423,7 @@ c(TRUE,FALSE,FALSE) && c(TRUE,TRUE, TRUE)
 #### Condicionales
 
 If:
+
 ```{r}
 x <- 3
   
@@ -1309,6 +1453,7 @@ if (x < 0){
 ```
 
 Else:
+
 ```{r}
 x <- 0
 
@@ -1324,6 +1469,7 @@ if (x > 0){
 ```
 
 Elseif:
+
 ```{r}
 x <- 0
 
@@ -1362,16 +1508,18 @@ if (x %% 2 == 0){
 
 #### Funciones
 
-Idea principal: 
-$f(x) = 2x + 1$, $x \in R$
-$f(x) = 'hola' + x$, $x \in ('pepe', 'pepa', 'marta')$
+Idea principal: $f(x) = 2x + 1$, $x \in R$ $f(x) = 'hola' + x$,
+$x \in ('pepe', 'pepa', 'marta')$
 
 ```{r}
 valores <-  c(1,2,3,4)
 mean(valores)
 ```
 
-Algunas cosas adicionales sobre funciones: `n` me permite ver los argumentos de una función, sin necesidad de ver la documentación. Útil a veces.
+Algunas cosas adicionales sobre funciones: `n` me permite ver los
+argumentos de una función, sin necesidad de ver la documentación. Útil a
+veces.
+
 ```{r}
 # Escribir funciones con un argumento
 triple <- function(x){
@@ -1444,13 +1592,15 @@ operacion_dosdefectos <- function(a = 1,b = 1){
 operacion_dosdefectos()
 ```
 
-<div class="alert alert-block alert-warning">
+::: {.alert .alert-block .alert-warning}
 <b>Ejercicio 2.2.2:</b> Funciones
 
-Genere una función que sea igual a la división de dos elementos. Coloque un mensaje que indique cuando la división es indeterminada.
-</div>
+Genere una función que sea igual a la división de dos elementos. Coloque
+un mensaje que indique cuando la división es indeterminada.
+:::
 
 Respuesta:
+
 ```{r}
 operacion_indeterminada <- function(a,b){
   a/b 
@@ -1462,8 +1612,6 @@ operacion_indeterminada <- function(a,b){
 operacion_indeterminada(1,0)
 ```
 
-
-
 ## Manipulación de bases de datos (Parte I)
 
 ### Principios de programación
@@ -1471,6 +1619,7 @@ operacion_indeterminada(1,0)
 #### Iteradores
 
 For loop:
+
 ```{r}
 # Imaginen que queremos mostrar los nombres de un vector de forma reiterada
 ciudades <- c("Nueva York", "Paris", "Santiago", "Rancagua")
@@ -1515,6 +1664,7 @@ for (dia in semana)
 ```
 
 For loop con opciones:
+
 ```{r}
 ciudades <- c("Nueva York", "Paris", "Santiago", "Tokio")
 
@@ -1536,6 +1686,7 @@ for (ciudad in ciudades){
 ```
 
 Flexibilizar el iterador:
+
 ```{r}
 ciudades <- c("Nueva York", "Paris", "Santiago", 
               "Tokio", "Rancagua", "Roma")
@@ -1576,6 +1727,7 @@ for (i in 1:length(mtcars)){
 ```
 
 While: mientras que...
+
 ```{r}
 x <- 1 
 
@@ -1595,9 +1747,10 @@ while (x <= 700){
 # Muy importante la actualización.
 ```
 
-#### Lapply, Sapply y Vapply 
+#### Lapply, Sapply y Vapply
 
 Lapply:
+
 ```{r}
 nyc <- list(poblacion = 8405837, 
             barrios = c("Manhattan", "Bronx", 
@@ -1606,7 +1759,9 @@ nyc <- list(poblacion = 8405837,
 nyc
 ```
 
-* Equivalencia loop y lapply. Quiero saber todas las clases de la lista:
+-   Equivalencia loop y lapply. Quiero saber todas las clases de la
+    lista:
+
 ```{r}
 # Puedo hacer esto con un loop 
 for (objeto in nyc){
@@ -1622,7 +1777,8 @@ for (i in 1:length(nyc)){
 lapply(nyc,class)
 ```
 
-* Resultado de lapply con vector:
+-   Resultado de lapply con vector:
+
 ```{r}
 # Lapply ejecuta la función, en este caso class, para todo elemento del objeto, en este caso nyc. 
 
@@ -1636,7 +1792,8 @@ unlist(lapply(cities,nchar))
 class(unlist(lapply(cities,nchar)))
 ```
 
-* Lapply como función:
+-   Lapply como función:
+
 ```{r}
 precios <- list(2.25, 2.18, 2.89, 2.84, 2.89)
 
@@ -1652,7 +1809,9 @@ tresveces <- unlist(tresveces)
 # Noten que la sintaxis es: objeto, función, opciones. Es decir, igual a lo anterior, pero pudiendo agregar opcionales. 
 ```
 
-**Sapply:** Es una variacion de `lapply` que sirve para simplificar `lapply`. Ahora el resultado es un vector, no una lista.  
+**Sapply:** Es una variacion de `lapply` que sirve para simplificar
+`lapply`. Ahora el resultado es un vector, no una lista.
+
 ```{r}
 cities <- c("New york","Paris", "Tokyo", " Rio de Janeiro")
 
@@ -1662,29 +1821,38 @@ sapply(cities,nchar)
 # Noten que es bastante ordenado. Sin embargo, falla cuando no es fácil ordenar el resultado. 
 ```
 
-**Vapply:** Es una variación que sirve para definir explícitamente el tipo de objeto del resultado. 
+**Vapply:** Es una variación que sirve para definir explícitamente el
+tipo de objeto del resultado.
+
 ```{r}
 vapply(cities, nchar, numeric(1))
 ```
 
 ### Manipulacion de bases de datos en R
 
-Analizar datos es parte importante de las labores que uno desea realizar al utilizar R. Vamos a revisar cuatro aspectos iniciales de cualquier trabajo con datos: 
+Analizar datos es parte importante de las labores que uno desea realizar
+al utilizar R. Vamos a revisar cuatro aspectos iniciales de cualquier
+trabajo con datos:
 
-1. Importar datos en distintos formatos. 
-2. Inspeccionar y limpiar los datos que tenemos.
-3. Transformar los datos con el fin de crear nuevas variables. 
-4. Juntar bases de datos de distinto tipo.
+1.  Importar datos en distintos formatos.
+2.  Inspeccionar y limpiar los datos que tenemos.
+3.  Transformar los datos con el fin de crear nuevas variables.
+4.  Juntar bases de datos de distinto tipo.
 
 #### Importar bases de datos
 
-1. Para poder utilizar, cargar, renovar datos es importante tenerlos todos en un solo lugar. 
+1.  Para poder utilizar, cargar, renovar datos es importante tenerlos
+    todos en un solo lugar.
 
-2. Esto también aplica para los resultados y codigos. 
+2.  Esto también aplica para los resultados y codigos.
 
-3. Para que esto efectivamente ocurra necesitamos decirle a R cual va a ser nuestro directorio de trabajo. Es decir, el lugar donde guardaremos los datos que queremos trabajar, los resultados de nuestros análisis y nuestros códigos. 
+3.  Para que esto efectivamente ocurra necesitamos decirle a R cual va a
+    ser nuestro directorio de trabajo. Es decir, el lugar donde
+    guardaremos los datos que queremos trabajar, los resultados de
+    nuestros análisis y nuestros códigos.
 
 Directorios de trabajo en R:
+
 ```{r}
 # Me dice donde estoy 
 getwd()
@@ -1705,6 +1873,7 @@ dir(ruta)
 ```
 
 Ejemplo de ordenar carpetas:
+
 ```{r}
 ruta <- "C:/Users/catab/Dropbox/Cursos de R/Curso R - Noviembre 2022/Clase 3"
 
@@ -1728,25 +1897,35 @@ dir(datosraw)
 
 Proyectos de R:
 
-- Proyecto: piensen en muchos proyectos con muchos códigos.
-- Es una herramienta incorporada en RStudio que permite manejar un proyecto de análisis de datos.
-- Permite dividir el trabajo en múltiples contextos cada uno con su propio directorio de trabajo, espacio de trabajo e historial.
-- ¿Por qué utilizarlo?
-  + Mantiene códigos y datos en la misma carpeta.
-  + Mantiene códigos y datos separados de otros proyectos: evita confusiones o errores.
-  + Identifica automáticamente el directorio de trabajo, facilitando cooperación.
+-   Proyecto: piensen en muchos proyectos con muchos códigos.
+-   Es una herramienta incorporada en RStudio que permite manejar un
+    proyecto de análisis de datos.
+-   Permite dividir el trabajo en múltiples contextos cada uno con su
+    propio directorio de trabajo, espacio de trabajo e historial.
+-   ¿Por qué utilizarlo?
+    -   Mantiene códigos y datos en la misma carpeta.
+    -   Mantiene códigos y datos separados de otros proyectos: evita
+        confusiones o errores.
+    -   Identifica automáticamente el directorio de trabajo, facilitando
+        cooperación.
 
 Pasos para crear un proyecto:
 
-* Dos opciones: 
-  + R crea una carpeta de trabajo.
-  + Crear una carpeta primero, y luego decirle a R que la identifique.
-* Todos los nuevos archivos serán automáticamente guardados en la carpeta del proyecto.
-* Una vez hecho el proyecto se genera un archivo con extensión `R.proj`.
-* Aquí R guarda información del proyecto: historial, datos, etc.
-* Lo más importante es que fija el directorio de trabajo de forma tal de que siempre sea el mismo una vez que se abre un proyecto. Evita cambiar directorios de trabajo al colaborar.
+-   Dos opciones:
+    -   R crea una carpeta de trabajo.
+    -   Crear una carpeta primero, y luego decirle a R que la
+        identifique.
+-   Todos los nuevos archivos serán automáticamente guardados en la
+    carpeta del proyecto.
+-   Una vez hecho el proyecto se genera un archivo con extensión
+    `R.proj`.
+-   Aquí R guarda información del proyecto: historial, datos, etc.
+-   Lo más importante es que fija el directorio de trabajo de forma tal
+    de que siempre sea el mismo una vez que se abre un proyecto. Evita
+    cambiar directorios de trabajo al colaborar.
 
 Package here:
+
 ```{r}
 install.packages("pacman")
 pacman::p_load("here")
@@ -1755,18 +1934,31 @@ here()
 here("datos")
 ```
 
-Package `rio`: R tiene bases de datos propias. Sin embargo, muchas veces van a querer trabajar con datos propios. o bien de datos públicos que muchas veces estan en distintos formatos. Rio package es una forma flexible de importar datos en distintos. 
+Package `rio`: R tiene bases de datos propias. Sin embargo, muchas veces
+van a querer trabajar con datos propios. o bien de datos públicos que
+muchas veces estan en distintos formatos. Rio package es una forma
+flexible de importar datos en distintos.
 
-Rio debe su nombre por R input/output. Dos funciones principales: `import()` y `export()`. Además, cuando se le indica la extensión a `rio` este leerá y utilizará la herramienta indicada para leer esos datos. 
+Rio debe su nombre por R input/output. Dos funciones principales:
+`import()` y `export()`. Además, cuando se le indica la extensión a
+`rio` este leerá y utilizará la herramienta indicada para leer esos
+datos.
+
 ```{r}
 library(pacman)
 p_load(here, # Modificar carpetas
        rio)  # Importar/exportar datos
 ```
 
-Hay otras opciones tambien para importar datos. Por ejemplo, `read.csv() ("base R")`; `read.xlsx ("openxlsx")`. El problema es que son difíciles de recordar. Mejor utilizar una.
+Hay otras opciones tambien para importar datos. Por ejemplo,
+`read.csv() ("base R")`; `read.xlsx ("openxlsx")`. El problema es que
+son difíciles de recordar. Mejor utilizar una.
 
-Importar datos en distintos formatos: Utilizar `import()` para importar un conjunto de datos es bastante sencillo. Basta con proporcionar la ruta del archivo (incluyendo el nombre y la extensión del archivo) entre comillas.
+Importar datos en distintos formatos: Utilizar `import()` para importar
+un conjunto de datos es bastante sencillo. Basta con proporcionar la
+ruta del archivo (incluyendo el nombre y la extensión del archivo) entre
+comillas.
+
 ```{r}
 # Ocupamos R project, here e import para importar datos fácilmente
 
@@ -1777,6 +1969,7 @@ datos_csv  <- import(here("datos", "Data.csv"))
 ```
 
 Opciones:
+
 ```{r}
 # 1. Importar distintas hojas: Por defecto se importa la primer hoja de una base de datos, con "which" puedo elegir la hoja.
 
@@ -1805,16 +1998,21 @@ datos_dta  <- import(here("datos", "Data.dta") , skip = 1)
 browseURL("https://cran.r-project.org/web/packages/rio/vignettes/rio.html") 
 ```
 
-
 ## Manipulación de bases de datos (Parte II)
 
-Ya sabemos cargar datos. Ahora vamos a hacer el primer proceso para analizar cualquier base de datos. 
+Ya sabemos cargar datos. Ahora vamos a hacer el primer proceso para
+analizar cualquier base de datos.
 
 ### Funciones clave
 
-`Tidyverse` es una colección de paquetes de R. `Tidyverse` contiene múltiples paquetes que iremos utilizando. Incluye: `dplyr`, `ggplot2`, `tidyr`, `stringr`, `tibble`, `purrr`, `magrittr` y `forcats`. Una paquete clave es `dplyr` que contiene muchas funciones para trabajar con bases de datos. 
+`Tidyverse` es una colección de paquetes de R. `Tidyverse` contiene
+múltiples paquetes que iremos utilizando. Incluye: `dplyr`, `ggplot2`,
+`tidyr`, `stringr`, `tibble`, `purrr`, `magrittr` y `forcats`. Una
+paquete clave es `dplyr` que contiene muchas funciones para trabajar con
+bases de datos.
 
-Instalamos tidyverse: 
+Instalamos tidyverse:
+
 ```{r}
 install.packages("tidyverse")
 library(tidyverse)
@@ -1825,15 +2023,23 @@ p_load(tidyverse)
 ### Operador piping
 
 Piping `%>%`: `crtrl + shift + m`. Paquete asociado: `magrittr`
+
 ```{r}
 p_load(magrittr)
 ```
 
-1. Operador que permite encadenar las funciones para realizar de manera sencilla transformaciones complejas en las bases de datos.
-2. Lo que dice es pasar el elemento que esta a su izquierda como un argumento de la función que tiene a la derecha. 
-3. Coloca el énfasis en las acciones. Pasa un output intermedio de una función a la siguiente. 
-4. `magrittr` es el paquete que permite ocupar `piping`. `piping` se utiliza mucho con las librerias de `tidyverse` y `dplyr` enfocadas en análisis de datos. 
-5. Excelente cuando existe una secuencia de acciones/operaciones que queremos realizar. 
+1.  Operador que permite encadenar las funciones para realizar de manera
+    sencilla transformaciones complejas en las bases de datos.
+2.  Lo que dice es pasar el elemento que esta a su izquierda como un
+    argumento de la función que tiene a la derecha.
+3.  Coloca el énfasis en las acciones. Pasa un output intermedio de una
+    función a la siguiente.
+4.  `magrittr` es el paquete que permite ocupar `piping`. `piping` se
+    utiliza mucho con las librerias de `tidyverse` y `dplyr` enfocadas
+    en análisis de datos.
+5.  Excelente cuando existe una secuencia de acciones/operaciones que
+    queremos realizar.
+
 ```{r}
 data(iris)
 
@@ -1863,6 +2069,7 @@ promedio_mpg_20
 ### Proceso de análisis de datos (Parte I): cargar, inspeccionar y limpiar
 
 Preámbulo:
+
 ```{r}
 # Limpiar
 rm(list = ls())
@@ -1882,6 +2089,7 @@ datos <- import(here("datos", "Data.xlsx"), which = "hoja1")
 ```
 
 Inspeccionar:
+
 ```{r}
 # Visión general 
 datos 
@@ -1956,11 +2164,13 @@ table(year)
 detach(datos)
 ```
 
-<div class="alert alert-block alert-warning">
-<b>Ejercicio 2.4.1:</b> Utilizando el operador pipping, mostrar las últimas 2 filas de las primeras 11 filas.
-</div>
+::: {.alert .alert-block .alert-warning}
+<b>Ejercicio 2.4.1:</b> Utilizando el operador pipping, mostrar las
+últimas 2 filas de las primeras 11 filas.
+:::
 
 Limpiar:
+
 ```{r}
 names(datos) <- c("YEAR", "GDP", "GROSS_EXPORTS", 
                   "GROSS_IMPORTS", "NET_EXPORTS" )
@@ -1974,6 +2184,7 @@ names(datos_nuevos)
 ```
 
 Renombrar variables:
+
 ```{r}
 rm(list = ls())
 
@@ -1991,6 +2202,7 @@ rm(datos_renombrados)
 ```
 
 Seleccionar variables o columnas:
+
 ```{r}
 rm(list= ls())
 datos<- import(here("datos", "Data.xlsx"), which = "hoja1") 
@@ -2020,13 +2232,18 @@ datos_select_ordenados <- datos %>%
 ```
 
 Remover columnas:
+
 ```{r}
 # La idea aqui es decir: todas se quedan, menos las que pongo aquí. 
 datos_select_remover <- datos %>% 
                       select(-c(gdp, year)) 
 ```
 
-Mirar si hay duplicados. En ocasiones es importante revisar si hay duplicados. El paquete `dplyr` contiene `distinct()`. Esta función examina cada fila y reduce los datos solo a las que sean valores diferentes: 
+Mirar si hay duplicados. En ocasiones es importante revisar si hay
+duplicados. El paquete `dplyr` contiene `distinct()`. Esta función
+examina cada fila y reduce los datos solo a las que sean valores
+diferentes:
+
 ```{r}
 datos1 <- datos %>% distinct()
 
@@ -2042,6 +2259,7 @@ dif
 ### Proceso de análisis de datos (Parte II): cargar, inspeccionar y limpiar
 
 Cargar:
+
 ```{r}
 # Limpiamos consola
 rm(list = ls())
@@ -2066,6 +2284,7 @@ starwars
 ```
 
 Inspeccionar datos:
+
 ```{r}
 #  Inspect_cat() retorna una base de datos que resume características de un data.frame.
 inspeccion <- inspect_cat(starwars)
@@ -2105,13 +2324,15 @@ starwars %>% inspect_cat() %>% show_plot()
 ```
 
 Limpiar bases de datos (continuación):
+
 ```{r}
 rm(list= ls())
 
 datos<- import(here("datos", "Data.xlsx"), which = "hoja1") 
 ```
 
-* Seleccionar columnas:
+-   Seleccionar columnas:
+
 ```{r}
 # Vimos que `select()` es parte importante. `select()` puede ser utilizado con varias funciones adicionales: 
 
@@ -2151,7 +2372,9 @@ datos_any_of  <-  datos %>%
   select(any_of(c("year", "gdp", "cualquiercosa")))
 ```
 
-* Manipulación de NAs: Con vectores. Los NA son parte importante de la limpieza de los datos. Recordemos que la función `is.na()` nos permite identificarlos. 
+-   Manipulación de NAs: Con vectores. Los NA son parte importante de la
+    limpieza de los datos. Recordemos que la función `is.na()` nos
+    permite identificarlos.
 
 ```{r}
 x <- c(1,2,NA,NA,5)
@@ -2167,7 +2390,8 @@ x <- x[!malos]
 x
 ```
 
-* Manipulación de NAs: con `complete cases()`
+-   Manipulación de NAs: con `complete cases()`
+
 ```{r}
 # Miremos un caso más práctico con iris
 summary(iris)
@@ -2194,14 +2418,16 @@ iris$Sepal.Length<-ifelse(iris$Sepal.Length<5, NA,iris$Sepal.Length)
   summary(iris3) 
 ```
 
-
 ## Manipulación de bases de datos (Parte III)
 
 ### Crear Variables
 
 #### Crear variables binarias
 
-Ahora vamos a ver como crear variables dicótomas o binarias. Estas variables son muy importantes para hacer análisis de datos. Vamos a utilizar la función `ifelse()`.
+Ahora vamos a ver como crear variables dicótomas o binarias. Estas
+variables son muy importantes para hacer análisis de datos. Vamos a
+utilizar la función `ifelse()`.
+
 ```{r}
 rm(list= ls())
 data <- import(here("datos", "Data.xlsx"), which = "hoja1") 
@@ -2227,11 +2453,12 @@ data$expo <-ifelse(data$demo==1, ifelse(data$gross_exports>
 table(data$expo)
 ```
 
-<div class="alert alert-block alert-warning">
-<b>Ejercicio 2.5.1:</b> Escriba lo anterior utilizando mutate. 
-</div>
+::: {.alert .alert-block .alert-warning}
+<b>Ejercicio 2.5.1:</b> Escriba lo anterior utilizando mutate.
+:::
 
 Respuesta:
+
 ```{r}
 data <- data %>% mutate(expo = ifelse(demo==1, 
                                       ifelse(gross_exports>
@@ -2240,7 +2467,9 @@ data <- data %>% mutate(expo = ifelse(demo==1,
 
 #### Crear variables categóricas
 
-También podemos crear variables categóricas utilizando `ifelse()`. De manera muy sencilla podemos generar variables según ciertas condiciones:
+También podemos crear variables categóricas utilizando `ifelse()`. De
+manera muy sencilla podemos generar variables según ciertas condiciones:
+
 ```{r}
 # De manera muy sencilla podemos generar variables según ciertas condiciones  
 data$tipo<-ifelse(data$year<1980 & data$year>1959,1,
@@ -2256,9 +2485,13 @@ table(data$tipo)
 
 ### Factores
 
-R puede codificar automáticamente una variable categorica (factor) con un número entero. Sirven para hacer estadisticas o estimar regresiones. Los factores, pueden ser ordenados o no ordenados, se utilizan para representar variables que se agrupan en categorías. 
+R puede codificar automáticamente una variable categorica (factor) con
+un número entero. Sirven para hacer estadisticas o estimar regresiones.
+Los factores, pueden ser ordenados o no ordenados, se utilizan para
+representar variables que se agrupan en categorías.
 
 Veamos un ejemplo:
+
 ```{r}
 x <- rep(c("Ford","BMW","Peugeot"),10)
 x
@@ -2275,7 +2508,10 @@ table(factor_nominal)  # resume la cantidad de observaciones por nivel
 
 ### Funciones útiles para transformar bases de datos
 
-`across()`: Algunas veces queremos aplicar una función a múltiples variables, para ello vamos a utilizar la función `across()` y especificar la función con `fns`. Por ejemplo:
+`across()`: Algunas veces queremos aplicar una función a múltiples
+variables, para ello vamos a utilizar la función `across()` y
+especificar la función con `fns`. Por ejemplo:
+
 ```{r}
 datos2 <- data %>% 
           mutate(across(cols = everything(), fns = as.numeric))
@@ -2286,6 +2522,7 @@ datos3 <- data %>%
 ```
 
 `cumsum()`: Suma acumulada
+
 ```{r}
 # Para hacer operaciones acumuladas
 sum(c(2,4,15,10))     # Retorna la suma del vector
@@ -2299,14 +2536,18 @@ datos_acumulados <- data %>%
 datos_acumulados
 ```
 
-Recodificar variables: A continuación se presentan algunos escenarios en los que es necesario recodificar (cambiar) los valores:
-  
-1. Editar un valor específico (por ejemplo, una fecha con un año o formato incorrecto)
-2. Para conciliar valores que no se escriben igual
-3. Crear una nueva columna de valores categóricas
-4. Crear una nueva columna de categorías numéricas (por ejemplo, categorías de edad)
+Recodificar variables: A continuación se presentan algunos escenarios en
+los que es necesario recodificar (cambiar) los valores:
+
+1.  Editar un valor específico (por ejemplo, una fecha con un año o
+    formato incorrecto)
+2.  Para conciliar valores que no se escriben igual
+3.  Crear una nueva columna de valores categóricas
+4.  Crear una nueva columna de categorías numéricas (por ejemplo,
+    categorías de edad)
 
 `recode ()`: Cambiar valores
+
 ```{r}
 rm(list= ls())
 data <- import(here("datos", "Data.xlsx"), which = "hoja1") 
@@ -2329,6 +2570,7 @@ datos
 ```
 
 `replace()`: Reemplazar valores
+
 ```{r}
 datos <- datos %>%  mutate(avance = ifelse(demo == 1 & gdp > mean(gdp),
                                            1,0))
@@ -2346,7 +2588,10 @@ datos <- datos %>%
 datos$regimen[datos$avance == 0] <- "No cambio en el pib"
 ```
 
-`replace_na()`: Para cambiar los valores perdidos (NA) por un valor específico, como "Missing", utilice la función `dplyr` `replace_na()` dentro de `mutate()`:
+`replace_na()`: Para cambiar los valores perdidos (NA) por un valor
+específico, como "Missing", utilice la función `dplyr` `replace_na()`
+dentro de `mutate()`:
+
 ```{r}
 datos_ficticios <- data.frame(var1 = c(seq(1,10), NA),
                               var2 = c(rep(NA,11)))
@@ -2357,11 +2602,16 @@ datos_ficticios1 <- datos_ficticios %>%
 datos_ficticios1
 ```
 
-<div class="alert alert-block alert-danger">
-<b>Recordatorio:</b> Esta función cambia los missing values solo por valores de la misma clase de la variable/columna, por lo tanto, si trabajamos con valores de clase numérica los reemplazos deben ser también numéricos.
-</div>
+::: {.alert .alert-block .alert-danger}
+<b>Recordatorio:</b> Esta función cambia los missing values solo por
+valores de la misma clase de la variable/columna, por lo tanto, si
+trabajamos con valores de clase numérica los reemplazos deben ser
+también numéricos.
+:::
 
-`case_when()`: una función de `dplyr`. Es útil para asignar múltiples valores. Sirve si se necesita recodificar muchos grupos:
+`case_when()`: una función de `dplyr`. Es útil para asignar múltiples
+valores. Sirve si se necesita recodificar muchos grupos:
+
 ```{r}
 rm(list = ls())
 
@@ -2382,19 +2632,24 @@ datos_case_when <-  datosedad %>%
 datos_case_when
 ```
 
-
 ### Cambio de formato de los datos
 
 #### De ancho a largo
 
-En en siguiente ejemplo, los datos están guardaos en "wide" para las columnas que tienen el número de casos de malaria por tramos de edad. Para un trabajo de análisis de datos es importante transformar los datos a "long". 
+En en siguiente ejemplo, los datos están guardaos en "wide" para las
+columnas que tienen el número de casos de malaria por tramos de edad.
+Para un trabajo de análisis de datos es importante transformar los datos
+a "long".
+
 ```{r}
 rm(list = ls())
 count_data <- import(here("datos","malaria_facility_count_data.rds"))
 head(count_data)
 ```
 
-`pivot_longer()`: función del paquete `tidyr`. Paquete incluido en `tidyverse()`. Transforma los datos de wide a long.
+`pivot_longer()`: función del paquete `tidyr`. Paquete incluido en
+`tidyverse()`. Transforma los datos de wide a long.
+
 ```{r}
 df_long <- count_data %>% 
   pivot_longer(
@@ -2425,7 +2680,8 @@ df_long1
 
 #### De largo a ancho
 
-`pivot_wider()`: Transforma los datos de long a wide. Útil si quiero hacer una tabla mas amigable para el o la lectora.
+`pivot_wider()`: Transforma los datos de long a wide. Útil si quiero
+hacer una tabla mas amigable para el o la lectora.
 
 ```{r}
 rm(list = ls())
@@ -2447,6 +2703,7 @@ linelist <- import(here("datos","linelist_cleaned.rds"))
 ```
 
 Otra opción para hacer esto mismo es `gather()` y `spread()`:
+
 ```{r}
 rm(list = ls())
 datos <- import(here("datos","Cuadro_1.xls"), skip = 1) 
@@ -2478,13 +2735,17 @@ data_wide
 #### Pegar hacia el lado (por columnas)
 
 En el siguiente ejemplo, tenemos datos de hospitales.
+
 ```{r}
 rm(list = ls())
 hosp_info <- import(here("datos","hosp_info_final.xlsx"))
 linelist_mini <- import(here("datos","linelist_mini_final.xlsx"))
 ```
 
-Sintaxis: Imaginemos que tenemos dos bases de datos "df1", "df2". df1 tienen una columna llamada "ID". df2 tiene una columna que se llama identificador.
+Sintaxis: Imaginemos que tenemos dos bases de datos "df1", "df2". df1
+tienen una columna llamada "ID". df2 tiene una columna que se llama
+identificador.
+
 ```{r}
 # Caso 1: nombres de identificadores distintos.
 data_junta <- join(df1,
@@ -2506,6 +2767,7 @@ data_junta <- join(df1, df2, by = c("nombre" = "primernombre",
 ```
 
 **Left y Right join:**
+
 ```{r}
 # Left join: la primera base de datos que aparece es la referencia.
 # Right join: la segunda base de datos que aparece es la referencia.
@@ -2541,7 +2803,9 @@ left_join_ex2 <- linelist_mini %>%
 # 5. No "match" por la base que no es de referencia se borran.
 ```
 
-**Full Join:** El más inclusivo de los "joins". Retorna todas las observaciones/filas:
+**Full Join:** El más inclusivo de los "joins". Retorna todas las
+observaciones/filas:
+
 ```{r}
 full_join_ex3 <- full_join(linelist_mini,
                            hosp_info,
@@ -2552,7 +2816,9 @@ full_join_ex3 <- linelist_mini %>%
             by = c("hospital" = "hosp_name"))
 ```
 
-**Inner join:** El más restrictivo de los "join". Retorna solo las filas que hicieron match entre ambas bases de datos. 
+**Inner join:** El más restrictivo de los "join". Retorna solo las filas
+que hicieron match entre ambas bases de datos.
+
 ```{r}
 # Su análogo en stata es:  merge 1:1, keep _merge==3
 # Los que se pegaron perfectamente entre ambas bases.
@@ -2562,7 +2828,10 @@ inner_join_example <- linelist_mini %>%
              by = c("hospital" = "hosp_name"))
 ```
 
-**Semi - join:** Mantiene todas las observaciones de la base de referencia que tengan un "match" en la base secundaria, pero NO agrega nuevas columnas ni duplicados en casos de multiples "match".
+**Semi - join:** Mantiene todas las observaciones de la base de
+referencia que tengan un "match" en la base secundaria, pero NO agrega
+nuevas columnas ni duplicados en casos de multiples "match".
+
 ```{r}
 semi_join_example1 <- semi_join(hosp_info, linelist_mini, 
                                 by = c("hosp_name" ="hospital"))
@@ -2573,7 +2842,10 @@ semi_join_example <- hosp_info %>%
                      by = c("hosp_name" = "hospital"))
 ```
 
-**Anti- join:** Se le llama, al igual que semi-join "join de filtros". Retorna las observaciones/filas en la base de datos de referencia que no hacen "match" en base de datos secundaria.
+**Anti- join:** Se le llama, al igual que semi-join "join de filtros".
+Retorna las observaciones/filas en la base de datos de referencia que no
+hacen "match" en base de datos secundaria.
+
 ```{r}
 anti_join_example <- hosp_info %>%
   anti_join(linelist_mini,
@@ -2581,6 +2853,7 @@ anti_join_example <- hosp_info %>%
 ```
 
 La función `merge`:
+
 ```{r}
 rm(list = ls())
 
@@ -2617,13 +2890,19 @@ m1
 
 #### Pegar hacia abajo (por filas)
 
-Otra forma de unir bases de datos es agregar filas. Similar a lo que se hace con `append()` en Stata. Vamos a utilizar la función `bind_rows()` desde el paquete "dplyr".
+Otra forma de unir bases de datos es agregar filas. Similar a lo que se
+hace con `append()` en Stata. Vamos a utilizar la función `bind_rows()`
+desde el paquete "dplyr".
 
-1. `bind_rows()` es bastante inclusivo. Cualquier columna presente en las bases de datos se incluye en el output.
-2. Si ambas columnas se llaman igual, se alinearan correctamente.
-3. Adicionalmente, podemos agregar el argumento `.id=`. Este argumento genera una nueva columna que sirve para identificar de donde proviene la informacion.
+1.  `bind_rows()` es bastante inclusivo. Cualquier columna presente en
+    las bases de datos se incluye en el output.
+2.  Si ambas columnas se llaman igual, se alinearan correctamente.
+3.  Adicionalmente, podemos agregar el argumento `.id=`. Este argumento
+    genera una nueva columna que sirve para identificar de donde
+    proviene la informacion.
 
 **Ejemplo 1:** caso sencillo
+
 ```{r}
 continente_resumen <- gapminder %>%
   group_by(continent) %>%
@@ -2657,6 +2936,7 @@ combinadas_id
 ```
 
 **Ejemplo 2:** ¿Qué ocurre si hay más de un archivo?
+
 ```{r}
 # Base de datos maestra
 trial <- data.frame(
@@ -2687,6 +2967,7 @@ trial1<- bind_rows(trial,trial_2020, trial_2021)
 ```
 
 **Ejemplo 3:** ¿Qué ocurre si tengo muchos archivos?
+
 ```{r}
 rm(list=ls())
 library(pacman)
@@ -2714,6 +2995,7 @@ combined_data_sep
 ### Inspección de datos
 
 Preámbulo:
+
 ```{r}
 # Limpiamos consola
 rm(list = ls())
@@ -2732,7 +3014,9 @@ pacman::p_load(
 
 ```
 
-Ahora vamos a crear tablas de estadística descriptiva que nos interesen para el análisis de datos. 
+Ahora vamos a crear tablas de estadística descriptiva que nos interesen
+para el análisis de datos.
+
 ```{r}
 # Importamos datos
 datos <- import(here("datos","linelist_cleaned.rds"))
@@ -2759,6 +3043,7 @@ names(datos)
 ```
 
 Transformamos variables de interés:
+
 ```{r}
 # a. Miramos la clase de cada variable 
 unlist(lapply(datos,class))
@@ -2813,6 +3098,7 @@ rm(datos_trabajo)
 ### Estadística descriptiva
 
 Describiendo los datos:
+
 ```{r}
 pacman::p_load(rstatix)
 
@@ -2832,11 +3118,19 @@ export(tabla1, here("resultados",
 
 ### Tablas de frecuencia
 
-El paquete "janitor" ofrece la función `tabyl()` para producir tabulaciones simples y tabulaciones cruzadas, que pueden ser "adornadas" o modificadas con funciones de ayuda para mostrar porcentajes, proporciones, recuentos, etc.
+El paquete "janitor" ofrece la función `tabyl()` para producir
+tabulaciones simples y tabulaciones cruzadas, que pueden ser "adornadas"
+o modificadas con funciones de ayuda para mostrar porcentajes,
+proporciones, recuentos, etc.
 
-El uso por defecto de `tabyl()` en una columna específica produce los valores únicos, los recuentos y los "porcentajes" de la columna (en realidad proporciones). Las proporciones pueden tener muchos dígitos. Puede ajustar el número de décimales con la función `adorn_rounding()` como se describe a continuación.
+El uso por defecto de `tabyl()` en una columna específica produce los
+valores únicos, los recuentos y los "porcentajes" de la columna (en
+realidad proporciones). Las proporciones pueden tener muchos dígitos.
+Puede ajustar el número de décimales con la función `adorn_rounding()`
+como se describe a continuación.
 
 #### Tablas de frecuencias con una entrada
+
 ```{r}
 # Frecuencia para age_cat 
 tabla2a <- datos %>% tabyl(outcome)
@@ -2865,7 +3159,10 @@ nombres <- nombres[select == TRUE]
 nombres 
 ```
 
-Ahora voy a generar tantas tablas como variables categóricas para ello vamos a hacer uso de iteraciones. Creo una lista vacía, donde voy a guardar las tablas (data frames) que se generen.
+Ahora voy a generar tantas tablas como variables categóricas para ello
+vamos a hacer uso de iteraciones. Creo una lista vacía, donde voy a
+guardar las tablas (data frames) que se generen.
+
 ```{r}
 tabla2 <-  list()
 
@@ -2884,7 +3181,12 @@ for (i in 1:length(nombres)){
 }
 ```
 
-Ahora tengo una lista de tablas. Cada tabla habla de un variable categórica. Si vemos son equivalente a generarlas de otra forma. Si tengo pocas variables categóricas, esta forma puede no ser relevante, sin embargo, si tengo muchas, puede ser una buena forma de generar estadística descriptiva. 
+Ahora tengo una lista de tablas. Cada tabla habla de un variable
+categórica. Si vemos son equivalente a generarlas de otra forma. Si
+tengo pocas variables categóricas, esta forma puede no ser relevante,
+sin embargo, si tengo muchas, puede ser una buena forma de generar
+estadística descriptiva.
+
 ```{r}
 # Comparamos 
 datos %>% tabyl(outcome,show_na = FALSE)
@@ -2901,7 +3203,11 @@ export(tabla2[[3]],here("resultados", "ejercicio1", "tabla2-3-freq-age_cat.xlsx"
 
 #### Tablas de frecuencias con más de una entrada
 
-Imaginen que estamos interesados o interesadas en saber cuantas observaciones por categoría de edad por genero. Para ello nos gustaría hacer una tabla de doble entrada. Podemos ocupar `tabyl()` para hacer eso fácilmente: 
+Imaginen que estamos interesados o interesadas en saber cuantas
+observaciones por categoría de edad por genero. Para ello nos gustaría
+hacer una tabla de doble entrada. Podemos ocupar `tabyl()` para hacer
+eso fácilmente:
+
 ```{r}
 tabla3 <- datos  %>% tabyl(age_cat, gender, show_na = FALSE)
 tabla3 
@@ -3010,9 +3316,12 @@ tabla8_imagen_word <- datos %>%
 
 ### Estadística descriptiva con "dplyr"
 
-Ahora vamos a volver a utilizar los verbos del paquete "dplyr" que vimos la sección anterior. Vamos a generar las mismas cosas, pero de otra forma.
+Ahora vamos a volver a utilizar los verbos del paquete "dplyr" que vimos
+la sección anterior. Vamos a generar las mismas cosas, pero de otra
+forma.
 
 Frecuencias:
+
 ```{r}
 # Removemos todo, menos datos 
 rm(list=ls()[! ls() %in% c("datos")])
@@ -3046,6 +3355,7 @@ tabla4a
 ```
 
 Porcentajes:
+
 ```{r}
 tabla5 <- datos %>% 
   count(outcome, age_cat) %>%                     
@@ -3061,6 +3371,7 @@ tabla6
 ```
 
 Resumen:
+
 ```{r}
 tabla7 <- datos %>%         # armamos la tabla como un nuevo objeto
   group_by(hospital) %>%    # agrupamos todos los cálculos por hospital
@@ -3075,6 +3386,7 @@ tabla7
 ```
 
 Estadísticas condicionales:
+
 ```{r}
 tabla8 <- datos %>% 
   group_by(hospital) %>% 
@@ -3095,6 +3407,7 @@ tabla9
 ```
 
 Percentiles:
+
 ```{r}
 # Percentiles por defecto de la variable edad (0%, 25%, 50%, 75%, 100%). 
 # Usamos la función `quantile()`. 
@@ -3131,6 +3444,7 @@ tabla13
 ```
 
 Resumir datos agregados:
+
 ```{r}
 # Contamos y quitamos los NA
 tabla14 <- datos %>% 
@@ -3209,6 +3523,7 @@ for (i in 1:20){
 ```
 
 Juntar tablas:
+
 ```{r}
 # Algunas estadísticas por hospital y outcome
 tabla21 <-datos %>% 
@@ -3257,9 +3572,10 @@ table_long %>%
 
 ### Visualización: R base
 
-Vamos a hacer graficos unicamente utilizando R básico. 
+Vamos a hacer graficos unicamente utilizando R básico.
 
 #### Plot
+
 ```{r}
 # Para visualizar datos 
 altura <- c(168, 177, 177, 177, 178, 172, 165, 171, 178, 170)
@@ -3280,6 +3596,7 @@ rm(altura,peso)
 ```
 
 #### Histograma
+
 ```{r}
 # Buscar ayuda: 
 ?hist()
@@ -3336,6 +3653,7 @@ lines(density(wage), col="blue", lwd=2)
 ```
 
 Opciones:
+
 ```{r}
 # lwd = line width
 # col = color
@@ -3368,6 +3686,7 @@ dev.off()
 ```
 
 #### Gráfico de dispersión
+
 ```{r}
 # Básico 
 dev.off()
@@ -3413,6 +3732,7 @@ dev.off()
 ```
 
 #### Gráfico de barras
+
 ```{r}
 # Primero tenemos que crear las frecuencias 
 frecuencias <- table(occupation)  # con variable categórica
@@ -3440,6 +3760,7 @@ dev.off()
 ```
 
 #### Gráfico de torta
+
 ```{r}
 datos <- table(ethnicity)
 datos
@@ -3464,19 +3785,22 @@ dev.off()
 
 Algunas cosas que tener en cuenta sobre un boxplot:
 
-1. Se le llama grafico de caja y bigote. 
-2. Primer quartil (1): borde inferior de la caja.
-3. Mediana: Linea de al medio de la caja.
-4. Tercer quartil: Borde superior de la caja. 
-5. Rango intercuartil: Diferencia entre el tercer cuartil y el primero. 
+1.  Se le llama grafico de caja y bigote.
+2.  Primer quartil (1): borde inferior de la caja.
+3.  Mediana: Linea de al medio de la caja.
+4.  Tercer quartil: Borde superior de la caja.
+5.  Rango intercuartil: Diferencia entre el tercer cuartil y el primero.
 
-Sobre el gráfico: 
+Sobre el gráfico:
 
-1. Caja más grande implica que los datos están mas dispersos.
-2. Tamaño de la caja es el rango intercuartil.
-3. Si la mediana esta al centro, la distribución es simétrica. 
-4. ¿Que pasa si la parte superior (sobre la linea) es más grande? Los datos se concentran en la parte baja de la distribución. 
-5. Los bigotes determinan el límite para valores atípicos.Su longitud máxima es de un 150% del Rango intercuartil (RIC).
+1.  Caja más grande implica que los datos están mas dispersos.
+2.  Tamaño de la caja es el rango intercuartil.
+3.  Si la mediana esta al centro, la distribución es simétrica.
+4.  ¿Que pasa si la parte superior (sobre la linea) es más grande? Los
+    datos se concentran en la parte baja de la distribución.
+5.  Los bigotes determinan el límite para valores atípicos.Su longitud
+    máxima es de un 150% del Rango intercuartil (RIC).
+
 ```{r}
 dev.off()
 boxplot(wage,
@@ -3505,15 +3829,36 @@ boxplot(wage ~ gender,
 
 ### Uso paquete ggplot
 
-Ahora vamos a utilizar un paquete  avanzado de visualización. Primero, algunos aspectos relacionados con la lógica de su uso.
+Ahora vamos a utilizar un paquete avanzado de visualización. Primero,
+algunos aspectos relacionados con la lógica de su uso.
 
-1. Utilizar `ggplot2` es básicamente ir agregando capas. Entre cada cosa que quiero agregar al gráfico debo colocar un signo `+`. 
-2. La sintaxis básica incluye: 
-  + a.  Comience con el comando `ggplot()` de la línea de base, esto "abre" el ggplot y permite que las funciones subsecuentes sean agregadas con `+`. Normalmente el conjunto de datos también se especifica en este comando.
-  + b. Añadir capas "geom", estas funciones visualizan los datos como geometrías (formas), por ejemplo, como un gráfico de barras, un gráfico de líneas, un gráfico de dispersión, un histograma (¡o una combinación!). Todas estas funciones comienzan con `geom_` como prefijo.
-  + c. Añade elementos de diseño al gráfico, como etiquetas de ejes, títulos, fuentes, tamaños, esquemas de color, leyendas o rotación de ejes.
+1.  Utilizar `ggplot2` es básicamente ir agregando capas. Entre cada
+    cosa que quiero agregar al gráfico debo colocar un signo `+`.
+2.  La sintaxis básica incluye:
+
+-   
+
+    a.  Comience con el comando `ggplot()` de la línea de base, esto
+        "abre" el ggplot y permite que las funciones subsecuentes sean
+        agregadas con `+`. Normalmente el conjunto de datos también se
+        especifica en este comando.
+
+-   
+
+    b.  Añadir capas "geom", estas funciones visualizan los datos como
+        geometrías (formas), por ejemplo, como un gráfico de barras, un
+        gráfico de líneas, un gráfico de dispersión, un histograma (¡o
+        una combinación!). Todas estas funciones comienzan con `geom_`
+        como prefijo.
+
+-   
+
+    c.  Añade elementos de diseño al gráfico, como etiquetas de ejes,
+        títulos, fuentes, tamaños, esquemas de color, leyendas o
+        rotación de ejes.
 
 Ejemplo:
+
 ```{r}
 ggplot(datos, aes(x = experience, y = wage)) +                               
   geom_point( color = "blue") +                          
@@ -3521,7 +3866,9 @@ ggplot(datos, aes(x = experience, y = wage)) +
   theme()  
 ```
 
-Ahora ya entendemos la sintaxis general. Para cambiar de tipo de gráficos tenemos distintas geometrías. 
+Ahora ya entendemos la sintaxis general. Para cambiar de tipo de
+gráficos tenemos distintas geometrías.
+
 ```{r}
   # geom_point (para puntos)
   # geom_line (para lineas)
@@ -3534,6 +3881,7 @@ Ahora ya entendemos la sintaxis general. Para cambiar de tipo de gráficos tenem
 #### Geometrías
 
 Otros tienen más sentido con una variable
+
 ```{r}
 ggplot(datos, aes(x = experience))+                               
   geom_histogram() +                         
@@ -3548,20 +3896,27 @@ ggplot(datos, mapping = aes(x = experience, y = wage))+
 
 #### Aesthetics
 
-Otro aspecto importante es lo que se denomina "aesthetics". Estas son las características visuales de los datos. En ggplot estos son modificados dentro de la opción `theme()`. No todas las geometrías tienen las mismas opciones. Sin embargo, algunas comunes son: 
+Otro aspecto importante es lo que se denomina "aesthetics". Estas son
+las características visuales de los datos. En ggplot estos son
+modificados dentro de la opción `theme()`. No todas las geometrías
+tienen las mismas opciones. Sin embargo, algunas comunes son:
 
-* `shape`: Mostrar un punto con `geom_point()` como punto, estrella, triángulo o cuadrado.
-* `fill`: El color interior (por ejemplo, de una barra o boxplot)
-* `color`: La línea exterior de una barra, boxplot, etc., o el color del punto si se utiliza `geom_point()`
-* `size`: Tamaño (por ejemplo, grosor de la línea, tamaño del punto)
-* `alpha`: Transparencia (1 = opaco, 0 = invisible)
-* `binwidtho`: Ancho de los bins o cajas del histograma
-* `width`: Anchura de las columnas del "bar plot".
-* `linetype`: Tipo de línea (por ejemplo, sólida, discontinua, punteada)
+-   `shape`: Mostrar un punto con `geom_point()` como punto, estrella,
+    triángulo o cuadrado.
+-   `fill`: El color interior (por ejemplo, de una barra o boxplot)
+-   `color`: La línea exterior de una barra, boxplot, etc., o el color
+    del punto si se utiliza `geom_point()`
+-   `size`: Tamaño (por ejemplo, grosor de la línea, tamaño del punto)
+-   `alpha`: Transparencia (1 = opaco, 0 = invisible)
+-   `binwidtho`: Ancho de los bins o cajas del histograma
+-   `width`: Anchura de las columnas del "bar plot".
+-   `linetype`: Tipo de línea (por ejemplo, sólida, discontinua,
+    punteada)
 
-Los "aesthetics" pueden ser asignados a valores o a vectores. 
+Los "aesthetics" pueden ser asignados a valores o a vectores.
 
 Ejemplo:
+
 ```{r}
 # Visualización de puntos 
 ggplot(datos, aes(x = experience, y = wage))+                               
@@ -3578,6 +3933,7 @@ ggplot(datos, mapping = aes(x = wage))+
 ```
 
 #### Escalar los valores o agrupar
+
 ```{r}
 # Si queremos diferenciar alguna variable categorica por color (agrupar)
 ggplot(datos, aes(experience, wage, color = gender)) + 
@@ -3601,6 +3957,7 @@ ggplot(data = datos,
 ```
 
 #### Equivalencia sintaxis ggplot
+
 ```{r}
 # Notar que estas tres sintaxis son equivalentes
 ggplot(data = datos, 
@@ -3616,7 +3973,12 @@ ggplot()+
 
 #### Combinar gráficos
 
-`facet_wrap()`: Mostrar un panel diferente para cada nivel de una sola variable. Un ejemplo de esto podría ser mostrar una figura diferente para cada region de un país. Las facetas se ordenan alfabéticamente, a menos que la variable sea un factor con otro ordenamiento definido. Por ejemplo:
+`facet_wrap()`: Mostrar un panel diferente para cada nivel de una sola
+variable. Un ejemplo de esto podría ser mostrar una figura diferente
+para cada region de un país. Las facetas se ordenan alfabéticamente, a
+menos que la variable sea un factor con otro ordenamiento definido. Por
+ejemplo:
+
 ```{r}
 # Datos 
 malaria_data <- import(here("datos", "malaria_facility_count_data.rds")) %>%  
@@ -3632,7 +3994,11 @@ ggplot(malaria_data, aes(x = data_date, y = malaria_tot)) +
     facet_wrap(~District)   # creamos las facetas
 ```
 
-`facet_grid()`: Se utiliza cuando se quiere introducir una segunda variable en la disposición de las facetas. Aquí cada panel de una cuadrícula muestra la intersección entre los valores de dos columnas. Por ejemplo:
+`facet_grid()`: Se utiliza cuando se quiere introducir una segunda
+variable en la disposición de las facetas. Aquí cada panel de una
+cuadrícula muestra la intersección entre los valores de dos columnas.
+Por ejemplo:
+
 ```{r}
 malaria_age <- malaria_data %>%
   select(-malaria_tot) %>% 
@@ -3656,7 +4022,10 @@ ggplot(malaria_age, aes(x = data_date, y = num_casos)) +
 
 #### Modificar y guardar
 
-Modificar graficos: Una cosa muy positiva de `ggplot()` es que uno puede definirlo con un nombre y luego ir sobre-escribiendolo. Eso es muy útil para la sintaxis. 
+Modificar graficos: Una cosa muy positiva de `ggplot()` es que uno puede
+definirlo con un nombre y luego ir sobre-escribiendolo. Eso es muy útil
+para la sintaxis.
+
 ```{r}
 # Gráfico original 
 histograma <- ggplot(data = datos, mapping = aes(x = age))+
@@ -3671,12 +4040,15 @@ histograma_modificado
 # Muy útil y recomendable para hacer visualizaciones en R. 
 ```
 
-Exportar gráficos: Para los gráfico que se generen con `ggplot()` es posible utilizar la opción `ggsave()`.
+Exportar gráficos: Para los gráfico que se generen con `ggplot()` es
+posible utilizar la opción `ggsave()`.
+
 ```{r}
 ggsave(here("figuras", "histograma.pdf"), histograma_modificado)
 ```
 
 #### Labels
+
 ```{r}
 distribucion_salarios <- ggplot(
   data = datos,      # datos
@@ -3697,6 +4069,7 @@ distribucion_salarios
 ```
 
 #### Temas
+
 ```{r}
 # Clasico 
 distribucion_salarios + theme_classic()
@@ -3718,6 +4091,7 @@ distribucion_salarios + theme_bw()
 ```
 
 #### Piping y ggplot
+
 ```{r}
 rm(list = ls())
   datos <- import(here("datos", "linelist_cleaned.rds"))
@@ -3743,6 +4117,7 @@ rm(list = ls())
 #### Gráficos para variables continuas
 
 Histograma:
+
 ```{r}
 rm(list = ls())
 data("CPS1985")
@@ -3801,6 +4176,7 @@ ggplot(data, aes(x=wage)) +
 ```
 
 Gráfico de densidad:
+
 ```{r}
 ggplot(data, aes(x=wage, color=gender)) +
   geom_freqpoly(bins=20, aes(y=..density..)) +
@@ -3822,6 +4198,7 @@ ggplot(data, aes(x=wage)) +
 ```
 
 Diagrama de dispersión (scatterplot):
+
 ```{r}
 ggplot(data, aes(experience, log(wage))) +
   geom_point() +
@@ -3871,6 +4248,7 @@ ggplot(data, aes(experience,log(wage))) +
 ```
 
 Boxplot:
+
 ```{r}
 # Básico
 ggplot(data, aes(x=gender, y=wage, fill=gender)) +
@@ -3916,6 +4294,7 @@ ggplot(data, aes(x=gender, y=wage, fill=gender) ) +
 ```
 
 Gráfico de barras:
+
 ```{r}
 ggplot(data, aes(ethnicity)) +
   geom_bar() +
@@ -3956,6 +4335,7 @@ ggplot(data, aes(ethnicity, fill=gender)) +
 #### Gráficos con plotly
 
 Ejemplo 1:
+
 ```{r}
 g1 <- ggplot(data, aes(ethnicity, fill=gender)) +
   geom_bar(position="dodge") +            # también: position=position_dodge()
@@ -3972,6 +4352,7 @@ ggplotly(g1)
 ```
 
 Ejemplo 2:
+
 ```{r}
 set.seed(100) #semilla
 
@@ -3985,11 +4366,16 @@ p
 ggplotly(p)
 ```
 
-<div class="alert alert-block alert-danger">
-<b>Recordatorio:</b> Set seed o sembrar la semilla nos permite generar datos seudo aleatorizados pero replicables, de manera que cualquier persona que acceda al script sea capaz de llegar a los mismos resultados que nosotros. El número que se incluye dentro de la función actua como un "código" que genera estos datos aleatorios, y puede ser cualquiera.
-</div>
+::: {.alert .alert-block .alert-danger}
+<b>Recordatorio:</b> Set seed o sembrar la semilla nos permite generar
+datos seudo aleatorizados pero replicables, de manera que cualquier
+persona que acceda al script sea capaz de llegar a los mismos resultados
+que nosotros. El número que se incluye dentro de la función actua como
+un "código" que genera estos datos aleatorios, y puede ser cualquiera.
+:::
 
 Ejemplo 3: Ocupar directamente plotly
+
 ```{r}
 data(iris)
 
@@ -4039,15 +4425,36 @@ fig
 
 ### Test de hipótesis
 
-Imaginen que una compañia quiere testear la efectividad de una estrategia de venta. La estrategia A consiste en colocar un letrero que diga "oferta final". La estrategia B consiste en dejar todo como siempre. Aleatoriamente se eligen los días y lugares en donde se utilizara la estrategia A y los días en que se utilizara la estrategia B. Luego, se registran los datos de ventas y se observan que las ventas de la compañía con la estrategia B fueron un 43,4% mayores a las tiendas con la estrategia A. La intuición se contradice con los datos, sin embargo, ¿Es esto debido al azar? ¿o bien es un resultado estadísticamente significativo? 
+Imaginen que una compañia quiere testear la efectividad de una
+estrategia de venta. La estrategia A consiste en colocar un letrero que
+diga "oferta final". La estrategia B consiste en dejar todo como
+siempre. Aleatoriamente se eligen los días y lugares en donde se
+utilizara la estrategia A y los días en que se utilizara la estrategia
+B. Luego, se registran los datos de ventas y se observan que las ventas
+de la compañía con la estrategia B fueron un 43,4% mayores a las tiendas
+con la estrategia A. La intuición se contradice con los datos, sin
+embargo, ¿Es esto debido al azar? ¿o bien es un resultado
+estadísticamente significativo?
 
-#### Test de diferencia de media 
+#### Test de diferencia de media
 
-Una de las pruebas más comunes en estadística, la prueba t, se utiliza para determinar si las medias de dos grupos son iguales entre sí. La hipótesis de la prueba es que ambos grupos proceden de distribuciones normales con varianzas iguales. La hipótesis nula es que las dos medias son iguales, y la alternativa es que no lo son. Se sabe que bajo la hipótesis nula, podemos calcular un estadístico t que seguirá una distribución t.
+Una de las pruebas más comunes en estadística, la prueba t, se utiliza
+para determinar si las medias de dos grupos son iguales entre sí. La
+hipótesis de la prueba es que ambos grupos proceden de distribuciones
+normales con varianzas iguales. La hipótesis nula es que las dos medias
+son iguales, y la alternativa es que no lo son. Se sabe que bajo la
+hipótesis nula, podemos calcular un estadístico t que seguirá una
+distribución t.
 
-También existe una modificación ampliamente utilizada de la prueba t, conocida como prueba t de Welch, que ajusta el número de grados de libertad cuando se cree que las varianzas no son iguales entre sí. Este tutorial cubre los fundamentos de la realización de pruebas t en R.
+También existe una modificación ampliamente utilizada de la prueba t,
+conocida como prueba t de Welch, que ajusta el número de grados de
+libertad cuando se cree que las varianzas no son iguales entre sí. Este
+tutorial cubre los fundamentos de la realización de pruebas t en R.
 
-`t.test()` puede utilizarse para realizar pruebas t de una y dos muestras en vectores de datos. La función contiene una variedad de argumentos. La sintaxis es: 
+`t.test()` puede utilizarse para realizar pruebas t de una y dos
+muestras en vectores de datos. La función contiene una variedad de
+argumentos. La sintaxis es:
+
 ```{r}
 # Datos 
 data("midwest")
@@ -4063,24 +4470,48 @@ t.test(x, y = NULL,
        conf.level = 0.95)
 ```
 
-Aquí $x$ es un vector numérico de valores de datos e $y$ es un vector numérico opcional de valores de datos. Si se excluye $y$, la función realiza una prueba t de una muestra sobre los datos contenidos en $x$, si se incluye realiza una prueba t de dos muestras utilizando tanto $x$ como $y$.
+Aquí $x$ es un vector numérico de valores de datos e $y$ es un vector
+numérico opcional de valores de datos. Si se excluye $y$, la función
+realiza una prueba t de una muestra sobre los datos contenidos en $x$,
+si se incluye realiza una prueba t de dos muestras utilizando tanto $x$
+como $y$.
 
-El argumento $mu$ proporciona un número que indica el verdadero valor de la media (o la diferencia de medias si se realiza una prueba de dos muestras) bajo la hipótesis nula. Por defecto, la prueba realiza una prueba t de dos caras; sin embargo, puede realizar una hipótesis alternativa cambiando el argumento alternativo a "mayor" o "menor" dependiendo de si la hipótesis alternativa es que la media es mayor o menor que $mu$, respectivamente. 
+El argumento $mu$ proporciona un número que indica el verdadero valor de
+la media (o la diferencia de medias si se realiza una prueba de dos
+muestras) bajo la hipótesis nula. Por defecto, la prueba realiza una
+prueba t de dos caras; sin embargo, puede realizar una hipótesis
+alternativa cambiando el argumento alternativo a "mayor" o "menor"
+dependiendo de si la hipótesis alternativa es que la media es mayor o
+menor que $mu$, respectivamente.
 
-Por ejemplo: 
+Por ejemplo:
+
 ```{r}
 t.test(x, alternative = "less", mu = 25)
 ```
 
-Realiza una prueba t de una muestra sobre los datos contenidos en $x$ donde la hipótesis nula es que $mu = 25$ y la alternativa es menor que 25. El argumento `var.equal` indica si se deben asumir o no varianzas iguales al realizar una prueba t de dos muestras. Por defecto se asume una varianza desigual. 
+Realiza una prueba t de una muestra sobre los datos contenidos en $x$
+donde la hipótesis nula es que $mu = 25$ y la alternativa es menor que
+25. El argumento `var.equal` indica si se deben asumir o no varianzas
+iguales al realizar una prueba t de dos muestras. Por defecto se asume
+una varianza desigual.
 
-Por último, el argumento `conf.level` determina el nivel de confianza del intervalo de confianza. 
+Por último, el argumento `conf.level` determina el nivel de confianza
+del intervalo de confianza.
 
 #### t-test de una cola
 
-La prueba t de una muestra compara la media de una muestra con un valor conocido, cuando la varianza de la población es desconocida. Consideremos que queremos evaluar el porcentaje de adultos con estudios universitarios en el "midwest" y compararlo con un valor determinado. 
+La prueba t de una muestra compara la media de una muestra con un valor
+conocido, cuando la varianza de la población es desconocida.
+Consideremos que queremos evaluar el porcentaje de adultos con estudios
+universitarios en el "midwest" y compararlo con un valor determinado.
 
-Por ejemplo, supongamos que la media nacional de adultos con estudios universitarios es del 32% (licenciatura o superior) y queremos ver si la media del "midwest" es significativamente diferente (en terminos estadísticos) de la media nacional. En concreto, queremos comprobar si la media del medio oeste es inferior a la media nacional.
+Por ejemplo, supongamos que la media nacional de adultos con estudios
+universitarios es del 32% (licenciatura o superior) y queremos ver si la
+media del "midwest" es significativamente diferente (en terminos
+estadísticos) de la media nacional. En concreto, queremos comprobar si
+la media del medio oeste es inferior a la media nacional.
+
 ```{r}
 summary(midwest$percollege)
 # Gráficamente 
@@ -4107,7 +4538,14 @@ t.test(midwest$percollege,
        alternative = "less")
 ```
 
-El resultado nos indica que p < 0.001 lo que nos dice que rechazamos la hipótesis nula (de que es igual a la nacional) lo que nos da evidencia estadística de que la media poblacional del "midwest" es menor que un 32%. Pero, como vimos anteriormente, tenemos problemas de no normalidad (recuerden el gráfico con las distribuciones empíricas). Para asegurarnos de que nuestra conclusión es correcta vamos a efectuar dos versiones alternativas del test:
+El resultado nos indica que p \< 0.001 lo que nos dice que rechazamos la
+hipótesis nula (de que es igual a la nacional) lo que nos da evidencia
+estadística de que la media poblacional del "midwest" es menor que un
+32%. Pero, como vimos anteriormente, tenemos problemas de no normalidad
+(recuerden el gráfico con las distribuciones empíricas). Para
+asegurarnos de que nuestra conclusión es correcta vamos a efectuar dos
+versiones alternativas del test:
+
 ```{r}
 # La misma versión, pero en logaritmos... 
 t.test(log(midwest$percollege), 
@@ -4119,11 +4557,17 @@ wilcox.test(midwest$percollege,
             mu = 32, 
             alternative = "less")
 ```
-Ambos resultados apoyan nuestra conclusión inicial de que el porcentaje de adultos con estudios universitarios en el medio oeste es estadísticamente inferior a la media nacional.
+
+Ambos resultados apoyan nuestra conclusión inicial de que el porcentaje
+de adultos con estudios universitarios en el medio oeste es
+estadísticamente inferior a la media nacional.
 
 #### t-test de dos colas
 
-Ahora digamos que queremos comparar las diferencias entre el porcentaje promedio de adultos con estudios universitarios en Ohio y en Michigan. En este caso, queremos realizar una prueba t de dos muestras.
+Ahora digamos que queremos comparar las diferencias entre el porcentaje
+promedio de adultos con estudios universitarios en Ohio y en Michigan.
+En este caso, queremos realizar una prueba t de dos muestras.
+
 ```{r}
 # Seleccionamos los datos 
 df <- midwest %>%
@@ -4137,7 +4581,10 @@ summary(df %>% filter(state == "OH") %>% .$percollege)
 summary(df %>% filter(state == "MI") %>% .$percollege)
 ```
 
-Podemos ver que Ohio parece tener ligeramente menos adultos con estudios universitarios que Michigan. No obstante, el gráfico no nos dice si es estadísticamente significativo o no.
+Podemos ver que Ohio parece tener ligeramente menos adultos con estudios
+universitarios que Michigan. No obstante, el gráfico no nos dice si es
+estadísticamente significativo o no.
+
 ```{r}
 ggplot(df, aes(state, percollege)) +
   geom_boxplot()
@@ -4168,13 +4615,24 @@ wilcox.test(percollege ~ state,
             data = df)
 ```
 
-Los resultados que aparecen a continuación muestran un valor $p < 0.01$ que apoya la hipótesis alternativa de que "la verdadera diferencia de medias no es igual a 0"; esencialmente afirma que existe una diferencia estadística entre las dos medias.
+Los resultados que aparecen a continuación muestran un valor $p < 0.01$
+que apoya la hipótesis alternativa de que "la verdadera diferencia de
+medias no es igual a 0"; esencialmente afirma que existe una diferencia
+estadística entre las dos medias.
 
 #### paired t - test
 
-Sirve para hacer test de diferencias de media para dos grupos que son estadisticamente iguales, pero que fueron sometidos a un tratamientom distinto. Lo que se quiere testear es si efectivamente la diferencia de promedios de alguna variable puede estar asociada a este tratamiento. 
+Sirve para hacer test de diferencias de media para dos grupos que son
+estadisticamente iguales, pero que fueron sometidos a un tratamientom
+distinto. Lo que se quiere testear es si efectivamente la diferencia de
+promedios de alguna variable puede estar asociada a este tratamiento.
 
-Vamos a ocupar la base de datos de R llamada "sleep". Imaginen queremos testear si una droga particular tiene un efecto estadisticamente significativo sobre las horas que se duerme. En particular, vamos a ver si la variable "extra" es diferente entre ambos grupos. Vamos a utilizar `t.test()` nuevamente, pero con la opción `paired = TRUE`. 
+Vamos a ocupar la base de datos de R llamada "sleep". Imaginen queremos
+testear si una droga particular tiene un efecto estadisticamente
+significativo sobre las horas que se duerme. En particular, vamos a ver
+si la variable "extra" es diferente entre ambos grupos. Vamos a utilizar
+`t.test()` nuevamente, pero con la opción `paired = TRUE`.
+
 ```{r}
 # Miramos los datos graficamente 
 ggplot(sleep, aes(group, extra)) +
@@ -4188,7 +4646,8 @@ t.test(extra ~ group,
 
 ### Regresión Lineal en R
 
-####  MCO con datos generados
+#### MCO con datos generados
+
 ```{r}
 # Limpiar 
 rm(list = ls())
@@ -4228,12 +4687,12 @@ ggplot(mco_data, aes(x,y))+
        y = "y") + theme_minimal()
 ```
 
-<div class="alert alert-block alert-success">
-<b>En resumen....</b>
-Para estimar: `mco <- lm(y ~ x1 + x2 + x3, data = misdatos)`
-Para mirar resultados: `summary(mco)`
-Para mirar gráficamente: `ggplot() + geom_point() + geom_smooth(method = "lm")` 
-</div>
+::: {.alert .alert-block .alert-success}
+<b>En resumen....</b> Para estimar:
+`mco <- lm(y ~ x1 + x2 + x3, data = misdatos)` Para mirar resultados:
+`summary(mco)` Para mirar gráficamente:
+`ggplot() + geom_point() + geom_smooth(method = "lm")`
+:::
 
 #### MCO con datos reales
 
@@ -4326,59 +4785,63 @@ stargazer(mco_1, mco_2, mco_3, # Modelos
 
 ### R Markdown
 
-* Herramienta para crear informes que sean automáticos, reproducibles y con datos que se puedan actualizar en el tiempo.
-* Se pueden generar informes en formato word, pdf, html.
-* R markdown (Rmd) es básicamente una intersección entre texto narrativo y código que genera visualizaciones y estimaciones con el fin de analizar datos.
-* Rmd puede generar: texto plano, segmentos de co ́digo, gr ́aficos, tablas, tableros interactivos.
-* R markdown es especialmente útil:
-  + **Informes rutinarios:** Por ejemplo, informe semanal sobre un conjunto de análisis que se actualiza en el tiempo.
-  + **Informes de análisis para un subconjunto de datos:** Por ejemplo, informes por país de una base de datos que contiene información de distintos países.
-
+-   Herramienta para crear informes que sean automáticos, reproducibles
+    y con datos que se puedan actualizar en el tiempo.
+-   Se pueden generar informes en formato word, pdf, html.
+-   R markdown (Rmd) es básicamente una intersección entre texto
+    narrativo y código que genera visualizaciones y estimaciones con el
+    fin de analizar datos.
+-   Rmd puede generar: texto plano, segmentos de co ́digo, gr ́aficos,
+    tablas, tableros interactivos.
+-   R markdown es especialmente útil:
+    -   **Informes rutinarios:** Por ejemplo, informe semanal sobre un
+        conjunto de análisis que se actualiza en el tiempo.
+    -   **Informes de análisis para un subconjunto de datos:** Por
+        ejemplo, informes por país de una base de datos que contiene
+        información de distintos países.
 
 #### Conceptos Básicos
 
-* **Markdown** es el lenguaje que permite escribir documentos en texto plano. Los archivos escritos en Markdown tienen la extensión `.md`.
-* **R Markdown** es la variación especifica para R. Permite escribir texto plano con Markdown y adjuntar código proveniente de R. Los archivos escritos en R Markdown tienen la extensión `.Rmd`.
-* **knirt:** Paquete de R. Sirve para leer los segmentos de código que queremos introducir en los reportes.
-* **Pandoc:** Sirve para convertir el output en un archivo con formato word/pdf/html. Es un software que viene instalado automáticamente en R.
+-   **Markdown** es el lenguaje que permite escribir documentos en texto
+    plano. Los archivos escritos en Markdown tienen la extensión `.md`.
+-   **R Markdown** es la variación especifica para R. Permite escribir
+    texto plano con Markdown y adjuntar código proveniente de R. Los
+    archivos escritos en R Markdown tienen la extensión `.Rmd`.
+-   **knirt:** Paquete de R. Sirve para leer los segmentos de código que
+    queremos introducir en los reportes.
+-   **Pandoc:** Sirve para convertir el output en un archivo con formato
+    word/pdf/html. Es un software que viene instalado automáticamente en
+    R.
 
 #### Proceso
-![Fuente: https://rmarkdown.rstudio.com/authoring quick tour.html](C8.1.png)
+
+![Fuente: <https://rmarkdown.rstudio.com/authoring> quick
+tour.html](01figuras/C8.1.png)
 
 #### Primer archivo en R Markdown
-![](C8.2.png)
-![](C8.3.png)
 
-* Opciones para elegir el tipo de documento y si quiero confeccionar un documento/presentación/un tablero u otros tipos de archivo más detallados.
-* Opciones para cambiar título y autor(a).
+![](01figuras/C8.2.png) ![](01figuras/C8.3.png)
+
+-   Opciones para elegir el tipo de documento y si quiero confeccionar
+    un documento/presentación/un tablero u otros tipos de archivo más
+    detallados.
+-   Opciones para cambiar título y autor(a).
 
 #### Directorio de trabajo
 
-* El directorio de trabajo de un archivo `.Rmd` será donde esta guardado el archivo con esa extensión.
-* De este modo, R buscará los archivos en la carpeta en donde este guardado el archivo `.Rmd`.
-* Para este ejercicio simplemente dejaremos los datos que utilizaremos junto al archivo.
+-   El directorio de trabajo de un archivo `.Rmd` será donde esta
+    guardado el archivo con esa extensión.
+-   De este modo, R buscará los archivos en la carpeta en donde este
+    guardado el archivo `.Rmd`.
+-   Para este ejercicio simplemente dejaremos los datos que utilizaremos
+    junto al archivo.
 
 #### Componentes de R Markdown
-![](C8.4.png)
 
-* YAML: fijar título, fecha y tipo de output. 
-* Markdown text: introducir texto.
-* Code Chunk: cargar paquetes, datos, visualizaciones.
+![](01figuras/C8.4.png)
 
-![](C8.5.png)
+-   YAML: fijar título, fecha y tipo de output.
+-   Markdown text: introducir texto.
+-   Code Chunk: cargar paquetes, datos, visualizaciones.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![](01figuras/C8.5.png)

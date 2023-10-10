@@ -482,4 +482,3 @@ selenium
 ejemplo-1-obteniendo-información-de-tripadvisor
 ejemplo-2-ingresar-una-contraseña
 referencias
-including-plots

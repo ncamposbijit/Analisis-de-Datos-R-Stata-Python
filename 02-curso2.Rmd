@@ -554,13 +554,13 @@ Carpetas
 * Siempre escribir un `README.txt`. Puede ser tedioso, pero muy necesario. Corto, informativo, que explique el flujo de trabajo y las carpetas. Sugerencia: colocar las rutas. 
 
 
-![Proyecto muy pequeño](C2.2.1.png)
+![Proyecto muy pequeño](01figuras/C2.2.1.png)
 
-![Proyecto pequeño](C2.2.2.png)
+![Proyecto pequeño](01figuras/C2.2.2.png)
 
-![Proyecto grande](C2.2.3.png)
+![Proyecto grande](01figuras/C2.2.3.png)
 
-![Otro ejemplo de proyecto. Ejemplo de \cite{huh2020teenage}](C2.2.4.png)
+![Otro ejemplo de proyecto. Ejemplo de \cite{huh2020teenage}](01figuras/C2.2.4.png)
 
 Es importante generar dos tipos de carpetas para los resultados `trabajo` y otras que diga `compartir`. 
 

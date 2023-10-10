@@ -761,7 +761,7 @@ lista2[2:]
 # R: Selecciona hasta final!
 
 ```
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 ##### Operar con listas anidadas
 ```{python}
@@ -1256,11 +1256,11 @@ print(x_3d)
 
 **Arreglo de 1,2,3 dimensiones**
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 **Arreglo de 4 dimensiones**
 
-![array_4d.png](attachment:array_4d.png)
+![01figuras/array_4d.png](attachment:array_4d.png)
 ```{python}
 # Arreglo de cuatro dimensiones 
 
@@ -1636,11 +1636,11 @@ print(np.partition(a, 2, axis=1))
 
 + Más info: https://numpy.org/doc/stable/user/basics.broadcasting.html
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 ```{python}
 array2_2 = np.array([0,0,0,0]).reshape(2,2)
@@ -1683,7 +1683,7 @@ print(a)
 M + a
 ```
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 ```{python}
 M = np.ones((2, 3))
 a = np.arange(3)
@@ -3202,9 +3202,9 @@ L
 # construir una lista formada por el cuadrado de n para cada n hasta 12
 ```
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 #### Iteración Múltiple
 
@@ -4665,7 +4665,7 @@ df1
 + Formato ancho a largo y viceversa
 + Diferencias entre ambos?
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 ```{python}
 datos = {'nombre':['Pepe', 'Pepa', 'Nico'],
@@ -5103,9 +5103,9 @@ df.head(10)
 
 ### Juntar bases de datos: merge y append
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 #### Ejemplo 1: Juntar por filas (append)
 
@@ -5541,11 +5541,11 @@ moda.to_excel("t4.xlsx",
 
 + En resumen...
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 #### Medidas de dispersión
 
@@ -5690,7 +5690,7 @@ data_df.kurt()
 
 Como podemos ver en el resultado, los datos con distribución normal tienen una curtosis cercana a cero, la distribución plana tiene una curtosis negativa y las dos distribuciones con más datos en las colas frente al centro tienen mayor curtosis.
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 #### Resumen sección 1
 
@@ -5758,7 +5758,7 @@ plt.text(x=-0.2, y=0.1, s= round(between_prob,3))
 plt.text(x=1.4, y=0.03, s= round(prob_over_1,3));
 ```
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 + El gráfico anterior muestra la forma de campana de la distribución normal, el área por debajo y por encima de una desviación estándar y el área dentro de una desviación estándar de la media.
 
@@ -6337,7 +6337,7 @@ else:
 
 + El error de tipo II describe una situación en la que **no se rechaza la hipótesis nula cuando en realidad es falsa**. El error de tipo II también se conoce como "falso negativo" o "fallo". Cuanto más alto sea el nivel de confianza, más probabilidades habrá de cometer un error de tipo II.
 
-![image.png](attachment:image.png)
+![01figuras/image.png](attachment:image.png)
 
 + H0: No esta embarazada
 + H1: Esta embarazada
@@ -10285,16 +10285,16 @@ automate_excel('sales_2021.xlsx')
 
 #### Estructura
 
-![image.png](attachment:a2b63850-b0d1-4236-8276-b443b9497008.png)
+![01figuras/image.png](attachment:a2b63850-b0d1-4236-8276-b443b9497008.png)
 
 + html: inicio/fin archivo html
 + body: cuerpo
 + div: secciones
 + p: parrafos.
 
-![image.png](attachment:29d7db3a-9bec-439c-bd49-aa0508d0d511.png)
+![01figuras/image.png](attachment:29d7db3a-9bec-439c-bd49-aa0508d0d511.png)
 
-![image.png](attachment:ed681524-c03b-4144-a695-d5a872b27233.png)
+![01figuras/image.png](attachment:ed681524-c03b-4144-a695-d5a872b27233.png)
 ```{python}
 # Crear un HTML
 html = '''
