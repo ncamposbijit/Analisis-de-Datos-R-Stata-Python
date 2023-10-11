@@ -1,7 +1,7 @@
-prólogo
+introducción
 análisis-de-datos-con-stata
 buenas-prácticas-de-programación-y-visualización
-introducción
+introducción-1
 programación-defensiva
 practica-i-escribir-pruebas
 practica-ii-no-duplicar-información
@@ -411,7 +411,7 @@ ejemplo-2-datos-con-precios-de-casas
 ejemplo-3
 ejemplo-4
 ejemplo-5-desigualdad-de-ingreso-usando-gapminder
-introducción-1
+introducción-2
 data-wrangling
 initial-analysis-of-the-datasets
 conclusiones-y-próximos-pasos
@@ -428,7 +428,7 @@ aplicación-de-predicción
 polonomio-de-orden-1
 polinomio-de-orden-2
 modelo-de-regresión-lineal
-introducción-2
+introducción-3
 agregando-polinomios
 agregar-más-variables
 desde-una-perspectiva-económetrica
@@ -466,7 +466,7 @@ tablas-ancha
 hacer-el-reporte-con-openpyxl
 automatizar-el-reporte-con-python
 web-scraping-en-python
-introducción-3
+introducción-4
 html
 estructura
 css-selectors

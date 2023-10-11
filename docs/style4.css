@@ -14,3 +14,32 @@
 body {
     text-align: justify;
 }
+
+h1 { 
+  font-size: 1.8em;  
+}
+h2 { 
+  font-size: 1.5em;  
+}
+
+h3 { 
+  font-size: 1.2em;  
+}
+
+h4 { 
+  font-size: 0.9em;  
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 30px; 
+  margin-bottom: 20px;  
+}
+
+p {
+  margin-bottom: 15px;  
+}
+
+
+

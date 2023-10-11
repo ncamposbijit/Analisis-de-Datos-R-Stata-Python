@@ -5,7 +5,7 @@ date: "Octubre 2023"
 site: bookdown::bookdown_site
 ---
 
-# Prólogo
+# Introducción
 
 Estas notas están diseñadas para quienes buscan una introducción al análisis de datos en los lenguajes de programación más utilizados en economía y ciencias sociales: R, Python y Stata. 
 Se han estructurado como notas de clases, lo que significa que se espera un progreso secuencial a lo largo de las sesiones. Sin embargo, aquellos con conocimientos previos más específicos podrán encontrar útiles secciones individuales, como es el caso particular de las notas sobre Stata.
@@ -16,6 +16,6 @@ Estas notas de clase han evolucionado con el tiempo y continuarán haciéndolo. 
 
 Adicionalmente, estas notas se han basado en una variedad de materiales públicos. A lo largo del libro, se señalan las referencias bibliográficas pertinentes y se ofrecen recursos gratuitos para aquellos que deseen ampliar o profundizar sus conocimientos. En muchos casos, los ejemplos provienen de este material complementario. Siempre citamos las fuentes adecuadamente, con el objetivo de respetar la autoría original y facilitar el acceso a recursos para los lectores de este libro.
 
-Para sugerencias de secciones, dudas o recomendaciones, no dudes en [enviarme un correo](mailto:ncamposbijit@gmail.com). 
+Para sugerencias de secciones, dudas o recomendaciones, no dudes en escribirme a ncamposbijit@gmail.com. 
 
 
