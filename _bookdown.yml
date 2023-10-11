@@ -1,6 +1,8 @@
 book_filename: "bookdownproj"
 output_dir: "docs" 
 delete_merged_file: true
+edit: https://github.com/ncamposbijit/Analisis-de-Datos-en-R-Stata-y-Python/edit/main/%s
+view: https://github.com/ncamposbijit/Analisis-de-Datos-en-R-Stata-y-Python/blob/main/%s
 language:
   ui:
     chapter_name:

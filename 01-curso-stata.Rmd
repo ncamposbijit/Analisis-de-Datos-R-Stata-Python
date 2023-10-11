@@ -8,7 +8,7 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 
 # Análisis de datos con Stata
 
-## Buenas prácticas de programación y visualización (Parte I)
+## Buenas prácticas de programación y visualización
 
 ### Introducción
 
@@ -16,14 +16,14 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 
 **Las personas somos malas escribiendo códigos**
 
-Esta sección esta basada en los trabajos de [Nick Eubank](https://www.nickeubank.com/).
+Esta sección esta basada en los trabajos y recursos publicados por [Nick Eubank](https://www.nickeubank.com/).
     
 * La filosofía de escribir un código esta motivada por el hecho de que las personas somos **malas escribiendo códigos**.
-* Si queremos evitar errores **no es suficiente con ser cuidadoso**
+* Si queremos evitar errores **no es suficiente con ser cuidadoso(a)**
 * Es necesario diseñar estrategias que tomen en cuenta el hecho de que vamos a cometer errores al escribir un código.
-* Las estrategias se hacen más importantes con el trabajo colaborativo que puede \alert{amplificar los errores.
+* Tener buenas estrategias es más relevante cuando existe trabajo colaborativo, que puede **amplificar los errores**.
 
-En esta sección revisaremos cuatro ``buenas practicas''
+En esta sección revisaremos cuatro ``buenas practicas'' de programación. Estas practicas no son solo aplicables a Stata, más bien son guías generales para escribir códigos en cualquier lenguaje. 
 
 * Usar testeos o pruebas.
 * No duplicar información.
@@ -34,9 +34,8 @@ Con estos elementos podremos:
     
 * **Minimizar** las oportunidades de generar errores al codificar.
 * **Maximizar** la probabilidad de que cuando se cometa un error (lo que ocurrirá!) se pueda detectar con mayor facilidad. 
-    \end{itemize}
-    
-¿Necesito entender estos principios?
+
+**¿Necesito entender estos principios?**
 
 \citet{chang2015economics} testearon la reproducibilidad de 67 artículos **publicados**. Todos con alguna sección empírica. Encuentran que: 
     
@@ -55,8 +54,8 @@ Con estos elementos podremos:
 ¿Qué podemos aprender de esta historia?
 
 * Todos y todas tienen problemas para codificar.
-* Hoy el **trabajo es colaborativo**. También tienes que confiar en otros. 
-* Hay cosas que no se pueden resolver con ser cuidadoso(a) al codificar. ¿Si los datos están mal?
+* Hoy el **trabajo es colaborativo**. También tienes que confiar en los demás. 
+* Hay cosas que no se pueden resolver con ser cuidadoso(a) al codificar. ¿Si los datos están mal? 
 * Reproducibilidad y replicabilidad son claves. Buenas referencias se encuentran en la página de [Julia Schulte-Cloos](https://jschultecloos.github.io/).
 
 #### Practica I: escribir pruebas
@@ -505,8 +504,6 @@ Mensajes finales sobre estilo de codificación
 * Reducir en lo posible pegado y repetición. 
 * Testear regularmente.
 * Documentar a menudo, estratégicamente, pero mínimamente. 
-
-## Buenas practicas de programación y visualización (Parte II)
 
 ### Organización de un proyecto en Stata
 

@@ -45,14 +45,15 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 :::
 
 -   Foros y sitios web:
-    -   [Stackoverflow.](https://stackoverflow.com/questions/tagged/r)
-    -   [Medium.](https://preettheman.medium.com/awesome-tricks-every-r-coder-should-know-c4220cd2cfbc)
-    -   [El Blog de RStudio.](https://posit.co/)
+    -   [Stackoverflow](https://stackoverflow.com/questions/tagged/r)
+    -   [Medium](https://preettheman.medium.com/awesome-tricks-every-r-coder-should-know-c4220cd2cfbc)
+    -   [El Blog de RStudio](https://posit.co/)
 -   Libros:
-    -   [R for Data Science.](https://r4ds.had.co.nz/)
+    -   [R for Data Science](https://r4ds.had.co.nz/)
     -   [Recursos sobre R en
         español.](https://posit.co/resources/videos/)
-    -   [Bookdown.](https://bookdown.org/)
+    -   [Bookdown](https://bookdown.org/)
+- 
 
 ### Interfaz RStudio
 
