@@ -1,5 +1,5 @@
 --- 
-title: "Análisis de Datos con Stata, R y Python"
+title: "Análisis de Datos con Stata - Nivel avanzado"
 author: "Nicolás Campos Bijit"
 date: "Octubre 2023"
 site: bookdown::bookdown_site
