@@ -3,5 +3,5 @@ bookdown::bs4_book:
   config:
     toc:
       before: |
-        <li><a href="./">Análisis de datos con R, Stata y Python</a></li>
+        <li><a href="./">Análisis de datos con Stata - Nivel avanzado</a></li>
  

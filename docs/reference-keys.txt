@@ -1,5 +1,5 @@
 introducción
-análisis-de-datos-con-stata
+referencias
 buenas-prácticas-de-programación-y-visualización
 introducción-1
 programación-defensiva
@@ -29,7 +29,7 @@ siete-gráficos-alternativos
 sublime-text
 qué-es-sublime
 ejecutar-stata-desde-sublime
-programar-do---files-parte-i
+programar-do---files
 programar-en-stata
 qué-es-programar-en-stata
 do---files
@@ -52,7 +52,6 @@ funciones-extendidas-de-macros
 funciones-de-macro-extendidas-para-listas
 manipulación-de-locales-vía-listas-de-macros
 creturn
-programar-do---files-parte-ii
 estructuras-de-datos
 escalares
 elementos-y-operaciones-con-matrices
@@ -70,7 +69,7 @@ prefijo-xi
 prefijo-statsby
 prefijo-rolling
 merge-y-append
-programar-ado---files-parte-i
+programar-ado---files
 escribir-programas-en-stata
 por-qué-escribir-programas-abstracción
 mis-primeros-programas-en-stata
@@ -87,7 +86,6 @@ incluir-ifin-al-programa
 generalizar-el-comando-para-incluir-múltiples-variables
 agregar-prefijos-a-los-programas
 programas-para-complementar-función-egen
-programar-ado---files-parte-ii
 syntax
 varlist
 opciones
@@ -100,7 +98,6 @@ programas-para-complementar-función-egen-1
 generalización-de-la-función-egen
 documentar-tu-programa
 escribir-programas-e-class
-programar-ado---files-parte-iii
 marksample-mark-y-markout
 sortpreserve
 mata
@@ -133,4 +130,3 @@ egen
 regresiones-en-sub-grupos
 recode
 resumen
-referencias

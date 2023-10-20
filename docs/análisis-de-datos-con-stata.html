@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>2 Análisis de datos con Stata | Análisis de Datos con Stata - Nivel avanzado</title>
+<title>3 Análisis de datos con Stata | Análisis de Datos con Stata - Nivel avanzado</title>
 <meta name="author" content="Nicolás Campos Bijit">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="2 Análisis de datos con Stata | Análisis de Datos con Stata - Nivel avanzado">
+<meta property="og:title" content="3 Análisis de datos con Stata | Análisis de Datos con Stata - Nivel avanzado">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2 Análisis de datos con Stata | Análisis de Datos con Stata - Nivel avanzado">
+<meta name="twitter:title" content="3 Análisis de datos con Stata | Análisis de Datos con Stata - Nivel avanzado">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -19,9 +19,9 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
 <link rel="stylesheet" href="style4.css">
-<meta name="description" content="2.1 Buenas prácticas de programación y visualización  2.1.1 Introducción  2.1.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y...">
-<meta property="og:description" content="2.1 Buenas prácticas de programación y visualización  2.1.1 Introducción  2.1.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y...">
-<meta name="twitter:description" content="2.1 Buenas prácticas de programación y visualización  2.1.1 Introducción  2.1.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y...">
+<meta name="description" content="3.1 Programar do - files (Parte I)  3.1.1 Programar en Stata Esta sección esta basada en: An introduction to Stata Programing (), en notas de clase de la profesora Erin Hengel, en Advanced Stata...">
+<meta property="og:description" content="3.1 Programar do - files (Parte I)  3.1.1 Programar en Stata Esta sección esta basada en: An introduction to Stata Programing (), en notas de clase de la profesora Erin Hengel, en Advanced Stata...">
+<meta name="twitter:description" content="3.1 Programar do - files (Parte I)  3.1.1 Programar en Stata Esta sección esta basada en: An introduction to Stata Programing (), en notas de clase de la profesora Erin Hengel, en Advanced Stata...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -44,8 +44,8 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Introducción</a></li>
-<li><a class="active" href="an%C3%A1lisis-de-datos-con-stata.html"><span class="header-section-number">2</span> Análisis de datos con Stata</a></li>
-<li><a class="" href="referencias.html"><span class="header-section-number">3</span> Referencias</a></li>
+<li><a class="" href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">2</span> Buenas prácticas de programación y visualización</a></li>
+<li><a class="active" href="an%C3%A1lisis-de-datos-con-stata.html"><span class="header-section-number">3</span> Análisis de datos con Stata</a></li>
 </ul>
 
         <div class="book-extra">
@@ -53,797 +53,22 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="análisis-de-datos-con-stata" class="section level1" number="2">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="análisis-de-datos-con-stata" class="section level1" number="3">
 <h1>
-<span class="header-section-number">2</span> Análisis de datos con Stata<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-de-datos-con-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3</span> Análisis de datos con Stata<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-de-datos-con-stata"><i class="fas fa-link"></i></a>
 </h1>
-<div id="buenas-prácticas-de-programación-y-visualización" class="section level2" number="2.1">
+<div id="programar-do---files-parte-i" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">2.1</span> Buenas prácticas de programación y visualización<a class="anchor" aria-label="anchor" href="#buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> Programar do - files (Parte I)<a class="anchor" aria-label="anchor" href="#programar-do---files-parte-i"><i class="fas fa-link"></i></a>
 </h2>
-<div id="introducción-1" class="section level3" number="2.1.1">
+<div id="programar-en-stata" class="section level3" number="3.1.1">
 <h3>
-<span class="header-section-number">2.1.1</span> Introducción<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n-1"><i class="fas fa-link"></i></a>
-</h3>
-<div id="programación-defensiva" class="section level4" number="2.1.1.1">
-<h4>
-<span class="header-section-number">2.1.1.1</span> Programación defensiva<a class="anchor" aria-label="anchor" href="#programaci%C3%B3n-defensiva"><i class="fas fa-link"></i></a>
-</h4>
-<p><strong>Las personas somos malas escribiendo códigos</strong></p>
-<p>Esta sección esta basada en los trabajos y recursos publicados por <a href="https://www.nickeubank.com/">Nick Eubank</a>.</p>
-<ul>
-<li>La filosofía de escribir un código esta motivada por el hecho de que las personas somos <strong>malas escribiendo códigos</strong>.</li>
-<li>Si queremos evitar errores <strong>no es suficiente con ser cuidadoso(a)</strong>
-</li>
-<li>Es necesario diseñar estrategias que tomen en cuenta el hecho de que vamos a cometer errores al escribir un código.</li>
-<li>Tener buenas estrategias es más relevante cuando existe trabajo colaborativo, que puede <strong>amplificar los errores</strong>.</li>
-</ul>
-<p>En esta sección revisaremos cuatro ``buenas practicas’’ de programación. Estas practicas no son solo aplicables a Stata, más bien son guías generales para escribir códigos en cualquier lenguaje.</p>
-<ul>
-<li>Usar testeos o pruebas.</li>
-<li>No duplicar información.</li>
-<li>No transcribir información, siempre exportarla.</li>
-<li>Usar un estilo correcto.</li>
-</ul>
-<p>Con estos elementos podremos:</p>
-<ul>
-<li>
-<strong>Minimizar</strong> las oportunidades de generar errores al codificar.</li>
-<li>
-<strong>Maximizar</strong> la probabilidad de que cuando se cometa un error (lo que ocurrirá!) se pueda detectar con mayor facilidad.</li>
-</ul>
-<p><strong>¿Necesito entender estos principios?</strong></p>
-<p> testearon la reproducibilidad de 67 artículos <strong>publicados</strong>. Todos con alguna sección empírica. Encuentran que:</p>
-<ul>
-<li>Solo 29 artículos fueron totalmente replicables.</li>
-<li>29 artículos tenían problemas al tratar </li>
-<li>9 poseen datos incorrectos o errores de codificación.</li>
-</ul>
-<p> indican que Chang y Li utilizan una versión poco estricta de replicabilidad.</p>
-<div class="alert alert-block alert-info">
-<b></b> (…) Chang and Li (2015) use a qualitative definition of replication, and test only key results of the paper, and this appears to lead to a fairly generous interpretation of replicability. (…)
-</div>
-<div class="alert alert-block alert-info">
-<b></b> (…) To our minds, this is evidence that even when data are available (which they sometimes are not) , even when using the original data and a relatively non-stringent conceptual understanding of what constitutes replication success.
-</div>
-<p>¿Qué podemos aprender de esta historia?</p>
-<ul>
-<li>Todos y todas tienen problemas para codificar.</li>
-<li>Hoy el <strong>trabajo es colaborativo</strong>. También tienes que confiar en los demás.</li>
-<li>Hay cosas que no se pueden resolver con ser cuidadoso(a) al codificar. ¿Si los datos están mal?</li>
-<li>Reproducibilidad y replicabilidad son claves. Buenas referencias se encuentran en la página de <a href="https://jschultecloos.github.io/">Julia Schulte-Cloos</a>.</li>
-</ul>
-</div>
-<div id="practica-i-escribir-pruebas" class="section level4" number="2.1.1.2">
-<h4>
-<span class="header-section-number">2.1.1.2</span> Practica I: escribir pruebas<a class="anchor" aria-label="anchor" href="#practica-i-escribir-pruebas"><i class="fas fa-link"></i></a>
-</h4>
-<p>¿Qué es escribir pruebas?</p>
-<p><a href="https://www.nickeubank.com/">Nick Eubank</a> indica que si el tuviese que elegir solo una practica elegiría agregar pruebas o tests a los códigos.</p>
-<p>¿Qué es una prueba?</p>
-<ul>
-<li>Son afirmaciones que tienen como respuesta un valor lógico.</li>
-<li>Buscan chequear una condición particular, en caso de que no se cumpla esta condición, la ejecución se detiene.</li>
-</ul>
-<p>¿Por qué agregar estos chequeos, si yo siempre chequeo o reviso mis códigos?</p>
-<ol style="list-style-type: decimal">
-<li>Test se ejecutan <strong>cada vez</strong> que corres tu código</li>
-</ol>
-<ul>
-<li>La mayoría testea la <strong>primera</strong> vez que escribe un código.</li>
-<li>Si hay una entrega el testeo disminuye rápidamente.</li>
-<li>Si ya ha pasado algún tiempo. Únicamente ejecuto el código y espero los resultados. Entender un código (incluso el que uno(a) misma escribió es difícil).</li>
-<li>Un error que se comete en una de las múltiples ediciones del código pueda ser detectado con facilidad al testear.</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>Genera el hábito de chequear permanentemente a un <strong>costo razonable</strong>
-</li>
-</ol>
-<ul>
-<li>La mayoría se para a chequear los datos cuando detecta algún error o bien sospecha que existe un problema.</li>
-<li>Si nos acostumbramos a escribir pruebas al final de los códigos o bien cada vez que se hagan cierto tipo de operaciones (ej. siempre después de unir bases de datos), iremos generando el hábito de chequear constantemente, pero sin sobre-invertir en revisiones posteriores.</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>Ayuda a <strong>detectar</strong> problemas rápidamente</li>
-</ol>
-<ul>
-<li>Se donde esta el error. Puedo corregirlo rápidamente.</li>
-<li>Esto es especialmente importante en Stata dado que no nos indica en que linea del código se produjo el error. % Chequear bien esto.</li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
-<li>Escribir pruebas ayuda a detectar más problemas de los <strong>previstos</strong>
-</li>
-</ol>
-<ul>
-<li>Los errores de un código se manifiestan de múltiples formas y muchas veces son consecuencia de errores anteriores.</li>
-<li>Por ejemplo…</li>
-<li>Si tengo valores duplicados mi estadística descriptiva estará mala.</li>
-<li>El problema surge de no darle un tratamiento correcto a los valores duplicados. No surge de algún problema en el código que genera la estadística descriptiva.</li>
-</ul>
-<p><strong>Ejemplo 1:</strong> Para escribir pruebas en Stata utilizaremos el comando <code>|assert|</code>. Notar que este comando detiene la ejecución del código cuando <strong>la condición no se cumple</strong>.</p>
-<p>Testear si la base de datos tiene 100 observaciones:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> </span>
-<span id="cb1-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="ot">`r(N)'</span> == 100</span></code></pre></div>
-<p>Testear si la variable <code>tasa_desempleo</code> toma valores razonables:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> tasa_desempleo| &gt; 0 &amp; tasa_desempleo| &lt; 100</span></code></pre></div>
-<p>Testear si la variable <code>edad</code> es siempre positiva:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb3-1" aria-hidden="true" tabindex="-1"></a>edad &gt; 0</span></code></pre></div>
-<div class="alert alert-block alert-warning">
-<p><b>Ejercicio 3.1.1:</b></p>
-<p>Instrucciones:</p>
-<ul>
-<li>Descargar carpeta <em>ejercicios - Clase 1</em>
-</li>
-<li>Abrir <code>ejercicios_clase1.do</code> y fijar directorio de trabajo en la carpeta descargada.</li>
-</ul>
-<p>Preguntas:</p>
-<ol style="list-style-type: decimal">
-<li>La base de datos <em>World Development Indicator (WDI)</em> tiene observaciones duplicadas. <strong>Escriba un test que falle cuando existen valores duplicados</strong>.</li>
-<li>Los países en la base de datos <code>Polity</code> deberían ser un subconjunto de los países que están en la base WDI. <strong>Escriba un test que falle debido a este problema</strong>.</li>
-</ol>
-</div>
-<p>¿Cuando escribir tests?</p>
-<ul>
-<li>Después de juntar bases: <strong>Siempre</strong> incluir test después de utilizar un <code>merge</code>.</li>
-<li>Después manipulaciones complejas de datos: Si piensas que fue difícil, incluye un test.</li>
-<li>Después de eliminar observaciones: <strong>Siempre</strong> incluir test después de utilizar un <code>drop</code>.</li>
-</ul>
-<div class="alert alert-block alert-info">
-<p><b>Regla general</b> siempre que te veas a ti misma(o) revisando o chequeando algún segmento de código interactivamente <strong>escribe un test</strong>.</p>
-</div>
-</div>
-<div id="practica-ii-no-duplicar-información" class="section level4" number="2.1.1.3">
-<h4>
-<span class="header-section-number">2.1.1.3</span> Practica II: no duplicar información<a class="anchor" aria-label="anchor" href="#practica-ii-no-duplicar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
-</h4>
-<p>Todo en un solo sitio</p>
-<ul>
-<li>Información debe estar expresada una sola vez en un código.</li>
-<li>Si la información esta en muchas partes en el código, tendrás que buscar todos esos lugares.</li>
-<li>Veamos un ejemplo…</li>
-</ul>
-<p>Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var1 &gt; 110 </span>
-<span id="cb4-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var2 &gt; 110 </span>
-<span id="cb4-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var3 &gt; 110 </span></code></pre></div>
-<p>Lo anterior funciona… ¿Cual es el problema entonces?</p>
-<ul>
-<li>Imaginemos que queremos cambiar el límite de 110 a 100. Del modo en que esta escrito, vamos a tener que hacer cambios <strong>3 veces!</strong>
-</li>
-<li>Si estas restricciones se encuentran en distintas partes de tú código, se puede inducir un error.</li>
-</ul>
-<p><strong>Ejemplo 2:</strong> Para evitar el problema anterior, es mejor escribir:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> lim = 110 </span>
-<span id="cb5-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var1 &gt; <span class="ot">`lim'</span></span>
-<span id="cb5-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var2 &gt; <span class="ot">`lim'</span> </span>
-<span id="cb5-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var3 &gt; <span class="ot">`lim'</span> </span></code></pre></div>
-<p>De esta forma, en caso de decidir cambiar la restricción, solo tendrás que hacer <strong>un cambio</strong>. Minimizando la posibilidad de cometer un error.</p>
-<div class="alert alert-block alert-warning">
-<p><b>Ejercicio 3.1.2:</b></p>
-<ul>
-<li>Todas las regresiones que se encuentran en el código tienen la misma base, es decir, el mismo conjunto de variables que se repite.</li>
-<li>La idea es consolidar la base con el fin de evitar duplicación de información.</li>
-<li>Con este fin, agregar <code>population</code> como control en todas las regresiones. Nuevamente, no dupliques información.</li>
-</ul>
-</div>
-</div>
-<div id="practica-iii-no-transcribir-exportar-información" class="section level4" number="2.1.1.4">
-<h4>
-<span class="header-section-number">2.1.1.4</span> Practica III: no transcribir, exportar información<a class="anchor" aria-label="anchor" href="#practica-iii-no-transcribir-exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
-</h4>
-<p>Nunca transcribir</p>
-<ul>
-<li>
-<strong>Nunca se debe transcribir resultados</strong>. Todo debe ser exportado de forma tal que pueda ser actualizado automáticamente.<br>
-</li>
-<li>No cumplir con esta practica es una importante fuente de errores:</li>
-<li>
-<strong>Errores de transcripción:</strong> Si me equivoco en el décimo decimal no es tan grave, si cambio un signo si lo es.</li>
-<li>
-<strong>Problemas para actualizar:</strong> Es probable que al actualizar un código (como sucede usualmente en cualquier proyecto), olvidemos traspasar los resultados.</li>
-<li>¿Como evitar este problema?
-<ul>
-<li>Para usuarios de <span class="math inline">\(\LaTeX\)</span> cada resultado debe ser guardado en archivos <code>.tex</code>.</li>
-<li>Hacer esto no solo con las tablas (ej. <code>putexcel</code>). También hacerlo con cualquier estadística que aparezca en el texto.</li>
-<li>Generar el número que se desea citar. Convertirlo a <code>string</code> y guardarlo (ej. <code>midato.tex</code>). Llamarlo con <code>\input{midato.tex}</code>.</li>
-<li>Para usuarios de Word es un poco más complejo. Veremos que se puede hacer en la Clase 6.</li>
-<li>También veremos Stata Markdown.</li>
-</ul>
-</li>
-</ul>
-<p>Ejemplo 3:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb6-1" aria-hidden="true" tabindex="-1"></a>eststo <span class="kw">clear</span></span>
-<span id="cb6-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb6-2" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> polity gdp_per_cap</span>
-<span id="cb6-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb6-3" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> polity gdp_per_cap under5_mortality</span>
-<span id="cb6-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb6-4" aria-hidden="true" tabindex="-1"></a>esttab <span class="kw">using</span> nombredelarchivo.tex, <span class="kw">replace</span> <span class="co">///</span></span>
-<span id="cb6-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="bn">title</span>(<span class="st">"Mis estimaciones"</span>)</span></code></pre></div>
-<p>Importar a <span class="math inline">\(\LaTeX\)</span>: <code>\input{nombredelarchivo.tex}</code></p>
-<div class="alert alert-block alert-warning">
-<p><b>Ejercicio 3.1.3:</b></p>
-<p>Calcula el promedio de <code>literacy_rate</code> y guárdalo en una macro local. Generar un formato tal que solo tenga dos decimales. Guarda el valor como <em>string</em> en un archivo <code>.tex</code> en la misma carpeta.</p>
-</div>
-</div>
-<div id="practica-iv-estilo-importa" class="section level4" number="2.1.1.5">
-<h4>
-<span class="header-section-number">2.1.1.5</span> Practica IV: estilo importa<a class="anchor" aria-label="anchor" href="#practica-iv-estilo-importa"><i class="fas fa-link"></i></a>
-</h4>
-<p>Algunos comentarios sobre estilo</p>
-<ul>
-<li>Estilo no se refiere a la estética del código ni al orden (para bien o para mal!).</li>
-<li>Tiene que ver con la facilidad con el que este se puede <strong>leer</strong>. El objetivo final es siempre poder detectar errores.<br>
-</li>
-<li>Tres aspectos son claves:
-<ul>
-<li>
-<strong>Utilizar espacios.</strong> Usar espacios siempre después de utilizar un operador. Por ejemplo:</li>
-</ul>
-</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> var1=var2+var3      <span class="co">/// Mal</span></span>
-<span id="cb7-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> var1 = var2 + var3  <span class="co">/// Bien</span></span></code></pre></div>
-<ul>
-<li>Con criterio…</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb8-1" aria-hidden="true" tabindex="-1"></a>hours + minutes / 60 + seconds / 3600 </span>
-<span id="cb8-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb8-2" aria-hidden="true" tabindex="-1"></a>hours + minutes/60 + seconds/3600</span></code></pre></div>
-<ul>
-<li><p><strong>Usar variables que sean informativas en si mismas.</strong> No escribir <code>var1</code>, si puedes escribir: <code>tasa_desempleo</code>. Requiere más trabajo, pero facilita la lectura. Agregar unidades también facilita la lectura (<code>labels</code>).<br></p></li>
-<li>
-<p>Escribir comentarios</p>
-<ul>
-<li>Ejercicio para explicar en pocas palabras lo que se ha hecho.</li>
-<li>Existe un equilibrio entre parsimonia y calidad del comentario.</li>
-<li>Establecer el objetivo del comentario claramente es muy importante.</li>
-</ul>
-</li>
-<li>
-<p>No hay una regla para escribir comentarios</p>
-<ul>
-<li>Utilizar imperativo si lo tiene que corregir otra persona (ej. modifica parámetros aquí, fija directorio).</li>
-<li>Debe incluir suficiente contexto para que alguien que no trabaje directamente en eso entienda que se debe hacer.</li>
-<li>Los comentarios largos deben explicar secciones de código. Importante escribir el código por bloques.</li>
-<li>La brevedad no debe afectar nunca la comprensión. Esto también aplica para los comandos (ejemplo de <a href="https://michaelshill.net/2015/07/31/in-stata-coding-style-is-the-essential/">Michael Shill</a>).</li>
-</ul>
-</li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> var1</span>
-<span id="cb9-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> var1</span>
-<span id="cb9-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb9-3" aria-hidden="true" tabindex="-1"></a>su var1</span></code></pre></div>
-</div>
-</div>
-<div id="estilo-de-codificación-en-stata" class="section level3" number="2.1.2">
-<h3>
-<span class="header-section-number">2.1.2</span> Estilo de codificación en Stata<a class="anchor" aria-label="anchor" href="#estilo-de-codificaci%C3%B3n-en-stata"><i class="fas fa-link"></i></a>
-</h3>
-<div id="más-allá-del-orden" class="section level4" number="2.1.2.1">
-<h4>
-<span class="header-section-number">2.1.2.1</span> Más allá del orden<a class="anchor" aria-label="anchor" href="#m%C3%A1s-all%C3%A1-del-orden"><i class="fas fa-link"></i></a>
-</h4>
-<p>Un buen estilo es seguir una estrategia</p>
-<ul>
-<li>Revisaremos un poco más sobre estilo en base a dos referencias adicionales: y de una guía confeccionada por <a href="https://michaelstepner.com/">Michael Stepner</a>.</li>
-<li>Los códigos tienen distintas audiencias. La primera es tu computadora. Si tu computadora no entiende tú código es el peor de los mundos.</li>
-<li>Una de las audiencias más importantes son tus colaboradores y colaboradoras. Si ellos/as no lo entienden. <strong>El problema es tuyo en primer lugar.</strong>
-</li>
-<li>No hay un solo buen estilo. No hay una guía que pueda sustituir experiencia o estrategias ya probadas de trabajo de equipo.</li>
-<li>Lo importante es y <strong>utilizarlas</strong> en la medida de que sea positivo para el producto final.</li>
-<li>Ahora veremos algunas estrategias y buenas practicas que pueden ayudar a mejorar el estilo de codificación individual y de tu equipo.</li>
-</ul>
-</div>
-<div id="códigos-cortos" class="section level4" number="2.1.2.2">
-<h4>
-<span class="header-section-number">2.1.2.2</span> Códigos cortos<a class="anchor" aria-label="anchor" href="#c%C3%B3digos-cortos"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>Ningún segmento de código debiese ser mayor a 100 - 150 carácteres.</li>
-<li>Códigos largos, debiesen ser escritos de forma más pequeña como funciones (Clase 4).</li>
-<li>Si tienes dificultades para reducir un código a estos estándares, es probable que tengas que pensar en como estructurarlo de mejor forma.</li>
-<li>Cada segmento de código o funciones debiesen tener un propósito <strong>claro e intuitivo</strong> para lectores experimentados en el lenguaje de programación que se este utilizando.</li>
-</ul>
-<p>do - files cortos y con foco</p>
-<ul>
-<li>Todo do-file debe tener un propósito que pueda ser <strong>explicado en una oración.</strong> De hecho, hay que hacerlo. En el preámbulo.<br>
-</li>
-<li>Un proyecto debe tener varios <code>do-files</code> con las siguientes características.
-<ul>
-<li>
-<strong>Cortos:</strong> Debes ser capaz de leer un do-file completo en poco minutos y entender el objetivo. Una buena regla es que no sean más largos de 250 - 350 lineas. No es estricta esta regla. Hay ocasiones que se justifican códigos más largos. %Lo importante es claridad. No sacrificarla nunca.</li>
-<li>
-<strong>Autocontenidos:</strong> Cada do-file interactúa con otros solo a través de los archivos que carga y de los que guarda.</li>
-<li>
-<strong>Enfocados:</strong> Un <code>do-file</code> cumple un propósito determinado. Cada parte se debe entender como un paso intuitivo para lograr ese propósito.</li>
-</ul>
-</li>
-</ul>
-<p>Funciones claras</p>
-<ul>
-<li>Un lector debe saber exactamente cuales son los <code>inputs</code> de las funciones.<br>
-</li>
-<li>Las funciones debiesen declarar explicitamente <code>inputs</code> y <code>outputs</code>. Solo deben funcionar en variables locales.</li>
-<li>Las funciones deben trabajar solo en el conjunto de datos para el cual están diseñadas. Por ejemplo: parametros regresión.</li>
-<li>Usar variables globales rara vez.</li>
-</ul>
-</div>
-<div id="nombres-descriptivos" class="section level4" number="2.1.2.3">
-<h4>
-<span class="header-section-number">2.1.2.3</span> Nombres Descriptivos<a class="anchor" aria-label="anchor" href="#nombres-descriptivos"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>Nombres adecuados remplazan comentarios y hacen del código un archivo auto contenido. * <strong>Utilizar nombres completos</strong>. Abreviaciones solo en el caso de estar seguro que cualquier lector puede entenderlo sin ambigüedad.</li>
-<li>Si se utilizan abreviaciones. Ser consistente. Utilizar siempre las mismas a lo largo del código.</li>
-<li>Cuando no se pueda ser suficientemente claro en un nombre, utilizar si o si para dar una descripción (ej. agregar unidad de medida).</li>
-<li>
-<code>labels</code> especifican información. (ej, <code>edad</code> con el <code>label</code> <em>edad al 31 de enero</em> es más informativa que <code>edad</code> y más corto que <code>edad_31enero</code>.</li>
-<li>No utilizar nombres en dos (o más) archivos que no expliciten porque son diferentes. Por ejemplo: <code>version_final.do</code> y <code>version_final_ahorasiquesi.do</code>.</li>
-<li>Los nombres pueden ser más cortos cuando se utilicen con frecuencia o el objeto este inmediatamente después. Por ejemplo:</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb10-1" aria-hidden="true" tabindex="-1"></a>beta_mco = (educacion' * educacion)^(-1) * <span class="co">///</span></span>
-<span id="cb10-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb10-2" aria-hidden="true" tabindex="-1"></a>           (educacion' * log_salarios)</span></code></pre></div>
-<p>Mejor escrito sería:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb11-1" aria-hidden="true" tabindex="-1"></a>X = educacion</span>
-<span id="cb11-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb11-2" aria-hidden="true" tabindex="-1"></a>Y = log_salarios</span>
-<span id="cb11-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb11-3" aria-hidden="true" tabindex="-1"></a>beta_educ_salarios = (X'*X)^(-1)*(X'*Y) </span></code></pre></div>
-<ul>
-<li>No ser tacaño(a) al nombrar variables, archivos, carpetas.</li>
-<li>Probablemente lo escribas solo una vez. No ahorres espacio. Siempre pensar en la claridad.</li>
-<li>Para el caso de una figura:
-<ul>
-<li>
-<code>c_1.pdf</code> es un pesimo nombre.</li>
-<li>
-<code>correlaciones.pdf</code> es un mal nombre.</li>
-<li>
-<code>T1_CORRELACIONES_INGRESO_MORTALIDAD.PDF</code> es un mejor nombre.</li>
-</ul>
-</li>
-<li>Para el caso de una carpeta:
-<ul>
-<li>
-<code>datos/brutos/interregional</code> es un mal nombre.</li>
-<li>
-<code>datos/brutos/Estimaciones Censo Interregional 2010 - 2021</code> es un buen nombre.</li>
-</ul>
-</li>
-<li>Estos nombres nos permiten pensar en el flujo del proyecto sin tener que mirar los códigos.</li>
-</ul>
-</div>
-<div id="ojo-con-el-álgebra" class="section level4" number="2.1.2.4">
-<h4>
-<span class="header-section-number">2.1.2.4</span> Ojo con el álgebra<a class="anchor" aria-label="anchor" href="#ojo-con-el-%C3%A1lgebra"><i class="fas fa-link"></i></a>
-</h4>
-<p>Separa el álgebra en partes.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = <span class="co">///</span></span>
-<span id="cb12-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    (cons + ggob + <span class="kw">export</span> - import - impuestos)* 10^6 <span class="co">///</span></span>
-<span id="cb12-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    /(indice_precios * poblacion_miles * 1000)</span></code></pre></div>
-<p>Más largo, pero mucho más entendible:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_millones_nominal = <span class="co">///</span></span>
-<span id="cb13-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    (cons + ggob + <span class="kw">export</span> - import - impuestos)</span>
-<span id="cb13-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_total_real = pib_millones_nominal * 10^6 <span class="co">///</span></span>
-<span id="cb13-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    / indice_precios</span>
-<span id="cb13-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pop_total = poblacion_miles * 1000</span>
-<span id="cb13-6"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = pib_total_real / pob_total </span></code></pre></div>
-</div>
-<div id="consistencia" class="section level4" number="2.1.2.5">
-<h4>
-<span class="header-section-number">2.1.2.5</span> Consistencia<a class="anchor" aria-label="anchor" href="#consistencia"><i class="fas fa-link"></i></a>
-</h4>
-<p>Ser consistentes
-* Hay cosas de estilo que son solo un tema de gusto. Por ejemplo, hay quienes escriben <code>nivel_empleo_anual</code> y otras que escribe <code>NivelEmpleoAnual</code>.
-* No importa la elección de un estilo u otro. Lo que importa es que todas y todos los miembros del equipo utilicen <strong>la misma</strong> convención.</p>
-</div>
-<div id="chequear-errores" class="section level4" number="2.1.2.6">
-<h4>
-<span class="header-section-number">2.1.2.6</span> Chequear errores<a class="anchor" aria-label="anchor" href="#chequear-errores"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>Hemos aprendido que es importante escribir pruebas o testeos. Especialmente relevante después de operaciones complicadas o pegado de bases de datos.</li>
-<li>Stata en algunas ocasiones indica los errores que se comenten, sin la necesidad de colocar estas pruebas. Por ejemplo:</li>
-</ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">string</span> x = <span class="st">"hola"</span></span>
-<span id="cb14-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">y</span> = x^2</span></code></pre></div>
-<p>Stata retorna el siguiente error:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">type</span> mismatch </span>
-<span id="cb15-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
-<p>Normalmente el error da suficiente información. A pesar de lo anterior, en algunas circunstancias, no es tan claro saber cual es el error. Cuando ustedes se hayan encontrado con un error, que no les fue fácil descifrar, ** tienen que escribir un comentario que lo indique**. Facilitara mucho el trabajo colaborativo.</p>
-</div>
-<div id="separar-tipos-de-códigos" class="section level4" number="2.1.2.7">
-<h4>
-<span class="header-section-number">2.1.2.7</span> Separar tipos de códigos<a class="anchor" aria-label="anchor" href="#separar-tipos-de-c%C3%B3digos"><i class="fas fa-link"></i></a>
-</h4>
-<p>Separar códigos lentos de los rápidos</p>
-<ul>
-<li>Códigos lentos que rara vez se piensan ejecutar idealmente debiesen estar separados de los códigos rápidos que se quieren ejecutar múltiples ocasiones.</li>
-<li>Evito tener que ejecutar un código lento cada vez que necesito actualizar algún resultado.</li>
-<li>Este criterio cambia en caso de que todos los códigos sean rápidos.</li>
-</ul>
-</div>
-<div id="automatización" class="section level4" number="2.1.2.8">
-<h4>
-<span class="header-section-number">2.1.2.8</span> Automatización<a class="anchor" aria-label="anchor" href="#automatizaci%C3%B3n"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>Todo lo que se pueda automatizar debe ser automatizado.</li>
-<li>Nunca hacer trabajo que vaya a obtener resultados de forma interactiva. Lo interactivo es siempre para inspeccionar.</li>
-</ul>
-</div>
-<div id="abstracción" class="section level4" number="2.1.2.9">
-<h4>
-<span class="header-section-number">2.1.2.9</span> Abstracción<a class="anchor" aria-label="anchor" href="#abstracci%C3%B3n"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>Abstraer para eliminar pasos redundantes.<br>
-</li>
-<li>Abstraer con fines de hacer códigos más claros. <strong>No por otras razones</strong>.</li>
-<li>Abstracción es esencial para escribir un buen código por al menos dos razones:
-<ul>
-<li>Al eliminar la redundancia se reducen las posibilidades de cometer errores.</li>
-<li>Aumenta la claridad. Para cualquier lector será más facil leer un código no redundante.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Ejemplo 4:</strong> Supongamos que queremos ver la correlación espacial del consumo de papas fritas. Queremos testear si el consumo per-capita de papas fritas esta correlacionado con el consumo promedio percapita de las otras comunas de la misma región.</p>
-<p>Primero tenemos que calcular el consumo per-capita del resto:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_pc_papitas = <span class="kw">total</span>(pc_papitas), <span class="kw">by</span>(region)</span>
-<span id="cb16-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_obs = <span class="fu">count</span>(pc_papitas), <span class="kw">by</span>(region)</span>
-<span id="cb16-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> consumo_papitas_resto_pc = <span class="co">///</span></span>
-<span id="cb16-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb16-4" aria-hidden="true" tabindex="-1"></a>(total_pc_papitas - pc_papitas)/(total_obs - 1)</span></code></pre></div>
-<p>Ahora podemos ver si existe correlación. ¿Pero si queremos cambiar el nivel de agregación? Tal vez si existe correlación, pero a nivel de área metropolitana. Copiemos el código de nuevo y calculemos esto.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_pc_papitas = <span class="kw">total</span>(pc_papitas), <span class="kw">by</span>(metroarea)</span>
-<span id="cb17-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_obs = <span class="fu">count</span>(pc_papitas), <span class="kw">by</span>(region)</span>
-<span id="cb17-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> consumo_papitas_restometro_pc = <span class="co">///</span></span>
-<span id="cb17-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb17-4" aria-hidden="true" tabindex="-1"></a>(total_pc_papitas - pc_papitas)/(total_obs - 1)</span></code></pre></div>
-<p>Noten que hay un error. Se nos olvido remplazar región por <code>metroarea</code>. Este error se puede propagar si seguimos haciendo operaciones.</p>
-<p>Una alternativa al copiar y pega es escribir una función con propósito general que calcule la variable que deseamos bajo distintos parámetros.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> consumo_papitas_resto </span>
-<span id="cb18-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">syntax</span>, invar(varname) outvar(<span class="bn">name</span>) byvar(varname)</span>
-<span id="cb18-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">tempvar</span> tot_invar count_invar </span>
-<span id="cb18-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> <span class="ot">`tot_invar'</span> = <span class="kw">total</span>(<span class="ot">`invar'</span>), <span class="kw">by</span>(<span class="ot">`byvar'</span>)</span>
-<span id="cb18-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> <span class="ot">`count_invar'</span> = <span class="fu">count</span>('invar'), <span class="kw">by</span>('byvar') </span>
-<span id="cb18-6"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gen</span> <span class="ot">`outvar'</span> = (<span class="ot">`tot_invar'</span> - <span class="ot">`invar'</span>) <span class="co">///</span></span>
-<span id="cb18-7"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb18-7" aria-hidden="true" tabindex="-1"></a>    / (<span class="ot">`count_invar'</span> - 1) </span>
-<span id="cb18-8"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
-<p>Con el programa podemos escribir los bloques de código anteriores como:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb19-1" aria-hidden="true" tabindex="-1"></a>* Caso 1 </span>
-<span id="cb19-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb19-2" aria-hidden="true" tabindex="-1"></a>consumo_papitas_resto, invar(pc_papitas) <span class="co">///</span></span>
-<span id="cb19-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb19-3" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_resto_pc) byvar(region)</span>
-<span id="cb19-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb19-5" aria-hidden="true" tabindex="-1"></a>* Caso 2</span>
-<span id="cb19-6"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb19-6" aria-hidden="true" tabindex="-1"></a>consumo_papitas_resto, invar(pc_papitas)  <span class="co">///</span></span>
-<span id="cb19-7"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb19-7" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_restometro_pc) byvar(metroarea)</span></code></pre></div>
-<p>Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel de agregación sin inducir errores.</p>
-</div>
-<div id="documentación-y-comentarios" class="section level4" number="2.1.2.10">
-<h4>
-<span class="header-section-number">2.1.2.10</span> Documentación y comentarios<a class="anchor" aria-label="anchor" href="#documentaci%C3%B3n-y-comentarios"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li>No escribas documentación que no vas a mantener.</li>
-<li>Códigos deben ser autoexplicativos.</li>
-<li>Imaginemos queremos estimar una elasticidad de demanda para hacer un análisis de bienestar.</li>
-</ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb20-1" aria-hidden="true" tabindex="-1"></a>* Elasticidad = Cambio porcentual en la cantidad ç</span>
-<span id="cb20-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb20-2" aria-hidden="true" tabindex="-1"></a>   / Cambio Porcentual en precio</span>
-<span id="cb20-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb20-3" aria-hidden="true" tabindex="-1"></a>* Elasticidad = -0,4 / 0,2 = -2</span>
-<span id="cb20-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb20-4" aria-hidden="true" tabindex="-1"></a>* Mirar Informe 1, Tabla 2A.</span>
-<span id="cb20-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb20-5" aria-hidden="true" tabindex="-1"></a>    calcular_perdida_bienestar, elasticidad(3)</span></code></pre></div>
-<p>Problema: código contradice comentario. Cuando tenemos dos fuentes o más fuentes que informan sobre el mismo objeto, es probable que estas se puedan contradecir. El problema de inconsistencia interna es especialmente importante para documentación, comentarios, notas, etc.</p>
-<ul>
-<li>Para evitar este problema es necesario mantener los comentarios al día tal como se hace con los códigos.</li>
-<li>Hacer esto es costoso. Mantener un código extenso al mismo tiempo que una larga documentación no es sencillo.</li>
-<li>Dado esta restricción, es importante .</li>
-<li>Volviendo al ejemplo. ¿Como le decimos al lector del código debe tener una elasticidad de 2 y no de 3?</li>
-</ul>
-<p>Ejemplo de un código auto-explicativo:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb21-1" aria-hidden="true" tabindex="-1"></a>* Mirar Informe 1: Tabla 2A. </span>
-<span id="cb21-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> cambio_porcentual_cantidad = -0,4</span>
-<span id="cb21-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> cambio_porcentual_precio = 0,2 </span>
-<span id="cb21-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> elasticidad = <span class="ot">`cambio_porcentual_cantidad'</span> <span class="co">///</span></span>
-<span id="cb21-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  / <span class="ot">`cambio_porcentual_precio'</span></span>
-<span id="cb21-6"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  calcular_perdida_bienestar, elasticidad(<span class="ot">`elasticidad'</span>) </span></code></pre></div>
-<p>Menos comentarios que el anterior. <strong>Sin números mágicos</strong>. Pero es más informativo e interno consistentemente dado que no puedo cambiar algunos de los parámetros sin modificar el resultado. Comentarios sirven en su justa medida: es imposible desprender del mismo código sin saber la tabla.</p>
-</div>
-<div id="identificadores-únicos" class="section level4" number="2.1.2.11">
-<h4>
-<span class="header-section-number">2.1.2.11</span> Identificadores únicos<a class="anchor" aria-label="anchor" href="#identificadores-%C3%BAnicos"><i class="fas fa-link"></i></a>
-</h4>
-<p>Bases de datos con Identificadores únicos</p>
-<ul>
-<li>ID permiten saber la unidad de observación (hogar, empresas, lugares, etc).</li>
-<li>Conocer ID únicos es esencial para entender los datos. Indican que es lo que describen los datos.</li>
-<li>También nos sirven para entender como juntar estos datos con otras fuentes de información.<br>
-</li>
-<li>Dos reglas que siempre tener en cuenta:
-<ul>
-<li>No tienen que existir observaciones duplicadas que tengan el mismo ID único.</li>
-<li>Los ID no pueden tener <em>missings</em>.</li>
-</ul>
-</li>
-<li>Una forma de verificar estos dos hechos es utilizando el comando <code>isid</code>. Este comando chequea si las variables especificadas identifican únicamente a las observaciones. Si esto no ocurre arrojara el siguiente mensaje:</li>
-</ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">variable</span> does <span class="kw">not</span> uniquely identify the observations</span></code></pre></div>
-<p>Si encuentro plausible que alguna variable tenga <em>missing</em> puedo colocar la opción <code>missok</code>.</p>
-</div>
-<div id="no-ser-repetitivo" class="section level4" number="2.1.2.12">
-<h4>
-<span class="header-section-number">2.1.2.12</span> No ser repetitivo<a class="anchor" aria-label="anchor" href="#no-ser-repetitivo"><i class="fas fa-link"></i></a>
-</h4>
-<p>Hemos hablado de evitar ser repetitivo. ¿Cuándo hacerlo? Repetir en una operación simple con dos categorías es razonable.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_ga = ing <span class="kw">if</span> grupo==<span class="st">"A"</span>, nq(10)</span>
-<span id="cb23-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_gb = ing <span class="kw">if</span> grupo==<span class="st">"B"</span>, nq(10)</span></code></pre></div>
-<p>Si tengo que operar 15 veces, mejor hacerlo iterativamente:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> <span class="fu">y</span> = 2001/2015 {</span>
-<span id="cb24-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xtile</span> decil_ing_<span class="ot">`y'</span> = inn <span class="kw">if</span> año == <span class="ot">`y'</span>, nq(10)</span>
-<span id="cb24-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Si involucra múltiples operaciones. A pesar de que solo existan dos categorías, es mejor hacerlo iterativo.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> g <span class="kw">in</span> <span class="st">"A"</span> <span class="st">"B"</span> {</span>
-<span id="cb25-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> ingreso &gt;= 0 <span class="kw">if</span> grupo == <span class="st">"`g'"</span></span>
-<span id="cb25-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xtile</span> decil_ingreso_<span class="ot">`g'</span> = ingreso <span class="co">/// </span></span>
-<span id="cb25-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> grupo==<span class="st">"`g'"</span>  &amp; ingreso &gt; 0, nq(10)  </span>
-<span id="cb25-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> decil_ingreso_<span class="ot">`g'</span> = 0 <span class="co">/// </span></span>
-<span id="cb25-6"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> grupo==<span class="st">"`g'"</span>  &amp; ingreso == 0</span>
-<span id="cb25-7"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> decil_ingreso_<span class="ot">`g'</span> <span class="st">"Deciles de ingreso"</span></span>
-<span id="cb25-8"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb25-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Un ejemplo de convención para evitar ser repetitivos:</p>
-<ul>
-<li>Cuando necesites cambiar <strong>solo una cosa</strong> en el código utilizar un <em>loop</em>. <code>foreach</code> y <code>forvalues</code> iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez.</li>
-<li>Cuando necesites cambiar <strong>múltiples cosas</strong> dentro de un código, define un programa dentro del do-file utilizando <code>program</code>. De este modo tu podrás especificar más de un argumento.</li>
-<li>Cuando necesites repetir un código en <strong>múltiples do.files</strong>, pueden definir un programa en un <code>ado-file</code>, guardarlo y llamarlo cuando lo necesites. Es importante que el código agregue automáticamente la ruta en donde se encuentran guardados estos programas.</li>
-</ul>
-<p>Algunas ayudas:
-* Cuando algunas lineas de código necesiten cambiar entre repeticiones utilizar <code>if/else</code> y <code>forvalues</code>. Estos iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez.
-* Cuando definas programas dentro de un do-file, agrega una linea que diga <code>cap program drop &lt;program_name&gt;</code> antes de <code>program define</code>. Automáticamente se eliminará y redefinirá el programa cada vez que ejecutes el código.</p>
-<p>Mensajes finales sobre estilo de codificación</p>
-<ul>
-<li>Haz las cosas lo más simples posibles para ti (y tu equipo) de hoy y del futuro.</li>
-<li>No confíes tanto en ti de hoy y menos en el del futuro. Es mejor programar <strong>defensivamente</strong>.</li>
-<li>Ser consistente en formato, estilo, organización y nombres. Sigue estrategias.</li>
-<li>Reducir en lo posible pegado y repetición.</li>
-<li>Testear regularmente.</li>
-<li>Documentar a menudo, estratégicamente, pero mínimamente.</li>
-</ul>
-</div>
-</div>
-<div id="organización-de-un-proyecto-en-stata" class="section level3" number="2.1.3">
-<h3>
-<span class="header-section-number">2.1.3</span> Organización de un proyecto en Stata<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><i class="fas fa-link"></i></a>
-</h3>
-<div id="flujo-de-trabajo-en-stata" class="section level4" number="2.1.3.1">
-<h4>
-<span class="header-section-number">2.1.3.1</span> Flujo de trabajo en Stata<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo-en-stata"><i class="fas fa-link"></i></a>
-</h4>
-<p>Hasta el momento uno de los mayores mensajes es <strong>adoptar un sistema de organización</strong> compartirlo en el equipo y adherirse a él. Este debe incluir:</p>
-<ol style="list-style-type: decimal">
-<li>Estructuras de directorio.</li>
-<li>Estilo de codificación.<br>
-</li>
-<li>Convenciones para escribir nombres.<br>
-</li>
-<li>Convenciones para exportar datos.</li>
-</ol>
-<p>Hemos visto en detalle (2) y (3). Algunas cosas de (4) (más detalles en Sección 3.6). En esta sección nos enfocaremos en (1). Esta sección se basa en una de las guías de <a href="https://asjadnaqvi.medium.com/">Asjad Nqvi</a>. Muy buenos recursos. Muy recomendado. También revisaremos algunos elementos de ().
-* Un proyecto de análisis de datos contempla: planificar el trabajo, documentar las actividades, crear y verificar variables, generar y presentar análisis estadístico, replicar resultados y archivar.
-* Todo lo anterior es a lo que nos referiremos como flujo de trabajo.
-* Un buen flujo de trabajo es esencial para que tu y tus colaboradores(as) y los interesados en tu trabajo puedan replicarlo.
-* Replicar es clave para generar información confiable y correcta.</p>
-<p>La administración del flujo de trabajo se hace al <strong>inicio</strong> de un proyecto. No al final. No hacerlo así tiene costos en tiempo y posiblemente induzca errores no forzados. Veremos algunos aspectos relacionados con la administración de datos y <em>scripts</em>. Nuevamente, más que reglas a seguir, lo presentado aquí son una serie de buenas practicas que pueden ayudar a mejorar la gestión del trabajo con Stata. La idea de esto es que finalmente podamos dedicarle más y mejor tiempo al análisis de datos.</p>
-<div class="alert alert-block alert-info">
-<p><b>, prefacio.</b></p>
-When I started, I thought my workflow <span style="color:red"> “was very good and that it was simply a matter of recording what I did”, “red”
-
-. As writing proceeded (<strong>this book</strong>), I discovered gaps, inefficiencies, and inconsistencies in what I did. Sometimes these involved procedures that I knew were awkward, but where <span style="color:red"> “I never took the time to find a better approach”, “red”
-
-<p>. Some problems were due to oversights where I had not realized the consequences of the things I did or failed to do.</p>
-</span></span>
-</div>
-</div>
-<div id="organización-de-archivos-y-carpetas" class="section level4" number="2.1.3.2">
-<h4>
-<span class="header-section-number">2.1.3.2</span> Organización de archivos y carpetas<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-archivos-y-carpetas"><i class="fas fa-link"></i></a>
-</h4>
-<p>¿Les suena familiar?</p>
-<ul>
-<li>Tener múltiples versiones de un archivo y no saber cual es cual.</li>
-<li>No poder encontrar un archivo y pensar que lo has borrado.</li>
-<li>Tu equipo (y tú) no saben cual es el informe final. Hay dos archivos que con el nombre archivo final, pero con distinto contenido.</li>
-</ul>
-<p>Para evitar los problemas anteriores es importante diseñar la estructura de la carpeta de trabajo y comprometerse a seguir una alerta.</p>
-<p>Carpetas</p>
-<ul>
-<li>Todo se guarda en carpetas. <strong>TODO</strong>.</li>
-<li>Estas deben seguir un orden lógico e intuitivo. Como consejo. Colocar números en la carpeta. Al ordenar las carpetas seguirán este orden y no el alfabético.</li>
-<li>No tener espacios en el nombre de las carpetas.</li>
-<li>Nunca utilizar (-) entre nombres de una carpeta. Utilizar (_).</li>
-<li>Evitar nombrar las carpetas con mayúsculas.</li>
-<li>Siempre escribir un <code>README.txt</code>. Puede ser tedioso, pero muy necesario. Corto, informativo, que explique el flujo de trabajo y las carpetas. Sugerencia: colocar las rutas.</li>
-</ul>
-<div class="figure">
-<img src="01figuras/C2.2.1.png" alt=""><p class="caption">Proyecto muy pequeño</p>
-</div>
-<div class="figure">
-<img src="01figuras/C2.2.2.png" alt=""><p class="caption">Proyecto pequeño</p>
-</div>
-<div class="figure">
-<img src="01figuras/C2.2.3.png" alt=""><p class="caption">Proyecto grande</p>
-</div>
-<div class="figure">
-<img src="01figuras/C2.2.4.png" alt=""><p class="caption">Otro ejemplo de proyecto. Ejemplo de </p>
-</div>
-<p>Es importante generar dos tipos de carpetas para los resultados <code>trabajo</code> y otras que diga <code>compartir</code>.</p>
-<ul>
-<li>
-<code>trabajo</code> guarda todos los resultados (ej. tablas, gráficos, documentos) que están siendo trabajados.</li>
-<li>
-<code>compartir</code> guarda resultados terminados y listos para compartir en alguna etapa del proyecto. Por ejemplo, cuando se quieran compartir resultados intermedios del proyecto.</li>
-</ul>
-<p>Dos reglas:</p>
-<ul>
-<li>Resultados se comparten solo después que los archivos que lo generan pasen a la carpeta <code>compartir</code>.</li>
-<li>Una vez traspasados a la carpeta compartir. No se modifican. Incluso cuando puedan existir errores.</li>
-</ul>
-<p>Ayuda a garantizar que los resultados que se comparte se puedan replicar. Si encuentras errores o decides cambiar algo no cambies los ya posteados. Genera nuevos. Esto también ayuda a la replicabilidad: permite saber que cambios existieron durante un proyecto.</p>
-<p>Un directorio de trabajo estructurado es especialmente <strong>importante para proyectos colaborativos</strong> donde todo se puede desordenar mas fácilmente. Dos directorios son sugeridos cuando se trabaja de forma colaborativa: <code>correo</code> y otras que diga <code>privados</code>. <code>correo</code> guarda intercambios entre colaboradoras mientras que <code>privados</code> guarda el trabajo propio de cada colaborador(a). Otras carpetas que pueden complementar trabajo son <code>porhacer</code> que sea una carpeta que sirva como una lista de tareas <code>poraprender</code>. En cualquier caso, estas carpetas pueden ser parte de <code>privados</code>.</p>
-<p>Cuando se tengan versiones se pueden utilizar dos modos:</p>
-<ul>
-<li>v1, v2, v3, etc.</li>
-<li>Fechas. Si se utilizan estas escribirlo en año/mes/día. De esta forma se ordenara automáticamente desde el último al primero.</li>
-</ul>
-<p>Cuando versiones anteriores no te sean útiles. <strong>Borralas!</strong> No acumules archivos y códigos porque sí. Si por alguna razón deseas dejarlos (ej. necesidad de respaldar lo hecho). Genera una carpeta temporal. Esta puede estar en tú versión personal del proyecto, pero no en el archivo final.</p>
-<p>Master do-file</p>
-<ul>
-<li>Diferentes <code>do-files</code> para diferentes tareas.</li>
-<li>Separar en secciones y subsecciones. Por ejemplo: Preámbulo, cargar datos, generar variables, figura I, Tabla 3, etc.</li>
-<li>Crear <code>master_do.files</code> cada proyecto o subproyecto debe tener un archivo maestro que ejecute <strong>todos</strong> los códigos de inicio a fin y genere todos los resultados.</li>
-<li>Cada vez que se termine un proyecto o se obtenga algún resultado es importante ejecutar el <code>master_do.files</code>.</li>
-</ul>
-<p>Ejemplo de master do-file:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-1" aria-hidden="true" tabindex="-1"></a>  *** Información del proyecto aquí ***</span>
-<span id="cb26-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  *** Información sobre directorios ***</span>
-<span id="cb26-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  *** Ejecutar códigos ***</span>
-<span id="cb26-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  * Generación <span class="kw">de</span> datos</span>
-<span id="cb26-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/01_datos_v11.<span class="kw">do</span> </span>
-<span id="cb26-6"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/02_merge_v2.<span class="kw">do</span> </span>
-<span id="cb26-7"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  * Generación <span class="kw">de</span> tablas</span>
-<span id="cb26-8"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/03_tablas_v4.<span class="kw">do</span> </span>
-<span id="cb26-9"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  * Estimación principal</span>
-<span id="cb26-10"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/04_estimaciones_v11.<span class="kw">do</span> </span>
-<span id="cb26-11"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  * Figuras principales</span>
-<span id="cb26-12"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/05_graficos_v11.<span class="kw">do</span> </span></code></pre></div>
-<p>Rutas de las carpetas:</p>
-<ul>
-<li>Es importante tener una carpeta principal y referenciar todas las rutas a esa dirección.</li>
-<li>Utilizar siempre <code>/</code> no <code>\textbackslash</code>. Puede causar problemas según el sistema operativo que utilices.</li>
-<li>Utilizar macros para nombrar a las carpetas. Que estos nombres tengan sentido y se relacionen con el flujo de trabajo.</li>
-<li>Recordar que una variable <code>local</code> guarda información temporalmente mientras que <code>global</code> guarda información permanentemente. Esto último hace de los <code>global</code> algo no recomendable de utilizar constantemente. No obstante, es útil para los directorios.</li>
-</ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb27-1" aria-hidden="true" tabindex="-1"></a>   *** Nota 1: Remplazar esta ruta ***</span>
-<span id="cb27-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb27-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> miproyecto <span class="st">"C://Program Files/Dropbox/miproyecto/"</span></span>
-<span id="cb27-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb27-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb27-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb27-4" aria-hidden="true" tabindex="-1"></a>   *** Nota 2: Directorios <span class="kw">de</span> subcarpetas ***</span>
-<span id="cb27-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb27-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">clear</span></span>
-<span id="cb27-6"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb27-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> datosbrutos <span class="st">"$miproyecto/datos/brutos"</span></span>
-<span id="cb27-7"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb27-7" aria-hidden="true" tabindex="-1"></a>   cd <span class="st">"$datosbrutos"</span></span>
-<span id="cb27-8"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb27-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">use</span> datos1.dta, <span class="kw">replace</span> </span></code></pre></div>
-</div>
-</div>
-<div id="buenas-practicas-de-visualización" class="section level3" number="2.1.4">
-<h3>
-<span class="header-section-number">2.1.4</span> Buenas practicas de visualización<a class="anchor" aria-label="anchor" href="#buenas-practicas-de-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
-</h3>
-<div id="principios-de-una-buena-visualización-de-datos" class="section level4" number="2.1.4.1">
-<h4>
-<span class="header-section-number">2.1.4.1</span> Principios de una buena visualización de datos<a class="anchor" aria-label="anchor" href="#principios-de-una-buena-visualizaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
-</h4>
-<p>Un gráfico mal hecho desinforma, gráficos mal hechos son inefectivos. Comunican mal la información o incluso la distorsionan. Las personas tenemos un procesamiento visual limitado. Existe uno previo e inconsciente y uno posterior consciente. Entender este aspecto es importante si queremos diseñar visualizaciones que sean efectivas.</p>
-<p>Esta sección esta basada en <strong>An Economist’s Guide to Visualizing Data</strong> ().</p>
-<p>Tres principios básicos</p>
-<ul>
-<li>Mostrar los datos
-<ul>
-<li>Es la parte más importante del gráfico.</li>
-<li>No mostrar ni mucho, ni muy poco.</li>
-</ul>
-</li>
-<li>Disminuir distractores.
-<ul>
-<li>Disminuir el uso de elementos visuales no útiles para entender los datos.</li>
-<li>Símbolos innecesarios, texto, texturas son ejemplos de elementos visuales no útiles. * Integrar el texto al gráfico</li>
-<li>El gráfico debe ser capaz de complementar el texto y al mismo tiempo contener suficiente información para estar sin él.</li>
-</ul>
-</li>
-</ul>
-</div>
-<div id="siete-gráficos-alternativos" class="section level4" number="2.1.4.2">
-<h4>
-<span class="header-section-number">2.1.4.2</span> Siete gráficos alternativos<a class="anchor" aria-label="anchor" href="#siete-gr%C3%A1ficos-alternativos"><i class="fas fa-link"></i></a>
-</h4>
-</div>
-</div>
-<div id="sublime-text" class="section level3" number="2.1.5">
-<h3>
-<span class="header-section-number">2.1.5</span> Sublime Text<a class="anchor" aria-label="anchor" href="#sublime-text"><i class="fas fa-link"></i></a>
-</h3>
-<p>Esta sección esta basada en la página web de <a href="https://acarril.github.io/">Alvaro Carril</a>.</p>
-<div id="qué-es-sublime" class="section level4" number="2.1.5.1">
-<h4>
-<span class="header-section-number">2.1.5.1</span> ¿Qué es Sublime?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-sublime"><i class="fas fa-link"></i></a>
-</h4>
-<ul>
-<li><p><a href="https://www.sublimetext.com/">Sublime Text</a> es un editor de códigos gratuito. Este editor permite compilar códigos de distintos lenguajes de programación tales como Stata, Python, R, , entre muchos otros.</p></li>
-<li><p>Tiene algunas herramientas que facilitan el trabajo de programación tales como atajos (<em>shortcuts</em>) o multicolumnas. Veremos varias en esta sección.
-Es muy útil cuando tienes un proyecto grande con códigos de distintos tipos de lenguaje.
-Instalar Sublime</p></li>
-<li><p>Dirígete a <a href="https://www.sublimetext.com/">sublimetext.com</a>. Descarga e instala Sublime Text 4 (ST4) para tu sistema operativo.</p></li>
-<li><p>Es esencial que también instales <code>Package Control</code>, que te permite añadir y eliminar fácilmente complementos adicionales. Si esta bien instalado debiese aparecer en <em>preferences.</em></p></li>
-<li><p>Para installar hay que entrar a sublime, apretar <code>ctrl + shift + p</code>.</p></li>
-<li><p>Tipear <code>Install Package Control</code> y presionar <code>enter</code>.</p></li>
-</ul>
-</div>
-<div id="ejecutar-stata-desde-sublime" class="section level4" number="2.1.5.2">
-<h4>
-<span class="header-section-number">2.1.5.2</span> Ejecutar Stata desde Sublime<a class="anchor" aria-label="anchor" href="#ejecutar-stata-desde-sublime"><i class="fas fa-link"></i></a>
-</h4>
-<p>Para Windows</p>
-<ul>
-<li>
-<strong>Instalar StataEditor:</strong> En ST4 aprete <code>ctrl+shift+p</code>. Escriba <code>install</code> y presione <code>Enter</code>. Ahora busque <code>StataEditor</code> y haga clic en él para instalarlo.</li>
-<li>
-<strong>Instale Pywin32:</strong> repita el proceso anterior pero instalando el complemento <code>Pywin32</code>.</li>
-</ul>
-<p>Configure StataEditor:</p>
-<ul>
-<li>En ST4 vaya a <code>Preferences -&gt; Package Settings -&gt; StataEditor -&gt; Settings - Users</code>
-</li>
-<li>En este archivo en blanco debe escribir la ruta de su ejecutable de Stata y la versión que posee.</li>
-<li>Mi archivo de configuración en Windows se ve así:</li>
-</ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb28-1" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb28-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"stata_path"</span>: <span class="st">"C:/Program Files/Stata17/StataMP-64.exe"</span>,</span>
-<span id="cb28-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb28-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">"stata_version"</span>: 17,</span>
-<span id="cb28-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb28-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Registre la biblioteca de automatización de Stata:</p>
-<ul>
-<li>Vaya al ejecutable de Stata del que ha copiado la ruta (por ejemplo, StataMP-64.exe).</li>
-<li>Cree un acceso directo en su escritorio.</li>
-<li>Ahora haga clic con el botón derecho en este nuevo acceso directo y seleccione ``Propiedades”.</li>
-<li>En el campo ``Destino”, añada /Registro al final (con un espacio precedente). En mi caso es:</li>
-</ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="st">"C:\Program Files\Stata17\StataMP-64.exe"</span> /Register</span></code></pre></div>
-<p>Aplicar y aceptar los cambios. Apretar sobre el acceso directo el click derecho y ejecutar como administrador. Y listo!</p>
-<p>Para Mac</p>
-<ul>
-<li>Para instalar el Editor Mejorado de Stata en ST4, inicie la paleta de comandos con <code>Cmd+shift+p</code>, escriba `<code>install" y presione</code>Enter`.</li>
-<li>Ahora busque <code>Stata Improved Editor</code> y haga clic en él para instalarlo.</li>
-<li>Reinicie ST4 y listo!</li>
-</ul>
-<p>Autoguardado</p>
-<ul>
-<li>Sublime permite auto-guardar los códigos.</li>
-<li>De esta forma no hay que preocuparse en casos de que no hayas respaldado tu código.</li>
-<li>Para esto hay que escribir vamos a instalar el paquete <code>autosave</code> y adicionalmente vamos a agregar a ``preferencias”:</li>
-</ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb30-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb30-1" aria-hidden="true" tabindex="-1"></a>``save_on_focus_lost<span class="st">": true.</span></span></code></pre></div>
-<p>Codificación colaborativa</p>
-<ul>
-<li>Para trabajo colaborativo existen editores de códigos que se enfocan en que dos o más personas puedan programar desde sus computadoras.</li>
-<li>Una buena página es <a href="https://codeshare.io/bvz4Ow">Code Share</a>
-</li>
-<li>Muy útil para pedir ayuda o hacer una revisión final.</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="programar-do---files-parte-i" class="section level2" number="2.2">
-<h2>
-<span class="header-section-number">2.2</span> Programar do - files (Parte I)<a class="anchor" aria-label="anchor" href="#programar-do---files-parte-i"><i class="fas fa-link"></i></a>
-</h2>
-<div id="programar-en-stata" class="section level3" number="2.2.1">
-<h3>
-<span class="header-section-number">2.2.1</span> Programar en Stata<a class="anchor" aria-label="anchor" href="#programar-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.1</span> Programar en Stata<a class="anchor" aria-label="anchor" href="#programar-en-stata"><i class="fas fa-link"></i></a>
 </h3>
 <p>Esta sección esta basada en: <strong>An introduction to Stata Programing</strong> (), en notas de clase de la profesora <a href="https://www.erinhengel.com/">Erin Hengel</a>, en <strong>Advanced Stata Topics</strong> del profesor Alexander C. Lembcke, en <strong>Seventy-six Stata tips</strong> , en <strong>Top 10 ``gotchas”</strong> de y en <strong>Data Management Using Stata. A Practical Handbook</strong> de .</p>
-<div id="qué-es-programar-en-stata" class="section level4" number="2.2.1.1">
+<div id="qué-es-programar-en-stata" class="section level4" number="3.1.1.1">
 <h4>
-<span class="header-section-number">2.2.1.1</span> ¿Qué es programar en Stata?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-programar-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.1.1</span> ¿Qué es programar en Stata?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-programar-en-stata"><i class="fas fa-link"></i></a>
 </h4>
 <p>Programar en Stata es:</p>
 <ul>
@@ -852,15 +77,15 @@ Instalar Sublime</p></li>
 <li>Escribir lenguaje de programación matricial: denominado mata.</li>
 </ul>
 </div>
-<div id="do---files" class="section level4" number="2.2.1.2">
+<div id="do---files" class="section level4" number="3.1.1.2">
 <h4>
-<span class="header-section-number">2.2.1.2</span> do - files<a class="anchor" aria-label="anchor" href="#do---files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.1.2</span> do - files<a class="anchor" aria-label="anchor" href="#do---files"><i class="fas fa-link"></i></a>
 </h4>
 <p>El uso de <code>do-file</code> garantiza la replicabilidad del análisis de datos utilizando Stata. Recordar que un <code>do-file</code> puede llamar a otros (ej. <code>master do.file</code>. La jerarquización de los <code>do-file</code> puede ser importante para proyectos grandes o complejos. Es importante evitar trabajar en Stata interactivamente. Únicamente hay que hacerlo para inspeccionar datos (recordar practicas Sección 3.1).</p>
 </div>
-<div id="ado---files" class="section level4" number="2.2.1.3">
+<div id="ado---files" class="section level4" number="3.1.1.3">
 <h4>
-<span class="header-section-number">2.2.1.3</span> ado - files<a class="anchor" aria-label="anchor" href="#ado---files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.1.3</span> ado - files<a class="anchor" aria-label="anchor" href="#ado---files"><i class="fas fa-link"></i></a>
 </h4>
 <p>Sirven para crear tus propios en Stata. Una vez que armes tu programa y lo guardes en la carpeta de <code>ado-file</code> puedes utilizarlo como cualquier otro comando de Stata. Por ejemplo, puedes agregar las opciones <em>if</em>, <em>in range</em> y otras. También puedes escribir un documento de ayuda (<em>help</em>} que explique el programa. Crear tus propios comandos es una muy buena forma de ser más eficiente al trabajar con Stata (recordar Sección 1).</p>
 <p>Mata para ado-files: Los <code>ado-files</code> pueden realizar tareas más complejas que involucren ejecutar el comando múltiples veces.</p>
@@ -872,9 +97,9 @@ Instalar Sublime</p></li>
 </ul>
 </div>
 </div>
-<div id="comandos-y-funciones-claves-y-algunos-detalles" class="section level3" number="2.2.2">
+<div id="comandos-y-funciones-claves-y-algunos-detalles" class="section level3" number="3.1.2">
 <h3>
-<span class="header-section-number">2.2.2</span> Comandos y funciones claves (y algunos detalles)}<a class="anchor" aria-label="anchor" href="#comandos-y-funciones-claves-y-algunos-detalles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2</span> Comandos y funciones claves (y algunos detalles)}<a class="anchor" aria-label="anchor" href="#comandos-y-funciones-claves-y-algunos-detalles"><i class="fas fa-link"></i></a>
 </h3>
 <p>Revisaremos algunos aspectos necesarios para mejorar la eficiencia al trabajar en Stata.</p>
 <ul>
@@ -883,9 +108,9 @@ Instalar Sublime</p></li>
 <li>Tipos de datos y uso de <code>compress</code>.</li>
 <li>Uso de <code>capture</code>, <code>preserve</code> y <code>restore</code>.</li>
 </ul>
-<div id="directorios" class="section level4" number="2.2.2.1">
+<div id="directorios" class="section level4" number="3.1.2.1">
 <h4>
-<span class="header-section-number">2.2.2.1</span> Directorios<a class="anchor" aria-label="anchor" href="#directorios"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.1</span> Directorios<a class="anchor" aria-label="anchor" href="#directorios"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>
@@ -898,9 +123,9 @@ Instalar Sublime</p></li>
 <code>PERSONAL</code> para tus propios <code>ado-files</code>.</li>
 </ul>
 </div>
-<div id="profile-do" class="section level4" number="2.2.2.2">
+<div id="profile-do" class="section level4" number="3.1.2.2">
 <h4>
-<span class="header-section-number">2.2.2.2</span> Profile do<a class="anchor" aria-label="anchor" href="#profile-do"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.2</span> Profile do<a class="anchor" aria-label="anchor" href="#profile-do"><i class="fas fa-link"></i></a>
 </h4>
 <p>¿Qué es profile do?</p>
 <ul>
@@ -937,9 +162,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="tipos-de-comandos" class="section level4" number="2.2.2.3">
+<div id="tipos-de-comandos" class="section level4" number="3.1.2.3">
 <h4>
-<span class="header-section-number">2.2.2.3</span> Tipos de comandos<a class="anchor" aria-label="anchor" href="#tipos-de-comandos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.3</span> Tipos de comandos<a class="anchor" aria-label="anchor" href="#tipos-de-comandos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Comandos r-class y e-class</p>
 <ul>
@@ -970,9 +195,9 @@ Instalar Sublime</p></li>
 <span id="cb32-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ereturn</span> <span class="ot">list</span></span></code></pre></div>
 <p>En general cualquier comando de estimación se guarda en esta clase de formato.</p>
 </div>
-<div id="tipos-de-datos" class="section level4" number="2.2.2.4">
+<div id="tipos-de-datos" class="section level4" number="3.1.2.4">
 <h4>
-<span class="header-section-number">2.2.2.4</span> Tipos de datos<a class="anchor" aria-label="anchor" href="#tipos-de-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.4</span> Tipos de datos<a class="anchor" aria-label="anchor" href="#tipos-de-datos"><i class="fas fa-link"></i></a>
 </h4>
 <p>numeric y string</p>
 <ul>
@@ -1014,9 +239,9 @@ Instalar Sublime</p></li>
 <span id="cb35-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> var1 = 101</span></code></pre></div>
 <p>Si el valor esta fuera de los rangos permitidos, la variable se guarda en un formato mayor. <code>byte</code> a <code>int</code>, <code>int</code> a <code>long</code>, a <code>float</code> a <code>double</code>. En este caso un mensaje aparece.</p>
 </div>
-<div id="capture-preserve-y-restore" class="section level4" number="2.2.2.5">
+<div id="capture-preserve-y-restore" class="section level4" number="3.1.2.5">
 <h4>
-<span class="header-section-number">2.2.2.5</span> capture, preserve y restore<a class="anchor" aria-label="anchor" href="#capture-preserve-y-restore"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.5</span> capture, preserve y restore<a class="anchor" aria-label="anchor" href="#capture-preserve-y-restore"><i class="fas fa-link"></i></a>
 </h4>
 <p>Manejando errores: capture</p>
 <ul>
@@ -1070,9 +295,9 @@ Instalar Sublime</p></li>
 <span id="cb38-26"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb38-26" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="dt">_merge</span> != 2</span>
 <span id="cb38-27"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb38-27" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> _freq cumfreq percentage cumpercent</span></code></pre></div>
 </div>
-<div id="missing-values" class="section level4" number="2.2.2.6">
+<div id="missing-values" class="section level4" number="3.1.2.6">
 <h4>
-<span class="header-section-number">2.2.2.6</span> Missing values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.6</span> Missing values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>En general uno utiliza <code>if variable !=.</code> para evitar incluir <strong>missings</strong>.</li>
@@ -1175,9 +400,9 @@ Instalar Sublime</p></li>
 <span id="cb44-13"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> smallpop_o3 = (pop &lt;= 5000) <span class="kw">if</span> !<span class="fu">missing</span>(pop)</span></code></pre></div>
 <p>Opción 1 es la típica. Ojo no esta considerando <em>missing</em>. Es necesario agregar <code>&amp; !missing(pop)</code>. Escrito de esta forma, si <code>pop</code> es <em>missing</em>, <code>smallpop</code> será <em>cero</em>. Opción 2 es más simple, pero si cualquier valor de <code>pop</code> es <em>missing</em> será evaluado como un cero también. La razón es que los <em>missing</em> en Stata son considerados como números muy grandes para el programa. La Opción 3 soluciona el problema.</p>
 </div>
-<div id="string-a-numeric-y-al-revés" class="section level4" number="2.2.2.7">
+<div id="string-a-numeric-y-al-revés" class="section level4" number="3.1.2.7">
 <h4>
-<span class="header-section-number">2.2.2.7</span> String a numeric y al revés<a class="anchor" aria-label="anchor" href="#string-a-numeric-y-al-rev%C3%A9s"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.7</span> String a numeric y al revés<a class="anchor" aria-label="anchor" href="#string-a-numeric-y-al-rev%C3%A9s"><i class="fas fa-link"></i></a>
 </h4>
 <p>De string a numeric</p>
 <ul>
@@ -1203,9 +428,9 @@ Instalar Sublime</p></li>
 <span id="cb45-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> <span class="st">`"</span>Este si es un <span class="fu">string</span> con <span class="st">"comillas""'</span></span></code></pre></div>
 </div>
-<div id="funciones-para-generar-variables" class="section level4" number="2.2.2.8">
+<div id="funciones-para-generar-variables" class="section level4" number="3.1.2.8">
 <h4>
-<span class="header-section-number">2.2.2.8</span> Funciones para generar variables<a class="anchor" aria-label="anchor" href="#funciones-para-generar-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.8</span> Funciones para generar variables<a class="anchor" aria-label="anchor" href="#funciones-para-generar-variables"><i class="fas fa-link"></i></a>
 </h4>
 <p>generate y replace: función <code>cond()</code></p>
 <ul>
@@ -1272,9 +497,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="funciones-de-egen" class="section level4" number="2.2.2.9">
+<div id="funciones-de-egen" class="section level4" number="3.1.2.9">
 <h4>
-<span class="header-section-number">2.2.2.9</span> Funciones de egen<a class="anchor" aria-label="anchor" href="#funciones-de-egen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2.9</span> Funciones de egen<a class="anchor" aria-label="anchor" href="#funciones-de-egen"><i class="fas fa-link"></i></a>
 </h4>
 <p>Todos y todas conocemos algunas de las típicas funciones de <code>egen</code>.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb53-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span> </span>
@@ -1319,13 +544,13 @@ Instalar Sublime</p></li>
 <span id="cb55-8"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> <span class="ot">all</span> = rall(a b c <span class="kw">d</span> <span class="fu">e</span>) , c(@ &gt; 0 &amp; !<span class="fu">missing</span>(@)) </span></code></pre></div>
 </div>
 </div>
-<div id="macros-locales-y-globales" class="section level3" number="2.2.3">
+<div id="macros-locales-y-globales" class="section level3" number="3.1.3">
 <h3>
-<span class="header-section-number">2.2.3</span> Macros locales y globales<a class="anchor" aria-label="anchor" href="#macros-locales-y-globales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.3</span> Macros locales y globales<a class="anchor" aria-label="anchor" href="#macros-locales-y-globales"><i class="fas fa-link"></i></a>
 </h3>
-<div id="nombrar-macros" class="section level4" number="2.2.3.1">
+<div id="nombrar-macros" class="section level4" number="3.1.3.1">
 <h4>
-<span class="header-section-number">2.2.3.1</span> Nombrar macros<a class="anchor" aria-label="anchor" href="#nombrar-macros"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.3.1</span> Nombrar macros<a class="anchor" aria-label="anchor" href="#nombrar-macros"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Una macro es un <strong>contenedor</strong> que puede almacenar números o nombres de variables.</li>
@@ -1373,9 +598,9 @@ Instalar Sublime</p></li>
 <span id="cb59-7"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> <span class="st">"`nuevalista'"</span> </span></code></pre></div>
 <p>El <code>local nuevalista</code> define una macro como <em>string</em> que posee su propio contenido, el valor de contar y el valor del iterador.</p>
 </div>
-<div id="generar-variables-contadores-y-condiciones-con-macros" class="section level4" number="2.2.3.2">
+<div id="generar-variables-contadores-y-condiciones-con-macros" class="section level4" number="3.1.3.2">
 <h4>
-<span class="header-section-number">2.2.3.2</span> Generar variables, contadores y condiciones con macros<a class="anchor" aria-label="anchor" href="#generar-variables-contadores-y-condiciones-con-macros"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.3.2</span> Generar variables, contadores y condiciones con macros<a class="anchor" aria-label="anchor" href="#generar-variables-contadores-y-condiciones-con-macros"><i class="fas fa-link"></i></a>
 </h4>
 <p>Podemos utilizar macros para renombrar variables.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb60-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span> </span>
@@ -1439,9 +664,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="globales" class="section level4" number="2.2.3.3">
+<div id="globales" class="section level4" number="3.1.3.3">
 <h4>
-<span class="header-section-number">2.2.3.3</span> Globales<a class="anchor" aria-label="anchor" href="#globales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.3.3</span> Globales<a class="anchor" aria-label="anchor" href="#globales"><i class="fas fa-link"></i></a>
 </h4>
 <p>Crear macros globales</p>
 <ul>
@@ -1455,9 +680,9 @@ Instalar Sublime</p></li>
 <span id="cb66-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb66-4" aria-hidden="true" tabindex="-1"></a>* En caso <span class="kw">de</span> querer llamarla</span>
 <span id="cb66-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> <span class="ot">$variable</span></span></code></pre></div>
 </div>
-<div id="funciones-extendidas-de-macros" class="section level4" number="2.2.3.4">
+<div id="funciones-extendidas-de-macros" class="section level4" number="3.1.3.4">
 <h4>
-<span class="header-section-number">2.2.3.4</span> Funciones extendidas de macros<a class="anchor" aria-label="anchor" href="#funciones-extendidas-de-macros"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.3.4</span> Funciones extendidas de macros<a class="anchor" aria-label="anchor" href="#funciones-extendidas-de-macros"><i class="fas fa-link"></i></a>
 </h4>
 <p>¿Qué son las funciones de macros extendidas?</p>
 <ul>
@@ -1507,9 +732,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="funciones-de-macro-extendidas-para-listas" class="section level4" number="2.2.3.5">
+<div id="funciones-de-macro-extendidas-para-listas" class="section level4" number="3.1.3.5">
 <h4>
-<span class="header-section-number">2.2.3.5</span> Funciones de macro extendidas para listas<a class="anchor" aria-label="anchor" href="#funciones-de-macro-extendidas-para-listas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.3.5</span> Funciones de macro extendidas para listas<a class="anchor" aria-label="anchor" href="#funciones-de-macro-extendidas-para-listas"><i class="fas fa-link"></i></a>
 </h4>
 <p>Stata también define ciertas macro para operar sobre listas. Estas funciones permiten combinar listas, buscar elementos dentro de una lista o bien buscar elementos comunes entre dos listas. Conveniente revisar <code>help macrolist</code> para más funciones.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb72-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb72-1" aria-hidden="true" tabindex="-1"></a>* Sintaxis: </span>
@@ -1532,9 +757,9 @@ Instalar Sublime</p></li>
 <span id="cb73-10"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> price mpg <span class="kw">if</span> foreign == <span class="ot">`l'</span></span>
 <span id="cb73-11"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb73-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="manipulación-de-locales-vía-listas-de-macros" class="section level4" number="2.2.3.6">
+<div id="manipulación-de-locales-vía-listas-de-macros" class="section level4" number="3.1.3.6">
 <h4>
-<span class="header-section-number">2.2.3.6</span> Manipulación de locales vía listas de macros<a class="anchor" aria-label="anchor" href="#manipulaci%C3%B3n-de-locales-v%C3%ADa-listas-de-macros"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.3.6</span> Manipulación de locales vía listas de macros<a class="anchor" aria-label="anchor" href="#manipulaci%C3%B3n-de-locales-v%C3%ADa-listas-de-macros"><i class="fas fa-link"></i></a>
 </h4>
 <p>Listas de macros: Las <code>macro lists</code> permiten obtener el número de elementos de una macro, trabajar con valores duplicados, ordenar elementos. Veremos cuatro aplicaciones:</p>
 <ol style="list-style-type: decimal">
@@ -1584,9 +809,9 @@ Instalar Sublime</p></li>
 <span id="cb80-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb80-3" aria-hidden="true" tabindex="-1"></a>invtokens(<span class="kw">jumble</span>(tokens(st_local(<span class="st">"nums"</span>))')'))</span>
 <span id="cb80-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> <span class="st">"`random_nums'"</span></span></code></pre></div>
 </div>
-<div id="creturn" class="section level4" number="2.2.3.7">
+<div id="creturn" class="section level4" number="3.1.3.7">
 <h4>
-<span class="header-section-number">2.2.3.7</span> creturn<a class="anchor" aria-label="anchor" href="#creturn"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.3.7</span> creturn<a class="anchor" aria-label="anchor" href="#creturn"><i class="fas fa-link"></i></a>
 </h4>
 <p>Macros con creturn</p>
 <ul>
@@ -1605,17 +830,17 @@ Instalar Sublime</p></li>
 </div>
 </div>
 </div>
-<div id="programar-do---files-parte-ii" class="section level2" number="2.3">
+<div id="programar-do---files-parte-ii" class="section level2" number="3.2">
 <h2>
-<span class="header-section-number">2.3</span> Programar do - files (Parte II)<a class="anchor" aria-label="anchor" href="#programar-do---files-parte-ii"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2</span> Programar do - files (Parte II)<a class="anchor" aria-label="anchor" href="#programar-do---files-parte-ii"><i class="fas fa-link"></i></a>
 </h2>
-<div id="estructuras-de-datos" class="section level3" number="2.3.1">
+<div id="estructuras-de-datos" class="section level3" number="3.2.1">
 <h3>
-<span class="header-section-number">2.3.1</span> Estructuras de datos<a class="anchor" aria-label="anchor" href="#estructuras-de-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.1</span> Estructuras de datos<a class="anchor" aria-label="anchor" href="#estructuras-de-datos"><i class="fas fa-link"></i></a>
 </h3>
-<div id="escalares" class="section level4" number="2.3.1.1">
+<div id="escalares" class="section level4" number="3.2.1.1">
 <h4>
-<span class="header-section-number">2.3.1.1</span> Escalares<a class="anchor" aria-label="anchor" href="#escalares"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.1.1</span> Escalares<a class="anchor" aria-label="anchor" href="#escalares"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Los escalares pueden contener valores numéricos o <em>strings</em>. Un escalar solo puede contener un valor.</li>
@@ -1638,9 +863,9 @@ Instalar Sublime</p></li>
 <span id="cb82-8"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> anxiety <span class="kw">if</span> <span class="fu">inrange</span>(iq, lb<span class="ot">`i'</span>, ub<span class="ot">`i'</span>)</span>
 <span id="cb82-9"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb82-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="elementos-y-operaciones-con-matrices" class="section level4" number="2.3.1.2">
+<div id="elementos-y-operaciones-con-matrices" class="section level4" number="3.2.1.2">
 <h4>
-<span class="header-section-number">2.3.1.2</span> Elementos y operaciones con matrices<a class="anchor" aria-label="anchor" href="#elementos-y-operaciones-con-matrices"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.1.2</span> Elementos y operaciones con matrices<a class="anchor" aria-label="anchor" href="#elementos-y-operaciones-con-matrices"><i class="fas fa-link"></i></a>
 </h4>
 <p>Stata puede generar matrices.</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb83-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> <span class="kw">weight</span> age age2</span>
@@ -1662,9 +887,9 @@ Instalar Sublime</p></li>
 <span id="cb85-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb85-5" aria-hidden="true" tabindex="-1"></a>_b[age] * age + _b[age2] * age2</span></code></pre></div>
 <p>También podemos utilizar las posiciones de los elementos de la matriz (<code>b[i,k)]</code>).</p>
 </div>
-<div id="funciones" class="section level4" number="2.3.1.3">
+<div id="funciones" class="section level4" number="3.2.1.3">
 <h4>
-<span class="header-section-number">2.3.1.3</span> Funciones<a class="anchor" aria-label="anchor" href="#funciones"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.1.3</span> Funciones<a class="anchor" aria-label="anchor" href="#funciones"><i class="fas fa-link"></i></a>
 </h4>
 <p>Solo disponibles para comandos <code>e-class</code>. Por ejemplo, si estimamos una regresión veremos que la unica función disponible es <code>e(sample)</code>.</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb86-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto </span>
@@ -1683,13 +908,13 @@ Instalar Sublime</p></li>
 </div>
 </div>
 </div>
-<div id="iteradores" class="section level3" number="2.3.2">
+<div id="iteradores" class="section level3" number="3.2.2">
 <h3>
-<span class="header-section-number">2.3.2</span> Iteradores<a class="anchor" aria-label="anchor" href="#iteradores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2</span> Iteradores<a class="anchor" aria-label="anchor" href="#iteradores"><i class="fas fa-link"></i></a>
 </h3>
-<div id="foreach" class="section level4" number="2.3.2.1">
+<div id="foreach" class="section level4" number="3.2.2.1">
 <h4>
-<span class="header-section-number">2.3.2.1</span> Foreach<a class="anchor" aria-label="anchor" href="#foreach"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2.1</span> Foreach<a class="anchor" aria-label="anchor" href="#foreach"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>foreach</code> y <code>forvalues</code>: <code>forvalues</code> itera sobre una lista de números y <code>foreach</code> recorre los elementos de una macro, o los nombres de las variables de una lista de variables, o los elementos de una lista de números.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb87-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb87-1" aria-hidden="true" tabindex="-1"></a>* Foreach</span>
@@ -1729,9 +954,9 @@ Instalar Sublime</p></li>
 <span id="cb91-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="kw">display</span> <span class="ot">`num'</span></span>
 <span id="cb91-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb91-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="combinar-macros-con-iteradores" class="section level4" number="2.3.2.2">
+<div id="combinar-macros-con-iteradores" class="section level4" number="3.2.2.2">
 <h4>
-<span class="header-section-number">2.3.2.2</span> Combinar macros con iteradores<a class="anchor" aria-label="anchor" href="#combinar-macros-con-iteradores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2.2</span> Combinar macros con iteradores<a class="anchor" aria-label="anchor" href="#combinar-macros-con-iteradores"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>foreach</code> y <code>forvalues</code> combinados con macros pueden utilizarse para ahorrarnos mucho trabajo. Podemos generar tun conjunto de locales a partir de iteraciones.</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb92-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> replicate.dta, <span class="kw">replace</span></span>
@@ -1797,9 +1022,9 @@ Instalar Sublime</p></li>
 <span id="cb98-11"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb98-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Aquí los nombres de los países se almacenan como valores de las macros numeradas. Debemos referenciar doblemente la macro <span class="math inline">\(i\)</span>. El contenido de esa macro la primera vez que se pasa por el bucle es el número 1. Para acceder al primer código de país, debemos referenciar la macro <span class="math inline">\(`1'\)</span>.</p>
 </div>
-<div id="while-loop" class="section level4" number="2.3.2.3">
+<div id="while-loop" class="section level4" number="3.2.2.3">
 <h4>
-<span class="header-section-number">2.3.2.3</span> While loop<a class="anchor" aria-label="anchor" href="#while-loop"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2.3</span> While loop<a class="anchor" aria-label="anchor" href="#while-loop"><i class="fas fa-link"></i></a>
 </h4>
 <p>Realiza la iteración o se repite una lista de comandos mientras la condición <code>while</code> sea verdadera. La sintaxis es:</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb99-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="kw">while</span> <span class="fu">exp</span> { </span>
@@ -1816,9 +1041,9 @@ Instalar Sublime</p></li>
 <span id="cb101-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb101-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>La primera parte define el inicio del contador, mientras que la segunda indica la condición para que sea ejecutado. El <code>local</code> final actualiza (incremental). Si el incremento es unitario podemos utilizar <code>local ++i</code>.</p>
 </div>
-<div id="branching" class="section level4" number="2.3.2.4">
+<div id="branching" class="section level4" number="3.2.2.4">
 <h4>
-<span class="header-section-number">2.3.2.4</span> Branching<a class="anchor" aria-label="anchor" href="#branching"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2.4</span> Branching<a class="anchor" aria-label="anchor" href="#branching"><i class="fas fa-link"></i></a>
 </h4>
 <p>Hacer una cosa en caso de que alguna condición sea cierta y otra cosa en caso de que sea falsa. La sintaxis básica es:</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb102-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> algo es verdadero { </span>
@@ -1835,9 +1060,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="aplicaciones" class="section level4" number="2.3.2.5">
+<div id="aplicaciones" class="section level4" number="3.2.2.5">
 <h4>
-<span class="header-section-number">2.3.2.5</span> Aplicaciones<a class="anchor" aria-label="anchor" href="#aplicaciones"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2.5</span> Aplicaciones<a class="anchor" aria-label="anchor" href="#aplicaciones"><i class="fas fa-link"></i></a>
 </h4>
 <p>Seguir secuencias especiales: <code>creturn</code> posee varias constantes y valores a los que se puede acceder. Por ejemplo:</p>
 <ul>
@@ -1865,9 +1090,9 @@ Instalar Sublime</p></li>
 <span id="cb103-7"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb103-7" aria-hidden="true" tabindex="-1"></a>                   }</span>
 <span id="cb103-8"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val <span class="fu">month</span> monthlab</span></code></pre></div>
 </div>
-<div id="monitorear-un-loop" class="section level4" number="2.3.2.6">
+<div id="monitorear-un-loop" class="section level4" number="3.2.2.6">
 <h4>
-<span class="header-section-number">2.3.2.6</span> Monitorear un loop<a class="anchor" aria-label="anchor" href="#monitorear-un-loop"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.2.6</span> Monitorear un loop<a class="anchor" aria-label="anchor" href="#monitorear-un-loop"><i class="fas fa-link"></i></a>
 </h4>
 <p>Ejemplo proveniente de (Stata tip 41). Cualquier <em>loop</em> puede ser modificado para que muestre su progreso con el comando <code>_dots</code>. Esto es importante para cuando se requieren hacer procesos que toman varias horas y es necesario monitorear avances.</p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb104-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="kw">_dots</span> 0, <span class="bn">title</span>(Loop ejecutando) reps(75) </span>
@@ -1920,21 +1145,21 @@ Instalar Sublime</p></li>
 <p>Se ejecuta hasta que logre 70 aciertos. En este ejemplo artificial, cada iteración tiene un éxito aleatorio con una probabilidad del 80%. Los éxitos se indican con un punto (.) y los fracasos con una x.</p>
 </div>
 </div>
-<div id="manejo-de-bases-de-datos" class="section level3" number="2.3.3">
+<div id="manejo-de-bases-de-datos" class="section level3" number="3.2.3">
 <h3>
-<span class="header-section-number">2.3.3</span> Manejo de bases de datos<a class="anchor" aria-label="anchor" href="#manejo-de-bases-de-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.3</span> Manejo de bases de datos<a class="anchor" aria-label="anchor" href="#manejo-de-bases-de-datos"><i class="fas fa-link"></i></a>
 </h3>
-<div id="prefijo-by" class="section level4" number="2.3.3.1">
+<div id="prefijo-by" class="section level4" number="3.2.3.1">
 <h4>
-<span class="header-section-number">2.3.3.1</span> Prefijo: by<a class="anchor" aria-label="anchor" href="#prefijo-by"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.3.1</span> Prefijo: by<a class="anchor" aria-label="anchor" href="#prefijo-by"><i class="fas fa-link"></i></a>
 </h4>
 <p>Los prefijos en Stata ejecutan tareas repetitivas sin la necesidad de especificar el rango de valores sobre la tarea que es ejecutada. Un prefijo muy conocido es <code>by</code>. Por ejemplo, <code>by varlist [, sort]: command</code>. <code>command</code> es repetido para cada valor de la variable. Es más, repeticiones siguen el orden de la variable sea <em>string</em> o <em>numeric</em>.</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb108-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> bpress, <span class="kw">clear</span></span>
 <span id="cb108-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> sex agegrp: <span class="kw">summarize</span> bp </span></code></pre></div>
 </div>
-<div id="prefijo-xi" class="section level4" number="2.3.3.2">
+<div id="prefijo-xi" class="section level4" number="3.2.3.2">
 <h4>
-<span class="header-section-number">2.3.3.2</span> Prefijo: xi<a class="anchor" aria-label="anchor" href="#prefijo-xi"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.3.2</span> Prefijo: xi<a class="anchor" aria-label="anchor" href="#prefijo-xi"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>xi</code> es útil para cuando queremos producir un variable indicador para las observaciones que son distintas entre si.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb109-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="kw">xi</span> i.agegrp</span></code></pre></div>
@@ -1952,17 +1177,17 @@ Instalar Sublime</p></li>
 <span id="cb110-10"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb110-10" aria-hidden="true" tabindex="-1"></a>* Caso 4: Incluye solo interacciones con <span class="kw">variable</span> continua (además <span class="kw">de</span> principal). </span>
 <span id="cb110-11"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb110-11" aria-hidden="true" tabindex="-1"></a><span class="kw">xi</span>: <span class="kw">regress</span> bp i.agegrp|bp0 </span></code></pre></div>
 </div>
-<div id="prefijo-statsby" class="section level4" number="2.3.3.3">
+<div id="prefijo-statsby" class="section level4" number="3.2.3.3">
 <h4>
-<span class="header-section-number">2.3.3.3</span> Prefijo: statsby<a class="anchor" aria-label="anchor" href="#prefijo-statsby"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.3.3</span> Prefijo: statsby<a class="anchor" aria-label="anchor" href="#prefijo-statsby"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>statsby</code> permite ampliar <code>by</code>. Este último tiene la limitación de permitir únicamente un comando.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb111-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="kw">statsby</span> <span class="kw">mean</span>=<span class="fu">r</span>(<span class="kw">mean</span>) <span class="fu">sd</span>=<span class="fu">r</span>(<span class="fu">sd</span>) n=<span class="fu">r</span>(<span class="kw">N</span>), <span class="kw">by</span>(agegrp sex): <span class="kw">summarize</span> bp</span></code></pre></div>
 <p>Se produce una nueva base de datos con una observación por grupo con los estadísticos incorporados. <strong>Útil para calcular estadística descriptiva</strong>.</p>
 </div>
-<div id="prefijo-rolling" class="section level4" number="2.3.3.4">
+<div id="prefijo-rolling" class="section level4" number="3.2.3.4">
 <h4>
-<span class="header-section-number">2.3.3.4</span> Prefijo: rolling<a class="anchor" aria-label="anchor" href="#prefijo-rolling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.3.4</span> Prefijo: rolling<a class="anchor" aria-label="anchor" href="#prefijo-rolling"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>statsby</code> permite obtener estadísticas para sub-muestras que no se traslapan. <code>rolling</code> sirve para sub-muestras traslapadas. Por ejemplo, al trabajar con series de tiempo se quiere calcular estadísticas para datos que están traslapados (el. calcular una media móvil).</p>
 <p>Vamos a calcular medias y medianas utilizando una ventana de 90 días:</p>
@@ -1972,9 +1197,9 @@ Instalar Sublime</p></li>
 <span id="cb112-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="kw">tsline</span> <span class="kw">mean</span></span></code></pre></div>
 <p><code>start</code> y <code>end</code> indican el inicio y fin de la ventana.</p>
 </div>
-<div id="merge-y-append" class="section level4" number="2.3.3.5">
+<div id="merge-y-append" class="section level4" number="3.2.3.5">
 <h4>
-<span class="header-section-number">2.3.3.5</span> Merge y Append<a class="anchor" aria-label="anchor" href="#merge-y-append"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.3.5</span> Merge y Append<a class="anchor" aria-label="anchor" href="#merge-y-append"><i class="fas fa-link"></i></a>
 </h4>
 <p>Recomendaciones para utilizar merge</p>
 <ul>
@@ -2023,21 +1248,21 @@ Instalar Sublime</p></li>
 </div>
 </div>
 </div>
-<div id="programar-ado---files-parte-i" class="section level2" number="2.4">
+<div id="programar-ado---files-parte-i" class="section level2" number="3.3">
 <h2>
-<span class="header-section-number">2.4</span> Programar ado - files (Parte I)<a class="anchor" aria-label="anchor" href="#programar-ado---files-parte-i"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Programar ado - files (Parte I)<a class="anchor" aria-label="anchor" href="#programar-ado---files-parte-i"><i class="fas fa-link"></i></a>
 </h2>
-<div id="escribir-programas-en-stata" class="section level3" number="2.4.1">
+<div id="escribir-programas-en-stata" class="section level3" number="3.3.1">
 <h3>
-<span class="header-section-number">2.4.1</span> Escribir programas en Stata<a class="anchor" aria-label="anchor" href="#escribir-programas-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.1</span> Escribir programas en Stata<a class="anchor" aria-label="anchor" href="#escribir-programas-en-stata"><i class="fas fa-link"></i></a>
 </h3>
 <p>En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas practicas que vimos en la Sección 1.</p>
 <p>Vamos a utilizar <code>program</code> para escribir los programas. Es posible equipar cualquier comando con las opciones típicas usuales (ej. <code>if</code> o <code>inrange</code>. Discutiremos mayormente programas del tipo <code>r-class</code> y algunos comentarios con respecto a los del tipo <code>e-class</code>.</p>
 <p><strong>¿Por qué debiese escribir mis propios programas en Stata?</strong> Automatizar procesos que se ejecutan frecuentemente y donde los resultados dependen de algún tipo de heterogeneidad.</p>
 </div>
-<div id="por-qué-escribir-programas-abstracción" class="section level3" number="2.4.2">
+<div id="por-qué-escribir-programas-abstracción" class="section level3" number="3.3.2">
 <h3>
-<span class="header-section-number">2.4.2</span> ¿Por qué escribir programas?: Abstracción<a class="anchor" aria-label="anchor" href="#por-qu%C3%A9-escribir-programas-abstracci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.2</span> ¿Por qué escribir programas?: Abstracción<a class="anchor" aria-label="anchor" href="#por-qu%C3%A9-escribir-programas-abstracci%C3%B3n"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Abstraer para eliminar pasos redundantes.<br>
@@ -2098,13 +1323,13 @@ Instalar Sublime</p></li>
 <li>Si por ejemplo, creas un programa llamado <code>summarize</code> Stata lo va a ignorar y utilizará su propio comando.</li>
 </ul>
 </div>
-<div id="mis-primeros-programas-en-stata" class="section level3" number="2.4.3">
+<div id="mis-primeros-programas-en-stata" class="section level3" number="3.3.3">
 <h3>
-<span class="header-section-number">2.4.3</span> Mis primeros programas en Stata<a class="anchor" aria-label="anchor" href="#mis-primeros-programas-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.3</span> Mis primeros programas en Stata<a class="anchor" aria-label="anchor" href="#mis-primeros-programas-en-stata"><i class="fas fa-link"></i></a>
 </h3>
-<div id="programa-1" class="section level4" number="2.4.3.1">
+<div id="programa-1" class="section level4" number="3.3.3.1">
 <h4>
-<span class="header-section-number">2.4.3.1</span> Programa 1<a class="anchor" aria-label="anchor" href="#programa-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.3.1</span> Programa 1<a class="anchor" aria-label="anchor" href="#programa-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>Vamos escribir nuestro primer programa:</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb122-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb122-1" aria-hidden="true" tabindex="-1"></a>  * Mi primer programa en Stata</span>
@@ -2113,9 +1338,9 @@ Instalar Sublime</p></li>
 <span id="cb122-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb122-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span> </span></code></pre></div>
 <p>Noten que al ejecutarlo no se genera ningún resultado. Lo que hemos hecho es definir un comando llamado <code>minombrees</code> con una simple función. Esta es la idea principal de un programa. Ejecuten nuevamente el programa. Al hacer esto observaran que se genera un error. Esto es porque al igual que las variables, no es posible asignar dos nombres iguales a un programa. Para evitar esto, es importante utilizar <code>program drop minombrees</code> antes de cargar el comando nuevamente. Este es un buen momento para utilizar <code>capture</code>.</p>
 </div>
-<div id="programa-2" class="section level4" number="2.4.3.2">
+<div id="programa-2" class="section level4" number="3.3.3.2">
 <h4>
-<span class="header-section-number">2.4.3.2</span> Programa 2<a class="anchor" aria-label="anchor" href="#programa-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.3.2</span> Programa 2<a class="anchor" aria-label="anchor" href="#programa-2"><i class="fas fa-link"></i></a>
 </h4>
 <p>Vamos escribir un programa que permita calcular un promedio. Vamos a escribir un comando que nos permita crear una nueva variable que contenga los valores promedio y que muestre el resultado en la pantalla. Esto sería igual que escribir:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb123-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb123-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">sysuse</span> auto, <span class="kw">clear</span></span>
@@ -2142,9 +1367,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="programa-3" class="section level4" number="2.4.3.3">
+<div id="programa-3" class="section level4" number="3.3.3.3">
 <h4>
-<span class="header-section-number">2.4.3.3</span> Programa 3<a class="anchor" aria-label="anchor" href="#programa-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.3.3</span> Programa 3<a class="anchor" aria-label="anchor" href="#programa-3"><i class="fas fa-link"></i></a>
 </h4>
 <p>Vamos a reescribir el programa para permitir un número arbitrario de variables. La macro ‘0’ contiene toda la cadena, ‘1’ el primer elemento, ‘2’ el segundo, etc. Podemos hacer una iteración sobre todos los elementos sin saber cuántos hay utilizando la técnica de desplazamiento incremental que implementaremos con <code>macro_shift</code>.</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb125-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="kw">capture</span> <span class="kw">program</span> <span class="kw">drop</span> mimedia </span>
@@ -2160,9 +1385,9 @@ Instalar Sublime</p></li>
 <span id="cb125-11"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb125-11" aria-hidden="true" tabindex="-1"></a>mimedia price mpg rep78 </span></code></pre></div>
 <p>El comando <code>macro shift</code> sirve como incremental. Termina cuando encuentra un vacio, lo que explica la presencia del <code>while</code>. Notar que <code>"</code>1’“` habla de la posición. Es una buena tecnica para garantizar que el iterador seguirá cuando este vacio.</p>
 </div>
-<div id="programa-4" class="section level4" number="2.4.3.4">
+<div id="programa-4" class="section level4" number="3.3.3.4">
 <h4>
-<span class="header-section-number">2.4.3.4</span> Programa 4<a class="anchor" aria-label="anchor" href="#programa-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.3.4</span> Programa 4<a class="anchor" aria-label="anchor" href="#programa-4"><i class="fas fa-link"></i></a>
 </h4>
 <p>Modificamos un poco el programa para que despliegue los resultados en la consola de Stata. Adicionalmente, agregamos un <code>quietly</code>.</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb126-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="kw">capture</span> <span class="kw">program</span> <span class="kw">drop</span> mimedia </span>
@@ -2177,9 +1402,9 @@ Instalar Sublime</p></li>
 <span id="cb126-10"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb126-10" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto, <span class="kw">clear</span></span>
 <span id="cb126-11"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb126-11" aria-hidden="true" tabindex="-1"></a>mimedia price mpg rep78 </span></code></pre></div>
 </div>
-<div id="programa-5" class="section level4" number="2.4.3.5">
+<div id="programa-5" class="section level4" number="3.3.3.5">
 <h4>
-<span class="header-section-number">2.4.3.5</span> Programa 5<a class="anchor" aria-label="anchor" href="#programa-5"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.3.5</span> Programa 5<a class="anchor" aria-label="anchor" href="#programa-5"><i class="fas fa-link"></i></a>
 </h4>
 <p>El comando <code>macro shift</code> es útil, pero puede ser lento. Agregando variables locales usuales y un incremental es mucho mejor. Ojo con las dobles comillas.</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb127-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="kw">capture</span> <span class="kw">program</span> <span class="kw">drop</span> mimedia </span>
@@ -2193,9 +1418,9 @@ Instalar Sublime</p></li>
 <span id="cb127-9"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
 </div>
-<div id="programa-con-distintos-argumentos" class="section level3" number="2.4.4">
+<div id="programa-con-distintos-argumentos" class="section level3" number="3.3.4">
 <h3>
-<span class="header-section-number">2.4.4</span> Programa con distintos argumentos<a class="anchor" aria-label="anchor" href="#programa-con-distintos-argumentos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.4</span> Programa con distintos argumentos<a class="anchor" aria-label="anchor" href="#programa-con-distintos-argumentos"><i class="fas fa-link"></i></a>
 </h3>
 <p>El programa de los ejemplos anteriores soporta un solo argumento. Ahora vamos a ver un programa que considere explícitamente que los argumentos de un programa pueden tomar roles distintos.</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb128-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> <span class="kw">drop</span> <span class="dt">_all</span> </span>
@@ -2217,9 +1442,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="opción-syntax" class="section level3" number="2.4.5">
+<div id="opción-syntax" class="section level3" number="3.3.5">
 <h3>
-<span class="header-section-number">2.4.5</span> Opción Syntax<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-syntax"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.5</span> Opción Syntax<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-syntax"><i class="fas fa-link"></i></a>
 </h3>
 <p>Renombrando argumentos:</p>
 <ul>
@@ -2281,9 +1506,9 @@ Instalar Sublime</p></li>
 <span id="cb133-12"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb133-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span> <span class="kw">as</span> txt <span class="st">"90-10:  "</span> <span class="ot">`p9010'</span></span>
 <span id="cb133-13"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb133-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span> <span class="kw">as</span> txt <span class="st">"Range: "</span> <span class="ot">`range'</span></span></code></pre></div>
 </div>
-<div id="return" class="section level3" number="2.4.6">
+<div id="return" class="section level3" number="3.3.6">
 <h3>
-<span class="header-section-number">2.4.6</span> Return<a class="anchor" aria-label="anchor" href="#return"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.6</span> Return<a class="anchor" aria-label="anchor" href="#return"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Una característica importante de los comandos de Stata es su capacidad de reportar los resultados de forma tal de que los usuarios y usuarias podamos utilizarlos posteriormente.</li>
@@ -2310,9 +1535,9 @@ Instalar Sublime</p></li>
 <span id="cb134-16"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb134-16" aria-hidden="true" tabindex="-1"></a>        }</span>
 <span id="cb134-17"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb134-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 </div>
-<div id="implementar-opciones-al-programa" class="section level3" number="2.4.7">
+<div id="implementar-opciones-al-programa" class="section level3" number="3.3.7">
 <h3>
-<span class="header-section-number">2.4.7</span> Implementar opciones al programa<a class="anchor" aria-label="anchor" href="#implementar-opciones-al-programa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.7</span> Implementar opciones al programa<a class="anchor" aria-label="anchor" href="#implementar-opciones-al-programa"><i class="fas fa-link"></i></a>
 </h3>
 <p>Podemos agregar distintas opciones al programa. Una opción es agregar como opcional que el programa de un resultado en la consola. Al incluir <span class="math inline">\([ ]\)</span> en <code>syntax</code> significa un componente <strong>opcional</strong> en el comando.</p>
 <p>Ejemplo 4: implementar opciones al programa (imprimir por defecto)</p>
@@ -2356,9 +1581,9 @@ Instalar Sublime</p></li>
 <span id="cb136-18"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb136-18" aria-hidden="true" tabindex="-1"></a>        }</span>
 <span id="cb136-19"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb136-19" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 </div>
-<div id="incluir-ifin-al-programa" class="section level3" number="2.4.8">
+<div id="incluir-ifin-al-programa" class="section level3" number="3.3.8">
 <h3>
-<span class="header-section-number">2.4.8</span> Incluir if/in al programa<a class="anchor" aria-label="anchor" href="#incluir-ifin-al-programa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.8</span> Incluir if/in al programa<a class="anchor" aria-label="anchor" href="#incluir-ifin-al-programa"><i class="fas fa-link"></i></a>
 </h3>
 <p>Incluir un subconjunto de observaciones</p>
 <ul>
@@ -2389,9 +1614,9 @@ Instalar Sublime</p></li>
 <span id="cb137-18"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb137-18" aria-hidden="true" tabindex="-1"></a>        }</span>
 <span id="cb137-19"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb137-19" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 </div>
-<div id="generalizar-el-comando-para-incluir-múltiples-variables" class="section level3" number="2.4.9">
+<div id="generalizar-el-comando-para-incluir-múltiples-variables" class="section level3" number="3.3.9">
 <h3>
-<span class="header-section-number">2.4.9</span> Generalizar el comando para incluir múltiples variables<a class="anchor" aria-label="anchor" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.9</span> Generalizar el comando para incluir múltiples variables<a class="anchor" aria-label="anchor" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables"><i class="fas fa-link"></i></a>
 </h3>
 <p>Algunas consideraciones</p>
 <ul>
@@ -2463,9 +1688,9 @@ Instalar Sublime</p></li>
 <span id="cb138-60"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb138-60" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span> <span class="kw">local</span> varname <span class="ot">`varlist'</span></span>
 <span id="cb138-61"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb138-61" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 </div>
-<div id="agregar-prefijos-a-los-programas" class="section level3" number="2.4.10">
+<div id="agregar-prefijos-a-los-programas" class="section level3" number="3.3.10">
 <h3>
-<span class="header-section-number">2.4.10</span> Agregar prefijos a los programas<a class="anchor" aria-label="anchor" href="#agregar-prefijos-a-los-programas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.10</span> Agregar prefijos a los programas<a class="anchor" aria-label="anchor" href="#agregar-prefijos-a-los-programas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Prefijo by</p>
 <ul>
@@ -2477,9 +1702,9 @@ Instalar Sublime</p></li>
 <div class="sourceCode" id="cb140"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb140-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb140-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">syntax</span> <span class="kw">varlist</span>(<span class="fu">min</span> = 1 <span class="kw">numeric</span> ts) [<span class="kw">if</span>] [<span class="kw">in</span>] <span class="co">///</span></span>
 <span id="cb140-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb140-2" aria-hidden="true" tabindex="-1"></a>    [, noPRINT  FORmat(passthru) MATrix(<span class="fu">string</span>)]</span></code></pre></div>
 </div>
-<div id="programas-para-complementar-función-egen" class="section level3" number="2.4.11">
+<div id="programas-para-complementar-función-egen" class="section level3" number="3.3.11">
 <h3>
-<span class="header-section-number">2.4.11</span> Programas para complementar función egen<a class="anchor" aria-label="anchor" href="#programas-para-complementar-funci%C3%B3n-egen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.11</span> Programas para complementar función egen<a class="anchor" aria-label="anchor" href="#programas-para-complementar-funci%C3%B3n-egen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Es posible programar funciones adicionales de <code>egen</code>. El nombre de estos programas deben empezar con <code>_g</code>. Una diferencia importante entre este tipo de programas y los que ya hemos escrito guarda relación con el hecho de que hay que tener en cuenta la nueva variable que se va a crear. La sintaxis es la siguiente:</p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb141-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> [<span class="dv">type</span>] newvarname = fcn(arguments) [<span class="kw">if</span>] [<span class="kw">in</span>] [, options]</span></code></pre></div>
@@ -2559,13 +1784,13 @@ Instalar Sublime</p></li>
 <span id="cb144-29"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb144-29" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> p8020 <span class="kw">if</span> <span class="fu">inrange</span>(rep78, 3, 5), <span class="kw">by</span>(rep78)</span></code></pre></div>
 </div>
 </div>
-<div id="programar-ado---files-parte-ii" class="section level2" number="2.5">
+<div id="programar-ado---files-parte-ii" class="section level2" number="3.4">
 <h2>
-<span class="header-section-number">2.5</span> Programar ado - files (Parte II)<a class="anchor" aria-label="anchor" href="#programar-ado---files-parte-ii"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4</span> Programar ado - files (Parte II)<a class="anchor" aria-label="anchor" href="#programar-ado---files-parte-ii"><i class="fas fa-link"></i></a>
 </h2>
-<div id="syntax" class="section level3" number="2.5.1">
+<div id="syntax" class="section level3" number="3.4.1">
 <h3>
-<span class="header-section-number">2.5.1</span> Syntax<a class="anchor" aria-label="anchor" href="#syntax"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.1</span> Syntax<a class="anchor" aria-label="anchor" href="#syntax"><i class="fas fa-link"></i></a>
 </h3>
 <p>Algunas consideraciones</p>
 <ul>
@@ -2623,9 +1848,9 @@ Instalar Sublime</p></li>
 <span id="cb148-12"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb148-12" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb148-13"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb148-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
-<div id="varlist" class="section level3" number="2.5.2">
+<div id="varlist" class="section level3" number="3.4.2">
 <h3>
-<span class="header-section-number">2.5.2</span> Varlist<a class="anchor" aria-label="anchor" href="#varlist"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.2</span> Varlist<a class="anchor" aria-label="anchor" href="#varlist"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>varlist</code> específica la macro que contiene las variables que van a ingresar al programa como <em>inputs</em>. Las opciones de <code>varlist</code> son:
 * <code>default = none</code>. Especifica como la <code>varlist</code> se va a llenar. Por defecto se llena con todas las variables.
@@ -2634,9 +1859,9 @@ Instalar Sublime</p></li>
 * <code>ts</code> permite que la <code>varlist</code> contenga operadores de series de tiempo.
 * <code>fv</code> permite que la <code>varlist</code> contenga variables categóricas.</p>
 </div>
-<div id="opciones" class="section level3" number="2.5.3">
+<div id="opciones" class="section level3" number="3.4.3">
 <h3>
-<span class="header-section-number">2.5.3</span> Opciones<a class="anchor" aria-label="anchor" href="#opciones"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.3</span> Opciones<a class="anchor" aria-label="anchor" href="#opciones"><i class="fas fa-link"></i></a>
 </h3>
 <p>Las opciones permiten hacer requeridos o opcionales. Por ejemplo, <code>regress, noconstant</code>. Las opciones pueden ser una <code>numlist</code>, una <code>varlist</code> (ej. <code>by(varlist) option</code>, una <code>namelist</code> tal como el nombre de una matriz o de una nueva variable. Como regla general, cualquier característica que pudieran encontrar en un comando de Stata, la pueden agregar en un programa. Para las opciones es importante recordar que las mayúsculas indican la menor abreviación posible.</p>
 <ul>
@@ -2661,9 +1886,9 @@ Instalar Sublime</p></li>
 <span id="cb149-11"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb149-11" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb149-12"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb149-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
-<div id="programa-para-calcular-percentiles" class="section level3" number="2.5.4">
+<div id="programa-para-calcular-percentiles" class="section level3" number="3.4.4">
 <h3>
-<span class="header-section-number">2.5.4</span> Programa para calcular percentiles<a class="anchor" aria-label="anchor" href="#programa-para-calcular-percentiles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.4</span> Programa para calcular percentiles<a class="anchor" aria-label="anchor" href="#programa-para-calcular-percentiles"><i class="fas fa-link"></i></a>
 </h3>
 <p>Una versión simple para una variable:</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb150-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> pctrange, rclass </span>
@@ -2700,9 +1925,9 @@ Instalar Sublime</p></li>
 <span id="cb151-12"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb151-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span> <span class="kw">as</span> txt <span class="st">"90-10:  "</span> <span class="ot">`p9010'</span></span>
 <span id="cb151-13"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb151-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span> <span class="kw">as</span> txt <span class="st">"Range: "</span> <span class="ot">`range'</span></span></code></pre></div>
 </div>
-<div id="programa-con-opción-return" class="section level3" number="2.5.5">
+<div id="programa-con-opción-return" class="section level3" number="3.4.5">
 <h3>
-<span class="header-section-number">2.5.5</span> Programa con opción return<a class="anchor" aria-label="anchor" href="#programa-con-opci%C3%B3n-return"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.5</span> Programa con opción return<a class="anchor" aria-label="anchor" href="#programa-con-opci%C3%B3n-return"><i class="fas fa-link"></i></a>
 </h3>
 <p>Una característica importante de los comandos de Stata es su <strong>capacidad de reportar los resultados</strong> de forma tal de que los usuarios y usuarias podamos utilizarlos posteriormente. El comando <code>return</code> nos permite guardar los escalares y hacerlos accesibles, sin tener el problema de los escalares que vimos en los ejemplos anteriores.</p>
 <p>Programa para calcular percentiles con return:</p>
@@ -2738,9 +1963,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="agregar-opciones-al-programa" class="section level3" number="2.5.6">
+<div id="agregar-opciones-al-programa" class="section level3" number="3.4.6">
 <h3>
-<span class="header-section-number">2.5.6</span> Agregar opciones al programa<a class="anchor" aria-label="anchor" href="#agregar-opciones-al-programa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.6</span> Agregar opciones al programa<a class="anchor" aria-label="anchor" href="#agregar-opciones-al-programa"><i class="fas fa-link"></i></a>
 </h3>
 <p>Podemos agregar distintas opciones al programa. Para este ejemplo vamos a agregar como opcional que el programa de un resultado en la consola. Recordemos que incluir <span class="math inline">\([ ]\)</span> en <code>syntax</code> significa un componente <strong>opcional</strong> en el comando.</p>
 <p>Implementar opciones al programa (imprimir por defecto):</p>
@@ -2832,9 +2057,9 @@ Instalar Sublime</p></li>
 </ol>
 </div>
 </div>
-<div id="generalizar-el-comando-para-incluir-múltiples-variables-1" class="section level3" number="2.5.7">
+<div id="generalizar-el-comando-para-incluir-múltiples-variables-1" class="section level3" number="3.4.7">
 <h3>
-<span class="header-section-number">2.5.7</span> Generalizar el comando para incluir múltiples variables<a class="anchor" aria-label="anchor" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.7</span> Generalizar el comando para incluir múltiples variables<a class="anchor" aria-label="anchor" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Algunas consideraciones</p>
 <ul>
@@ -2903,18 +2128,18 @@ Instalar Sublime</p></li>
 <span id="cb157-58"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb157-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span> <span class="kw">local</span> varname <span class="ot">`varlist'</span></span>
 <span id="cb157-59"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb157-59" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
-<div id="agregar-prefijos-a-los-programas-1" class="section level3" number="2.5.8">
+<div id="agregar-prefijos-a-los-programas-1" class="section level3" number="3.4.8">
 <h3>
-<span class="header-section-number">2.5.8</span> Agregar prefijos a los programas<a class="anchor" aria-label="anchor" href="#agregar-prefijos-a-los-programas-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.8</span> Agregar prefijos a los programas<a class="anchor" aria-label="anchor" href="#agregar-prefijos-a-los-programas-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>prefijo by: Ahora vamos a hacer que nuestro programa pueda utilizar el prefijo <code>by</code>. Para agregar esta opción simplemente hay que modificar <code>program</code>.</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb158-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> pctrange, rclass byable(recall)</span></code></pre></div>
 <p>También podemos permitir que la lista de variables incluya <strong>operadores de series de tiempo</strong> (ej. <code>L.pib</code>, <code>D.ingreso</code>).</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb159-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="kw">syntax</span> <span class="kw">varlist</span>(<span class="fu">min</span> = 1 <span class="kw">numeric</span> ts) </span></code></pre></div>
 </div>
-<div id="programas-para-complementar-función-egen-1" class="section level3" number="2.5.9">
+<div id="programas-para-complementar-función-egen-1" class="section level3" number="3.4.9">
 <h3>
-<span class="header-section-number">2.5.9</span> Programas para complementar función egen<a class="anchor" aria-label="anchor" href="#programas-para-complementar-funci%C3%B3n-egen-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.9</span> Programas para complementar función egen<a class="anchor" aria-label="anchor" href="#programas-para-complementar-funci%C3%B3n-egen-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Es posible programar funciones adicionales de <code>egen</code> (<em>extended generate</em>). El nombre de estos programas deben empezar con <code>_g</code>. Una diferencia entre este tipo de programas y los ya hechos es que en estos hay que tener en cuenta la nueva variable que se va a crear. La sintaxis es la siguiente:</p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb160-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> [<span class="dv">type</span>] newvarname = fcn(arguments) [<span class="kw">if</span>] [<span class="kw">in</span>] [, options]</span></code></pre></div>
@@ -2955,9 +2180,9 @@ Instalar Sublime</p></li>
 <span id="cb162-15"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb162-15" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> rango9010 = pct9010(price)</span>
 <span id="cb162-16"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb162-16" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> rep78 foreign: <span class="kw">egen</span> rango9010_prefijoby = pct9010(price)</span></code></pre></div>
 </div>
-<div id="generalización-de-la-función-egen" class="section level3" number="2.5.10">
+<div id="generalización-de-la-función-egen" class="section level3" number="3.4.10">
 <h3>
-<span class="header-section-number">2.5.10</span> Generalización de la función egen<a class="anchor" aria-label="anchor" href="#generalizaci%C3%B3n-de-la-funci%C3%B3n-egen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.10</span> Generalización de la función egen<a class="anchor" aria-label="anchor" href="#generalizaci%C3%B3n-de-la-funci%C3%B3n-egen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Hemos desarrollado una función de <code>egen</code> que permite calcular un rango entre percentiles para una lista de variables especifica. Puede ser útil tomar ventaja de <code>egen pctile()</code> para poder calcular cualquier percentil de la lista de variables especificadas. Vamos a agregar dos opciones a la función <code>egen</code> : <code>lo()</code> y <code>hi()</code>. En caso de que no especifiquemos, por defecto se calcula el rango interquartil. La función de <code>egen</code> ahora se llamará <code>_gpctrange.ado</code>.</p>
 <p>Función egen más general para percentiles:</p>
@@ -2995,9 +2220,9 @@ Instalar Sublime</p></li>
 <span id="cb163-32"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb163-32" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> <span class="fu">iqr</span> <span class="kw">if</span> <span class="fu">inrange</span>(rep78, 3, 5), <span class="kw">by</span>(rep78)</span>
 <span id="cb163-33"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb163-33" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> p8020 <span class="kw">if</span> <span class="fu">inrange</span>(rep78, 3, 5), <span class="kw">by</span>(rep78)</span></code></pre></div>
 </div>
-<div id="documentar-tu-programa" class="section level3" number="2.5.11">
+<div id="documentar-tu-programa" class="section level3" number="3.4.11">
 <h3>
-<span class="header-section-number">2.5.11</span> Documentar tu programa<a class="anchor" aria-label="anchor" href="#documentar-tu-programa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.11</span> Documentar tu programa<a class="anchor" aria-label="anchor" href="#documentar-tu-programa"><i class="fas fa-link"></i></a>
 </h3>
 <p>Escribir un help</p>
 <ul>
@@ -3062,9 +2287,9 @@ Instalar Sublime</p></li>
 </li>
 </ul>
 </div>
-<div id="escribir-programas-e-class" class="section level3" number="2.5.12">
+<div id="escribir-programas-e-class" class="section level3" number="3.4.12">
 <h3>
-<span class="header-section-number">2.5.12</span> Escribir programas e-class<a class="anchor" aria-label="anchor" href="#escribir-programas-e-class"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.12</span> Escribir programas e-class<a class="anchor" aria-label="anchor" href="#escribir-programas-e-class"><i class="fas fa-link"></i></a>
 </h3>
 <p>Vamos a aprender algunos elementos que nos van a permitir escribir nuestros propios comandos de estimación en Stata. Muchos de los conceptos que hemos visto aplican también para este tipo de comandos. Es necesario recordar algunas convenciones que nos van a ser útiles para poder escribir nuestros programas.</p>
 <ul>
@@ -3080,13 +2305,13 @@ Instalar Sublime</p></li>
 <p>Es conveniente utilizar los nombres típicamente asignados para guardar resultados de los programas <code>e(df_m)</code> o <code>e(df_r)</code>. Sin embargo, se pueden nombrar como deseen.</p>
 </div>
 </div>
-<div id="programar-ado---files-parte-iii" class="section level2" number="2.6">
+<div id="programar-ado---files-parte-iii" class="section level2" number="3.5">
 <h2>
-<span class="header-section-number">2.6</span> Programar ado - files (Parte III)<a class="anchor" aria-label="anchor" href="#programar-ado---files-parte-iii"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5</span> Programar ado - files (Parte III)<a class="anchor" aria-label="anchor" href="#programar-ado---files-parte-iii"><i class="fas fa-link"></i></a>
 </h2>
-<div id="marksample-mark-y-markout" class="section level3" number="2.6.1">
+<div id="marksample-mark-y-markout" class="section level3" number="3.5.1">
 <h3>
-<span class="header-section-number">2.6.1</span> Marksample, Mark y Markout<a class="anchor" aria-label="anchor" href="#marksample-mark-y-markout"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.1</span> Marksample, Mark y Markout<a class="anchor" aria-label="anchor" href="#marksample-mark-y-markout"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>marksample</code> y <code>mark</code> son alternativas. <code>mark</code> no es muy utilizado. Ambos comandos crean un indicador que marcan que observaciones será utilizadas. Los ocupadmos en los programas en Stata. La idea es indicarle al programa la muestra relevante. <code>markout</code> marca la variable con un indicador igual a 0 si cualquier variable en <code>varlist</code> indicada contiene un <em>missing</em>.</p>
 <p>Marksample</p>
@@ -3166,19 +2391,19 @@ Instalar Sublime</p></li>
 <span id="cb170-4"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="ot">`varlist'</span> [<span class="ot">`weight'`exp'</span>] <span class="kw">if</span> <span class="ot">`touse'</span>, <span class="ot">`detail'</span> <span class="ot">`format'</span></span>
 <span id="cb170-5"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
-<div id="sortpreserve" class="section level3" number="2.6.2">
+<div id="sortpreserve" class="section level3" number="3.5.2">
 <h3>
-<span class="header-section-number">2.6.2</span> Sortpreserve<a class="anchor" aria-label="anchor" href="#sortpreserve"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.2</span> Sortpreserve<a class="anchor" aria-label="anchor" href="#sortpreserve"><i class="fas fa-link"></i></a>
 </h3>
 <p>Si está escribiendo un programa de Stata que cambia temporalmente el orden de los datos y quieres que los datos se ordenen en su orden original al final de la ejecución, puede ahorrar un poco de programación incluyendo <code>sortpreserve</code>. Para ellos debemos escribir: <code>program miprograma, sortpreserve</code>. Stata automáticamente reordenara las variables como estaban originalmente. Al agregar esta opción se genera una variable temporal llamada <code>_sortindex</code> la que contiene el orden original de los datos.</p>
 </div>
-<div id="mata" class="section level3" number="2.6.3">
+<div id="mata" class="section level3" number="3.5.3">
 <h3>
-<span class="header-section-number">2.6.3</span> Mata<a class="anchor" aria-label="anchor" href="#mata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.3</span> Mata<a class="anchor" aria-label="anchor" href="#mata"><i class="fas fa-link"></i></a>
 </h3>
-<div id="qué-es-mata" class="section level4" number="2.6.3.1">
+<div id="qué-es-mata" class="section level4" number="3.5.3.1">
 <h4>
-<span class="header-section-number">2.6.3.1</span> ¿Qué es Mata?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-mata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.3.1</span> ¿Qué es Mata?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-mata"><i class="fas fa-link"></i></a>
 </h4>
 <p>Esta introducción esta basada en la guía de <a href="https://medium.com/the-stata-guide/mata-statas-end-game-5983c0ee11bd">Asjad Naqvi</a>.</p>
 <ul>
@@ -3244,9 +2469,9 @@ Instalar Sublime</p></li>
 <p><strong>Para hacer comentarios</strong> en Mata hay que utilizar <code>//</code>. No funcionan los asteriscos como en Stata. Todo los que se genera en Mata queda en la memoria a menos que Stata se cierre, se use <code>clear all</code>en Stata o bien <code>mata: mata clear</code>. Todas las matrices y funciones definidas se mantienen en el espacio de trabajo de Mata espacio de trabajo cuando se termina mata y se puede acceder a ellas cuando se vuelve a entrar en
 mata.</p>
 </div>
-<div id="matrices" class="section level4" number="2.6.3.2">
+<div id="matrices" class="section level4" number="3.5.3.2">
 <h4>
-<span class="header-section-number">2.6.3.2</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.3.2</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
 </h4>
 <p>Una forma común de generar una matriz en Mata es importándola desde los datos de Stata.</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb175-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span>: X = st_data(.,(<span class="st">"var1"</span>, <span class="st">"var2"</span>))</span></code></pre></div>
@@ -3418,9 +2643,9 @@ mata.</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb193-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb193-1" aria-hidden="true" tabindex="-1"></a>(a ? b : c)</span></code></pre></div>
 <p>“a” es la condición, “b” es el valor en caso de que sea verdadero y “c” en caso de que sea falsa. Para el ejemplo, la condición sería: <code>(x &gt; i ? 1 : 0)</code>.</p>
 </div>
-<div id="de-stata-a-mata" class="section level4" number="2.6.3.3">
+<div id="de-stata-a-mata" class="section level4" number="3.5.3.3">
 <h4>
-<span class="header-section-number">2.6.3.3</span> De Stata a Mata<a class="anchor" aria-label="anchor" href="#de-stata-a-mata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.3.3</span> De Stata a Mata<a class="anchor" aria-label="anchor" href="#de-stata-a-mata"><i class="fas fa-link"></i></a>
 </h4>
 <p>Estimar un MCO: Un ejemplo estándar es hacer un simple OLS en Mata.</p>
 <div class="sourceCode" id="cb194"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb194-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto, <span class="kw">clear</span></span>
@@ -3442,9 +2667,9 @@ mata.</p>
 <li>En el último paso, las betas y los errores estándar se exportan a Stata como matrices de Stata.</li>
 </ul>
 </div>
-<div id="funciones-en-mata" class="section level4" number="2.6.3.4">
+<div id="funciones-en-mata" class="section level4" number="3.5.3.4">
 <h4>
-<span class="header-section-number">2.6.3.4</span> Funciones en Mata<a class="anchor" aria-label="anchor" href="#funciones-en-mata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.3.4</span> Funciones en Mata<a class="anchor" aria-label="anchor" href="#funciones-en-mata"><i class="fas fa-link"></i></a>
 </h4>
 <p>Vector: Un ejemplo estándar es hacer un simple OLS en Mata.</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb195-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb195-1" aria-hidden="true" tabindex="-1"></a>* Generar un <span class="kw">vector</span> </span>
@@ -3507,14 +2732,14 @@ mata.</p>
 </div>
 </div>
 </div>
-<div id="exportar-información" class="section level2" number="2.7">
+<div id="exportar-información" class="section level2" number="3.6">
 <h2>
-<span class="header-section-number">2.7</span> Exportar Información<a class="anchor" aria-label="anchor" href="#exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6</span> Exportar Información<a class="anchor" aria-label="anchor" href="#exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h2>
 <p>Exportar información es parte importante del proceso de análisis de datos. En esta sección veremos algunas herramientas que permiten conectar los resultados del análisis hecho en Stata con los reportes que queremos crear en Word.</p>
-<div id="stata-markdown" class="section level3" number="2.7.1">
+<div id="stata-markdown" class="section level3" number="3.6.1">
 <h3>
-<span class="header-section-number">2.7.1</span> Stata Markdown<a class="anchor" aria-label="anchor" href="#stata-markdown"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.1</span> Stata Markdown<a class="anchor" aria-label="anchor" href="#stata-markdown"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Herramienta para crear informes que sean reproducibles y en donde los datos, códigos y operaciones están conectadas.<br>
@@ -3544,9 +2769,9 @@ mata.</p>
 <li>
 <strong>Stata Markdown:</strong> Es la variación especifica para Stata. Se implementa a través del comando <code>markstat</code> hecho por <a href="https://data.princeton.edu/stata/markdown">Germán Rodriguez</a>. Estos archivos tiene extensión <code>.stmd</code>.</li>
 </ul>
-<div id="instalación" class="section level4" number="2.7.1.1">
+<div id="instalación" class="section level4" number="3.6.1.1">
 <h4>
-<span class="header-section-number">2.7.1.1</span> Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.1.1</span> Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <p>En Stata, ejecuta estos comandos:</p>
 <ul>
@@ -3561,9 +2786,9 @@ mata.</p>
 </ul>
 <div class="sourceCode" id="cb199"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb199-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb199-1" aria-hidden="true" tabindex="-1"></a>whereis pandoc <span class="st">"C:\Users</span><span class="ch">\n</span><span class="st">icol\AppData\Local\Pandoc\pandoc.exe"</span></span></code></pre></div>
 </div>
-<div id="funcionalidades" class="section level4" number="2.7.1.2">
+<div id="funcionalidades" class="section level4" number="3.6.1.2">
 <h4>
-<span class="header-section-number">2.7.1.2</span> Funcionalidades<a class="anchor" aria-label="anchor" href="#funcionalidades"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.1.2</span> Funcionalidades<a class="anchor" aria-label="anchor" href="#funcionalidades"><i class="fas fa-link"></i></a>
 </h4>
 <p>Algunos elementos que vamos a utilizar en Stata Markdown:</p>
 <ul>
@@ -3575,9 +2800,9 @@ mata.</p>
 <li>Insertar quiebres de páginas: <code>\newpage</code>.</li>
 </ul>
 </div>
-<div id="generar-un-documento" class="section level4" number="2.7.1.3">
+<div id="generar-un-documento" class="section level4" number="3.6.1.3">
 <h4>
-<span class="header-section-number">2.7.1.3</span> Generar un documento<a class="anchor" aria-label="anchor" href="#generar-un-documento"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.1.3</span> Generar un documento<a class="anchor" aria-label="anchor" href="#generar-un-documento"><i class="fas fa-link"></i></a>
 </h4>
 <p>Como mencionamos anteriormente es posible generar un documento de word, pdf o html que contenga todos los códigos, resultados, tablas y figuras hechas en Stata. Para generar un documento es necesario:</p>
 <ul>
@@ -3587,14 +2812,14 @@ mata.</p>
 <div class="sourceCode" id="cb200"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb200-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb200-1" aria-hidden="true" tabindex="-1"></a>markstat <span class="kw">using</span> ejemplo1, <span class="ot">strict</span> docx</span></code></pre></div>
 </div>
 </div>
-<div id="putdocx" class="section level3" number="2.7.2">
+<div id="putdocx" class="section level3" number="3.6.2">
 <h3>
-<span class="header-section-number">2.7.2</span> Putdocx<a class="anchor" aria-label="anchor" href="#putdocx"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.2</span> Putdocx<a class="anchor" aria-label="anchor" href="#putdocx"><i class="fas fa-link"></i></a>
 </h3>
 <p>La ventaja de <code>putdocx</code> radica en que es posible personalizar un poco más las tablas. Esto permite conectar el informe final con el trabajo de análisis de datos.</p>
-<div id="algunos-comandos-útiles" class="section level4" number="2.7.2.1">
+<div id="algunos-comandos-útiles" class="section level4" number="3.6.2.1">
 <h4>
-<span class="header-section-number">2.7.2.1</span> Algunos comandos útiles<a class="anchor" aria-label="anchor" href="#algunos-comandos-%C3%BAtiles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.2.1</span> Algunos comandos útiles<a class="anchor" aria-label="anchor" href="#algunos-comandos-%C3%BAtiles"><i class="fas fa-link"></i></a>
 </h4>
 <p>Crear, pegar y guardar documentos:</p>
 <ul>
@@ -3617,22 +2842,22 @@ mata.</p>
 * <code>putdocx text</code>: Agrega un bloque de texto a un párrafo.
 * <code>putdocx image</code>: Agrega una imagen al párrafo.</p>
 </div>
-<div id="tablas" class="section level4" number="2.7.2.2">
+<div id="tablas" class="section level4" number="3.6.2.2">
 <h4>
-<span class="header-section-number">2.7.2.2</span> Tablas:<a class="anchor" aria-label="anchor" href="#tablas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.2.2</span> Tablas:<a class="anchor" aria-label="anchor" href="#tablas"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>putdocx table</code>: Crea una nueva tabla en el documento la que puede contener resultados de estimaciones, estadística descriptiva o datos.
 <code>putdocx sectionbreak</code>: Agrega una nueva sección.</p>
 </div>
 </div>
 </div>
-<div id="manejo-de-grandes-bases-de-datos-en-stata" class="section level2" number="2.8">
+<div id="manejo-de-grandes-bases-de-datos-en-stata" class="section level2" number="3.7">
 <h2>
-<span class="header-section-number">2.8</span> Manejo de grandes bases de datos en Stata<a class="anchor" aria-label="anchor" href="#manejo-de-grandes-bases-de-datos-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7</span> Manejo de grandes bases de datos en Stata<a class="anchor" aria-label="anchor" href="#manejo-de-grandes-bases-de-datos-en-stata"><i class="fas fa-link"></i></a>
 </h2>
-<div id="estilo-de-codificación-mejorar-velocidad-y-eficiencia" class="section level3" number="2.8.1">
+<div id="estilo-de-codificación-mejorar-velocidad-y-eficiencia" class="section level3" number="3.7.1">
 <h3>
-<span class="header-section-number">2.8.1</span> Estilo de codificación: mejorar velocidad y eficiencia<a class="anchor" aria-label="anchor" href="#estilo-de-codificaci%C3%B3n-mejorar-velocidad-y-eficiencia"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.1</span> Estilo de codificación: mejorar velocidad y eficiencia<a class="anchor" aria-label="anchor" href="#estilo-de-codificaci%C3%B3n-mejorar-velocidad-y-eficiencia"><i class="fas fa-link"></i></a>
 </h3>
 <p>Esta introducción esta basada en <strong>Suggestions on Stata programming style</strong> de Nicholas J. Cox.</p>
 <p>Un buen estilo de codificación es por sobre todo <strong>claridad</strong>. Lo más importante es tener una <strong>estrategia</strong> y seguirla. En esta sección nos enfocaremos en algunos consejos de codificación que nos van a permitir mejorar la velocidad y eficiencia en el uso de Stata. Este punto es especialmente relevante cuando se trabaja con grandes bases de datos. Una lista de formas básicas de <strong>aumentar la velocidad y eficiencia</strong> al manejar grandes bases de datos:</p>
@@ -3650,9 +2875,9 @@ mata.</p>
 <li>Evite utilizar una variable para mantener una constante; una macro o un escalar suele ser todo lo que se necesita.</li>
 </ul>
 </div>
-<div id="cargar-grandes-bases-de-datos" class="section level3" number="2.8.2">
+<div id="cargar-grandes-bases-de-datos" class="section level3" number="3.7.2">
 <h3>
-<span class="header-section-number">2.8.2</span> Cargar grandes bases de datos<a class="anchor" aria-label="anchor" href="#cargar-grandes-bases-de-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.2</span> Cargar grandes bases de datos<a class="anchor" aria-label="anchor" href="#cargar-grandes-bases-de-datos"><i class="fas fa-link"></i></a>
 </h3>
 <p>Cuatro aspectos que considerar siempre que se desee cargar en Stata alguna base de datos de un tamaño considerable:</p>
 <ol style="list-style-type: decimal">
@@ -3676,9 +2901,9 @@ mata.</p>
 <li>¿Su conjunto de datos contiene muchas observaciones idénticas?: Debe transformar el conjunto de datos en un conjunto de datos ponderado por frecuencia.</li>
 </ol>
 </div>
-<div id="reducir-el-uso-de-memoria" class="section level3" number="2.8.3">
+<div id="reducir-el-uso-de-memoria" class="section level3" number="3.7.3">
 <h3>
-<span class="header-section-number">2.8.3</span> Reducir el uso de memoria<a class="anchor" aria-label="anchor" href="#reducir-el-uso-de-memoria"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.3</span> Reducir el uso de memoria<a class="anchor" aria-label="anchor" href="#reducir-el-uso-de-memoria"><i class="fas fa-link"></i></a>
 </h3>
 <p>Cuando usted trabaja con un conjunto de datos en Stata, Stata debe cargar todo el conjunto de datos en la memoria de la computadora (RAM). Afortunadamente, las computadoras portátiles de hoy tienen más memoria que la mayoría de los servidores de hace 20 años, y la mayoría de la gente nunca tiene que preocuparse por la cantidad de memoria que Stata está utilizando.</p>
 <p>¿Me tengo que preocupar de la memoria?</p>
@@ -3688,17 +2913,17 @@ mata.</p>
 <li>¿Cuando es mucho?: un Laptop tipico tiene 16gb.</li>
 </ul>
 </div>
-<div id="reducir-el-tamaño-de-la-base-de-datos" class="section level3" number="2.8.4">
+<div id="reducir-el-tamaño-de-la-base-de-datos" class="section level3" number="3.7.4">
 <h3>
-<span class="header-section-number">2.8.4</span> Reducir el tamaño de la base de datos<a class="anchor" aria-label="anchor" href="#reducir-el-tama%C3%B1o-de-la-base-de-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.4</span> Reducir el tamaño de la base de datos<a class="anchor" aria-label="anchor" href="#reducir-el-tama%C3%B1o-de-la-base-de-datos"><i class="fas fa-link"></i></a>
 </h3>
 <p>Elimina datos innecesarios. Utiliza tipos de variables pequeños: <code>help datatypes</code>. Siempre que crees una variable es una buena practica especificar el tipo de dato. Acortar cadenas o codificarlas: <code>strings</code> requieren un byte por caracteres.</p>
 <p>Sin embargo, para las observaciones todas tienen el mismo tamaño. Si tengo una variable que contiene: “Si”, “No”, “No lo se”. La variable utilizara 8 bytes por observación tal como si solo tuviese “No lo se”. Si tu cambias “no lo se” por “ns”. Ahora solo se utilizaran 2 bytes por observacion. Si tu cambias a: “S”, “N”, “I” solo utilizara un byte por observación.</p>
 <p>Codificar la variable de <code>string</code> como una variable númerica tambien reduce el espacio en memerio a un byte por observación. Se recomiendo agregar <code>labels</code> y trabajar los <code>string</code> de esta forma cuando sea posible.</p>
 </div>
-<div id="eliminar-siempre-resultados-intermedios-incluso-temporales" class="section level3" number="2.8.5">
+<div id="eliminar-siempre-resultados-intermedios-incluso-temporales" class="section level3" number="3.7.5">
 <h3>
-<span class="header-section-number">2.8.5</span> Eliminar siempre resultados intermedios, incluso temporales<a class="anchor" aria-label="anchor" href="#eliminar-siempre-resultados-intermedios-incluso-temporales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.5</span> Eliminar siempre resultados intermedios, incluso temporales<a class="anchor" aria-label="anchor" href="#eliminar-siempre-resultados-intermedios-incluso-temporales"><i class="fas fa-link"></i></a>
 </h3>
 <p>Elimina resultados intermedios. Si creas variables para almacenar resultados intermedios, elimínelas tan pronto como haya terminado con ellas.</p>
 <p>Por ejemplo, el siguiente código crea una variable llamada incomePovertyRatio sólo para poder crear una variable indicadora lowIncome que identifica a los sujetos cuyos ingresos son inferiores al 150% del nivel de pobreza</p>
@@ -3707,16 +2932,16 @@ mata.</p>
 <span id="cb204-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> incomePovertyRatio</span></code></pre></div>
 <p>Debes eliminar la variable que no utilizas. Hacer esto siempre.</p>
 </div>
-<div id="dividir-en-trozos-cuando-sea-posible" class="section level3" number="2.8.6">
+<div id="dividir-en-trozos-cuando-sea-posible" class="section level3" number="3.7.6">
 <h3>
-<span class="header-section-number">2.8.6</span> Dividir en trozos cuando sea posible<a class="anchor" aria-label="anchor" href="#dividir-en-trozos-cuando-sea-posible"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.6</span> Dividir en trozos cuando sea posible<a class="anchor" aria-label="anchor" href="#dividir-en-trozos-cuando-sea-posible"><i class="fas fa-link"></i></a>
 </h3>
 <p>Si un conjunto de datos es demasiado grande para cargarlo en la memoria, para algunas tareas puede dividirlo en un conjunto de conjuntos de datos más pequeños y trabajar con ellos de uno en uno. Puede haber una variable categórica en el conjunto de datos de tal manera que un conjunto de datos separado para cada categoría funcionaría bien, o puede dividirlo por número de observación.</p>
 <p>Dividir el conjunto de datos en trozos más pequeños probablemente sólo tiene sentido si puedes reducir el tamaño de cada trozo para que al final puedas combinarlos todos en un único conjunto de datos que pueda cargarse en la memoria.</p>
 </div>
-<div id="sort" class="section level3" number="2.8.7">
+<div id="sort" class="section level3" number="3.7.7">
 <h3>
-<span class="header-section-number">2.8.7</span> Sort<a class="anchor" aria-label="anchor" href="#sort"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.7</span> Sort<a class="anchor" aria-label="anchor" href="#sort"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>sort</code> en Stata es razonablemente eficiente: un millón de valores aleatorios pueden ponerse en orden creciente en menos de 3 segundos con <code>sort x</code>. Sin embargo, el comando no tiene una opción inversa para ordenar de mayor a menor.</p>
 <p><code>gsort</code> hace una ordenación decreciente de forma ineficiente - ordena de forma creciente en x, y luego ordena de forma creciente en menos <code>_n</code>. Esencialmente está haciendo:</p>
@@ -3728,21 +2953,21 @@ mata.</p>
 <div class="sourceCode" id="cb206"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb206-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> negx = -x</span>
 <span id="cb206-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb206-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">sort</span> negx</span></code></pre></div>
 </div>
-<div id="selección-de-muestra" class="section level3" number="2.8.8">
+<div id="selección-de-muestra" class="section level3" number="3.7.8">
 <h3>
-<span class="header-section-number">2.8.8</span> Selección de muestra<a class="anchor" aria-label="anchor" href="#selecci%C3%B3n-de-muestra"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.8</span> Selección de muestra<a class="anchor" aria-label="anchor" href="#selecci%C3%B3n-de-muestra"><i class="fas fa-link"></i></a>
 </h3>
 <p>Separar la selección de variables de la inclusión. Para minimizar la cantidad de memoria utilizada, necesitamos separar la decisión de selección de la muestra de la decisión de inclusión de la variable.</p>
 </div>
-<div id="precaución-con-reshape" class="section level3" number="2.8.9">
+<div id="precaución-con-reshape" class="section level3" number="3.7.9">
 <h3>
-<span class="header-section-number">2.8.9</span> Precaución con reshape<a class="anchor" aria-label="anchor" href="#precauci%C3%B3n-con-reshape"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.9</span> Precaución con reshape<a class="anchor" aria-label="anchor" href="#precauci%C3%B3n-con-reshape"><i class="fas fa-link"></i></a>
 </h3>
 <p>El comando <code>reshape</code> es inexplicablemente lento. 13 segundos por millón de observaciones en mi computadora. Es importante pensar en codificación y buscar más opciones para hacer <code>reshape</code>. Se puede escribir un archivo separado para cada año de datos, y luego concatenarlos en un largo conjunto de datos en unos 2 segundos.</p>
 </div>
-<div id="subexpresiones-comunes" class="section level3" number="2.8.10">
+<div id="subexpresiones-comunes" class="section level3" number="3.7.10">
 <h3>
-<span class="header-section-number">2.8.10</span> Subexpresiones comunes<a class="anchor" aria-label="anchor" href="#subexpresiones-comunes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.10</span> Subexpresiones comunes<a class="anchor" aria-label="anchor" href="#subexpresiones-comunes"><i class="fas fa-link"></i></a>
 </h3>
 <p>A menudo, varias sentencias generate o replace tendrán subexpresiones comunes.</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb207-1"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> <span class="fu">y</span> = a <span class="kw">if</span> c==<span class="kw">d</span> &amp; <span class="fu">e</span>==f</span>
@@ -3752,38 +2977,38 @@ mata.</p>
 <span id="cb208-2"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb208-2" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> <span class="fu">y</span> = a <span class="kw">if</span> smpl</span>
 <span id="cb208-3"><a href="an%C3%A1lisis-de-datos-con-stata.html#cb208-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> x = b <span class="kw">if</span> smpl</span></code></pre></div>
 </div>
-<div id="recomendaciones-adicionales" class="section level3" number="2.8.11">
+<div id="recomendaciones-adicionales" class="section level3" number="3.7.11">
 <h3>
-<span class="header-section-number">2.8.11</span> Recomendaciones Adicionales<a class="anchor" aria-label="anchor" href="#recomendaciones-adicionales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.11</span> Recomendaciones Adicionales<a class="anchor" aria-label="anchor" href="#recomendaciones-adicionales"><i class="fas fa-link"></i></a>
 </h3>
-<div id="collapse" class="section level4" number="2.8.11.1">
+<div id="collapse" class="section level4" number="3.7.11.1">
 <h4>
-<span class="header-section-number">2.8.11.1</span> Collapse<a class="anchor" aria-label="anchor" href="#collapse"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.11.1</span> Collapse<a class="anchor" aria-label="anchor" href="#collapse"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>collapse</code> no es muy rápido. El autor, sin duda, supuso que aunque se utilizara con grandes conjuntos de datos, no estaría dentro de una iteración. Pero a veces lo está, y puede convertirse en el paso limitante de la velocidad en un programa de larga duración. Se puede reemplazar fácilmente con código más rápido, pero el beneficio total no es tan grande como uno esperaría. Mejor ocupar <code>gtools</code>.</p>
 </div>
-<div id="egen" class="section level4" number="2.8.11.2">
+<div id="egen" class="section level4" number="3.7.11.2">
 <h4>
-<span class="header-section-number">2.8.11.2</span> Egen<a class="anchor" aria-label="anchor" href="#egen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.11.2</span> Egen<a class="anchor" aria-label="anchor" href="#egen"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>egen</code> tambien puede ser adecuado para que funcione más rapido. Vamos a ver un ejemplo calculando el máximo de una variable.</p>
 </div>
-<div id="regresiones-en-sub-grupos" class="section level4" number="2.8.11.3">
+<div id="regresiones-en-sub-grupos" class="section level4" number="3.7.11.3">
 <h4>
-<span class="header-section-number">2.8.11.3</span> Regresiones en sub-grupos<a class="anchor" aria-label="anchor" href="#regresiones-en-sub-grupos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.11.3</span> Regresiones en sub-grupos<a class="anchor" aria-label="anchor" href="#regresiones-en-sub-grupos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Exiten varias opciones para calcular regresiones según el tipo de datos que queramos incluir en nuestra muestra. Vamos a ver distintas opciones y ver su desempeño en bases de datos grandes.</p>
 </div>
-<div id="recode" class="section level4" number="2.8.11.4">
+<div id="recode" class="section level4" number="3.7.11.4">
 <h4>
-<span class="header-section-number">2.8.11.4</span> Recode<a class="anchor" aria-label="anchor" href="#recode"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.11.4</span> Recode<a class="anchor" aria-label="anchor" href="#recode"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>recode</code> puede ser modificado utilizando matrices. Otra opción es utilizar <code>ggtools</code></p>
 </div>
 </div>
-<div id="resumen" class="section level3" number="2.8.12">
+<div id="resumen" class="section level3" number="3.7.12">
 <h3>
-<span class="header-section-number">2.8.12</span> Resumen<a class="anchor" aria-label="anchor" href="#resumen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.12</span> Resumen<a class="anchor" aria-label="anchor" href="#resumen"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Utilizar <code>compress</code>.
@@ -3801,93 +3026,84 @@ mata.</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Introducción</a></div>
-<div class="next"><a href="referencias.html"><span class="header-section-number">3</span> Referencias</a></div>
+<div class="prev"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">2</span> Buenas prácticas de programación y visualización</a></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#an%C3%A1lisis-de-datos-con-stata"><span class="header-section-number">2</span> Análisis de datos con Stata</a></li>
+<li><a class="nav-link" href="#an%C3%A1lisis-de-datos-con-stata"><span class="header-section-number">3</span> Análisis de datos con Stata</a></li>
 <li>
-<a class="nav-link" href="#buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n"><span class="header-section-number">2.1</span> Buenas prácticas de programación y visualización</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#introducci%C3%B3n-1"><span class="header-section-number">2.1.1</span> Introducción</a></li>
-<li><a class="nav-link" href="#estilo-de-codificaci%C3%B3n-en-stata"><span class="header-section-number">2.1.2</span> Estilo de codificación en Stata</a></li>
-<li><a class="nav-link" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><span class="header-section-number">2.1.3</span> Organización de un proyecto en Stata</a></li>
-<li><a class="nav-link" href="#buenas-practicas-de-visualizaci%C3%B3n"><span class="header-section-number">2.1.4</span> Buenas practicas de visualización</a></li>
-<li><a class="nav-link" href="#sublime-text"><span class="header-section-number">2.1.5</span> Sublime Text</a></li>
+<a class="nav-link" href="#programar-do---files-parte-i"><span class="header-section-number">3.1</span> Programar do - files (Parte I)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#programar-en-stata"><span class="header-section-number">3.1.1</span> Programar en Stata</a></li>
+<li><a class="nav-link" href="#comandos-y-funciones-claves-y-algunos-detalles"><span class="header-section-number">3.1.2</span> Comandos y funciones claves (y algunos detalles)}</a></li>
+<li><a class="nav-link" href="#macros-locales-y-globales"><span class="header-section-number">3.1.3</span> Macros locales y globales</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#programar-do---files-parte-i"><span class="header-section-number">2.2</span> Programar do - files (Parte I)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#programar-en-stata"><span class="header-section-number">2.2.1</span> Programar en Stata</a></li>
-<li><a class="nav-link" href="#comandos-y-funciones-claves-y-algunos-detalles"><span class="header-section-number">2.2.2</span> Comandos y funciones claves (y algunos detalles)}</a></li>
-<li><a class="nav-link" href="#macros-locales-y-globales"><span class="header-section-number">2.2.3</span> Macros locales y globales</a></li>
+<a class="nav-link" href="#programar-do---files-parte-ii"><span class="header-section-number">3.2</span> Programar do - files (Parte II)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estructuras-de-datos"><span class="header-section-number">3.2.1</span> Estructuras de datos</a></li>
+<li><a class="nav-link" href="#iteradores"><span class="header-section-number">3.2.2</span> Iteradores</a></li>
+<li><a class="nav-link" href="#manejo-de-bases-de-datos"><span class="header-section-number">3.2.3</span> Manejo de bases de datos</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#programar-do---files-parte-ii"><span class="header-section-number">2.3</span> Programar do - files (Parte II)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#estructuras-de-datos"><span class="header-section-number">2.3.1</span> Estructuras de datos</a></li>
-<li><a class="nav-link" href="#iteradores"><span class="header-section-number">2.3.2</span> Iteradores</a></li>
-<li><a class="nav-link" href="#manejo-de-bases-de-datos"><span class="header-section-number">2.3.3</span> Manejo de bases de datos</a></li>
+<a class="nav-link" href="#programar-ado---files-parte-i"><span class="header-section-number">3.3</span> Programar ado - files (Parte I)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#escribir-programas-en-stata"><span class="header-section-number">3.3.1</span> Escribir programas en Stata</a></li>
+<li><a class="nav-link" href="#por-qu%C3%A9-escribir-programas-abstracci%C3%B3n"><span class="header-section-number">3.3.2</span> ¿Por qué escribir programas?: Abstracción</a></li>
+<li><a class="nav-link" href="#mis-primeros-programas-en-stata"><span class="header-section-number">3.3.3</span> Mis primeros programas en Stata</a></li>
+<li><a class="nav-link" href="#programa-con-distintos-argumentos"><span class="header-section-number">3.3.4</span> Programa con distintos argumentos</a></li>
+<li><a class="nav-link" href="#opci%C3%B3n-syntax"><span class="header-section-number">3.3.5</span> Opción Syntax</a></li>
+<li><a class="nav-link" href="#return"><span class="header-section-number">3.3.6</span> Return</a></li>
+<li><a class="nav-link" href="#implementar-opciones-al-programa"><span class="header-section-number">3.3.7</span> Implementar opciones al programa</a></li>
+<li><a class="nav-link" href="#incluir-ifin-al-programa"><span class="header-section-number">3.3.8</span> Incluir if/in al programa</a></li>
+<li><a class="nav-link" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables"><span class="header-section-number">3.3.9</span> Generalizar el comando para incluir múltiples variables</a></li>
+<li><a class="nav-link" href="#agregar-prefijos-a-los-programas"><span class="header-section-number">3.3.10</span> Agregar prefijos a los programas</a></li>
+<li><a class="nav-link" href="#programas-para-complementar-funci%C3%B3n-egen"><span class="header-section-number">3.3.11</span> Programas para complementar función egen</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#programar-ado---files-parte-i"><span class="header-section-number">2.4</span> Programar ado - files (Parte I)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#escribir-programas-en-stata"><span class="header-section-number">2.4.1</span> Escribir programas en Stata</a></li>
-<li><a class="nav-link" href="#por-qu%C3%A9-escribir-programas-abstracci%C3%B3n"><span class="header-section-number">2.4.2</span> ¿Por qué escribir programas?: Abstracción</a></li>
-<li><a class="nav-link" href="#mis-primeros-programas-en-stata"><span class="header-section-number">2.4.3</span> Mis primeros programas en Stata</a></li>
-<li><a class="nav-link" href="#programa-con-distintos-argumentos"><span class="header-section-number">2.4.4</span> Programa con distintos argumentos</a></li>
-<li><a class="nav-link" href="#opci%C3%B3n-syntax"><span class="header-section-number">2.4.5</span> Opción Syntax</a></li>
-<li><a class="nav-link" href="#return"><span class="header-section-number">2.4.6</span> Return</a></li>
-<li><a class="nav-link" href="#implementar-opciones-al-programa"><span class="header-section-number">2.4.7</span> Implementar opciones al programa</a></li>
-<li><a class="nav-link" href="#incluir-ifin-al-programa"><span class="header-section-number">2.4.8</span> Incluir if/in al programa</a></li>
-<li><a class="nav-link" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables"><span class="header-section-number">2.4.9</span> Generalizar el comando para incluir múltiples variables</a></li>
-<li><a class="nav-link" href="#agregar-prefijos-a-los-programas"><span class="header-section-number">2.4.10</span> Agregar prefijos a los programas</a></li>
-<li><a class="nav-link" href="#programas-para-complementar-funci%C3%B3n-egen"><span class="header-section-number">2.4.11</span> Programas para complementar función egen</a></li>
+<a class="nav-link" href="#programar-ado---files-parte-ii"><span class="header-section-number">3.4</span> Programar ado - files (Parte II)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#syntax"><span class="header-section-number">3.4.1</span> Syntax</a></li>
+<li><a class="nav-link" href="#varlist"><span class="header-section-number">3.4.2</span> Varlist</a></li>
+<li><a class="nav-link" href="#opciones"><span class="header-section-number">3.4.3</span> Opciones</a></li>
+<li><a class="nav-link" href="#programa-para-calcular-percentiles"><span class="header-section-number">3.4.4</span> Programa para calcular percentiles</a></li>
+<li><a class="nav-link" href="#programa-con-opci%C3%B3n-return"><span class="header-section-number">3.4.5</span> Programa con opción return</a></li>
+<li><a class="nav-link" href="#agregar-opciones-al-programa"><span class="header-section-number">3.4.6</span> Agregar opciones al programa</a></li>
+<li><a class="nav-link" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables-1"><span class="header-section-number">3.4.7</span> Generalizar el comando para incluir múltiples variables</a></li>
+<li><a class="nav-link" href="#agregar-prefijos-a-los-programas-1"><span class="header-section-number">3.4.8</span> Agregar prefijos a los programas</a></li>
+<li><a class="nav-link" href="#programas-para-complementar-funci%C3%B3n-egen-1"><span class="header-section-number">3.4.9</span> Programas para complementar función egen</a></li>
+<li><a class="nav-link" href="#generalizaci%C3%B3n-de-la-funci%C3%B3n-egen"><span class="header-section-number">3.4.10</span> Generalización de la función egen</a></li>
+<li><a class="nav-link" href="#documentar-tu-programa"><span class="header-section-number">3.4.11</span> Documentar tu programa</a></li>
+<li><a class="nav-link" href="#escribir-programas-e-class"><span class="header-section-number">3.4.12</span> Escribir programas e-class</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#programar-ado---files-parte-ii"><span class="header-section-number">2.5</span> Programar ado - files (Parte II)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#syntax"><span class="header-section-number">2.5.1</span> Syntax</a></li>
-<li><a class="nav-link" href="#varlist"><span class="header-section-number">2.5.2</span> Varlist</a></li>
-<li><a class="nav-link" href="#opciones"><span class="header-section-number">2.5.3</span> Opciones</a></li>
-<li><a class="nav-link" href="#programa-para-calcular-percentiles"><span class="header-section-number">2.5.4</span> Programa para calcular percentiles</a></li>
-<li><a class="nav-link" href="#programa-con-opci%C3%B3n-return"><span class="header-section-number">2.5.5</span> Programa con opción return</a></li>
-<li><a class="nav-link" href="#agregar-opciones-al-programa"><span class="header-section-number">2.5.6</span> Agregar opciones al programa</a></li>
-<li><a class="nav-link" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables-1"><span class="header-section-number">2.5.7</span> Generalizar el comando para incluir múltiples variables</a></li>
-<li><a class="nav-link" href="#agregar-prefijos-a-los-programas-1"><span class="header-section-number">2.5.8</span> Agregar prefijos a los programas</a></li>
-<li><a class="nav-link" href="#programas-para-complementar-funci%C3%B3n-egen-1"><span class="header-section-number">2.5.9</span> Programas para complementar función egen</a></li>
-<li><a class="nav-link" href="#generalizaci%C3%B3n-de-la-funci%C3%B3n-egen"><span class="header-section-number">2.5.10</span> Generalización de la función egen</a></li>
-<li><a class="nav-link" href="#documentar-tu-programa"><span class="header-section-number">2.5.11</span> Documentar tu programa</a></li>
-<li><a class="nav-link" href="#escribir-programas-e-class"><span class="header-section-number">2.5.12</span> Escribir programas e-class</a></li>
+<a class="nav-link" href="#programar-ado---files-parte-iii"><span class="header-section-number">3.5</span> Programar ado - files (Parte III)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#marksample-mark-y-markout"><span class="header-section-number">3.5.1</span> Marksample, Mark y Markout</a></li>
+<li><a class="nav-link" href="#sortpreserve"><span class="header-section-number">3.5.2</span> Sortpreserve</a></li>
+<li><a class="nav-link" href="#mata"><span class="header-section-number">3.5.3</span> Mata</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#programar-ado---files-parte-iii"><span class="header-section-number">2.6</span> Programar ado - files (Parte III)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#marksample-mark-y-markout"><span class="header-section-number">2.6.1</span> Marksample, Mark y Markout</a></li>
-<li><a class="nav-link" href="#sortpreserve"><span class="header-section-number">2.6.2</span> Sortpreserve</a></li>
-<li><a class="nav-link" href="#mata"><span class="header-section-number">2.6.3</span> Mata</a></li>
+<a class="nav-link" href="#exportar-informaci%C3%B3n"><span class="header-section-number">3.6</span> Exportar Información</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#stata-markdown"><span class="header-section-number">3.6.1</span> Stata Markdown</a></li>
+<li><a class="nav-link" href="#putdocx"><span class="header-section-number">3.6.2</span> Putdocx</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#exportar-informaci%C3%B3n"><span class="header-section-number">2.7</span> Exportar Información</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#stata-markdown"><span class="header-section-number">2.7.1</span> Stata Markdown</a></li>
-<li><a class="nav-link" href="#putdocx"><span class="header-section-number">2.7.2</span> Putdocx</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#manejo-de-grandes-bases-de-datos-en-stata"><span class="header-section-number">2.8</span> Manejo de grandes bases de datos en Stata</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#estilo-de-codificaci%C3%B3n-mejorar-velocidad-y-eficiencia"><span class="header-section-number">2.8.1</span> Estilo de codificación: mejorar velocidad y eficiencia</a></li>
-<li><a class="nav-link" href="#cargar-grandes-bases-de-datos"><span class="header-section-number">2.8.2</span> Cargar grandes bases de datos</a></li>
-<li><a class="nav-link" href="#reducir-el-uso-de-memoria"><span class="header-section-number">2.8.3</span> Reducir el uso de memoria</a></li>
-<li><a class="nav-link" href="#reducir-el-tama%C3%B1o-de-la-base-de-datos"><span class="header-section-number">2.8.4</span> Reducir el tamaño de la base de datos</a></li>
-<li><a class="nav-link" href="#eliminar-siempre-resultados-intermedios-incluso-temporales"><span class="header-section-number">2.8.5</span> Eliminar siempre resultados intermedios, incluso temporales</a></li>
-<li><a class="nav-link" href="#dividir-en-trozos-cuando-sea-posible"><span class="header-section-number">2.8.6</span> Dividir en trozos cuando sea posible</a></li>
-<li><a class="nav-link" href="#sort"><span class="header-section-number">2.8.7</span> Sort</a></li>
-<li><a class="nav-link" href="#selecci%C3%B3n-de-muestra"><span class="header-section-number">2.8.8</span> Selección de muestra</a></li>
-<li><a class="nav-link" href="#precauci%C3%B3n-con-reshape"><span class="header-section-number">2.8.9</span> Precaución con reshape</a></li>
-<li><a class="nav-link" href="#subexpresiones-comunes"><span class="header-section-number">2.8.10</span> Subexpresiones comunes</a></li>
-<li><a class="nav-link" href="#recomendaciones-adicionales"><span class="header-section-number">2.8.11</span> Recomendaciones Adicionales</a></li>
-<li><a class="nav-link" href="#resumen"><span class="header-section-number">2.8.12</span> Resumen</a></li>
+<a class="nav-link" href="#manejo-de-grandes-bases-de-datos-en-stata"><span class="header-section-number">3.7</span> Manejo de grandes bases de datos en Stata</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estilo-de-codificaci%C3%B3n-mejorar-velocidad-y-eficiencia"><span class="header-section-number">3.7.1</span> Estilo de codificación: mejorar velocidad y eficiencia</a></li>
+<li><a class="nav-link" href="#cargar-grandes-bases-de-datos"><span class="header-section-number">3.7.2</span> Cargar grandes bases de datos</a></li>
+<li><a class="nav-link" href="#reducir-el-uso-de-memoria"><span class="header-section-number">3.7.3</span> Reducir el uso de memoria</a></li>
+<li><a class="nav-link" href="#reducir-el-tama%C3%B1o-de-la-base-de-datos"><span class="header-section-number">3.7.4</span> Reducir el tamaño de la base de datos</a></li>
+<li><a class="nav-link" href="#eliminar-siempre-resultados-intermedios-incluso-temporales"><span class="header-section-number">3.7.5</span> Eliminar siempre resultados intermedios, incluso temporales</a></li>
+<li><a class="nav-link" href="#dividir-en-trozos-cuando-sea-posible"><span class="header-section-number">3.7.6</span> Dividir en trozos cuando sea posible</a></li>
+<li><a class="nav-link" href="#sort"><span class="header-section-number">3.7.7</span> Sort</a></li>
+<li><a class="nav-link" href="#selecci%C3%B3n-de-muestra"><span class="header-section-number">3.7.8</span> Selección de muestra</a></li>
+<li><a class="nav-link" href="#precauci%C3%B3n-con-reshape"><span class="header-section-number">3.7.9</span> Precaución con reshape</a></li>
+<li><a class="nav-link" href="#subexpresiones-comunes"><span class="header-section-number">3.7.10</span> Subexpresiones comunes</a></li>
+<li><a class="nav-link" href="#recomendaciones-adicionales"><span class="header-section-number">3.7.11</span> Recomendaciones Adicionales</a></li>
+<li><a class="nav-link" href="#resumen"><span class="header-section-number">3.7.12</span> Resumen</a></li>
 </ul>
 </li>
 </ul>

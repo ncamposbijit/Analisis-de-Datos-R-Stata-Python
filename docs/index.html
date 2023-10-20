@@ -18,6 +18,28 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 <link rel="stylesheet" href="style4.css">
 <meta name="description" content="A book created with bookdown.">
 <meta property="og:description" content="A book created with bookdown.">
@@ -44,8 +66,12 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="active" href="index.html"><span class="header-section-number">1</span> Introducción</a></li>
-<li><a class="" href="an%C3%A1lisis-de-datos-con-stata.html"><span class="header-section-number">2</span> Análisis de datos con Stata</a></li>
-<li><a class="" href="referencias.html"><span class="header-section-number">3</span> Referencias</a></li>
+<li><a class="" href="referencias.html"><span class="header-section-number">2</span> Referencias</a></li>
+<li><a class="" href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">3</span> Buenas prácticas de programación y visualización</a></li>
+<li><a class="" href="programar-do---files.html"><span class="header-section-number">4</span> Programar do - files</a></li>
+<li><a class="" href="programar-ado---files.html"><span class="header-section-number">5</span> Programar ado - files</a></li>
+<li><a class="" href="exportar-informaci%C3%B3n.html"><span class="header-section-number">6</span> Exportar Información</a></li>
+<li><a class="" href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">7</span> Manejo de grandes bases de datos en Stata</a></li>
 </ul>
 
         <div class="book-extra">
@@ -57,16 +83,14 @@
 <h1>
 <span class="header-section-number">1</span> Introducción<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n"><i class="fas fa-link"></i></a>
 </h1>
-<p>Estas notas están diseñadas para quienes buscan una introducción al análisis de datos en Stata.</p>
-<p>Se han estructurado como notas de clases, lo que significa que se espera un progreso secuencial a lo largo de las sesiones. Sin embargo, aquellos con conocimientos previos más específicos podrán encontrar útiles secciones individuales, como es el caso particular de las notas sobre Stata. El curso de Stata es de nivel avanzado y se centra en el diseño de programas, el trabajo con matrices en Stata y técnicas avanzadas de replicación.</p>
-<p>Estas notas de clase han evolucionado con el tiempo y continuarán haciéndolo. Han sido enriquecidas gracias a las contribuciones de varias personas. Quisiera agradecer especialmente a Diego Menares y Catalina Buzio por sus valiosos aportes y observaciones. Sin su ayuda, estas notas no serían lo que son hoy. Agradezco especialmente a Benjamin Pinto, quien me ayudo traspasando las notas a este formato.</p>
-<p>Adicionalmente, estas notas se han basado en una variedad de materiales públicos. A lo largo del libro, se señalan las referencias bibliográficas pertinentes y se ofrecen recursos gratuitos para aquellos que deseen ampliar o profundizar sus conocimientos. En muchos casos, los ejemplos provienen de este material complementario. Siempre citamos las fuentes adecuadamente, con el objetivo de respetar la autoría original y facilitar el acceso a recursos para los lectores de este libro.</p>
-<p>Para sugerencias de secciones, dudas o recomendaciones, no dudes en escribirme a <a href="mailto:ncamposbijit@gmail.com" class="email">ncamposbijit@gmail.com</a>.</p>
-
+<p>Estas notas están diseñadas para quienes buscan información avanzada sobre el trabajo con bases de datos en Stata. Han sido estructuradas como apuntes de clase, lo que implica un avance secuencial a lo largo de las sesiones. No obstante, con excepción de la sección sobre creación de programas, cada capítulo puede ser estudiado de forma independiente. El contenido es avanzado y presupone conocimientos básicos a intermedios del programa. Estas notas ponen énfasis en buenas prácticas de programación, diseño de programas (ado files), matrices en Stata (mata), técnicas avanzadas de replicación y gestión de grandes bases de datos.</p>
+<p>Con el tiempo, estas notas de clase han evolucionado y seguirán haciéndolo. Han sido enriquecidas gracias a las contribuciones de diversas personas. Agradezco en especial a Diego Menares y a Catalina Buzio por sus valiosas observaciones y aportaciones. Sin su colaboración, estas notas no serían lo que son hoy. Mi gratitud también para Benjamín Pinto, quien me asistió en la adaptación de las notas a este formato.</p>
+<p>Asimismo, estas notas se fundamentan en diversos materiales de acceso público. A lo largo de ellas, se indican las referencias bibliográficas correspondientes y se proveen recursos gratuitos para quienes deseen ampliar o consolidar sus conocimientos. En muchos casos, los ejemplos se han tomado de este material adicional. Siempre hago esfuerzo por citar adecuadamente las fuentes, con la intención de respetar la autoría original y brindar acceso a recursos valiosos para los lectores de estas notas.</p>
+<p>Para sugerencias, dudas o recomendaciones, no duden en escribirme a <a href="mailto:ncamposbijit@gmail.com" class="email">ncamposbijit@gmail.com</a>.</p>
 </div>
   <div class="chapter-nav">
 <div class="empty"></div>
-<div class="next"><a href="an%C3%A1lisis-de-datos-con-stata.html"><span class="header-section-number">2</span> Análisis de datos con Stata</a></div>
+<div class="next"><a href="referencias.html"><span class="header-section-number">2</span> Referencias</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav"><li><a class="nav-link" href="#introducci%C3%B3n"><span class="header-section-number">1</span> Introducción</a></li></ul>
