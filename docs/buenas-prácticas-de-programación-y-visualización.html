@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>3 Buenas prácticas de programación y visualización | Análisis de Datos con Stata - Nivel avanzado</title>
+<title>2 Buenas prácticas de programación y visualización | Análisis de Datos con Stata - Nivel avanzado</title>
 <meta name="author" content="Nicolás Campos Bijit">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="3 Buenas prácticas de programación y visualización | Análisis de Datos con Stata - Nivel avanzado">
+<meta property="og:title" content="2 Buenas prácticas de programación y visualización | Análisis de Datos con Stata - Nivel avanzado">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3 Buenas prácticas de programación y visualización | Análisis de Datos con Stata - Nivel avanzado">
+<meta name="twitter:title" content="2 Buenas prácticas de programación y visualización | Análisis de Datos con Stata - Nivel avanzado">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -41,9 +41,9 @@
     }
   </style>
 <link rel="stylesheet" href="style4.css">
-<meta name="description" content="3.0.1 Introducción  3.0.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de...">
-<meta property="og:description" content="3.0.1 Introducción  3.0.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de...">
-<meta name="twitter:description" content="3.0.1 Introducción  3.0.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de...">
+<meta name="description" content="2.0.1 Introducción  2.0.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de...">
+<meta property="og:description" content="2.0.1 Introducción  2.0.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de...">
+<meta name="twitter:description" content="2.0.1 Introducción  2.0.1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -66,12 +66,13 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Introducción</a></li>
-<li><a class="" href="referencias.html"><span class="header-section-number">2</span> Referencias</a></li>
-<li><a class="active" href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">3</span> Buenas prácticas de programación y visualización</a></li>
-<li><a class="" href="programar-do---files.html"><span class="header-section-number">4</span> Programar do - files</a></li>
-<li><a class="" href="programar-ado---files.html"><span class="header-section-number">5</span> Programar ado - files</a></li>
-<li><a class="" href="exportar-informaci%C3%B3n.html"><span class="header-section-number">6</span> Exportar Información</a></li>
-<li><a class="" href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">7</span> Manejo de grandes bases de datos en Stata</a></li>
+<li><a class="active" href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">2</span> Buenas prácticas de programación y visualización</a></li>
+<li><a class="" href="programar-do---files.html"><span class="header-section-number">3</span> Programar do - files</a></li>
+<li><a class="" href="programar-ado---files.html"><span class="header-section-number">4</span> Programar ado - files</a></li>
+<li><a class="" href="exportar-informaci%C3%B3n.html"><span class="header-section-number">5</span> Exportar Información</a></li>
+<li><a class="" href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">6</span> Manejo de grandes bases de datos en Stata</a></li>
+<li><a class="" href="mata.html"><span class="header-section-number">7</span> Mata</a></li>
+<li><a class="" href="referencias.html"><span class="header-section-number">8</span> Referencias</a></li>
 </ul>
 
         <div class="book-extra">
@@ -79,17 +80,17 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="buenas-prácticas-de-programación-y-visualización" class="section level1" number="3">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="buenas-prácticas-de-programación-y-visualización" class="section level1" number="2">
 <h1>
-<span class="header-section-number">3</span> Buenas prácticas de programación y visualización<a class="anchor" aria-label="anchor" href="#buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2</span> Buenas prácticas de programación y visualización<a class="anchor" aria-label="anchor" href="#buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h1>
-<div id="introducción-1" class="section level3" number="3.0.1">
+<div id="introducción-1" class="section level3" number="2.0.1">
 <h3>
-<span class="header-section-number">3.0.1</span> Introducción<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.1</span> Introducción<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n-1"><i class="fas fa-link"></i></a>
 </h3>
-<div id="programación-defensiva" class="section level4" number="3.0.1.1">
+<div id="programación-defensiva" class="section level4" number="2.0.1.1">
 <h4>
-<span class="header-section-number">3.0.1.1</span> Programación defensiva<a class="anchor" aria-label="anchor" href="#programaci%C3%B3n-defensiva"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.1.1</span> Programación defensiva<a class="anchor" aria-label="anchor" href="#programaci%C3%B3n-defensiva"><i class="fas fa-link"></i></a>
 </h4>
 <p><strong>Las personas somos malas escribiendo códigos</strong></p>
 <p>Esta sección esta basada en los trabajos y recursos publicados por <a href="https://www.nickeubank.com/">Nick Eubank</a>.</p>
@@ -136,9 +137,9 @@
 <li>Reproducibilidad y replicabilidad son claves. Buenas referencias se encuentran en la página de <a href="https://jschultecloos.github.io/">Julia Schulte-Cloos</a>.</li>
 </ul>
 </div>
-<div id="practica-i-escribir-pruebas" class="section level4" number="3.0.1.2">
+<div id="practica-i-escribir-pruebas" class="section level4" number="2.0.1.2">
 <h4>
-<span class="header-section-number">3.0.1.2</span> Practica I: escribir pruebas<a class="anchor" aria-label="anchor" href="#practica-i-escribir-pruebas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.1.2</span> Practica I: escribir pruebas<a class="anchor" aria-label="anchor" href="#practica-i-escribir-pruebas"><i class="fas fa-link"></i></a>
 </h4>
 <p>¿Qué es escribir pruebas?</p>
 <p><a href="https://www.nickeubank.com/">Nick Eubank</a> indica que si el tuviese que elegir solo una practica elegiría agregar pruebas o tests a los códigos.</p>
@@ -214,9 +215,9 @@
 <p><b>Regla general</b> siempre que te veas a ti misma(o) revisando o chequeando algún segmento de código interactivamente <strong>escribe un test</strong>.</p>
 </div>
 </div>
-<div id="practica-ii-no-duplicar-información" class="section level4" number="3.0.1.3">
+<div id="practica-ii-no-duplicar-información" class="section level4" number="2.0.1.3">
 <h4>
-<span class="header-section-number">3.0.1.3</span> Practica II: no duplicar información<a class="anchor" aria-label="anchor" href="#practica-ii-no-duplicar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.1.3</span> Practica II: no duplicar información<a class="anchor" aria-label="anchor" href="#practica-ii-no-duplicar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <p>Todo en un solo sitio</p>
 <ul>
@@ -249,9 +250,9 @@
 </ul>
 </div>
 </div>
-<div id="practica-iii-no-transcribir-exportar-información" class="section level4" number="3.0.1.4">
+<div id="practica-iii-no-transcribir-exportar-información" class="section level4" number="2.0.1.4">
 <h4>
-<span class="header-section-number">3.0.1.4</span> Practica III: no transcribir, exportar información<a class="anchor" aria-label="anchor" href="#practica-iii-no-transcribir-exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.1.4</span> Practica III: no transcribir, exportar información<a class="anchor" aria-label="anchor" href="#practica-iii-no-transcribir-exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <p>Nunca transcribir</p>
 <ul>
@@ -285,9 +286,9 @@
 <p>Calcula el promedio de <code>literacy_rate</code> y guárdalo en una macro local. Generar un formato tal que solo tenga dos decimales. Guarda el valor como <em>string</em> en un archivo <code>.tex</code> en la misma carpeta.</p>
 </div>
 </div>
-<div id="practica-iv-estilo-importa" class="section level4" number="3.0.1.5">
+<div id="practica-iv-estilo-importa" class="section level4" number="2.0.1.5">
 <h4>
-<span class="header-section-number">3.0.1.5</span> Practica IV: estilo importa<a class="anchor" aria-label="anchor" href="#practica-iv-estilo-importa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.1.5</span> Practica IV: estilo importa<a class="anchor" aria-label="anchor" href="#practica-iv-estilo-importa"><i class="fas fa-link"></i></a>
 </h4>
 <p>Algunos comentarios sobre estilo</p>
 <ul>
@@ -333,13 +334,13 @@
 <span id="cb9-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb9-3" aria-hidden="true" tabindex="-1"></a>su var1</span></code></pre></div>
 </div>
 </div>
-<div id="estilo-de-codificación-en-stata" class="section level3" number="3.0.2">
+<div id="estilo-de-codificación-en-stata" class="section level3" number="2.0.2">
 <h3>
-<span class="header-section-number">3.0.2</span> Estilo de codificación en Stata<a class="anchor" aria-label="anchor" href="#estilo-de-codificaci%C3%B3n-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2</span> Estilo de codificación en Stata<a class="anchor" aria-label="anchor" href="#estilo-de-codificaci%C3%B3n-en-stata"><i class="fas fa-link"></i></a>
 </h3>
-<div id="más-allá-del-orden" class="section level4" number="3.0.2.1">
+<div id="más-allá-del-orden" class="section level4" number="2.0.2.1">
 <h4>
-<span class="header-section-number">3.0.2.1</span> Más allá del orden<a class="anchor" aria-label="anchor" href="#m%C3%A1s-all%C3%A1-del-orden"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.1</span> Más allá del orden<a class="anchor" aria-label="anchor" href="#m%C3%A1s-all%C3%A1-del-orden"><i class="fas fa-link"></i></a>
 </h4>
 <p>Un buen estilo es seguir una estrategia</p>
 <ul>
@@ -352,9 +353,9 @@
 <li>Ahora veremos algunas estrategias y buenas practicas que pueden ayudar a mejorar el estilo de codificación individual y de tu equipo.</li>
 </ul>
 </div>
-<div id="códigos-cortos" class="section level4" number="3.0.2.2">
+<div id="códigos-cortos" class="section level4" number="2.0.2.2">
 <h4>
-<span class="header-section-number">3.0.2.2</span> Códigos cortos<a class="anchor" aria-label="anchor" href="#c%C3%B3digos-cortos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.2</span> Códigos cortos<a class="anchor" aria-label="anchor" href="#c%C3%B3digos-cortos"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Ningún segmento de código debiese ser mayor a 100 - 150 carácteres.</li>
@@ -386,9 +387,9 @@
 <li>Usar variables globales rara vez.</li>
 </ul>
 </div>
-<div id="nombres-descriptivos" class="section level4" number="3.0.2.3">
+<div id="nombres-descriptivos" class="section level4" number="2.0.2.3">
 <h4>
-<span class="header-section-number">3.0.2.3</span> Nombres Descriptivos<a class="anchor" aria-label="anchor" href="#nombres-descriptivos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.3</span> Nombres Descriptivos<a class="anchor" aria-label="anchor" href="#nombres-descriptivos"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Nombres adecuados remplazan comentarios y hacen del código un archivo auto contenido. * <strong>Utilizar nombres completos</strong>. Abreviaciones solo en el caso de estar seguro que cualquier lector puede entenderlo sin ambigüedad.</li>
@@ -429,9 +430,9 @@
 <li>Estos nombres nos permiten pensar en el flujo del proyecto sin tener que mirar los códigos.</li>
 </ul>
 </div>
-<div id="ojo-con-el-álgebra" class="section level4" number="3.0.2.4">
+<div id="ojo-con-el-álgebra" class="section level4" number="2.0.2.4">
 <h4>
-<span class="header-section-number">3.0.2.4</span> Ojo con el álgebra<a class="anchor" aria-label="anchor" href="#ojo-con-el-%C3%A1lgebra"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.4</span> Ojo con el álgebra<a class="anchor" aria-label="anchor" href="#ojo-con-el-%C3%A1lgebra"><i class="fas fa-link"></i></a>
 </h4>
 <p>Separa el álgebra en partes.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = <span class="co">///</span></span>
@@ -445,17 +446,17 @@
 <span id="cb13-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pop_total = poblacion_miles * 1000</span>
 <span id="cb13-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = pib_total_real / pob_total </span></code></pre></div>
 </div>
-<div id="consistencia" class="section level4" number="3.0.2.5">
+<div id="consistencia" class="section level4" number="2.0.2.5">
 <h4>
-<span class="header-section-number">3.0.2.5</span> Consistencia<a class="anchor" aria-label="anchor" href="#consistencia"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.5</span> Consistencia<a class="anchor" aria-label="anchor" href="#consistencia"><i class="fas fa-link"></i></a>
 </h4>
 <p>Ser consistentes
 * Hay cosas de estilo que son solo un tema de gusto. Por ejemplo, hay quienes escriben <code>nivel_empleo_anual</code> y otras que escribe <code>NivelEmpleoAnual</code>.
 * No importa la elección de un estilo u otro. Lo que importa es que todas y todos los miembros del equipo utilicen <strong>la misma</strong> convención.</p>
 </div>
-<div id="chequear-errores" class="section level4" number="3.0.2.6">
+<div id="chequear-errores" class="section level4" number="2.0.2.6">
 <h4>
-<span class="header-section-number">3.0.2.6</span> Chequear errores<a class="anchor" aria-label="anchor" href="#chequear-errores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.6</span> Chequear errores<a class="anchor" aria-label="anchor" href="#chequear-errores"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Hemos aprendido que es importante escribir pruebas o testeos. Especialmente relevante después de operaciones complicadas o pegado de bases de datos.</li>
@@ -468,9 +469,9 @@
 <span id="cb15-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
 <p>Normalmente el error da suficiente información. A pesar de lo anterior, en algunas circunstancias, no es tan claro saber cual es el error. Cuando ustedes se hayan encontrado con un error, que no les fue fácil descifrar, ** tienen que escribir un comentario que lo indique**. Facilitara mucho el trabajo colaborativo.</p>
 </div>
-<div id="separar-tipos-de-códigos" class="section level4" number="3.0.2.7">
+<div id="separar-tipos-de-códigos" class="section level4" number="2.0.2.7">
 <h4>
-<span class="header-section-number">3.0.2.7</span> Separar tipos de códigos<a class="anchor" aria-label="anchor" href="#separar-tipos-de-c%C3%B3digos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.7</span> Separar tipos de códigos<a class="anchor" aria-label="anchor" href="#separar-tipos-de-c%C3%B3digos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Separar códigos lentos de los rápidos</p>
 <ul>
@@ -479,18 +480,18 @@
 <li>Este criterio cambia en caso de que todos los códigos sean rápidos.</li>
 </ul>
 </div>
-<div id="automatización" class="section level4" number="3.0.2.8">
+<div id="automatización" class="section level4" number="2.0.2.8">
 <h4>
-<span class="header-section-number">3.0.2.8</span> Automatización<a class="anchor" aria-label="anchor" href="#automatizaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.8</span> Automatización<a class="anchor" aria-label="anchor" href="#automatizaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Todo lo que se pueda automatizar debe ser automatizado.</li>
 <li>Nunca hacer trabajo que vaya a obtener resultados de forma interactiva. Lo interactivo es siempre para inspeccionar.</li>
 </ul>
 </div>
-<div id="abstracción" class="section level4" number="3.0.2.9">
+<div id="abstracción" class="section level4" number="2.0.2.9">
 <h4>
-<span class="header-section-number">3.0.2.9</span> Abstracción<a class="anchor" aria-label="anchor" href="#abstracci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.9</span> Abstracción<a class="anchor" aria-label="anchor" href="#abstracci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Abstraer para eliminar pasos redundantes.<br>
@@ -534,9 +535,9 @@
 <span id="cb19-7"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-7" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_restometro_pc) byvar(metroarea)</span></code></pre></div>
 <p>Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel de agregación sin inducir errores.</p>
 </div>
-<div id="documentación-y-comentarios" class="section level4" number="3.0.2.10">
+<div id="documentación-y-comentarios" class="section level4" number="2.0.2.10">
 <h4>
-<span class="header-section-number">3.0.2.10</span> Documentación y comentarios<a class="anchor" aria-label="anchor" href="#documentaci%C3%B3n-y-comentarios"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.10</span> Documentación y comentarios<a class="anchor" aria-label="anchor" href="#documentaci%C3%B3n-y-comentarios"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>No escribas documentación que no vas a mantener.</li>
@@ -564,9 +565,9 @@
 <span id="cb21-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  calcular_perdida_bienestar, elasticidad(<span class="ot">`elasticidad'</span>) </span></code></pre></div>
 <p>Menos comentarios que el anterior. <strong>Sin números mágicos</strong>. Pero es más informativo e interno consistentemente dado que no puedo cambiar algunos de los parámetros sin modificar el resultado. Comentarios sirven en su justa medida: es imposible desprender del mismo código sin saber la tabla.</p>
 </div>
-<div id="identificadores-únicos" class="section level4" number="3.0.2.11">
+<div id="identificadores-únicos" class="section level4" number="2.0.2.11">
 <h4>
-<span class="header-section-number">3.0.2.11</span> Identificadores únicos<a class="anchor" aria-label="anchor" href="#identificadores-%C3%BAnicos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.11</span> Identificadores únicos<a class="anchor" aria-label="anchor" href="#identificadores-%C3%BAnicos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Bases de datos con Identificadores únicos</p>
 <ul>
@@ -585,9 +586,9 @@
 <div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">variable</span> does <span class="kw">not</span> uniquely identify the observations</span></code></pre></div>
 <p>Si encuentro plausible que alguna variable tenga <em>missing</em> puedo colocar la opción <code>missok</code>.</p>
 </div>
-<div id="no-ser-repetitivo" class="section level4" number="3.0.2.12">
+<div id="no-ser-repetitivo" class="section level4" number="2.0.2.12">
 <h4>
-<span class="header-section-number">3.0.2.12</span> No ser repetitivo<a class="anchor" aria-label="anchor" href="#no-ser-repetitivo"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.2.12</span> No ser repetitivo<a class="anchor" aria-label="anchor" href="#no-ser-repetitivo"><i class="fas fa-link"></i></a>
 </h4>
 <p>Hemos hablado de evitar ser repetitivo. ¿Cuándo hacerlo? Repetir en una operación simple con dos categorías es razonable.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_ga = ing <span class="kw">if</span> grupo==<span class="st">"A"</span>, nq(10)</span>
@@ -625,13 +626,13 @@
 </ul>
 </div>
 </div>
-<div id="organización-de-un-proyecto-en-stata" class="section level3" number="3.0.3">
+<div id="organización-de-un-proyecto-en-stata" class="section level3" number="2.0.3">
 <h3>
-<span class="header-section-number">3.0.3</span> Organización de un proyecto en Stata<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.3</span> Organización de un proyecto en Stata<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><i class="fas fa-link"></i></a>
 </h3>
-<div id="flujo-de-trabajo-en-stata" class="section level4" number="3.0.3.1">
+<div id="flujo-de-trabajo-en-stata" class="section level4" number="2.0.3.1">
 <h4>
-<span class="header-section-number">3.0.3.1</span> Flujo de trabajo en Stata<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.3.1</span> Flujo de trabajo en Stata<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo-en-stata"><i class="fas fa-link"></i></a>
 </h4>
 <p>Hasta el momento uno de los mayores mensajes es <strong>adoptar un sistema de organización</strong> compartirlo en el equipo y adherirse a él. Este debe incluir:</p>
 <ol style="list-style-type: decimal">
@@ -658,9 +659,9 @@ When I started, I thought my workflow <span style="color:red"> “was very good 
 </span></span>
 </div>
 </div>
-<div id="organización-de-archivos-y-carpetas" class="section level4" number="3.0.3.2">
+<div id="organización-de-archivos-y-carpetas" class="section level4" number="2.0.3.2">
 <h4>
-<span class="header-section-number">3.0.3.2</span> Organización de archivos y carpetas<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-archivos-y-carpetas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.3.2</span> Organización de archivos y carpetas<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-archivos-y-carpetas"><i class="fas fa-link"></i></a>
 </h4>
 <p>¿Les suena familiar?</p>
 <ul>
@@ -747,13 +748,13 @@ When I started, I thought my workflow <span style="color:red"> “was very good 
 <span id="cb27-8"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">use</span> datos1.dta, <span class="kw">replace</span> </span></code></pre></div>
 </div>
 </div>
-<div id="buenas-practicas-de-visualización" class="section level3" number="3.0.4">
+<div id="buenas-practicas-de-visualización" class="section level3" number="2.0.4">
 <h3>
-<span class="header-section-number">3.0.4</span> Buenas practicas de visualización<a class="anchor" aria-label="anchor" href="#buenas-practicas-de-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.4</span> Buenas practicas de visualización<a class="anchor" aria-label="anchor" href="#buenas-practicas-de-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h3>
-<div id="principios-de-una-buena-visualización-de-datos" class="section level4" number="3.0.4.1">
+<div id="principios-de-una-buena-visualización-de-datos" class="section level4" number="2.0.4.1">
 <h4>
-<span class="header-section-number">3.0.4.1</span> Principios de una buena visualización de datos<a class="anchor" aria-label="anchor" href="#principios-de-una-buena-visualizaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.4.1</span> Principios de una buena visualización de datos<a class="anchor" aria-label="anchor" href="#principios-de-una-buena-visualizaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Un gráfico mal hecho desinforma, gráficos mal hechos son inefectivos. Comunican mal la información o incluso la distorsionan. Las personas tenemos un procesamiento visual limitado. Existe uno previo e inconsciente y uno posterior consciente. Entender este aspecto es importante si queremos diseñar visualizaciones que sean efectivas.</p>
 <p>Esta sección esta basada en <strong>An Economist’s Guide to Visualizing Data</strong> ().</p>
@@ -774,20 +775,20 @@ When I started, I thought my workflow <span style="color:red"> “was very good 
 </li>
 </ul>
 </div>
-<div id="siete-gráficos-alternativos" class="section level4" number="3.0.4.2">
+<div id="siete-gráficos-alternativos" class="section level4" number="2.0.4.2">
 <h4>
-<span class="header-section-number">3.0.4.2</span> Siete gráficos alternativos<a class="anchor" aria-label="anchor" href="#siete-gr%C3%A1ficos-alternativos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.4.2</span> Siete gráficos alternativos<a class="anchor" aria-label="anchor" href="#siete-gr%C3%A1ficos-alternativos"><i class="fas fa-link"></i></a>
 </h4>
 </div>
 </div>
-<div id="sublime-text" class="section level3" number="3.0.5">
+<div id="sublime-text" class="section level3" number="2.0.5">
 <h3>
-<span class="header-section-number">3.0.5</span> Sublime Text<a class="anchor" aria-label="anchor" href="#sublime-text"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.5</span> Sublime Text<a class="anchor" aria-label="anchor" href="#sublime-text"><i class="fas fa-link"></i></a>
 </h3>
 <p>Esta sección esta basada en la página web de <a href="https://acarril.github.io/">Alvaro Carril</a>.</p>
-<div id="qué-es-sublime" class="section level4" number="3.0.5.1">
+<div id="qué-es-sublime" class="section level4" number="2.0.5.1">
 <h4>
-<span class="header-section-number">3.0.5.1</span> ¿Qué es Sublime?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-sublime"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.5.1</span> ¿Qué es Sublime?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-sublime"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li><p><a href="https://www.sublimetext.com/">Sublime Text</a> es un editor de códigos gratuito. Este editor permite compilar códigos de distintos lenguajes de programación tales como Stata, Python, R, , entre muchos otros.</p></li>
@@ -800,9 +801,9 @@ Instalar Sublime</p></li>
 <li><p>Tipear <code>Install Package Control</code> y presionar <code>enter</code>.</p></li>
 </ul>
 </div>
-<div id="ejecutar-stata-desde-sublime" class="section level4" number="3.0.5.2">
+<div id="ejecutar-stata-desde-sublime" class="section level4" number="2.0.5.2">
 <h4>
-<span class="header-section-number">3.0.5.2</span> Ejecutar Stata desde Sublime<a class="anchor" aria-label="anchor" href="#ejecutar-stata-desde-sublime"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.0.5.2</span> Ejecutar Stata desde Sublime<a class="anchor" aria-label="anchor" href="#ejecutar-stata-desde-sublime"><i class="fas fa-link"></i></a>
 </h4>
 <p>Para Windows</p>
 <ul>
@@ -855,17 +856,17 @@ Instalar Sublime</p></li>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="referencias.html"><span class="header-section-number">2</span> Referencias</a></div>
-<div class="next"><a href="programar-do---files.html"><span class="header-section-number">4</span> Programar do - files</a></div>
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Introducción</a></div>
+<div class="next"><a href="programar-do---files.html"><span class="header-section-number">3</span> Programar do - files</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav"><li>
-<a class="nav-link" href="#buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n"><span class="header-section-number">3</span> Buenas prácticas de programación y visualización</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#introducci%C3%B3n-1"><span class="header-section-number">3.0.1</span> Introducción</a></li>
-<li><a class="nav-link" href="#estilo-de-codificaci%C3%B3n-en-stata"><span class="header-section-number">3.0.2</span> Estilo de codificación en Stata</a></li>
-<li><a class="nav-link" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><span class="header-section-number">3.0.3</span> Organización de un proyecto en Stata</a></li>
-<li><a class="nav-link" href="#buenas-practicas-de-visualizaci%C3%B3n"><span class="header-section-number">3.0.4</span> Buenas practicas de visualización</a></li>
-<li><a class="nav-link" href="#sublime-text"><span class="header-section-number">3.0.5</span> Sublime Text</a></li>
+<a class="nav-link" href="#buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n"><span class="header-section-number">2</span> Buenas prácticas de programación y visualización</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introducci%C3%B3n-1"><span class="header-section-number">2.0.1</span> Introducción</a></li>
+<li><a class="nav-link" href="#estilo-de-codificaci%C3%B3n-en-stata"><span class="header-section-number">2.0.2</span> Estilo de codificación en Stata</a></li>
+<li><a class="nav-link" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><span class="header-section-number">2.0.3</span> Organización de un proyecto en Stata</a></li>
+<li><a class="nav-link" href="#buenas-practicas-de-visualizaci%C3%B3n"><span class="header-section-number">2.0.4</span> Buenas practicas de visualización</a></li>
+<li><a class="nav-link" href="#sublime-text"><span class="header-section-number">2.0.5</span> Sublime Text</a></li>
 </ul>
 </li></ul>
 

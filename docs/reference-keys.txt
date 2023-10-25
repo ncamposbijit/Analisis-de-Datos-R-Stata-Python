@@ -1,5 +1,4 @@
 introducción
-referencias
 buenas-prácticas-de-programación-y-visualización
 introducción-1
 programación-defensiva
@@ -100,11 +99,6 @@ documentar-tu-programa
 escribir-programas-e-class
 marksample-mark-y-markout
 sortpreserve
-mata
-qué-es-mata
-matrices
-de-stata-a-mata
-funciones-en-mata
 exportar-información
 stata-markdown
 instalación
@@ -130,3 +124,9 @@ egen
 regresiones-en-sub-grupos
 recode
 resumen
+mata
+qué-es-mata
+matrices
+de-stata-a-mata
+funciones-en-mata
+referencias

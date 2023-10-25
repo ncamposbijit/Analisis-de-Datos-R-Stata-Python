@@ -151,5 +151,3 @@ Exiten varias opciones para calcular regresiones según el tipo de datos que que
 * `keepusing` y `nogen` siempre para `merge`.
 * `ftools` y `gtools` (más detalles sección final). 
 * Utilizar `parallel` (más detalles sección final). 
-
-# Referencias

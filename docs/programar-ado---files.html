@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>5 Programar ado - files | Análisis de Datos con Stata - Nivel avanzado</title>
+<title>4 Programar ado - files | Análisis de Datos con Stata - Nivel avanzado</title>
 <meta name="author" content="Nicolás Campos Bijit">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="5 Programar ado - files | Análisis de Datos con Stata - Nivel avanzado">
+<meta property="og:title" content="4 Programar ado - files | Análisis de Datos con Stata - Nivel avanzado">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="5 Programar ado - files | Análisis de Datos con Stata - Nivel avanzado">
+<meta name="twitter:title" content="4 Programar ado - files | Análisis de Datos con Stata - Nivel avanzado">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -41,9 +41,9 @@
     }
   </style>
 <link rel="stylesheet" href="style4.css">
-<meta name="description" content="5.0.1 Escribir programas en Stata En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas...">
-<meta property="og:description" content="5.0.1 Escribir programas en Stata En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas...">
-<meta name="twitter:description" content="5.0.1 Escribir programas en Stata En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas...">
+<meta name="description" content="4.0.1 Escribir programas en Stata En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas...">
+<meta property="og:description" content="4.0.1 Escribir programas en Stata En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas...">
+<meta name="twitter:description" content="4.0.1 Escribir programas en Stata En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -66,12 +66,13 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Introducción</a></li>
-<li><a class="" href="referencias.html"><span class="header-section-number">2</span> Referencias</a></li>
-<li><a class="" href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">3</span> Buenas prácticas de programación y visualización</a></li>
-<li><a class="" href="programar-do---files.html"><span class="header-section-number">4</span> Programar do - files</a></li>
-<li><a class="active" href="programar-ado---files.html"><span class="header-section-number">5</span> Programar ado - files</a></li>
-<li><a class="" href="exportar-informaci%C3%B3n.html"><span class="header-section-number">6</span> Exportar Información</a></li>
-<li><a class="" href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">7</span> Manejo de grandes bases de datos en Stata</a></li>
+<li><a class="" href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">2</span> Buenas prácticas de programación y visualización</a></li>
+<li><a class="" href="programar-do---files.html"><span class="header-section-number">3</span> Programar do - files</a></li>
+<li><a class="active" href="programar-ado---files.html"><span class="header-section-number">4</span> Programar ado - files</a></li>
+<li><a class="" href="exportar-informaci%C3%B3n.html"><span class="header-section-number">5</span> Exportar Información</a></li>
+<li><a class="" href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">6</span> Manejo de grandes bases de datos en Stata</a></li>
+<li><a class="" href="mata.html"><span class="header-section-number">7</span> Mata</a></li>
+<li><a class="" href="referencias.html"><span class="header-section-number">8</span> Referencias</a></li>
 </ul>
 
         <div class="book-extra">
@@ -79,21 +80,21 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="programar-ado---files" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="programar-ado---files" class="section level1" number="4">
 <h1>
-<span class="header-section-number">5</span> Programar ado - files<a class="anchor" aria-label="anchor" href="#programar-ado---files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> Programar ado - files<a class="anchor" aria-label="anchor" href="#programar-ado---files"><i class="fas fa-link"></i></a>
 </h1>
-<div id="escribir-programas-en-stata" class="section level3" number="5.0.1">
+<div id="escribir-programas-en-stata" class="section level3" number="4.0.1">
 <h3>
-<span class="header-section-number">5.0.1</span> Escribir programas en Stata<a class="anchor" aria-label="anchor" href="#escribir-programas-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.1</span> Escribir programas en Stata<a class="anchor" aria-label="anchor" href="#escribir-programas-en-stata"><i class="fas fa-link"></i></a>
 </h3>
 <p>En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas practicas que vimos en la Sección 1.</p>
 <p>Vamos a utilizar <code>program</code> para escribir los programas. Es posible equipar cualquier comando con las opciones típicas usuales (ej. <code>if</code> o <code>inrange</code>. Discutiremos mayormente programas del tipo <code>r-class</code> y algunos comentarios con respecto a los del tipo <code>e-class</code>.</p>
 <p><strong>¿Por qué debiese escribir mis propios programas en Stata?</strong> Automatizar procesos que se ejecutan frecuentemente y donde los resultados dependen de algún tipo de heterogeneidad.</p>
 </div>
-<div id="por-qué-escribir-programas-abstracción" class="section level3" number="5.0.2">
+<div id="por-qué-escribir-programas-abstracción" class="section level3" number="4.0.2">
 <h3>
-<span class="header-section-number">5.0.2</span> ¿Por qué escribir programas?: Abstracción<a class="anchor" aria-label="anchor" href="#por-qu%C3%A9-escribir-programas-abstracci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.2</span> ¿Por qué escribir programas?: Abstracción<a class="anchor" aria-label="anchor" href="#por-qu%C3%A9-escribir-programas-abstracci%C3%B3n"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Abstraer para eliminar pasos redundantes.<br>
@@ -154,13 +155,13 @@
 <li>Si por ejemplo, creas un programa llamado <code>summarize</code> Stata lo va a ignorar y utilizará su propio comando.</li>
 </ul>
 </div>
-<div id="mis-primeros-programas-en-stata" class="section level3" number="5.0.3">
+<div id="mis-primeros-programas-en-stata" class="section level3" number="4.0.3">
 <h3>
-<span class="header-section-number">5.0.3</span> Mis primeros programas en Stata<a class="anchor" aria-label="anchor" href="#mis-primeros-programas-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.3</span> Mis primeros programas en Stata<a class="anchor" aria-label="anchor" href="#mis-primeros-programas-en-stata"><i class="fas fa-link"></i></a>
 </h3>
-<div id="programa-1" class="section level4" number="5.0.3.1">
+<div id="programa-1" class="section level4" number="4.0.3.1">
 <h4>
-<span class="header-section-number">5.0.3.1</span> Programa 1<a class="anchor" aria-label="anchor" href="#programa-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.3.1</span> Programa 1<a class="anchor" aria-label="anchor" href="#programa-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>Vamos escribir nuestro primer programa:</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb122-1"><a href="programar-ado---files.html#cb122-1" aria-hidden="true" tabindex="-1"></a>  * Mi primer programa en Stata</span>
@@ -169,9 +170,9 @@
 <span id="cb122-4"><a href="programar-ado---files.html#cb122-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span> </span></code></pre></div>
 <p>Noten que al ejecutarlo no se genera ningún resultado. Lo que hemos hecho es definir un comando llamado <code>minombrees</code> con una simple función. Esta es la idea principal de un programa. Ejecuten nuevamente el programa. Al hacer esto observaran que se genera un error. Esto es porque al igual que las variables, no es posible asignar dos nombres iguales a un programa. Para evitar esto, es importante utilizar <code>program drop minombrees</code> antes de cargar el comando nuevamente. Este es un buen momento para utilizar <code>capture</code>.</p>
 </div>
-<div id="programa-2" class="section level4" number="5.0.3.2">
+<div id="programa-2" class="section level4" number="4.0.3.2">
 <h4>
-<span class="header-section-number">5.0.3.2</span> Programa 2<a class="anchor" aria-label="anchor" href="#programa-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.3.2</span> Programa 2<a class="anchor" aria-label="anchor" href="#programa-2"><i class="fas fa-link"></i></a>
 </h4>
 <p>Vamos escribir un programa que permita calcular un promedio. Vamos a escribir un comando que nos permita crear una nueva variable que contenga los valores promedio y que muestre el resultado en la pantalla. Esto sería igual que escribir:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb123-1"><a href="programar-ado---files.html#cb123-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">sysuse</span> auto, <span class="kw">clear</span></span>
@@ -198,9 +199,9 @@
 </ol>
 </div>
 </div>
-<div id="programa-3" class="section level4" number="5.0.3.3">
+<div id="programa-3" class="section level4" number="4.0.3.3">
 <h4>
-<span class="header-section-number">5.0.3.3</span> Programa 3<a class="anchor" aria-label="anchor" href="#programa-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.3.3</span> Programa 3<a class="anchor" aria-label="anchor" href="#programa-3"><i class="fas fa-link"></i></a>
 </h4>
 <p>Vamos a reescribir el programa para permitir un número arbitrario de variables. La macro ‘0’ contiene toda la cadena, ‘1’ el primer elemento, ‘2’ el segundo, etc. Podemos hacer una iteración sobre todos los elementos sin saber cuántos hay utilizando la técnica de desplazamiento incremental que implementaremos con <code>macro_shift</code>.</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb125-1"><a href="programar-ado---files.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="kw">capture</span> <span class="kw">program</span> <span class="kw">drop</span> mimedia </span>
@@ -216,9 +217,9 @@
 <span id="cb125-11"><a href="programar-ado---files.html#cb125-11" aria-hidden="true" tabindex="-1"></a>mimedia price mpg rep78 </span></code></pre></div>
 <p>El comando <code>macro shift</code> sirve como incremental. Termina cuando encuentra un vacio, lo que explica la presencia del <code>while</code>. Notar que <code>"</code>1’“` habla de la posición. Es una buena tecnica para garantizar que el iterador seguirá cuando este vacio.</p>
 </div>
-<div id="programa-4" class="section level4" number="5.0.3.4">
+<div id="programa-4" class="section level4" number="4.0.3.4">
 <h4>
-<span class="header-section-number">5.0.3.4</span> Programa 4<a class="anchor" aria-label="anchor" href="#programa-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.3.4</span> Programa 4<a class="anchor" aria-label="anchor" href="#programa-4"><i class="fas fa-link"></i></a>
 </h4>
 <p>Modificamos un poco el programa para que despliegue los resultados en la consola de Stata. Adicionalmente, agregamos un <code>quietly</code>.</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb126-1"><a href="programar-ado---files.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="kw">capture</span> <span class="kw">program</span> <span class="kw">drop</span> mimedia </span>
@@ -233,9 +234,9 @@
 <span id="cb126-10"><a href="programar-ado---files.html#cb126-10" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto, <span class="kw">clear</span></span>
 <span id="cb126-11"><a href="programar-ado---files.html#cb126-11" aria-hidden="true" tabindex="-1"></a>mimedia price mpg rep78 </span></code></pre></div>
 </div>
-<div id="programa-5" class="section level4" number="5.0.3.5">
+<div id="programa-5" class="section level4" number="4.0.3.5">
 <h4>
-<span class="header-section-number">5.0.3.5</span> Programa 5<a class="anchor" aria-label="anchor" href="#programa-5"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.3.5</span> Programa 5<a class="anchor" aria-label="anchor" href="#programa-5"><i class="fas fa-link"></i></a>
 </h4>
 <p>El comando <code>macro shift</code> es útil, pero puede ser lento. Agregando variables locales usuales y un incremental es mucho mejor. Ojo con las dobles comillas.</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb127-1"><a href="programar-ado---files.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="kw">capture</span> <span class="kw">program</span> <span class="kw">drop</span> mimedia </span>
@@ -249,9 +250,9 @@
 <span id="cb127-9"><a href="programar-ado---files.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
 </div>
-<div id="programa-con-distintos-argumentos" class="section level3" number="5.0.4">
+<div id="programa-con-distintos-argumentos" class="section level3" number="4.0.4">
 <h3>
-<span class="header-section-number">5.0.4</span> Programa con distintos argumentos<a class="anchor" aria-label="anchor" href="#programa-con-distintos-argumentos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.4</span> Programa con distintos argumentos<a class="anchor" aria-label="anchor" href="#programa-con-distintos-argumentos"><i class="fas fa-link"></i></a>
 </h3>
 <p>El programa de los ejemplos anteriores soporta un solo argumento. Ahora vamos a ver un programa que considere explícitamente que los argumentos de un programa pueden tomar roles distintos.</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb128-1"><a href="programar-ado---files.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> <span class="kw">drop</span> <span class="dt">_all</span> </span>
@@ -273,9 +274,9 @@
 </ol>
 </div>
 </div>
-<div id="opción-syntax" class="section level3" number="5.0.5">
+<div id="opción-syntax" class="section level3" number="4.0.5">
 <h3>
-<span class="header-section-number">5.0.5</span> Opción Syntax<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-syntax"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.5</span> Opción Syntax<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-syntax"><i class="fas fa-link"></i></a>
 </h3>
 <p>Renombrando argumentos:</p>
 <ul>
@@ -337,9 +338,9 @@
 <span id="cb133-12"><a href="programar-ado---files.html#cb133-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span> <span class="kw">as</span> txt <span class="st">"90-10:  "</span> <span class="ot">`p9010'</span></span>
 <span id="cb133-13"><a href="programar-ado---files.html#cb133-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span> <span class="kw">as</span> txt <span class="st">"Range: "</span> <span class="ot">`range'</span></span></code></pre></div>
 </div>
-<div id="return" class="section level3" number="5.0.6">
+<div id="return" class="section level3" number="4.0.6">
 <h3>
-<span class="header-section-number">5.0.6</span> Return<a class="anchor" aria-label="anchor" href="#return"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.6</span> Return<a class="anchor" aria-label="anchor" href="#return"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Una característica importante de los comandos de Stata es su capacidad de reportar los resultados de forma tal de que los usuarios y usuarias podamos utilizarlos posteriormente.</li>
@@ -366,9 +367,9 @@
 <span id="cb134-16"><a href="programar-ado---files.html#cb134-16" aria-hidden="true" tabindex="-1"></a>        }</span>
 <span id="cb134-17"><a href="programar-ado---files.html#cb134-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 </div>
-<div id="implementar-opciones-al-programa" class="section level3" number="5.0.7">
+<div id="implementar-opciones-al-programa" class="section level3" number="4.0.7">
 <h3>
-<span class="header-section-number">5.0.7</span> Implementar opciones al programa<a class="anchor" aria-label="anchor" href="#implementar-opciones-al-programa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.7</span> Implementar opciones al programa<a class="anchor" aria-label="anchor" href="#implementar-opciones-al-programa"><i class="fas fa-link"></i></a>
 </h3>
 <p>Podemos agregar distintas opciones al programa. Una opción es agregar como opcional que el programa de un resultado en la consola. Al incluir <span class="math inline">\([ ]\)</span> en <code>syntax</code> significa un componente <strong>opcional</strong> en el comando.</p>
 <p>Ejemplo 4: implementar opciones al programa (imprimir por defecto)</p>
@@ -412,9 +413,9 @@
 <span id="cb136-18"><a href="programar-ado---files.html#cb136-18" aria-hidden="true" tabindex="-1"></a>        }</span>
 <span id="cb136-19"><a href="programar-ado---files.html#cb136-19" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 </div>
-<div id="incluir-ifin-al-programa" class="section level3" number="5.0.8">
+<div id="incluir-ifin-al-programa" class="section level3" number="4.0.8">
 <h3>
-<span class="header-section-number">5.0.8</span> Incluir if/in al programa<a class="anchor" aria-label="anchor" href="#incluir-ifin-al-programa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.8</span> Incluir if/in al programa<a class="anchor" aria-label="anchor" href="#incluir-ifin-al-programa"><i class="fas fa-link"></i></a>
 </h3>
 <p>Incluir un subconjunto de observaciones</p>
 <ul>
@@ -445,9 +446,9 @@
 <span id="cb137-18"><a href="programar-ado---files.html#cb137-18" aria-hidden="true" tabindex="-1"></a>        }</span>
 <span id="cb137-19"><a href="programar-ado---files.html#cb137-19" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 </div>
-<div id="generalizar-el-comando-para-incluir-múltiples-variables" class="section level3" number="5.0.9">
+<div id="generalizar-el-comando-para-incluir-múltiples-variables" class="section level3" number="4.0.9">
 <h3>
-<span class="header-section-number">5.0.9</span> Generalizar el comando para incluir múltiples variables<a class="anchor" aria-label="anchor" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.9</span> Generalizar el comando para incluir múltiples variables<a class="anchor" aria-label="anchor" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables"><i class="fas fa-link"></i></a>
 </h3>
 <p>Algunas consideraciones</p>
 <ul>
@@ -519,9 +520,9 @@
 <span id="cb138-60"><a href="programar-ado---files.html#cb138-60" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span> <span class="kw">local</span> varname <span class="ot">`varlist'</span></span>
 <span id="cb138-61"><a href="programar-ado---files.html#cb138-61" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 </div>
-<div id="agregar-prefijos-a-los-programas" class="section level3" number="5.0.10">
+<div id="agregar-prefijos-a-los-programas" class="section level3" number="4.0.10">
 <h3>
-<span class="header-section-number">5.0.10</span> Agregar prefijos a los programas<a class="anchor" aria-label="anchor" href="#agregar-prefijos-a-los-programas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.10</span> Agregar prefijos a los programas<a class="anchor" aria-label="anchor" href="#agregar-prefijos-a-los-programas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Prefijo by</p>
 <ul>
@@ -533,9 +534,9 @@
 <div class="sourceCode" id="cb140"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb140-1"><a href="programar-ado---files.html#cb140-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">syntax</span> <span class="kw">varlist</span>(<span class="fu">min</span> = 1 <span class="kw">numeric</span> ts) [<span class="kw">if</span>] [<span class="kw">in</span>] <span class="co">///</span></span>
 <span id="cb140-2"><a href="programar-ado---files.html#cb140-2" aria-hidden="true" tabindex="-1"></a>    [, noPRINT  FORmat(passthru) MATrix(<span class="fu">string</span>)]</span></code></pre></div>
 </div>
-<div id="programas-para-complementar-función-egen" class="section level3" number="5.0.11">
+<div id="programas-para-complementar-función-egen" class="section level3" number="4.0.11">
 <h3>
-<span class="header-section-number">5.0.11</span> Programas para complementar función egen<a class="anchor" aria-label="anchor" href="#programas-para-complementar-funci%C3%B3n-egen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.11</span> Programas para complementar función egen<a class="anchor" aria-label="anchor" href="#programas-para-complementar-funci%C3%B3n-egen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Es posible programar funciones adicionales de <code>egen</code>. El nombre de estos programas deben empezar con <code>_g</code>. Una diferencia importante entre este tipo de programas y los que ya hemos escrito guarda relación con el hecho de que hay que tener en cuenta la nueva variable que se va a crear. La sintaxis es la siguiente:</p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb141-1"><a href="programar-ado---files.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> [<span class="dv">type</span>] newvarname = fcn(arguments) [<span class="kw">if</span>] [<span class="kw">in</span>] [, options]</span></code></pre></div>
@@ -614,9 +615,9 @@
 <span id="cb144-28"><a href="programar-ado---files.html#cb144-28" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> <span class="fu">iqr</span> <span class="kw">if</span> <span class="fu">inrange</span>(rep78, 3, 5), <span class="kw">by</span>(rep78)</span>
 <span id="cb144-29"><a href="programar-ado---files.html#cb144-29" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> p8020 <span class="kw">if</span> <span class="fu">inrange</span>(rep78, 3, 5), <span class="kw">by</span>(rep78)</span></code></pre></div>
 </div>
-<div id="syntax" class="section level3" number="5.0.12">
+<div id="syntax" class="section level3" number="4.0.12">
 <h3>
-<span class="header-section-number">5.0.12</span> Syntax<a class="anchor" aria-label="anchor" href="#syntax"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.12</span> Syntax<a class="anchor" aria-label="anchor" href="#syntax"><i class="fas fa-link"></i></a>
 </h3>
 <p>Algunas consideraciones</p>
 <ul>
@@ -674,9 +675,9 @@
 <span id="cb148-12"><a href="programar-ado---files.html#cb148-12" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb148-13"><a href="programar-ado---files.html#cb148-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
-<div id="varlist" class="section level3" number="5.0.13">
+<div id="varlist" class="section level3" number="4.0.13">
 <h3>
-<span class="header-section-number">5.0.13</span> Varlist<a class="anchor" aria-label="anchor" href="#varlist"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.13</span> Varlist<a class="anchor" aria-label="anchor" href="#varlist"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>varlist</code> específica la macro que contiene las variables que van a ingresar al programa como <em>inputs</em>. Las opciones de <code>varlist</code> son:
 * <code>default = none</code>. Especifica como la <code>varlist</code> se va a llenar. Por defecto se llena con todas las variables.
@@ -685,9 +686,9 @@
 * <code>ts</code> permite que la <code>varlist</code> contenga operadores de series de tiempo.
 * <code>fv</code> permite que la <code>varlist</code> contenga variables categóricas.</p>
 </div>
-<div id="opciones" class="section level3" number="5.0.14">
+<div id="opciones" class="section level3" number="4.0.14">
 <h3>
-<span class="header-section-number">5.0.14</span> Opciones<a class="anchor" aria-label="anchor" href="#opciones"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.14</span> Opciones<a class="anchor" aria-label="anchor" href="#opciones"><i class="fas fa-link"></i></a>
 </h3>
 <p>Las opciones permiten hacer requeridos o opcionales. Por ejemplo, <code>regress, noconstant</code>. Las opciones pueden ser una <code>numlist</code>, una <code>varlist</code> (ej. <code>by(varlist) option</code>, una <code>namelist</code> tal como el nombre de una matriz o de una nueva variable. Como regla general, cualquier característica que pudieran encontrar en un comando de Stata, la pueden agregar en un programa. Para las opciones es importante recordar que las mayúsculas indican la menor abreviación posible.</p>
 <ul>
@@ -712,9 +713,9 @@
 <span id="cb149-11"><a href="programar-ado---files.html#cb149-11" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb149-12"><a href="programar-ado---files.html#cb149-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
-<div id="programa-para-calcular-percentiles" class="section level3" number="5.0.15">
+<div id="programa-para-calcular-percentiles" class="section level3" number="4.0.15">
 <h3>
-<span class="header-section-number">5.0.15</span> Programa para calcular percentiles<a class="anchor" aria-label="anchor" href="#programa-para-calcular-percentiles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.15</span> Programa para calcular percentiles<a class="anchor" aria-label="anchor" href="#programa-para-calcular-percentiles"><i class="fas fa-link"></i></a>
 </h3>
 <p>Una versión simple para una variable:</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb150-1"><a href="programar-ado---files.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> pctrange, rclass </span>
@@ -751,9 +752,9 @@
 <span id="cb151-12"><a href="programar-ado---files.html#cb151-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span> <span class="kw">as</span> txt <span class="st">"90-10:  "</span> <span class="ot">`p9010'</span></span>
 <span id="cb151-13"><a href="programar-ado---files.html#cb151-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span> <span class="kw">as</span> txt <span class="st">"Range: "</span> <span class="ot">`range'</span></span></code></pre></div>
 </div>
-<div id="programa-con-opción-return" class="section level3" number="5.0.16">
+<div id="programa-con-opción-return" class="section level3" number="4.0.16">
 <h3>
-<span class="header-section-number">5.0.16</span> Programa con opción return<a class="anchor" aria-label="anchor" href="#programa-con-opci%C3%B3n-return"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.16</span> Programa con opción return<a class="anchor" aria-label="anchor" href="#programa-con-opci%C3%B3n-return"><i class="fas fa-link"></i></a>
 </h3>
 <p>Una característica importante de los comandos de Stata es su <strong>capacidad de reportar los resultados</strong> de forma tal de que los usuarios y usuarias podamos utilizarlos posteriormente. El comando <code>return</code> nos permite guardar los escalares y hacerlos accesibles, sin tener el problema de los escalares que vimos en los ejemplos anteriores.</p>
 <p>Programa para calcular percentiles con return:</p>
@@ -789,9 +790,9 @@
 </ol>
 </div>
 </div>
-<div id="agregar-opciones-al-programa" class="section level3" number="5.0.17">
+<div id="agregar-opciones-al-programa" class="section level3" number="4.0.17">
 <h3>
-<span class="header-section-number">5.0.17</span> Agregar opciones al programa<a class="anchor" aria-label="anchor" href="#agregar-opciones-al-programa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.17</span> Agregar opciones al programa<a class="anchor" aria-label="anchor" href="#agregar-opciones-al-programa"><i class="fas fa-link"></i></a>
 </h3>
 <p>Podemos agregar distintas opciones al programa. Para este ejemplo vamos a agregar como opcional que el programa de un resultado en la consola. Recordemos que incluir <span class="math inline">\([ ]\)</span> en <code>syntax</code> significa un componente <strong>opcional</strong> en el comando.</p>
 <p>Implementar opciones al programa (imprimir por defecto):</p>
@@ -883,9 +884,9 @@
 </ol>
 </div>
 </div>
-<div id="generalizar-el-comando-para-incluir-múltiples-variables-1" class="section level3" number="5.0.18">
+<div id="generalizar-el-comando-para-incluir-múltiples-variables-1" class="section level3" number="4.0.18">
 <h3>
-<span class="header-section-number">5.0.18</span> Generalizar el comando para incluir múltiples variables<a class="anchor" aria-label="anchor" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.18</span> Generalizar el comando para incluir múltiples variables<a class="anchor" aria-label="anchor" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Algunas consideraciones</p>
 <ul>
@@ -954,18 +955,18 @@
 <span id="cb157-58"><a href="programar-ado---files.html#cb157-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span> <span class="kw">local</span> varname <span class="ot">`varlist'</span></span>
 <span id="cb157-59"><a href="programar-ado---files.html#cb157-59" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
-<div id="agregar-prefijos-a-los-programas-1" class="section level3" number="5.0.19">
+<div id="agregar-prefijos-a-los-programas-1" class="section level3" number="4.0.19">
 <h3>
-<span class="header-section-number">5.0.19</span> Agregar prefijos a los programas<a class="anchor" aria-label="anchor" href="#agregar-prefijos-a-los-programas-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.19</span> Agregar prefijos a los programas<a class="anchor" aria-label="anchor" href="#agregar-prefijos-a-los-programas-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>prefijo by: Ahora vamos a hacer que nuestro programa pueda utilizar el prefijo <code>by</code>. Para agregar esta opción simplemente hay que modificar <code>program</code>.</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb158-1"><a href="programar-ado---files.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> pctrange, rclass byable(recall)</span></code></pre></div>
 <p>También podemos permitir que la lista de variables incluya <strong>operadores de series de tiempo</strong> (ej. <code>L.pib</code>, <code>D.ingreso</code>).</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb159-1"><a href="programar-ado---files.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="kw">syntax</span> <span class="kw">varlist</span>(<span class="fu">min</span> = 1 <span class="kw">numeric</span> ts) </span></code></pre></div>
 </div>
-<div id="programas-para-complementar-función-egen-1" class="section level3" number="5.0.20">
+<div id="programas-para-complementar-función-egen-1" class="section level3" number="4.0.20">
 <h3>
-<span class="header-section-number">5.0.20</span> Programas para complementar función egen<a class="anchor" aria-label="anchor" href="#programas-para-complementar-funci%C3%B3n-egen-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.20</span> Programas para complementar función egen<a class="anchor" aria-label="anchor" href="#programas-para-complementar-funci%C3%B3n-egen-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Es posible programar funciones adicionales de <code>egen</code> (<em>extended generate</em>). El nombre de estos programas deben empezar con <code>_g</code>. Una diferencia entre este tipo de programas y los ya hechos es que en estos hay que tener en cuenta la nueva variable que se va a crear. La sintaxis es la siguiente:</p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb160-1"><a href="programar-ado---files.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> [<span class="dv">type</span>] newvarname = fcn(arguments) [<span class="kw">if</span>] [<span class="kw">in</span>] [, options]</span></code></pre></div>
@@ -1006,9 +1007,9 @@
 <span id="cb162-15"><a href="programar-ado---files.html#cb162-15" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> rango9010 = pct9010(price)</span>
 <span id="cb162-16"><a href="programar-ado---files.html#cb162-16" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> rep78 foreign: <span class="kw">egen</span> rango9010_prefijoby = pct9010(price)</span></code></pre></div>
 </div>
-<div id="generalización-de-la-función-egen" class="section level3" number="5.0.21">
+<div id="generalización-de-la-función-egen" class="section level3" number="4.0.21">
 <h3>
-<span class="header-section-number">5.0.21</span> Generalización de la función egen<a class="anchor" aria-label="anchor" href="#generalizaci%C3%B3n-de-la-funci%C3%B3n-egen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.21</span> Generalización de la función egen<a class="anchor" aria-label="anchor" href="#generalizaci%C3%B3n-de-la-funci%C3%B3n-egen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Hemos desarrollado una función de <code>egen</code> que permite calcular un rango entre percentiles para una lista de variables especifica. Puede ser útil tomar ventaja de <code>egen pctile()</code> para poder calcular cualquier percentil de la lista de variables especificadas. Vamos a agregar dos opciones a la función <code>egen</code> : <code>lo()</code> y <code>hi()</code>. En caso de que no especifiquemos, por defecto se calcula el rango interquartil. La función de <code>egen</code> ahora se llamará <code>_gpctrange.ado</code>.</p>
 <p>Función egen más general para percentiles:</p>
@@ -1046,9 +1047,9 @@
 <span id="cb163-32"><a href="programar-ado---files.html#cb163-32" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> <span class="fu">iqr</span> <span class="kw">if</span> <span class="fu">inrange</span>(rep78, 3, 5), <span class="kw">by</span>(rep78)</span>
 <span id="cb163-33"><a href="programar-ado---files.html#cb163-33" aria-hidden="true" tabindex="-1"></a><span class="kw">tabstat</span> p8020 <span class="kw">if</span> <span class="fu">inrange</span>(rep78, 3, 5), <span class="kw">by</span>(rep78)</span></code></pre></div>
 </div>
-<div id="documentar-tu-programa" class="section level3" number="5.0.22">
+<div id="documentar-tu-programa" class="section level3" number="4.0.22">
 <h3>
-<span class="header-section-number">5.0.22</span> Documentar tu programa<a class="anchor" aria-label="anchor" href="#documentar-tu-programa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.22</span> Documentar tu programa<a class="anchor" aria-label="anchor" href="#documentar-tu-programa"><i class="fas fa-link"></i></a>
 </h3>
 <p>Escribir un help</p>
 <ul>
@@ -1113,9 +1114,9 @@
 </li>
 </ul>
 </div>
-<div id="escribir-programas-e-class" class="section level3" number="5.0.23">
+<div id="escribir-programas-e-class" class="section level3" number="4.0.23">
 <h3>
-<span class="header-section-number">5.0.23</span> Escribir programas e-class<a class="anchor" aria-label="anchor" href="#escribir-programas-e-class"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.23</span> Escribir programas e-class<a class="anchor" aria-label="anchor" href="#escribir-programas-e-class"><i class="fas fa-link"></i></a>
 </h3>
 <p>Vamos a aprender algunos elementos que nos van a permitir escribir nuestros propios comandos de estimación en Stata. Muchos de los conceptos que hemos visto aplican también para este tipo de comandos. Es necesario recordar algunas convenciones que nos van a ser útiles para poder escribir nuestros programas.</p>
 <ul>
@@ -1130,9 +1131,9 @@
 <p>También podemos definir la muestra de estimación incluida en la estimación con <code>touse</code>. Ahora es posible guardar los elementos en <code>e()</code>. Por ejemplo, es posible utilizar <code>ereturn scalar</code>, <code>ereturn local</code> o <code>ereturn matrix</code>.</p>
 <p>Es conveniente utilizar los nombres típicamente asignados para guardar resultados de los programas <code>e(df_m)</code> o <code>e(df_r)</code>. Sin embargo, se pueden nombrar como deseen.</p>
 </div>
-<div id="marksample-mark-y-markout" class="section level3" number="5.0.24">
+<div id="marksample-mark-y-markout" class="section level3" number="4.0.24">
 <h3>
-<span class="header-section-number">5.0.24</span> Marksample, Mark y Markout<a class="anchor" aria-label="anchor" href="#marksample-mark-y-markout"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.24</span> Marksample, Mark y Markout<a class="anchor" aria-label="anchor" href="#marksample-mark-y-markout"><i class="fas fa-link"></i></a>
 </h3>
 <p><code>marksample</code> y <code>mark</code> son alternativas. <code>mark</code> no es muy utilizado. Ambos comandos crean un indicador que marcan que observaciones será utilizadas. Los ocupadmos en los programas en Stata. La idea es indicarle al programa la muestra relevante. <code>markout</code> marca la variable con un indicador igual a 0 si cualquier variable en <code>varlist</code> indicada contiene un <em>missing</em>.</p>
 <p>Marksample</p>
@@ -1212,380 +1213,46 @@
 <span id="cb170-4"><a href="programar-ado---files.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> <span class="ot">`varlist'</span> [<span class="ot">`weight'`exp'</span>] <span class="kw">if</span> <span class="ot">`touse'</span>, <span class="ot">`detail'</span> <span class="ot">`format'</span></span>
 <span id="cb170-5"><a href="programar-ado---files.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
 </div>
-<div id="sortpreserve" class="section level3" number="5.0.25">
+<div id="sortpreserve" class="section level3" number="4.0.25">
 <h3>
-<span class="header-section-number">5.0.25</span> Sortpreserve<a class="anchor" aria-label="anchor" href="#sortpreserve"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.0.25</span> Sortpreserve<a class="anchor" aria-label="anchor" href="#sortpreserve"><i class="fas fa-link"></i></a>
 </h3>
 <p>Si está escribiendo un programa de Stata que cambia temporalmente el orden de los datos y quieres que los datos se ordenen en su orden original al final de la ejecución, puede ahorrar un poco de programación incluyendo <code>sortpreserve</code>. Para ellos debemos escribir: <code>program miprograma, sortpreserve</code>. Stata automáticamente reordenara las variables como estaban originalmente. Al agregar esta opción se genera una variable temporal llamada <code>_sortindex</code> la que contiene el orden original de los datos.</p>
-</div>
-<div id="mata" class="section level3" number="5.0.26">
-<h3>
-<span class="header-section-number">5.0.26</span> Mata<a class="anchor" aria-label="anchor" href="#mata"><i class="fas fa-link"></i></a>
-</h3>
-<div id="qué-es-mata" class="section level4" number="5.0.26.1">
-<h4>
-<span class="header-section-number">5.0.26.1</span> ¿Qué es Mata?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-mata"><i class="fas fa-link"></i></a>
-</h4>
-<p>Esta introducción esta basada en la guía de <a href="https://medium.com/the-stata-guide/mata-statas-end-game-5983c0ee11bd">Asjad Naqvi</a>.</p>
-<ul>
-<li>Mata es un lenguaje de programación matricial.</li>
-<li>Es más rápido que Stata, pero necesita más precisión (ej. dimensiones de las matrices).</li>
-<li>Muchos de los operadores de Mata son similares a R o Matlab. Adicionalmente, incluye sus propios optimizadores y funciones útiles.</li>
-<li>Esta sección será una pequeña introducción al lenguaje. Tiene como objetivo mostrarles el abanico de herramientas que Mata posee con el fin de que puedan utilizarlo para hacer sus propios programas.</li>
-</ul>
-<p>La sintaxis básica de Mata</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb171-1"><a href="programar-ado---files.html#cb171-1" aria-hidden="true" tabindex="-1"></a>* Opción 1 </span>
-<span id="cb171-2"><a href="programar-ado---files.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb171-3"><a href="programar-ado---files.html#cb171-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-4"><a href="programar-ado---files.html#cb171-4" aria-hidden="true" tabindex="-1"></a>&lt; comando <span class="kw">de</span> <span class="kw">mata</span> 1 &gt; </span>
-<span id="cb171-5"><a href="programar-ado---files.html#cb171-5" aria-hidden="true" tabindex="-1"></a>&lt; comando <span class="kw">de</span> <span class="kw">mata</span> 2 &gt;</span>
-<span id="cb171-6"><a href="programar-ado---files.html#cb171-6" aria-hidden="true" tabindex="-1"></a>&lt; <span class="fu">y</span> así .... &gt; </span>
-<span id="cb171-7"><a href="programar-ado---files.html#cb171-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span>
-<span id="cb171-8"><a href="programar-ado---files.html#cb171-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-9"><a href="programar-ado---files.html#cb171-9" aria-hidden="true" tabindex="-1"></a>* Opción 2 </span>
-<span id="cb171-10"><a href="programar-ado---files.html#cb171-10" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> &lt;un comando <span class="kw">de</span> <span class="kw">mata</span>&gt;</span>
-<span id="cb171-11"><a href="programar-ado---files.html#cb171-11" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb171-12"><a href="programar-ado---files.html#cb171-12" aria-hidden="true" tabindex="-1"></a>* Opción 3 : la versión estricta</span>
-<span id="cb171-13"><a href="programar-ado---files.html#cb171-13" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span>: &lt;un comando <span class="kw">de</span> <span class="kw">mata</span>&gt; </span>
-<span id="cb171-14"><a href="programar-ado---files.html#cb171-14" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
-<p>Si son utilizados dos puntos y <strong>ocurre</strong> un error, Mata será abortado, volverá a Stata y aparecerá un mensaje de error.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb172-1"><a href="programar-ado---files.html#cb172-1" aria-hidden="true" tabindex="-1"></a>* Ejemplo 1</span>
-<span id="cb172-2"><a href="programar-ado---files.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb172-3"><a href="programar-ado---files.html#cb172-3" aria-hidden="true" tabindex="-1"></a>emat = 7 + 3</span>
-<span id="cb172-4"><a href="programar-ado---files.html#cb172-4" aria-hidden="true" tabindex="-1"></a>emat </span>
-<span id="cb172-5"><a href="programar-ado---files.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb172-6"><a href="programar-ado---files.html#cb172-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb172-7"><a href="programar-ado---files.html#cb172-7" aria-hidden="true" tabindex="-1"></a>* Ejemplo 2</span>
-<span id="cb172-8"><a href="programar-ado---files.html#cb172-8" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb172-9"><a href="programar-ado---files.html#cb172-9" aria-hidden="true" tabindex="-1"></a>emat = (<span class="st">"Josefa"</span>, <span class="st">"Perez"</span>)</span>
-<span id="cb172-10"><a href="programar-ado---files.html#cb172-10" aria-hidden="true" tabindex="-1"></a>emat = (21\8)</span>
-<span id="cb172-11"><a href="programar-ado---files.html#cb172-11" aria-hidden="true" tabindex="-1"></a>mmat = (17\6)</span>
-<span id="cb172-12"><a href="programar-ado---files.html#cb172-12" aria-hidden="true" tabindex="-1"></a>vmat = (25,3\3,11)</span>
-<span id="cb172-13"><a href="programar-ado---files.html#cb172-13" aria-hidden="true" tabindex="-1"></a>emat, mmat, vmat </span>
-<span id="cb172-14"><a href="programar-ado---files.html#cb172-14" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>Para buscar ayuda, podemos hacer:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb173-1"><a href="programar-ado---files.html#cb173-1" aria-hidden="true" tabindex="-1"></a>* Ejemplo 1</span>
-<span id="cb173-2"><a href="programar-ado---files.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">mata</span> comando</span>
-<span id="cb173-3"><a href="programar-ado---files.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">mata</span> <span class="fu">cholesky</span>()</span></code></pre></div>
-<p>Comandos básicos:Al igual que Stata, Mata posee sus propios comandos. Algunos útiles de recordar son:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb174-1"><a href="programar-ado---files.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">describe</span> </span>
-<span id="cb174-2"><a href="programar-ado---files.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">clear</span> </span>
-<span id="cb174-3"><a href="programar-ado---files.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">rename</span> nombre</span>
-<span id="cb174-4"><a href="programar-ado---files.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">drop</span> nombre1 nombre2</span>
-<span id="cb174-5"><a href="programar-ado---files.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> stata</span>
-<span id="cb174-6"><a href="programar-ado---files.html#cb174-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-7"><a href="programar-ado---files.html#cb174-7" aria-hidden="true" tabindex="-1"></a>* Ejemplo</span>
-<span id="cb174-8"><a href="programar-ado---files.html#cb174-8" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb174-9"><a href="programar-ado---files.html#cb174-9" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">clear</span> </span>
-<span id="cb174-10"><a href="programar-ado---files.html#cb174-10" aria-hidden="true" tabindex="-1"></a>emat = (<span class="st">"Josefa"</span>, <span class="st">"Perez"</span>)</span>
-<span id="cb174-11"><a href="programar-ado---files.html#cb174-11" aria-hidden="true" tabindex="-1"></a>emat = (21\8)</span>
-<span id="cb174-12"><a href="programar-ado---files.html#cb174-12" aria-hidden="true" tabindex="-1"></a>mmat = (17\6)</span>
-<span id="cb174-13"><a href="programar-ado---files.html#cb174-13" aria-hidden="true" tabindex="-1"></a>vmat = (25,3\3,11)</span>
-<span id="cb174-14"><a href="programar-ado---files.html#cb174-14" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">describe</span> </span>
-<span id="cb174-15"><a href="programar-ado---files.html#cb174-15" aria-hidden="true" tabindex="-1"></a>emat, mmat, vmat</span>
-<span id="cb174-16"><a href="programar-ado---files.html#cb174-16" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">rename</span> vmat vmat_renombrada</span>
-<span id="cb174-17"><a href="programar-ado---files.html#cb174-17" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">drop</span> mmat</span>
-<span id="cb174-18"><a href="programar-ado---files.html#cb174-18" aria-hidden="true" tabindex="-1"></a>emat, vmat_renombrada</span>
-<span id="cb174-19"><a href="programar-ado---files.html#cb174-19" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p><strong>Para hacer comentarios</strong> en Mata hay que utilizar <code>//</code>. No funcionan los asteriscos como en Stata. Todo los que se genera en Mata queda en la memoria a menos que Stata se cierre, se use <code>clear all</code>en Stata o bien <code>mata: mata clear</code>. Todas las matrices y funciones definidas se mantienen en el espacio de trabajo de Mata espacio de trabajo cuando se termina mata y se puede acceder a ellas cuando se vuelve a entrar en
-mata.</p>
-</div>
-<div id="matrices" class="section level4" number="5.0.26.2">
-<h4>
-<span class="header-section-number">5.0.26.2</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
-</h4>
-<p>Una forma común de generar una matriz en Mata es importándola desde los datos de Stata.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb175-1"><a href="programar-ado---files.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span>: X = st_data(.,(<span class="st">"var1"</span>, <span class="st">"var2"</span>))</span></code></pre></div>
-<p>Definimos la matriz X, que tiene todas las observaciones (filas) y dos columnas <code>var1</code> y <code>var2</code>. <code>st_</code> permite a Mata interactuar con la interfaz de Stata con el fin de pasar información de un lado a otro. Revisar <code>help m4_stata</code>.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb176-1"><a href="programar-ado---files.html#cb176-1" aria-hidden="true" tabindex="-1"></a>* Ejemplo 4: confeccionar matrices en base a <span class="kw">mata</span></span>
-<span id="cb176-2"><a href="programar-ado---files.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto.dta</span>
-<span id="cb176-3"><a href="programar-ado---files.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb176-4"><a href="programar-ado---files.html#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">clear</span> </span>
-<span id="cb176-5"><a href="programar-ado---files.html#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span>: X = st_data(.,(<span class="st">"price"</span>, <span class="st">"mpg"</span>))</span>
-<span id="cb176-6"><a href="programar-ado---files.html#cb176-6" aria-hidden="true" tabindex="-1"></a>X</span>
-<span id="cb176-7"><a href="programar-ado---files.html#cb176-7" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">describe</span></span>
-<span id="cb176-8"><a href="programar-ado---files.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
-<p>Otra opción es definir matrices dentro de Mata.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb177-1"><a href="programar-ado---files.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> A = (1,2 \ 3,4)</span></code></pre></div>
-<p>Definimos la matriz A, la cual podemos ver escribiendo <code>mata A</code>. Veremos una matriz cuadrada de 2x2. Notar que la coma separa elementos <strong>entre columnas</strong> mientras que el <em>slash</em> mueve elementos <strong>entre filas</strong>. El uso de paréntesis es opcional en Mata, pero es más conveniente y es una buena práctica de estilo utilizarlos. También se pueden definir matrices especiales.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb178-1"><a href="programar-ado---files.html#cb178-1" aria-hidden="true" tabindex="-1"></a>* Vector fila o Vector columna</span>
-<span id="cb178-2"><a href="programar-ado---files.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> 1,2,3</span>
-<span id="cb178-3"><a href="programar-ado---files.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> 1\2\3</span>
-<span id="cb178-4"><a href="programar-ado---files.html#cb178-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-5"><a href="programar-ado---files.html#cb178-5" aria-hidden="true" tabindex="-1"></a>* Vector fila o Vector columna del 1 al 4</span>
-<span id="cb178-6"><a href="programar-ado---files.html#cb178-6" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> 1..4</span>
-<span id="cb178-7"><a href="programar-ado---files.html#cb178-7" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> 1::4</span></code></pre></div>
-<p>Finalmente, uno puede generar matrices similar a lo que se hace en Stata.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb179-1"><a href="programar-ado---files.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="fu">J</span>(2,2,1)</span></code></pre></div>
-<p>Este comando genera una matriz de 2x2 rellena de unos. La sintaxis genérica es: <code>mata J(filas, columnas, constante)</code>. Para definir una matriz identidad: <code>mata I(5)</code>.</p>
-<p>Otro operador útil es <code>range</code>:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb180-1"><a href="programar-ado---files.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">range</span>(1,7,2)</span></code></pre></div>
-<p>Crea un vector que empieza en 1 y termina en 7 saltándose de 2 en 2 (es decir, <code>(1,3,5,7)</code>). Si quiero generar una matriz con números aleatorios provenientes de una distribución uniforme (0,1) : <code>mata runiform(3,3)</code>.</p>
-<p>Accediendo a los elementos de una matriz</p>
-<ul>
-<li>Podemos acceder a los elementos de una matriz.
-<ul>
-<li>
-<code>mata A[1,2]</code>: fila 1, columna 2.</li>
-<li>
-<code>mata A[1,.]</code>: <strong>Todas las columnas</strong> de la fila 1.</li>
-<li>
-<code>mata A[.,2]</code>: <strong>Todas las filas</strong> de la columna 2.</li>
-</ul>
-</li>
-<li>También podemos extraer sub-conjuntos de elementos:</li>
-</ul>
-<div class="sourceCode" id="cb181"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb181-1"><a href="programar-ado---files.html#cb181-1" aria-hidden="true" tabindex="-1"></a>* Empezar <span class="kw">de</span> fila 2 columna 1 hasta fila 3 columna 3</span>
-<span id="cb181-2"><a href="programar-ado---files.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> A[|2,1\3,3|]       </span>
-<span id="cb181-3"><a href="programar-ado---files.html#cb181-3" aria-hidden="true" tabindex="-1"></a>* Tomar filas 2 <span class="fu">y</span> 3 <span class="fu">y</span> columnas <span class="kw">de</span> la 1 a la 3.</span>
-<span id="cb181-4"><a href="programar-ado---files.html#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> A[(2::3),(1..3)]   </span></code></pre></div>
-<p>Pegando elementos de matrices:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb182-1"><a href="programar-ado---files.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb182-2"><a href="programar-ado---files.html#cb182-2" aria-hidden="true" tabindex="-1"></a>A = runiform(1,2)</span>
-<span id="cb182-3"><a href="programar-ado---files.html#cb182-3" aria-hidden="true" tabindex="-1"></a>B = runiform(1,2)</span>
-<span id="cb182-4"><a href="programar-ado---files.html#cb182-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-5"><a href="programar-ado---files.html#cb182-5" aria-hidden="true" tabindex="-1"></a>* Opción 1 : pegar horizontalmente</span>
-<span id="cb182-6"><a href="programar-ado---files.html#cb182-6" aria-hidden="true" tabindex="-1"></a>A,B   </span>
-<span id="cb182-7"><a href="programar-ado---files.html#cb182-7" aria-hidden="true" tabindex="-1"></a>* Opción 2 : pegar verticalmente</span>
-<span id="cb182-8"><a href="programar-ado---files.html#cb182-8" aria-hidden="true" tabindex="-1"></a>A\B   </span>
-<span id="cb182-9"><a href="programar-ado---files.html#cb182-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p><code>A,B</code> las pega horizontalmente, es decir por columnas (filas son las mismas). <code>A\B</code> las pega vertical, es decir por filas (columnas son las mismas).</p>
-<p>Operaciones básicas entre matrices y por elementos: Una vez definidas las matrices, también se dedica bastante tiempo a sumar, restar, multiplicar y dividir matrices entre sí. Vamos a ver algunas operaciones entre matrices y también entre elementos.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb183-1"><a href="programar-ado---files.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb183-2"><a href="programar-ado---files.html#cb183-2" aria-hidden="true" tabindex="-1"></a> A = (1,2,3\4,5,6)</span>
-<span id="cb183-3"><a href="programar-ado---files.html#cb183-3" aria-hidden="true" tabindex="-1"></a> B = (2,3\4,5\6,7)</span>
-<span id="cb183-4"><a href="programar-ado---files.html#cb183-4" aria-hidden="true" tabindex="-1"></a> A * B</span>
-<span id="cb183-5"><a href="programar-ado---files.html#cb183-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p><code>A * B</code> es una operación entre matrices, de forma tal que el número de filas de A debe ser igual al número de columnas de B. Si queremos que cada elemento de A sea multiplicado por el mismo elemento en B, es necesario trasponer alguna matriz y cambiar el operador.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb184-1"><a href="programar-ado---files.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb184-2"><a href="programar-ado---files.html#cb184-2" aria-hidden="true" tabindex="-1"></a> A = (1,2,3\4,5,6)</span>
-<span id="cb184-3"><a href="programar-ado---files.html#cb184-3" aria-hidden="true" tabindex="-1"></a> B = (2,3\4,5\6,7)</span>
-<span id="cb184-4"><a href="programar-ado---files.html#cb184-4" aria-hidden="true" tabindex="-1"></a>  A' :* B</span>
-<span id="cb184-5"><a href="programar-ado---files.html#cb184-5" aria-hidden="true" tabindex="-1"></a>  A  :* B'</span>
-<span id="cb184-6"><a href="programar-ado---files.html#cb184-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>En el primer caso la matriz resultante corresponde a una matriz de 3x2, en el segundo caso es una matriz de 2x3.</p>
-<p>Operadores lógicos y funciones sobre escalares: Las matrices también pueden ser comparadas a través de operadores lógicos. <code>A == B</code> chequea si dos matrices son iguales. Esto también puede hacerse elemento por elemento (por ejemplo <code>A:&gt;=B</code>). Tambien se puede utilizar <code>!=</code>.</p>
-<p>Mata también tiene funciones sobre escalares:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb185-1"><a href="programar-ado---files.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb185-2"><a href="programar-ado---files.html#cb185-2" aria-hidden="true" tabindex="-1"></a>  X = (-2, 1 \ 0, 5)</span>
-<span id="cb185-3"><a href="programar-ado---files.html#cb185-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abs</span>(X)   <span class="co">// valor absoluto de cada elemento</span></span>
-<span id="cb185-4"><a href="programar-ado---files.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sign</span>(X)  <span class="co">// signo de cada elemento</span></span>
-<span id="cb185-5"><a href="programar-ado---files.html#cb185-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(X)   <span class="co">// exponencial de cada elemento</span></span>
-<span id="cb185-6"><a href="programar-ado---files.html#cb185-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(X)  <span class="co">// raíz cuadrada de cada elemento</span></span>
-<span id="cb185-7"><a href="programar-ado---files.html#cb185-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sin</span>(X)   <span class="co">// seno de cada elemento</span></span>
-<span id="cb185-8"><a href="programar-ado---files.html#cb185-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>Algunas funciones para operar en matrices son:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb186-1"><a href="programar-ado---files.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb186-2"><a href="programar-ado---files.html#cb186-2" aria-hidden="true" tabindex="-1"></a>A = (5,4\6,7)</span>
-<span id="cb186-3"><a href="programar-ado---files.html#cb186-3" aria-hidden="true" tabindex="-1"></a>B = (1,6\3,2)</span>
-<span id="cb186-4"><a href="programar-ado---files.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb186-5"><a href="programar-ado---files.html#cb186-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-6"><a href="programar-ado---files.html#cb186-6" aria-hidden="true" tabindex="-1"></a>* Número <span class="kw">de</span> filas <span class="fu">y</span> columnas </span>
-<span id="cb186-7"><a href="programar-ado---files.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="bn">rows</span>(A)</span>
-<span id="cb186-8"><a href="programar-ado---files.html#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="bn">cols</span>(A)</span>
-<span id="cb186-9"><a href="programar-ado---files.html#cb186-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-10"><a href="programar-ado---files.html#cb186-10" aria-hidden="true" tabindex="-1"></a>* Suma <span class="kw">de</span> las filas/columnas</span>
-<span id="cb186-11"><a href="programar-ado---files.html#cb186-11" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> rowsum(B)</span>
-<span id="cb186-12"><a href="programar-ado---files.html#cb186-12" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> colsum(B)</span>
-<span id="cb186-13"><a href="programar-ado---files.html#cb186-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-14"><a href="programar-ado---files.html#cb186-14" aria-hidden="true" tabindex="-1"></a>* Calcular <span class="fu">el</span> promedio (retorna un <span class="kw">vector</span> fila)</span>
-<span id="cb186-15"><a href="programar-ado---files.html#cb186-15" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">mean</span>(B')' </span>
-<span id="cb186-16"><a href="programar-ado---files.html#cb186-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-17"><a href="programar-ado---files.html#cb186-17" aria-hidden="true" tabindex="-1"></a>* Seleccionar todas las columnas <span class="fu">sin</span> ceros</span>
-<span id="cb186-18"><a href="programar-ado---files.html#cb186-18" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> D = (1,0,2,3,0)</span>
-<span id="cb186-19"><a href="programar-ado---files.html#cb186-19" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> selectindex(D) </span>
-<span id="cb186-20"><a href="programar-ado---files.html#cb186-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-21"><a href="programar-ado---files.html#cb186-21" aria-hidden="true" tabindex="-1"></a>* Select para condiciones más flexibles</span>
-<span id="cb186-22"><a href="programar-ado---files.html#cb186-22" aria-hidden="true" tabindex="-1"></a>select(B, B[.,1]:&gt;2)</span>
-<span id="cb186-23"><a href="programar-ado---files.html#cb186-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-24"><a href="programar-ado---files.html#cb186-24" aria-hidden="true" tabindex="-1"></a>* Ordenar matrices </span>
-<span id="cb186-25"><a href="programar-ado---files.html#cb186-25" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">sort</span>(B,2)  <span class="co">// Ordena según la columna 2 de B</span></span>
-<span id="cb186-26"><a href="programar-ado---files.html#cb186-26" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> <span class="kw">jumble</span>(B) <span class="co">// Aleatoriza las filas de B</span></span></code></pre></div>
-<p>Mata contiene varias funciones para extraer propiedades de las matrices:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb187-1"><a href="programar-ado---files.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb187-2"><a href="programar-ado---files.html#cb187-2" aria-hidden="true" tabindex="-1"></a>A = (5,4\6,7)</span>
-<span id="cb187-3"><a href="programar-ado---files.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)         <span class="co">// Determinante de A</span></span>
-<span id="cb187-4"><a href="programar-ado---files.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="fu">invsym</span>(A)      <span class="co">// Ibversa de A</span></span>
-<span id="cb187-5"><a href="programar-ado---files.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="fu">trace</span>(A)       <span class="co">// Traza de A</span></span>
-<span id="cb187-6"><a href="programar-ado---files.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(A)        <span class="co">// Rango de A</span></span>
-<span id="cb187-7"><a href="programar-ado---files.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="fu">norm</span>(A)        <span class="co">// Norma de A</span></span>
-<span id="cb187-8"><a href="programar-ado---files.html#cb187-8" aria-hidden="true" tabindex="-1"></a>X=.            <span class="co">// Vectores propios</span></span>
-<span id="cb187-9"><a href="programar-ado---files.html#cb187-9" aria-hidden="true" tabindex="-1"></a>L=.            <span class="co">// Valores propios</span></span>
-<span id="cb187-10"><a href="programar-ado---files.html#cb187-10" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>Mata contiene varias funciones para operar o manipular dos matrices:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb188-1"><a href="programar-ado---files.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb188-2"><a href="programar-ado---files.html#cb188-2" aria-hidden="true" tabindex="-1"></a>A = (5,4\6,7)</span>
-<span id="cb188-3"><a href="programar-ado---files.html#cb188-3" aria-hidden="true" tabindex="-1"></a>B = (1,6\3,2)</span>
-<span id="cb188-4"><a href="programar-ado---files.html#cb188-4" aria-hidden="true" tabindex="-1"></a>A' * B            <span class="co">// A x B</span></span>
-<span id="cb188-5"><a href="programar-ado---files.html#cb188-5" aria-hidden="true" tabindex="-1"></a><span class="kw">cross</span>(A,B)        <span class="co">// A x B using a solver (faster)</span></span>
-<span id="cb188-6"><a href="programar-ado---files.html#cb188-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>Al igual que Stata, Mata puede utilizar iteradores. While loop:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb189-1"><a href="programar-ado---files.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb189-2"><a href="programar-ado---files.html#cb189-2" aria-hidden="true" tabindex="-1"></a>  x = 1                  <span class="co">// Valor inicial</span></span>
-<span id="cb189-3"><a href="programar-ado---files.html#cb189-3" aria-hidden="true" tabindex="-1"></a>  X = 4                  <span class="co">// Valor final</span></span>
-<span id="cb189-4"><a href="programar-ado---files.html#cb189-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">while</span> (x &lt;= X) {       <span class="co">// Iniciar condición del while</span></span>
-<span id="cb189-5"><a href="programar-ado---files.html#cb189-5" aria-hidden="true" tabindex="-1"></a>  printf(<span class="st">"\%g </span><span class="ch">\n</span><span class="st">"</span>, x)     <span class="co">// Alguna operación de Mata aquí</span></span>
-<span id="cb189-6"><a href="programar-ado---files.html#cb189-6" aria-hidden="true" tabindex="-1"></a>  x++                    <span class="co">// Incremental</span></span>
-<span id="cb189-7"><a href="programar-ado---files.html#cb189-7" aria-hidden="true" tabindex="-1"></a>  }                      <span class="co">// Terminar el while</span></span>
-<span id="cb189-8"><a href="programar-ado---files.html#cb189-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>For Loops:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb190-1"><a href="programar-ado---files.html#cb190-1" aria-hidden="true" tabindex="-1"></a>* Este <span class="kw">for</span></span>
-<span id="cb190-2"><a href="programar-ado---files.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> (expr1; expr2; expr3) {</span>
-<span id="cb190-3"><a href="programar-ado---files.html#cb190-3" aria-hidden="true" tabindex="-1"></a>stmts</span>
-<span id="cb190-4"><a href="programar-ado---files.html#cb190-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb190-5"><a href="programar-ado---files.html#cb190-5" aria-hidden="true" tabindex="-1"></a>* Es equivalente a </span>
-<span id="cb190-6"><a href="programar-ado---files.html#cb190-6" aria-hidden="true" tabindex="-1"></a>expr1</span>
-<span id="cb190-7"><a href="programar-ado---files.html#cb190-7" aria-hidden="true" tabindex="-1"></a><span class="kw">while</span> (expr2) {</span>
-<span id="cb190-8"><a href="programar-ado---files.html#cb190-8" aria-hidden="true" tabindex="-1"></a>stmt</span>
-<span id="cb190-9"><a href="programar-ado---files.html#cb190-9" aria-hidden="true" tabindex="-1"></a>expr3</span>
-<span id="cb190-10"><a href="programar-ado---files.html#cb190-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Los valores iniciales y finales pueden extraerse de algunas declaraciones condicionales como las dimensiones de las matrices. Mata sólo permite incrementos de 1.</p>
-<p>Notar que aquí es bien distinto a Stata:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb191-1"><a href="programar-ado---files.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb191-2"><a href="programar-ado---files.html#cb191-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">N</span> = 4                      <span class="co">// Valor final</span></span>
-<span id="cb191-3"><a href="programar-ado---files.html#cb191-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">for</span> (i=1; i&lt;=<span class="kw">N</span>; i++) {     <span class="co">// for loop </span></span>
-<span id="cb191-4"><a href="programar-ado---files.html#cb191-4" aria-hidden="true" tabindex="-1"></a>   printf(<span class="st">"%g </span><span class="ch">\n</span><span class="st">"</span>, i)         <span class="co">// some Mata operation here</span></span>
-<span id="cb191-5"><a href="programar-ado---files.html#cb191-5" aria-hidden="true" tabindex="-1"></a>   }                          <span class="co">// end for loop</span></span>
-<span id="cb191-6"><a href="programar-ado---files.html#cb191-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>If/else son:</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb192-1"><a href="programar-ado---files.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb192-2"><a href="programar-ado---files.html#cb192-2" aria-hidden="true" tabindex="-1"></a> x = 3                       <span class="co">// Valor de x</span></span>
-<span id="cb192-3"><a href="programar-ado---files.html#cb192-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb192-4"><a href="programar-ado---files.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">for</span> (i=1; i&lt;=5; i++) {     <span class="co">// Empezar el loop</span></span>
-<span id="cb192-5"><a href="programar-ado---files.html#cb192-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> (x &gt; i) {             <span class="co">// if</span></span>
-<span id="cb192-6"><a href="programar-ado---files.html#cb192-6" aria-hidden="true" tabindex="-1"></a>      printf(<span class="st">"\%g</span><span class="ch">\n</span><span class="st">"</span>, 0)      <span class="co">// Comando de mata si la condición se cumple</span></span>
-<span id="cb192-7"><a href="programar-ado---files.html#cb192-7" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb192-8"><a href="programar-ado---files.html#cb192-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">else</span> {                   <span class="co">//  en caso contrario</span></span>
-<span id="cb192-9"><a href="programar-ado---files.html#cb192-9" aria-hidden="true" tabindex="-1"></a>      printf(<span class="st">"\%g</span><span class="ch">\n</span><span class="st">"</span>, 1)      <span class="co">// ejecutar este comando de mata</span></span>
-<span id="cb192-10"><a href="programar-ado---files.html#cb192-10" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb192-11"><a href="programar-ado---files.html#cb192-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb192-12"><a href="programar-ado---files.html#cb192-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>Mata también permite abreviar la sintaxis en caso de que existan dos o mas condiciones.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb193-1"><a href="programar-ado---files.html#cb193-1" aria-hidden="true" tabindex="-1"></a>(a ? b : c)</span></code></pre></div>
-<p>“a” es la condición, “b” es el valor en caso de que sea verdadero y “c” en caso de que sea falsa. Para el ejemplo, la condición sería: <code>(x &gt; i ? 1 : 0)</code>.</p>
-</div>
-<div id="de-stata-a-mata" class="section level4" number="5.0.26.3">
-<h4>
-<span class="header-section-number">5.0.26.3</span> De Stata a Mata<a class="anchor" aria-label="anchor" href="#de-stata-a-mata"><i class="fas fa-link"></i></a>
-</h4>
-<p>Estimar un MCO: Un ejemplo estándar es hacer un simple OLS en Mata.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb194-1"><a href="programar-ado---files.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto, <span class="kw">clear</span></span>
-<span id="cb194-2"><a href="programar-ado---files.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span></span>
-<span id="cb194-3"><a href="programar-ado---files.html#cb194-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">y</span> = st_data(.,<span class="st">"price"</span>)</span>
-<span id="cb194-4"><a href="programar-ado---files.html#cb194-4" aria-hidden="true" tabindex="-1"></a> X = st_data(.,(<span class="st">"mpg"</span>, <span class="st">"weight"</span>))</span>
-<span id="cb194-5"><a href="programar-ado---files.html#cb194-5" aria-hidden="true" tabindex="-1"></a> X = X, <span class="fu">J</span>(<span class="bn">rows</span>(X),1,1)</span>
-<span id="cb194-6"><a href="programar-ado---files.html#cb194-6" aria-hidden="true" tabindex="-1"></a>    beta   = <span class="fu">invsym</span>(<span class="kw">cross</span>(X,X))*<span class="kw">cross</span>(X,<span class="fu">y</span>)</span>
-<span id="cb194-7"><a href="programar-ado---files.html#cb194-7" aria-hidden="true" tabindex="-1"></a>    esq    = (<span class="fu">y</span> - X*beta) :^ 2</span>
-<span id="cb194-8"><a href="programar-ado---files.html#cb194-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">V</span>      = (<span class="kw">sum</span>(esq)/(<span class="bn">rows</span>(X)-<span class="bn">cols</span>(X)))*<span class="fu">invsym</span>(<span class="kw">cross</span>(X,X))</span>
-<span id="cb194-9"><a href="programar-ado---files.html#cb194-9" aria-hidden="true" tabindex="-1"></a>    stderr = <span class="fu">sqrt</span>(diagonal(<span class="kw">V</span>))</span>
-<span id="cb194-10"><a href="programar-ado---files.html#cb194-10" aria-hidden="true" tabindex="-1"></a>      st_matrix(<span class="st">"b"</span>, beta)</span>
-<span id="cb194-11"><a href="programar-ado---files.html#cb194-11" aria-hidden="true" tabindex="-1"></a>      st_matrix(<span class="st">"se"</span>, stderr)</span>
-<span id="cb194-12"><a href="programar-ado---files.html#cb194-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
-<p>For Loops</p>
-<ul>
-<li>En Mata, la variable dependiente se importa como el vector y las variables independientes se importan como la matriz X. A esta matriz X se le añade un vector columna de unos para el intercepto.</li>
-<li>Como el vector de unos debe tener el mismo número de filas que la matriz X, nótese el uso del operador J().</li>
-<li>En el último paso, las betas y los errores estándar se exportan a Stata como matrices de Stata.</li>
-</ul>
-</div>
-<div id="funciones-en-mata" class="section level4" number="5.0.26.4">
-<h4>
-<span class="header-section-number">5.0.26.4</span> Funciones en Mata<a class="anchor" aria-label="anchor" href="#funciones-en-mata"><i class="fas fa-link"></i></a>
-</h4>
-<p>Vector: Un ejemplo estándar es hacer un simple OLS en Mata.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb195-1"><a href="programar-ado---files.html#cb195-1" aria-hidden="true" tabindex="-1"></a>* Generar un <span class="kw">vector</span> </span>
-<span id="cb195-2"><a href="programar-ado---files.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb195-3"><a href="programar-ado---files.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> zeros(c)</span>
-<span id="cb195-4"><a href="programar-ado---files.html#cb195-4" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb195-5"><a href="programar-ado---files.html#cb195-5" aria-hidden="true" tabindex="-1"></a>    a = <span class="fu">J</span>(c, 1, 0)</span>
-<span id="cb195-6"><a href="programar-ado---files.html#cb195-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(a)</span>
-<span id="cb195-7"><a href="programar-ado---files.html#cb195-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb195-8"><a href="programar-ado---files.html#cb195-8" aria-hidden="true" tabindex="-1"></a>b = zeros(3)</span>
-<span id="cb195-9"><a href="programar-ado---files.html#cb195-9" aria-hidden="true" tabindex="-1"></a>b</span>
-<span id="cb195-10"><a href="programar-ado---files.html#cb195-10" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
-<p>Matriz:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb196-1"><a href="programar-ado---files.html#cb196-1" aria-hidden="true" tabindex="-1"></a>* Generar una matriz</span>
-<span id="cb196-2"><a href="programar-ado---files.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb196-3"><a href="programar-ado---files.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> zerosv1(<span class="fu">real</span> <span class="fu">scalar</span> c, <span class="fu">real</span> <span class="fu">scalar</span> <span class="fu">r</span>)</span>
-<span id="cb196-4"><a href="programar-ado---files.html#cb196-4" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb196-5"><a href="programar-ado---files.html#cb196-5" aria-hidden="true" tabindex="-1"></a><span class="fu">real</span> <span class="fu">matrix</span> A </span>
-<span id="cb196-6"><a href="programar-ado---files.html#cb196-6" aria-hidden="true" tabindex="-1"></a>A = <span class="fu">J</span>(c,<span class="fu">r</span>,0)</span>
-<span id="cb196-7"><a href="programar-ado---files.html#cb196-7" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(A)</span>
-<span id="cb196-8"><a href="programar-ado---files.html#cb196-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb196-9"><a href="programar-ado---files.html#cb196-9" aria-hidden="true" tabindex="-1"></a>b = zerosv1(3,2)</span>
-<span id="cb196-10"><a href="programar-ado---files.html#cb196-10" aria-hidden="true" tabindex="-1"></a>b</span>
-<span id="cb196-11"><a href="programar-ado---files.html#cb196-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
-<p>Hacer opcionales:</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb197-1"><a href="programar-ado---files.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb197-2"><a href="programar-ado---files.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> zerosv2(<span class="fu">real</span> <span class="fu">scalar</span> c,| <span class="fu">real</span> <span class="fu">scalar</span> <span class="fu">r</span>)</span>
-<span id="cb197-3"><a href="programar-ado---files.html#cb197-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb197-4"><a href="programar-ado---files.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="fu">real</span> <span class="fu">matrix</span> A</span>
-<span id="cb197-5"><a href="programar-ado---files.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="kw">args</span>()==1) <span class="fu">r</span> = 1</span>
-<span id="cb197-6"><a href="programar-ado---files.html#cb197-6" aria-hidden="true" tabindex="-1"></a>A = <span class="fu">J</span>(c, <span class="fu">r</span>, 0)</span>
-<span id="cb197-7"><a href="programar-ado---files.html#cb197-7" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(A)</span>
-<span id="cb197-8"><a href="programar-ado---files.html#cb197-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb197-9"><a href="programar-ado---files.html#cb197-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span>
-<span id="cb197-10"><a href="programar-ado---files.html#cb197-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-11"><a href="programar-ado---files.html#cb197-11" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb197-12"><a href="programar-ado---files.html#cb197-12" aria-hidden="true" tabindex="-1"></a>zerosv2(3,2)</span>
-<span id="cb197-13"><a href="programar-ado---files.html#cb197-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb197-14"><a href="programar-ado---files.html#cb197-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-15"><a href="programar-ado---files.html#cb197-15" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> m2 <span class="kw">syntax</span></span></code></pre></div>
-<p>Guardar:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb198-1"><a href="programar-ado---files.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> </span>
-<span id="cb198-2"><a href="programar-ado---files.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> zerosfinal(<span class="fu">real</span> <span class="fu">scalar</span> c,| <span class="fu">real</span> <span class="fu">scalar</span> <span class="fu">r</span>)</span>
-<span id="cb198-3"><a href="programar-ado---files.html#cb198-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb198-4"><a href="programar-ado---files.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="fu">real</span> <span class="fu">matrix</span> A</span>
-<span id="cb198-5"><a href="programar-ado---files.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="kw">args</span>()==1) <span class="fu">r</span> = 1</span>
-<span id="cb198-6"><a href="programar-ado---files.html#cb198-6" aria-hidden="true" tabindex="-1"></a>A = <span class="fu">J</span>(c, <span class="fu">r</span>, 0)</span>
-<span id="cb198-7"><a href="programar-ado---files.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(A)</span>
-<span id="cb198-8"><a href="programar-ado---files.html#cb198-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb198-9"><a href="programar-ado---files.html#cb198-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-10"><a href="programar-ado---files.html#cb198-10" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> stata cd <span class="st">"\$ejercicios"</span></span>
-<span id="cb198-11"><a href="programar-ado---files.html#cb198-11" aria-hidden="true" tabindex="-1"></a><span class="kw">mata</span> mosave zerosfinal(), <span class="kw">replace</span></span>
-<span id="cb198-12"><a href="programar-ado---files.html#cb198-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-13"><a href="programar-ado---files.html#cb198-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
-<p>Dos referencias recomendadas para profundizar en Mata:</p>
-<ul>
-<li>An Introduction to Stata Programming, Second Edition ()</li>
-<li>The Mata Book: A Book for Serious Programmers and Those Who Want to Be ()</li>
-</ul>
-</div>
+
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="programar-do---files.html"><span class="header-section-number">4</span> Programar do - files</a></div>
-<div class="next"><a href="exportar-informaci%C3%B3n.html"><span class="header-section-number">6</span> Exportar Información</a></div>
+<div class="prev"><a href="programar-do---files.html"><span class="header-section-number">3</span> Programar do - files</a></div>
+<div class="next"><a href="exportar-informaci%C3%B3n.html"><span class="header-section-number">5</span> Exportar Información</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav"><li>
-<a class="nav-link" href="#programar-ado---files"><span class="header-section-number">5</span> Programar ado - files</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#escribir-programas-en-stata"><span class="header-section-number">5.0.1</span> Escribir programas en Stata</a></li>
-<li><a class="nav-link" href="#por-qu%C3%A9-escribir-programas-abstracci%C3%B3n"><span class="header-section-number">5.0.2</span> ¿Por qué escribir programas?: Abstracción</a></li>
-<li><a class="nav-link" href="#mis-primeros-programas-en-stata"><span class="header-section-number">5.0.3</span> Mis primeros programas en Stata</a></li>
-<li><a class="nav-link" href="#programa-con-distintos-argumentos"><span class="header-section-number">5.0.4</span> Programa con distintos argumentos</a></li>
-<li><a class="nav-link" href="#opci%C3%B3n-syntax"><span class="header-section-number">5.0.5</span> Opción Syntax</a></li>
-<li><a class="nav-link" href="#return"><span class="header-section-number">5.0.6</span> Return</a></li>
-<li><a class="nav-link" href="#implementar-opciones-al-programa"><span class="header-section-number">5.0.7</span> Implementar opciones al programa</a></li>
-<li><a class="nav-link" href="#incluir-ifin-al-programa"><span class="header-section-number">5.0.8</span> Incluir if/in al programa</a></li>
-<li><a class="nav-link" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables"><span class="header-section-number">5.0.9</span> Generalizar el comando para incluir múltiples variables</a></li>
-<li><a class="nav-link" href="#agregar-prefijos-a-los-programas"><span class="header-section-number">5.0.10</span> Agregar prefijos a los programas</a></li>
-<li><a class="nav-link" href="#programas-para-complementar-funci%C3%B3n-egen"><span class="header-section-number">5.0.11</span> Programas para complementar función egen</a></li>
-<li><a class="nav-link" href="#syntax"><span class="header-section-number">5.0.12</span> Syntax</a></li>
-<li><a class="nav-link" href="#varlist"><span class="header-section-number">5.0.13</span> Varlist</a></li>
-<li><a class="nav-link" href="#opciones"><span class="header-section-number">5.0.14</span> Opciones</a></li>
-<li><a class="nav-link" href="#programa-para-calcular-percentiles"><span class="header-section-number">5.0.15</span> Programa para calcular percentiles</a></li>
-<li><a class="nav-link" href="#programa-con-opci%C3%B3n-return"><span class="header-section-number">5.0.16</span> Programa con opción return</a></li>
-<li><a class="nav-link" href="#agregar-opciones-al-programa"><span class="header-section-number">5.0.17</span> Agregar opciones al programa</a></li>
-<li><a class="nav-link" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables-1"><span class="header-section-number">5.0.18</span> Generalizar el comando para incluir múltiples variables</a></li>
-<li><a class="nav-link" href="#agregar-prefijos-a-los-programas-1"><span class="header-section-number">5.0.19</span> Agregar prefijos a los programas</a></li>
-<li><a class="nav-link" href="#programas-para-complementar-funci%C3%B3n-egen-1"><span class="header-section-number">5.0.20</span> Programas para complementar función egen</a></li>
-<li><a class="nav-link" href="#generalizaci%C3%B3n-de-la-funci%C3%B3n-egen"><span class="header-section-number">5.0.21</span> Generalización de la función egen</a></li>
-<li><a class="nav-link" href="#documentar-tu-programa"><span class="header-section-number">5.0.22</span> Documentar tu programa</a></li>
-<li><a class="nav-link" href="#escribir-programas-e-class"><span class="header-section-number">5.0.23</span> Escribir programas e-class</a></li>
-<li><a class="nav-link" href="#marksample-mark-y-markout"><span class="header-section-number">5.0.24</span> Marksample, Mark y Markout</a></li>
-<li><a class="nav-link" href="#sortpreserve"><span class="header-section-number">5.0.25</span> Sortpreserve</a></li>
-<li><a class="nav-link" href="#mata"><span class="header-section-number">5.0.26</span> Mata</a></li>
+<a class="nav-link" href="#programar-ado---files"><span class="header-section-number">4</span> Programar ado - files</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#escribir-programas-en-stata"><span class="header-section-number">4.0.1</span> Escribir programas en Stata</a></li>
+<li><a class="nav-link" href="#por-qu%C3%A9-escribir-programas-abstracci%C3%B3n"><span class="header-section-number">4.0.2</span> ¿Por qué escribir programas?: Abstracción</a></li>
+<li><a class="nav-link" href="#mis-primeros-programas-en-stata"><span class="header-section-number">4.0.3</span> Mis primeros programas en Stata</a></li>
+<li><a class="nav-link" href="#programa-con-distintos-argumentos"><span class="header-section-number">4.0.4</span> Programa con distintos argumentos</a></li>
+<li><a class="nav-link" href="#opci%C3%B3n-syntax"><span class="header-section-number">4.0.5</span> Opción Syntax</a></li>
+<li><a class="nav-link" href="#return"><span class="header-section-number">4.0.6</span> Return</a></li>
+<li><a class="nav-link" href="#implementar-opciones-al-programa"><span class="header-section-number">4.0.7</span> Implementar opciones al programa</a></li>
+<li><a class="nav-link" href="#incluir-ifin-al-programa"><span class="header-section-number">4.0.8</span> Incluir if/in al programa</a></li>
+<li><a class="nav-link" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables"><span class="header-section-number">4.0.9</span> Generalizar el comando para incluir múltiples variables</a></li>
+<li><a class="nav-link" href="#agregar-prefijos-a-los-programas"><span class="header-section-number">4.0.10</span> Agregar prefijos a los programas</a></li>
+<li><a class="nav-link" href="#programas-para-complementar-funci%C3%B3n-egen"><span class="header-section-number">4.0.11</span> Programas para complementar función egen</a></li>
+<li><a class="nav-link" href="#syntax"><span class="header-section-number">4.0.12</span> Syntax</a></li>
+<li><a class="nav-link" href="#varlist"><span class="header-section-number">4.0.13</span> Varlist</a></li>
+<li><a class="nav-link" href="#opciones"><span class="header-section-number">4.0.14</span> Opciones</a></li>
+<li><a class="nav-link" href="#programa-para-calcular-percentiles"><span class="header-section-number">4.0.15</span> Programa para calcular percentiles</a></li>
+<li><a class="nav-link" href="#programa-con-opci%C3%B3n-return"><span class="header-section-number">4.0.16</span> Programa con opción return</a></li>
+<li><a class="nav-link" href="#agregar-opciones-al-programa"><span class="header-section-number">4.0.17</span> Agregar opciones al programa</a></li>
+<li><a class="nav-link" href="#generalizar-el-comando-para-incluir-m%C3%BAltiples-variables-1"><span class="header-section-number">4.0.18</span> Generalizar el comando para incluir múltiples variables</a></li>
+<li><a class="nav-link" href="#agregar-prefijos-a-los-programas-1"><span class="header-section-number">4.0.19</span> Agregar prefijos a los programas</a></li>
+<li><a class="nav-link" href="#programas-para-complementar-funci%C3%B3n-egen-1"><span class="header-section-number">4.0.20</span> Programas para complementar función egen</a></li>
+<li><a class="nav-link" href="#generalizaci%C3%B3n-de-la-funci%C3%B3n-egen"><span class="header-section-number">4.0.21</span> Generalización de la función egen</a></li>
+<li><a class="nav-link" href="#documentar-tu-programa"><span class="header-section-number">4.0.22</span> Documentar tu programa</a></li>
+<li><a class="nav-link" href="#escribir-programas-e-class"><span class="header-section-number">4.0.23</span> Escribir programas e-class</a></li>
+<li><a class="nav-link" href="#marksample-mark-y-markout"><span class="header-section-number">4.0.24</span> Marksample, Mark y Markout</a></li>
+<li><a class="nav-link" href="#sortpreserve"><span class="header-section-number">4.0.25</span> Sortpreserve</a></li>
 </ul>
 </li></ul>
 

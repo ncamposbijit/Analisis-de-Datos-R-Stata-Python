@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>6 Exportar Información | Análisis de Datos con Stata - Nivel avanzado</title>
+<title>5 Exportar Información | Análisis de Datos con Stata - Nivel avanzado</title>
 <meta name="author" content="Nicolás Campos Bijit">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="6 Exportar Información | Análisis de Datos con Stata - Nivel avanzado">
+<meta property="og:title" content="5 Exportar Información | Análisis de Datos con Stata - Nivel avanzado">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="6 Exportar Información | Análisis de Datos con Stata - Nivel avanzado">
+<meta name="twitter:title" content="5 Exportar Información | Análisis de Datos con Stata - Nivel avanzado">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -66,12 +66,13 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Introducción</a></li>
-<li><a class="" href="referencias.html"><span class="header-section-number">2</span> Referencias</a></li>
-<li><a class="" href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">3</span> Buenas prácticas de programación y visualización</a></li>
-<li><a class="" href="programar-do---files.html"><span class="header-section-number">4</span> Programar do - files</a></li>
-<li><a class="" href="programar-ado---files.html"><span class="header-section-number">5</span> Programar ado - files</a></li>
-<li><a class="active" href="exportar-informaci%C3%B3n.html"><span class="header-section-number">6</span> Exportar Información</a></li>
-<li><a class="" href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">7</span> Manejo de grandes bases de datos en Stata</a></li>
+<li><a class="" href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html"><span class="header-section-number">2</span> Buenas prácticas de programación y visualización</a></li>
+<li><a class="" href="programar-do---files.html"><span class="header-section-number">3</span> Programar do - files</a></li>
+<li><a class="" href="programar-ado---files.html"><span class="header-section-number">4</span> Programar ado - files</a></li>
+<li><a class="active" href="exportar-informaci%C3%B3n.html"><span class="header-section-number">5</span> Exportar Información</a></li>
+<li><a class="" href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">6</span> Manejo de grandes bases de datos en Stata</a></li>
+<li><a class="" href="mata.html"><span class="header-section-number">7</span> Mata</a></li>
+<li><a class="" href="referencias.html"><span class="header-section-number">8</span> Referencias</a></li>
 </ul>
 
         <div class="book-extra">
@@ -79,14 +80,14 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="exportar-información" class="section level1" number="6">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="exportar-información" class="section level1" number="5">
 <h1>
-<span class="header-section-number">6</span> Exportar Información<a class="anchor" aria-label="anchor" href="#exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> Exportar Información<a class="anchor" aria-label="anchor" href="#exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h1>
 <p>Exportar información es parte importante del proceso de análisis de datos. En esta sección veremos algunas herramientas que permiten conectar los resultados del análisis hecho en Stata con los reportes que queremos crear en Word.</p>
-<div id="stata-markdown" class="section level3" number="6.0.1">
+<div id="stata-markdown" class="section level3" number="5.0.1">
 <h3>
-<span class="header-section-number">6.0.1</span> Stata Markdown<a class="anchor" aria-label="anchor" href="#stata-markdown"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.0.1</span> Stata Markdown<a class="anchor" aria-label="anchor" href="#stata-markdown"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Herramienta para crear informes que sean reproducibles y en donde los datos, códigos y operaciones están conectadas.<br>
@@ -116,9 +117,9 @@
 <li>
 <strong>Stata Markdown:</strong> Es la variación especifica para Stata. Se implementa a través del comando <code>markstat</code> hecho por <a href="https://data.princeton.edu/stata/markdown">Germán Rodriguez</a>. Estos archivos tiene extensión <code>.stmd</code>.</li>
 </ul>
-<div id="instalación" class="section level4" number="6.0.1.1">
+<div id="instalación" class="section level4" number="5.0.1.1">
 <h4>
-<span class="header-section-number">6.0.1.1</span> Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.0.1.1</span> Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <p>En Stata, ejecuta estos comandos:</p>
 <ul>
@@ -131,11 +132,11 @@
 </li>
 <li>Decirle a <code>markstat</code> donde encontrar pandoc. En mi caso es:</li>
 </ul>
-<div class="sourceCode" id="cb199"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb199-1"><a href="exportar-informaci%C3%B3n.html#cb199-1" aria-hidden="true" tabindex="-1"></a>whereis pandoc <span class="st">"C:\Users</span><span class="ch">\n</span><span class="st">icol\AppData\Local\Pandoc\pandoc.exe"</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb171-1"><a href="exportar-informaci%C3%B3n.html#cb171-1" aria-hidden="true" tabindex="-1"></a>whereis pandoc <span class="st">"C:\Users</span><span class="ch">\n</span><span class="st">icol\AppData\Local\Pandoc\pandoc.exe"</span></span></code></pre></div>
 </div>
-<div id="funcionalidades" class="section level4" number="6.0.1.2">
+<div id="funcionalidades" class="section level4" number="5.0.1.2">
 <h4>
-<span class="header-section-number">6.0.1.2</span> Funcionalidades<a class="anchor" aria-label="anchor" href="#funcionalidades"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.0.1.2</span> Funcionalidades<a class="anchor" aria-label="anchor" href="#funcionalidades"><i class="fas fa-link"></i></a>
 </h4>
 <p>Algunos elementos que vamos a utilizar en Stata Markdown:</p>
 <ul>
@@ -147,26 +148,26 @@
 <li>Insertar quiebres de páginas: <code>\newpage</code>.</li>
 </ul>
 </div>
-<div id="generar-un-documento" class="section level4" number="6.0.1.3">
+<div id="generar-un-documento" class="section level4" number="5.0.1.3">
 <h4>
-<span class="header-section-number">6.0.1.3</span> Generar un documento<a class="anchor" aria-label="anchor" href="#generar-un-documento"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.0.1.3</span> Generar un documento<a class="anchor" aria-label="anchor" href="#generar-un-documento"><i class="fas fa-link"></i></a>
 </h4>
 <p>Como mencionamos anteriormente es posible generar un documento de word, pdf o html que contenga todos los códigos, resultados, tablas y figuras hechas en Stata. Para generar un documento es necesario:</p>
 <ul>
 <li>Escribir en tu editor de códigos preferido un archivo en formato <code>stmd</code>. En nuestro caso escribiremos un archivo que se llama <code>ejemplo1.stmd</code>. Guardar el archivo en tu carpeta de trabajo.</li>
 <li>Ejecutar el comando <code>markstat</code> según el tipo de archivo que desee generar. En nuestro caso será:</li>
 </ul>
-<div class="sourceCode" id="cb200"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb200-1"><a href="exportar-informaci%C3%B3n.html#cb200-1" aria-hidden="true" tabindex="-1"></a>markstat <span class="kw">using</span> ejemplo1, <span class="ot">strict</span> docx</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb172-1"><a href="exportar-informaci%C3%B3n.html#cb172-1" aria-hidden="true" tabindex="-1"></a>markstat <span class="kw">using</span> ejemplo1, <span class="ot">strict</span> docx</span></code></pre></div>
 </div>
 </div>
-<div id="putdocx" class="section level3" number="6.0.2">
+<div id="putdocx" class="section level3" number="5.0.2">
 <h3>
-<span class="header-section-number">6.0.2</span> Putdocx<a class="anchor" aria-label="anchor" href="#putdocx"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.0.2</span> Putdocx<a class="anchor" aria-label="anchor" href="#putdocx"><i class="fas fa-link"></i></a>
 </h3>
 <p>La ventaja de <code>putdocx</code> radica en que es posible personalizar un poco más las tablas. Esto permite conectar el informe final con el trabajo de análisis de datos.</p>
-<div id="algunos-comandos-útiles" class="section level4" number="6.0.2.1">
+<div id="algunos-comandos-útiles" class="section level4" number="5.0.2.1">
 <h4>
-<span class="header-section-number">6.0.2.1</span> Algunos comandos útiles<a class="anchor" aria-label="anchor" href="#algunos-comandos-%C3%BAtiles"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.0.2.1</span> Algunos comandos útiles<a class="anchor" aria-label="anchor" href="#algunos-comandos-%C3%BAtiles"><i class="fas fa-link"></i></a>
 </h4>
 <p>Crear, pegar y guardar documentos:</p>
 <ul>
@@ -189,9 +190,9 @@
 * <code>putdocx text</code>: Agrega un bloque de texto a un párrafo.
 * <code>putdocx image</code>: Agrega una imagen al párrafo.</p>
 </div>
-<div id="tablas" class="section level4" number="6.0.2.2">
+<div id="tablas" class="section level4" number="5.0.2.2">
 <h4>
-<span class="header-section-number">6.0.2.2</span> Tablas:<a class="anchor" aria-label="anchor" href="#tablas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.0.2.2</span> Tablas:<a class="anchor" aria-label="anchor" href="#tablas"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>putdocx table</code>: Crea una nueva tabla en el documento la que puede contener resultados de estimaciones, estadística descriptiva o datos.
 <code>putdocx sectionbreak</code>: Agrega una nueva sección.</p>
@@ -200,14 +201,14 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="programar-ado---files.html"><span class="header-section-number">5</span> Programar ado - files</a></div>
-<div class="next"><a href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">7</span> Manejo de grandes bases de datos en Stata</a></div>
+<div class="prev"><a href="programar-ado---files.html"><span class="header-section-number">4</span> Programar ado - files</a></div>
+<div class="next"><a href="manejo-de-grandes-bases-de-datos-en-stata.html"><span class="header-section-number">6</span> Manejo de grandes bases de datos en Stata</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav"><li>
-<a class="nav-link" href="#exportar-informaci%C3%B3n"><span class="header-section-number">6</span> Exportar Información</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#stata-markdown"><span class="header-section-number">6.0.1</span> Stata Markdown</a></li>
-<li><a class="nav-link" href="#putdocx"><span class="header-section-number">6.0.2</span> Putdocx</a></li>
+<a class="nav-link" href="#exportar-informaci%C3%B3n"><span class="header-section-number">5</span> Exportar Información</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#stata-markdown"><span class="header-section-number">5.0.1</span> Stata Markdown</a></li>
+<li><a class="nav-link" href="#putdocx"><span class="header-section-number">5.0.2</span> Putdocx</a></li>
 </ul>
 </li></ul>
 
