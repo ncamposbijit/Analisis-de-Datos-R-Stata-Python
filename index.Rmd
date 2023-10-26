@@ -1,5 +1,5 @@
 --- 
-title: "Análisis de Datos con Stata - Nivel avanzado"
+title: "Análisis de Datos con Stata, R y Python"
 author: "Nicolás Campos Bijit"
 date: "Octubre 2023"
 site: bookdown::bookdown_site
@@ -8,7 +8,9 @@ bibliography: references.bib
 
 # Introducción
 
-Estas notas están diseñadas para quienes buscan información avanzada sobre el trabajo con bases de datos en Stata. Han sido estructuradas como apuntes de clase, lo que implica un avance secuencial a lo largo de las sesiones. No obstante, con excepción de la sección sobre creación de programas, cada capítulo puede ser estudiado de forma independiente. El contenido es avanzado y presupone conocimientos básicos a intermedios del programa. Estas notas ponen énfasis en buenas prácticas de programación, diseño de programas (ado files), matrices en Stata (mata), técnicas avanzadas de replicación y gestión de grandes bases de datos. 
+Estas notas están diseñadas para quienes buscan aprender las herramientas de análisis de datos en R, Python y Stata. Han sido estructuradas como apuntes de clase, lo que implica un avance secuencial a lo largo de las sesiones. 
+
+Las notas de Python y R son parte un curso básico, mientras que el curso de Stata corresponde a uno avanzado. Para la sección de Stata, estas notas ponen énfasis en buenas prácticas de programación, diseño de programas (ado files), matrices en Stata (mata), técnicas avanzadas de replicación y gestión de grandes bases de datos. 
 
 Con el tiempo, estas notas de clase han evolucionado y seguirán haciéndolo. Han sido enriquecidas gracias a las contribuciones de diversas personas. Agradezco en especial a Diego Menares y a Catalina Buzio por sus valiosas observaciones y aportaciones. Sin su colaboración, estas notas no serían lo que son hoy. Mi gratitud también para Benjamín Pinto, quien me asistió en la adaptación de las notas a este formato. 
 

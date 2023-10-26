@@ -406,4 +406,3 @@ Dos referencias recomendadas para profundizar en Mata:
 * An Introduction to Stata Programming, Second Edition (\cite{baum2009introduction})
 * The Mata Book: A Book for Serious Programmers and Those Who Want to Be (\cite{gould2018mata})
 
-# Referencias
