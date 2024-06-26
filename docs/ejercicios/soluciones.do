@@ -27,10 +27,6 @@ duplicates tag, g(dup)
 sum dup 
 assert r(max) == 0
 
-*-----------*
-* Ejercicio 2
-*-----------*
-
 * Merge con polity. Polity debe ser un subconjunto de WDI
 
 use wdi, clear 
@@ -58,3 +54,50 @@ replace country = "Russia" if country == "Russian Federation"
 
 merge 1:1 country using polity.dta 
 assert _merge!=2
+
+*-----------*
+* Ejercicio 2
+*-----------*
+
+
+local base = "polity natural_resources_pct_gdp gdp_per_cap"
+
+set more off 
+eststo clear
+eststo: reg `base'
+
+* Agregaar variable de población
+eststo: reg `base' population
+
+* Esperanza de vida 
+eststo: reg `base' life_expectancy under5_mortality
+
+
+* Esperanza de vida 
+eststo: reg `base' under5_mortality
+
+
+*-----------*
+* Ejercicio 3
+*-----------*
+
+clear all
+use wdi.dta, replace
+
+* Calculamos y guardamos en una macro
+sum literacy_rate, d
+local promedio = r(mean)
+
+* Cambiamos el formato 
+local promedio_formato: display %9.2f `promedio'
+display "`promedio_formato'"
+
+* Para exportarlo 
+file open myfile using "midato1.tex", write text replace
+file write myfile "`promedio_formato'"
+file close myfile
+
+* Este dato debe ser imputado en el texto. Por ejemplo, 
+* en latex, pueden utilizar \input. 
+
+

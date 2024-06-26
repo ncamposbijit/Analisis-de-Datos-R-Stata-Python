@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>1 Buenas prácticas de programación y visualización | Análisis de Datos con Stata, R y Python</title>
+<meta name="author" content="Nicolás Campos Bijit">
+<meta name="generator" content="bookdown 0.32 with bs4_book()">
+<meta property="og:title" content="1 Buenas prácticas de programación y visualización | Análisis de Datos con Stata, R y Python">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1 Buenas prácticas de programación y visualización | Análisis de Datos con Stata, R y Python">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style4.css">
+<meta name="description" content="1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de escribir un código esta...">
+<meta property="og:description" content="1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de escribir un código esta...">
+<meta name="twitter:description" content="1.1 Programación defensiva Las personas somos malas escribiendo códigos Esta sección esta basada en los trabajos y recursos publicados por Nick Eubank. La filosofía de escribir un código esta...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Análisis de Datos con Stata, R y Python</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">1</span> Buenas prácticas de programación y visualización</a></li></ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="buenas-prácticas-de-programación-y-visualización" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Buenas prácticas de programación y visualización<a class="anchor" aria-label="anchor" href="#buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h1>
+<div id="programación-defensiva" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Programación defensiva<a class="anchor" aria-label="anchor" href="#programaci%C3%B3n-defensiva"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Las personas somos malas escribiendo códigos</strong></p>
+<p>Esta sección esta basada en los trabajos y recursos publicados por <a href="https://www.nickeubank.com/">Nick Eubank</a>.</p>
+<ul>
+<li>La filosofía de escribir un código esta motivada por el hecho de que las personas somos <strong>malas escribiendo códigos</strong>.</li>
+<li>Si queremos evitar errores <strong>no es suficiente con ser cuidadoso(a)</strong>
+</li>
+<li>Es necesario diseñar estrategias que tomen en cuenta el hecho de que vamos a cometer errores al escribir un código.</li>
+<li>Tener buenas estrategias es más relevante cuando existe trabajo colaborativo, que puede <strong>amplificar los errores</strong>.</li>
+</ul>
+<p>En esta sección revisaremos cuatro <strong>buenas practicas</strong> de programación. Estas practicas no son solo aplicables a Stata, más bien son guías generales para escribir códigos en cualquier lenguaje de programación.</p>
+<ol style="list-style-type: decimal">
+<li>Usar testeos o pruebas.</li>
+<li>No duplicar información.</li>
+<li>No transcribir información, siempre exportarla.</li>
+<li>Usar un estilo correcto.</li>
+</ol>
+<p><u>Con estos elementos podremos:</u></p>
+<ul>
+<li>
+<strong>Minimizar</strong> las oportunidades de generar errores al codificar.</li>
+<li>
+<strong>Maximizar</strong> la probabilidad de que cuando se cometa un error (lo que ocurrirá!) se pueda detectar con mayor facilidad.</li>
+</ul>
+<p><u>¿Necesito entender estos principios?</u></p>
+<p><span class="citation">Chang and Li (<a href="an%C3%A1lisis-de-datos-con-r.html#ref-chang2015economics" role="doc-biblioref">2015</a>)</span> testearon la reproducibilidad de 67 artículos <strong>publicados</strong>. Todos con alguna sección empírica. Encuentran que:</p>
+<ul>
+<li>Solo 29 artículos fueron totalmente replicables.</li>
+<li>29 artículos tenían problemas al tratar <em>missing values</em>.</li>
+<li>9 poseen datos incorrectos o errores de codificación.</li>
+</ul>
+<p><span class="citation">Christensen and Miguel (<a href="an%C3%A1lisis-de-datos-con-r.html#ref-christensen2018transparency" role="doc-biblioref">2018</a>)</span> indican que <span class="citation">Chang and Li (<a href="an%C3%A1lisis-de-datos-con-r.html#ref-chang2015economics" role="doc-biblioref">2015</a>)</span> utilizan una versión poco estricta de replicabilidad.</p>
+<div class="alert alert-block alert-info">
+<b></b> (…) Chang and Li (2015) use a qualitative definition of replication, and test only key results of the paper, and this appears to lead to a fairly generous interpretation of replicability. (…)
+</div>
+<div class="alert alert-block alert-info">
+<b></b> (…) To our minds, this is evidence that even when data are available (which they sometimes are not) <strong>a non-negligible fraction of empirical economics research cannot be reproduced</strong>, even when using the original data and a relatively non-stringent conceptual understanding of what constitutes replication success.
+</div>
+<p><u>¿Qué podemos aprender de esta historia?</u></p>
+<ul>
+<li>Todos y todas tienen problemas para codificar (pasa hasta en las mejores familias).</li>
+<li>Hoy el <strong>trabajo es colaborativo</strong>. También tienes que confiar en los demás.</li>
+<li>Hay cosas que no se pueden resolver con ser cuidadoso(a) al codificar. ¿Si los datos están mal?</li>
+<li>Reproducibilidad y replicabilidad son claves. Buenas referencias sobre estos temas se encuentran en la página de <a href="https://jschultecloos.github.io/">Julia Schulte-Cloos</a>.</li>
+</ul>
+<div id="practica-i-escribir-una-prueba-o-test" class="section level3" number="1.1.1">
+<h3>
+<span class="header-section-number">1.1.1</span> Practica I: escribir una prueba o test<a class="anchor" aria-label="anchor" href="#practica-i-escribir-una-prueba-o-test"><i class="fas fa-link"></i></a>
+</h3>
+<p><u>¿Qué significa escribir una prueba o test?</u></p>
+<p><a href="https://www.nickeubank.com/">Nick Eubank</a> indica que si el tuviese que elegir solo una practica elegiría agregar pruebas o tests a los códigos.</p>
+<p><u>¿Qué es una prueba?</u></p>
+<ul>
+<li>Son afirmaciones que tienen como respuesta un valor lógico (verdadero o falso).</li>
+<li>Buscan chequear si una condición particular es cierta. En el caso de que no lo sea, es decir de que no se cumpla esta condición, la ejecución del código se detiene.</li>
+</ul>
+<p><u>¿Por qué agregar estos chequeos, si yo siempre chequeo o reviso mis códigos? </u></p>
+<p><u>1. Test se ejecutan <strong>cada vez</strong> que corres tu código</u></p>
+<ul>
+<li>La mayoría testea la <strong>primera</strong> vez que escribe un código.</li>
+<li>Si hay algún apuro por terminar el testeo del código disminuye rápidamente.</li>
+<li>Si ya ha pasado algún tiempo desde la última vez que lo ejecuté. Únicamente ejecuto el código y espero los resultados. Entender un código (incluso el que uno(a) misma escribió es difícil después de un tiempo).</li>
+<li>Un error que se comete en una de las múltiples ediciones del código pueda ser detectado con facilidad al testear.</li>
+</ul>
+<p><u>2. Genera el hábito de chequear permanentemente a un <strong>costo razonable</strong></u></p>
+<ul>
+<li>La mayoría se para a chequear los datos cuando detecta algún error o bien sospecha que existe un problema.</li>
+<li>Si nos acostumbramos a escribir pruebas al final de los códigos o bien cada vez que se hagan cierto tipo de operaciones (ej. siempre después de unir bases de datos), iremos generando el hábito de chequear constantemente, pero sin invertir demasiado tiempo en revisiones posteriores.</li>
+</ul>
+<p><u>3. Ayuda a <strong>detectar</strong> problemas rápidamente</u></p>
+<ul>
+<li>Se donde esta el error. Puedo corregirlo rápidamente.</li>
+</ul>
+<p><u>4. Escribir pruebas ayuda a detectar más problemas de los <strong>previstos</strong></u></p>
+<ul>
+<li>Los errores de un código se manifiestan de múltiples formas y muchas veces son consecuencia de errores anteriores.</li>
+<li>Si tengo valores duplicados mi estadística descriptiva estará mala.</li>
+<li>El problema surge de no darle un tratamiento correcto a los valores duplicados. No surge de algún problema en el código que genera la estadística descriptiva.</li>
+</ul>
+<div id="el-comando-assert" class="section level4" number="1.1.1.1">
+<h4>
+<span class="header-section-number">1.1.1.1</span> El comando <code>|assert|</code><a class="anchor" aria-label="anchor" href="#el-comando-assert"><i class="fas fa-link"></i></a>
+</h4>
+<p><strong>Ejemplo:</strong> Para escribir pruebas en Stata utilizaremos el comando <code>|assert|</code>. Notar que este comando detiene la ejecución del código cuando <strong>la condición no se cumple</strong>.</p>
+<p>Testear si la base de datos tiene 100 observaciones:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> </span>
+<span id="cb1-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="ot">`r(N)'</span> == 100</span></code></pre></div>
+<p>Testear si la variable <code>tasa_desempleo</code> esta en su rango:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> tasa_desempleo| &gt; 0 &amp; tasa_desempleo| &lt; 100</span></code></pre></div>
+<p>Testear si la variable <code>edad</code> es siempre positiva:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb3-1" aria-hidden="true" tabindex="-1"></a>edad &gt; 0</span></code></pre></div>
+<div class="alert alert-block alert-warning">
+<p><b>Ejercicio:</b></p>
+<p>Instrucciones:</p>
+<ul>
+<li>Descargar los <a href="https://github.com/ncamposbijit/Analisis-de-Datos-Stata-R-Python/blob/c6b19e61b6c657d3354c31650781ef708ab5074f/docs/ejercicios/ejercicio1/ejercicio1.zip">datos</a>
+</li>
+</ul>
+<p>Preguntas:</p>
+<ol style="list-style-type: decimal">
+<li>La base de datos <em>World Development Indicator (WDI)</em> tiene observaciones duplicadas. <strong>Escriba un test que falle cuando existen valores duplicados</strong>.</li>
+<li>Los países en la base de datos <code>Polity</code> deberían ser un subconjunto de los países que están en la base WDI. <strong>Escriba un test que falle debido a este problema</strong>.</li>
+</ol>
+<ul>
+<li>Las soluciones de todos los ejercicios se encuentran <a href="https://github.com/ncamposbijit/Analisis-de-Datos-Stata-R-Python/blob/e44fa03b99ddf308e025a28f16f55953e25795f2/docs/ejercicios/soluciones.do">aquí</a>
+</li>
+</ul>
+</div>
+<p>¿Cuando escribir tests?</p>
+<ul>
+<li>Después de juntar bases: <strong>Siempre</strong> incluir test después de utilizar un <code>merge</code> o bien de <code>append</code> .</li>
+<li>Después manipulaciones complejas de datos: Si piensas que fue difícil hacer un proceso, incluye un test.</li>
+<li>Después de eliminar observaciones: <strong>Siempre</strong> incluir test después de utilizar un <code>drop</code>.</li>
+</ul>
+<div class="alert alert-block alert-info">
+<p><b>Regla general</b> siempre que te veas a ti misma(o) revisando o chequeando algún segmento de código interactivamente <strong>escribe un test</strong>.</p>
+</div>
+</div>
+</div>
+<div id="practica-ii-no-duplicar-información" class="section level3" number="1.1.2">
+<h3>
+<span class="header-section-number">1.1.2</span> Practica II: no duplicar información<a class="anchor" aria-label="anchor" href="#practica-ii-no-duplicar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Información debe estar expresada una sola vez en un código.</li>
+<li>Si la información esta en muchas partes en el código, tendrás que buscar todos esos lugares.</li>
+</ul>
+<p><em>Ejemplo:</em> Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite, 110 en este caso.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var1 &gt; 110 </span>
+<span id="cb4-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var2 &gt; 110 </span>
+<span id="cb4-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var3 &gt; 110 </span></code></pre></div>
+<p>Lo anterior funciona… <u>¿Cual es el problema entonces?</u></p>
+<ul>
+<li>Imaginemos que queremos cambiar el límite de 110 a 100. Del modo en que esta escrito, vamos a tener que hacer cambios <strong>3 veces!</strong>
+</li>
+<li>Si estas restricciones se encuentran en distintas partes de tú código, se puede inducir un error.</li>
+</ul>
+<p><strong>Ejemplo:</strong> Para evitar el problema anterior, es mejor escribir:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> lim = 110 </span>
+<span id="cb5-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var1 &gt; <span class="ot">`lim'</span></span>
+<span id="cb5-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var2 &gt; <span class="ot">`lim'</span> </span>
+<span id="cb5-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var3 &gt; <span class="ot">`lim'</span> </span></code></pre></div>
+<p>De esta forma, en caso de decidir cambiar la restricción, solo tendrás que hacer <strong>un cambio</strong>. Minimizando la posibilidad de cometer un error.</p>
+<div class="alert alert-block alert-warning">
+<p><b>Ejercicio 2:</b></p>
+<ul>
+<li><p>Todas las regresiones que se encuentran en el código tienen la misma base, es decir, el mismo conjunto de variables que se repite.</p></li>
+<li><p>La idea es consolidar la base con el fin de evitar duplicación de información.</p></li>
+<li><p>Con este fin, agregar <code>population</code> como control en todas las regresiones. Nuevamente, no dupliques información.</p></li>
+</ul>
+</div>
+<div id="practica-iii-nunca-transcribir-directamente-información-todo-automatizado" class="section level4" number="1.1.2.1">
+<h4>
+<span class="header-section-number">1.1.2.1</span> Practica III: nunca transcribir directamente información, todo automatizado<a class="anchor" aria-label="anchor" href="#practica-iii-nunca-transcribir-directamente-informaci%C3%B3n-todo-automatizado"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>
+<strong>Nunca se debe transcribir resultados</strong>. Todo debe ser exportado de forma tal que pueda ser actualizado automáticamente.<br>
+</li>
+<li>No cumplir con esta practica es una importante fuente de errores</li>
+<li>
+<strong>Errores de transcripción:</strong> Si me equivoco en el décimo decimal no es tan grave, si cambio un signo si lo es.</li>
+<li>
+<strong>Problemas para actualizar:</strong> Es probable que al actualizar un código (como sucede usualmente en cualquier proyecto), olvidemos traspasar los resultados.</li>
+<li>¿Como evitar este problema?
+<ul>
+<li>Para usuarios de <span class="math inline">\(\LaTeX\)</span> cada resultado debe ser guardado en archivos <code>.tex</code>.</li>
+<li>Hacer esto no solo con las tablas (ej. <code>putexcel</code>). También hacerlo con cualquier estadística que aparezca en el texto. (Por ejemplo, ``El promedio de edad de la muestra es de 43 años”. Este 43 debe obtenerse automáticamente desde tú código, no debes transcribirlo.)</li>
+<li>Para esto: debes generar el número que se desea citar. Convertirlo a <code>string</code> y guardarlo (ej. <code>midato.tex</code>). Llamarlo desde <span class="math inline">\(\LaTeX\)</span> con <code>\input{midato.tex}</code>.</li>
+<li>Para usuarios de Word es un poco más complejo, pero posible <code>putdocx</code>.</li>
+<li>Otra alternativa es utilizar Stata Markdown.</li>
+<li>Independiente de la estrategia que utilizes la buena practica guarda relación con el hecho de que el producto final (artículo academico, reporte, nota, etc) debe estar <strong>conectada</strong> con cualquier estadística que se genere dentro de un proceso de análisis de datos.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Ejemplo: importar una tabla desde Stata a <span class="math inline">\(\LaTeX\)</span> directamente</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb6-1" aria-hidden="true" tabindex="-1"></a>eststo <span class="kw">clear</span></span>
+<span id="cb6-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb6-2" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> polity gdp_per_cap</span>
+<span id="cb6-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb6-3" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> polity gdp_per_cap under5_mortality</span>
+<span id="cb6-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb6-4" aria-hidden="true" tabindex="-1"></a>esttab <span class="kw">using</span> nombredelarchivo.tex, <span class="kw">replace</span> <span class="co">///</span></span>
+<span id="cb6-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="bn">title</span>(<span class="st">"Mis estimaciones"</span>)</span></code></pre></div>
+<ul>
+<li>Lo importante es que todo lo que se produzca en Stata debe ir directamente a el producto final. Para una revisión detallada ver <a href="https://medium.com/the-stata-guide/the-stata-to-latex-guide-6e7ed5622856">Stata to LaTeX Guide</a>. Una excelente referencia para hacer tablas mucho más avanzadas.</li>
+</ul>
+<div class="alert alert-block alert-warning">
+<p><b>Ejercicio 3:</b></p>
+<p>Calcula el promedio de <code>literacy_rate</code> y guárdalo en una macro local. Generar un formato tal que solo tenga dos decimales. Guarda el valor como <em>string</em> en un archivo <code>.tex</code> en la misma carpeta.</p>
+</div>
+</div>
+</div>
+<div id="practica-iv-estilo-importa" class="section level3" number="1.1.3">
+<h3>
+<span class="header-section-number">1.1.3</span> Practica IV: estilo importa<a class="anchor" aria-label="anchor" href="#practica-iv-estilo-importa"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>Estilo no se refiere a la estética del código ni al orden.</p></li>
+<li><p>Tiene que ver con la facilidad con el que este se puede <strong>leer</strong>. Al igual que cuando se escribe, lo importante es ser claro.</p></li>
+<li><p>Para ello tres aspectos son claves:</p></li>
+</ul>
+<p>1.<strong>Utilizar espacios</strong>. Usar espacios siempre después de utilizar un operador. Por ejemplo:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> var1=var2+var3      <span class="co">/// Mal</span></span>
+<span id="cb7-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> var1 = var2 + var3  <span class="co">/// Bien</span></span></code></pre></div>
+<ul>
+<li>Con criterio…</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb8-1" aria-hidden="true" tabindex="-1"></a>hours + minutes / 60 + seconds / 3600 </span>
+<span id="cb8-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb8-2" aria-hidden="true" tabindex="-1"></a>hours + minutes/60 + seconds/3600</span></code></pre></div>
+<p>2.<strong>Nombrar las variables para que sean informativas en si mismas.</strong> No escribir <code>var1</code>, si puedes escribir: <code>tasa_desempleo</code>. Requiere más trabajo, pero facilita la lectura. Agregar las unidades en las etiquetas facilita la lectura (<code>en porcentaje</code>). o bien (<code>== 1</code>) para indicar una variable dicotomica.</p>
+<p>3.<strong>Escribir comentarios</strong></p>
+<ul>
+<li>Ejercicio para explicar en pocas palabras lo que se ha hecho.</li>
+<li>Existe un equilibrio entre parsimonia y calidad del comentario.</li>
+<li>Establecer el objetivo del comentario claramente es muy importante.</li>
+<li>No hay una regla para escribir comentarios, pero si algunos consejos (ver, <span class="citation">Gentzkow and Shapiro (<a href="an%C3%A1lisis-de-datos-con-r.html#ref-gentzkow2014code" role="doc-biblioref">2014</a>)</span>)</li>
+<li>Utilizar imperativo si lo tiene que corregir otra persona (ej. modifica parámetros aquí, fija directorio).</li>
+<li>Debe incluir suficiente contexto para que alguien que no trabaje directamente en eso entienda que se debe hacer.</li>
+<li>Los comentarios largos deben explicar secciones de código. Importante escribir el código por bloques.</li>
+<li>La brevedad no debe afectar nunca la comprensión. Esto también aplica para los comandos (ejemplo de <a href="https://michaelshill.net/2015/07/31/in-stata-coding-style-is-the-essential/">Michael Shill</a>).</li>
+</ul>
+<p><em>Ejemplo:</em></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> var1</span>
+<span id="cb9-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> var1</span>
+<span id="cb9-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb9-3" aria-hidden="true" tabindex="-1"></a>su var1</span></code></pre></div>
+</div>
+</div>
+<div id="estilo-de-codificación-en-stata" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Estilo de codificación en Stata<a class="anchor" aria-label="anchor" href="#estilo-de-codificaci%C3%B3n-en-stata"><i class="fas fa-link"></i></a>
+</h2>
+<div id="ser-ordenado-no-es-condición-suficiente-para-tener-un-buen-estilo-de-codificación" class="section level3" number="1.2.1">
+<h3>
+<span class="header-section-number">1.2.1</span> Ser ordenado no es condición suficiente para tener un buen estilo de codificación<a class="anchor" aria-label="anchor" href="#ser-ordenado-no-es-condici%C3%B3n-suficiente-para-tener-un-buen-estilo-de-codificaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Primera idea: Un buen estilo de codificación es seguir una estrategia. Hay ciertos guías, pero lo relevante es seguir una y se consistente.</li>
+<li>Los códigos tienen distintas audiencias. La primera es tu computadora. Si tu computadora no entiende tú código es el peor de los mundos.</li>
+<li>Una de las audiencias más importantes son tus colaboradores y colaboradoras. Si ellos/as no lo entienden. <strong>El problema es tuyo en primer lugar.</strong>
+</li>
+<li>No hay un solo buen estilo. No hay una guía que pueda sustituir experiencia o estrategias ya probadas de trabajo de equipo.</li>
+<li>Lo importante es <strong>tener estrategias</strong> y <strong>utilizarlas</strong> en la medida de que sea positivo para el producto final.</li>
+<li>Ahora veremos algunas estrategias y buenas practicas que pueden ayudar a mejorar el estilo de codificación individual y de tu equipo en base a dos referencias adicionales: y de una guía confeccionada por <a href="https://michaelstepner.com/">Michael Stepner</a>.</li>
+</ul>
+</div>
+<div id="escribe-códigos-cortos" class="section level3" number="1.2.2">
+<h3>
+<span class="header-section-number">1.2.2</span> Escribe códigos cortos<a class="anchor" aria-label="anchor" href="#escribe-c%C3%B3digos-cortos"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Ningún segmento de código debiese ser mayor a 100 - 150 carácteres.</li>
+<li>Códigos largos, debiesen ser escritos de forma más pequeña como ado-files.</li>
+<li>Si tienes dificultades para reducir un código a estos estándares, es probable que tengas que pensar en como estructurarlo de mejor forma.</li>
+<li>Cada segmento de código o funciones debiesen tener un propósito <strong>claro e intuitivo</strong> para lectores experimentados en el lenguaje de programación que se este utilizando.</li>
+<li>Los do - files deben ser cortos y deben tener un objetivo claro.</li>
+<li>Todo do-file debe tener un propósito que pueda ser <strong>explicado en una oración.</strong> De hecho, hay que hacerlo. En el preámbulo. Cada do-file debe indicar claramente su objetivo.<br>
+</li>
+<li>Un proyecto debería tener varios <code>do-files</code> con las siguientes características.
+<ul>
+<li>
+<strong>Cortos:</strong> Debes ser capaz de leer un do-file completo en poco minutos y entender el objetivo. Una buena regla es que no sean más largos de 250 - 350 lineas. No es estricta esta regla. Hay ocasiones que se justifican códigos más largos. Lo importante es la claridad. No sacrificarla nunca.</li>
+<li>
+<strong>Autocontenidos:</strong> Cada do-file interactúa con otros solo a través de los archivos que carga y de los que guarda. Es importante entender tu proyecto como un flujo estructurado con pasos predeterminados.</li>
+<li>
+<strong>Enfocados:</strong> Un <code>do-file</code> cumple un propósito determinado. Cada parte se debe entender como un paso intuitivo para lograr ese propósito.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="el-nombre-de-las-variables-debe-caracterizarla" class="section level3" number="1.2.3">
+<h3>
+<span class="header-section-number">1.2.3</span> El nombre de las variables debe caracterizarla<a class="anchor" aria-label="anchor" href="#el-nombre-de-las-variables-debe-caracterizarla"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Nombres adecuados remplazan comentarios y hacen el código auto contenido.</li>
+<li>
+<strong>Utilizar nombres completos</strong>. Abreviaciones solo en el caso de estar seguro que cualquier lector puede entenderlo sin ambigüedad.</li>
+<li>Si se utilizan abreviaciones. Ser consistente. Utilizar siempre las mismas a lo largo del código. Documentarlas, especialmente con bases de datos complejas.</li>
+<li>Cuando no se pueda ser suficientemente claro en un nombre, utilizar si o si para dar una descripción (ej. agregar unidad de medida, o que tipo de variable es).</li>
+<li>
+<code>labels</code> especifican información. (ej, <code>edad</code> con el <code>label</code> <em>edad al 31 de enero</em> es más informativa que <code>edad</code> y más corto que <code>edad_31enero</code>.</li>
+<li>No utilizar nombres en dos (o más) archivos que no expliciten porque son diferentes. Por ejemplo: <code>version_final.do</code> y <code>version_final_ahorasiquesiestavezsi.do</code>.</li>
+<li>Los nombres pueden ser más cortos cuando se utilicen con frecuencia o el objeto este inmediatamente después.</li>
+</ul>
+<p><strong>Ejemplo:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb10-1" aria-hidden="true" tabindex="-1"></a>beta_mco = (educacion' * educacion)^(-1) * <span class="co">///</span></span>
+<span id="cb10-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb10-2" aria-hidden="true" tabindex="-1"></a>           (educacion' * log_salarios)</span></code></pre></div>
+<p>Mejor escrito sería:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb11-1" aria-hidden="true" tabindex="-1"></a>X = educacion</span>
+<span id="cb11-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb11-2" aria-hidden="true" tabindex="-1"></a>Y = log_salarios</span>
+<span id="cb11-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb11-3" aria-hidden="true" tabindex="-1"></a>beta_educ_salarios = (X'*X)^(-1)*(X'*Y) </span></code></pre></div>
+<ul>
+<li>No ser tacaño(a) al nombrar variables, archivos, carpetas.</li>
+<li>Probablemente lo escribas solo una vez. No ahorres espacio. Siempre pensar en la claridad.</li>
+<li>Para el caso de una figura:
+<ul>
+<li>
+<code>c_1.pdf</code> es un pesimo nombre.</li>
+<li>
+<code>correlaciones.pdf</code> es un mal nombre.</li>
+<li>
+<code>T1_CORRELACIONES_INGRESO_MORTALIDAD.PDF</code> es un mejor nombre.</li>
+</ul>
+</li>
+<li>Para el caso de una carpeta:
+<ul>
+<li>
+<code>datos/brutos/interregional</code> es un mal nombre.</li>
+<li>
+<code>datos/brutos/Estimaciones Censo Interregional 2010 - 2021</code> es un buen nombre.</li>
+</ul>
+</li>
+<li>Estos nombres nos permiten pensar en el flujo lógico del proyecto sin tener que mirar los códigos nuevamente. Ayudate constanmente.</li>
+</ul>
+</div>
+<div id="ten-especial-cuidado-cuando-uses-algebra-en-los-códigos." class="section level3" number="1.2.4">
+<h3>
+<span class="header-section-number">1.2.4</span> Ten especial cuidado cuando uses algebra en los códigos.<a class="anchor" aria-label="anchor" href="#ten-especial-cuidado-cuando-uses-algebra-en-los-c%C3%B3digos."><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Separa el álgebra en partes. Por ejemplo, el siguiente código puede inducir a un error, dado que no esta separado en partes.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = <span class="co">///</span></span>
+<span id="cb12-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    (cons + ggob + <span class="kw">export</span> - import - impuestos)* 10^6 <span class="co">///</span></span>
+<span id="cb12-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    /(indice_precios * poblacion_miles * 1000)</span></code></pre></div>
+<p>Este código es más largo, pero mucho más entendible:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_millones_nominal = <span class="co">///</span></span>
+<span id="cb13-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    (cons + ggob + <span class="kw">export</span> - import - impuestos)</span>
+<span id="cb13-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_total_real = pib_millones_nominal * 10^6 <span class="co">///</span></span>
+<span id="cb13-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    / indice_precios</span>
+<span id="cb13-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pop_total = poblacion_miles * 1000</span>
+<span id="cb13-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = pib_total_real / pob_total </span></code></pre></div>
+</div>
+<div id="ser-consistentes" class="section level3" number="1.2.5">
+<h3>
+<span class="header-section-number">1.2.5</span> Ser consistentes<a class="anchor" aria-label="anchor" href="#ser-consistentes"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Hay cosas de estilo que son solo un tema de gusto. Por ejemplo, hay quienes escriben <code>nivel_empleo_anual</code> y otras que escriben <code>NivelEmpleoAnual</code>.</li>
+<li>No importa la elección de un estilo u otro. Lo que importa es que todas y todos los miembros del equipo utilicen <strong>la misma</strong> convención.</li>
+</ul>
+</div>
+<div id="chequear-errores" class="section level3" number="1.2.6">
+<h3>
+<span class="header-section-number">1.2.6</span> Chequear errores<a class="anchor" aria-label="anchor" href="#chequear-errores"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Hemos aprendido que es importante escribir pruebas o testeos. Especialmente relevante después de operaciones complicadas o pegado de bases de datos.</li>
+<li>Stata en algunas ocasiones indica los errores que se comenten, sin la necesidad de colocar estas pruebas. Por ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">string</span> x = <span class="st">"hola"</span></span>
+<span id="cb14-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">y</span> = x^2</span></code></pre></div>
+<p>Stata retorna el siguiente error:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">type</span> mismatch </span>
+<span id="cb15-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
+<p>Normalmente el error da suficiente información. A pesar de lo anterior, en algunas circunstancias, no es tan claro saber cual es el error. Cuando ustedes se hayan encontrado con un error, que no les fue fácil descifrar, ** tienen que escribir un comentario que lo indique y explique**. Facilitara mucho el trabajo colaborativo. Eviten que otras personas tengan que invertir tiempo descifrando los mismos errores que ustedes.</p>
+</div>
+<div id="separar-tipos-de-códigos" class="section level3" number="1.2.7">
+<h3>
+<span class="header-section-number">1.2.7</span> Separar tipos de códigos<a class="anchor" aria-label="anchor" href="#separar-tipos-de-c%C3%B3digos"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Separar códigos lentos de los rápidos</li>
+<li>Códigos lentos que rara vez se piensan ejecutar idealmente debiesen estar separados de los códigos rápidos que se quieren ejecutar múltiples ocasiones.</li>
+<li>Evito tener que ejecutar un código lento cada vez que necesito actualizar algún resultado.</li>
+<li>Este criterio cambia en caso de que todos los códigos sean rápidos. Si todos son computacionalmente no demandantes, lo importante es respetar el flujo de trabajo y la claridad de los procesos de análisis.</li>
+</ul>
+</div>
+<div id="automatizar-todo-lo-que-se-pueda-automatizar" class="section level3" number="1.2.8">
+<h3>
+<span class="header-section-number">1.2.8</span> Automatizar todo lo que se pueda automatizar<a class="anchor" aria-label="anchor" href="#automatizar-todo-lo-que-se-pueda-automatizar"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Todo lo que se pueda automatizar debe ser automatizado. Por ejemplo, escriban ado-files que cambien para subconjuntos. Que los iteradores tengan números que se obtengan a partir del código, no por algo que ustedes tengan que escribir.</li>
+<li>Nunca hacer trabajo que vaya a obtener resultados de forma interactiva. Lo interactivo es siempre y unicamente para inspeccionar. En todo caso, al inspeccionar deberían hacer un código de todas formas. Esto les va a ayudar a saber que estaban pensando en el primer momento que vieron los datos que quieren analizar.</li>
+</ul>
+</div>
+<div id="abstraer-para-eliminar-pasos-redundantes." class="section level3" number="1.2.9">
+<h3>
+<span class="header-section-number">1.2.9</span> Abstraer para eliminar pasos redundantes.<a class="anchor" aria-label="anchor" href="#abstraer-para-eliminar-pasos-redundantes."><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Abstraer con fines de hacer códigos más claros. <strong>No por otras razones</strong>. A nadie le importa saber que puedes abstraer demasiado, si nadie entiende la razón de hacerlo. La claridad es lo que mñas importa.</li>
+<li>Abstracción es esencial para escribir un buen código por al menos dos razones:
+<ul>
+<li>Al eliminar la redundancia se reducen las posibilidades de cometer errores.</li>
+<li>Aumenta la claridad. Para cualquier lector será más facil leer un código no redundante.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Ejemplo:</strong> Supongamos que queremos ver la correlación espacial del consumo de papas fritas. Queremos testear si el consumo per-capita de papas fritas esta correlacionado con el consumo promedio percapita de las otras comunas de la misma región.</p>
+<p>Primero tenemos que calcular el consumo per-capita del resto:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_pc_papitas = <span class="kw">total</span>(pc_papitas), <span class="kw">by</span>(region)</span>
+<span id="cb16-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_obs = <span class="fu">count</span>(pc_papitas), <span class="kw">by</span>(region)</span>
+<span id="cb16-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> consumo_papitas_resto_pc = <span class="co">///</span></span>
+<span id="cb16-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb16-4" aria-hidden="true" tabindex="-1"></a>(total_pc_papitas - pc_papitas)/(total_obs - 1)</span></code></pre></div>
+<p>Ahora podemos ver si existe correlación. <u>¿Pero si queremos cambiar el nivel de agregación?</u> Tal vez si existe correlación, pero a nivel de área metropolitana.</p>
+<p>Copiemos el código de nuevo y calculemos esto.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_pc_papitas = <span class="kw">total</span>(pc_papitas), <span class="kw">by</span>(metroarea)</span>
+<span id="cb17-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_obs = <span class="fu">count</span>(pc_papitas), <span class="kw">by</span>(region)</span>
+<span id="cb17-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> consumo_papitas_restometro_pc = <span class="co">///</span></span>
+<span id="cb17-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb17-4" aria-hidden="true" tabindex="-1"></a>(total_pc_papitas - pc_papitas)/(total_obs - 1)</span></code></pre></div>
+<p><strong>Noten que hay un error</strong>. Se nos olvido remplazar región por <code>metroarea</code>. Este error se puede propagar si seguimos haciendo operaciones.</p>
+<p>Una alternativa al copiar y pega es escribir una función con propósito general (ado - file, programa, función, etc) que calcule la variable que deseamos bajo distintos parámetros (noten que esto se relaciona con automatizar)</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> consumo_papitas_resto </span>
+<span id="cb18-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">syntax</span>, invar(varname) outvar(<span class="bn">name</span>) byvar(varname)</span>
+<span id="cb18-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">tempvar</span> tot_invar count_invar </span>
+<span id="cb18-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> <span class="ot">`tot_invar'</span> = <span class="kw">total</span>(<span class="ot">`invar'</span>), <span class="kw">by</span>(<span class="ot">`byvar'</span>)</span>
+<span id="cb18-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> <span class="ot">`count_invar'</span> = <span class="fu">count</span>('invar'), <span class="kw">by</span>('byvar') </span>
+<span id="cb18-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gen</span> <span class="ot">`outvar'</span> = (<span class="ot">`tot_invar'</span> - <span class="ot">`invar'</span>) <span class="co">///</span></span>
+<span id="cb18-7"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb18-7" aria-hidden="true" tabindex="-1"></a>    / (<span class="ot">`count_invar'</span> - 1) </span>
+<span id="cb18-8"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
+<p>Con el programa podemos escribir los bloques de código anteriores como:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-1" aria-hidden="true" tabindex="-1"></a>* Caso 1 : a nivel <span class="kw">de</span> región</span>
+<span id="cb19-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-3" aria-hidden="true" tabindex="-1"></a>consumo_papitas_resto, invar(pc_papitas) <span class="co">///</span></span>
+<span id="cb19-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-4" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_resto_pc) byvar(region)</span>
+<span id="cb19-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-6" aria-hidden="true" tabindex="-1"></a>* Caso 2 : a nivel <span class="kw">de</span> area metropolitana</span>
+<span id="cb19-7"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-8" aria-hidden="true" tabindex="-1"></a>consumo_papitas_resto, invar(pc_papitas)  <span class="co">///</span></span>
+<span id="cb19-9"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-9" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_restometro_pc) byvar(metroarea)</span></code></pre></div>
+<p>Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel de agregación sin inducir errores por ir copiando y pegando códigos, además automatizamos un comando y evitamos repetición.</p>
+</div>
+<div id="crear-códigos-autoexplicativos-que-complementen-a-la-documentación" class="section level3" number="1.2.10">
+<h3>
+<span class="header-section-number">1.2.10</span> Crear códigos autoexplicativos que complementen a la documentación<a class="anchor" aria-label="anchor" href="#crear-c%C3%B3digos-autoexplicativos-que-complementen-a-la-documentaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>No escribas documentación que no vas a mantener.</li>
+<li>Lo mejor es que los códigos deben sean autoexplicativos.</li>
+<li>Veamos un ejemplo. Imaginemos queremos estimar una elasticidad de demanda para hacer un análisis de bienestar.</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb20-1" aria-hidden="true" tabindex="-1"></a>* Elasticidad = Cambio porcentual en la cantidad / Cambio Porcentual en precio</span>
+<span id="cb20-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb20-2" aria-hidden="true" tabindex="-1"></a>* Elasticidad = -0,4 / 0,2 = -2</span>
+<span id="cb20-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb20-3" aria-hidden="true" tabindex="-1"></a>* Mirar Informe 1, Tabla 2A.</span>
+<span id="cb20-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    calcular_perdida_bienestar, elasticidad(3)</span></code></pre></div>
+<ul>
+<li><p><u>Problema:</u> código contradice comentario. Cuando tenemos dos fuentes o más fuentes que informan sobre el mismo objeto, es probable que estas se puedan contradecir. El problema de inconsistencia interna es especialmente importante para documentación, comentarios, notas, etc.</p></li>
+<li><p>Para evitar este problema es necesario mantener los comentarios al día tal como se hace con los códigos.</p></li>
+<li><p>Hacer esto es costoso. Mantener un código extenso al mismo tiempo que una larga documentación no es sencillo.</p></li>
+<li><p>Dado esta restricción, es importante <em>escribir códigos que sean claros sin la necesidad de escribir comentarios extensos</em>.</p></li>
+<li><p>Volviendo al ejemplo. ¿Como le decimos al lector del código debe tener una elasticidad de 2 y no de 3?</p></li>
+</ul>
+<p>Ejemplo de un código auto-explicativo:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb21-1" aria-hidden="true" tabindex="-1"></a>* Mirar Informe 1: Tabla 2A. </span>
+<span id="cb21-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> cambio_porcentual_cantidad = -0,4</span>
+<span id="cb21-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> cambio_porcentual_precio = 0,2 </span>
+<span id="cb21-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> elasticidad = <span class="ot">`cambio_porcentual_cantidad'</span> <span class="co">///</span></span>
+<span id="cb21-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  / <span class="ot">`cambio_porcentual_precio'</span></span>
+<span id="cb21-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  calcular_perdida_bienestar, elasticidad(<span class="ot">`elasticidad'</span>) </span></code></pre></div>
+<p>Menos comentarios que el anterior. <strong>Sin números mágicos</strong>, los parámetros estan definidos por variables locales, en vez de imputados directamente. Este código es más informativo y es internamente consistente dado que no puedo cambiar algunos de los parámetros sin modificar el resultado. Comentarios sirven en su justa medida: es imposible desprender del mismo código sin saber la tabla.</p>
+<div id="pensar-siempre-en-la-unidad-de-observación-e-identificar-los-id-que-identifican-unicamente-a-la-unidad-de-observación" class="section level4" number="1.2.10.1">
+<h4>
+<span class="header-section-number">1.2.10.1</span> Pensar siempre en la unidad de observación e identificar los id que identifican unicamente a la unidad de observación<a class="anchor" aria-label="anchor" href="#pensar-siempre-en-la-unidad-de-observaci%C3%B3n-e-identificar-los-id-que-identifican-unicamente-a-la-unidad-de-observaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>ID permiten saber la unidad de observación (hogar, empresas, lugares, hogar-año, empresa-mes-lugar).</li>
+<li>Conocer ID únicos es esencial para entender los datos. Indican que es lo que describen los datos.</li>
+<li>También nos sirven para entender como juntar estos datos con otras fuentes de información.<br>
+</li>
+<li>Dos reglas que siempre tener en cuenta:
+<ul>
+<li>No tienen que existir observaciones duplicadas que tengan el mismo ID único.</li>
+<li>Los ID no pueden tener <em>missings</em>.</li>
+</ul>
+</li>
+<li>Una forma de verificar estos dos hechos es utilizando el comando <code>isid</code>. Este comando chequea si las variables especificadas identifican únicamente a las observaciones. Si esto no ocurre arrojara el siguiente mensaje:</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">variable</span> does <span class="kw">not</span> uniquely identify the observations</span></code></pre></div>
+<p>Si encuentro plausible que alguna variable tenga <em>missing</em> puedo colocar la opción <code>missok</code>.</p>
+</div>
+</div>
+<div id="no-ser-repetitivo" class="section level3" number="1.2.11">
+<h3>
+<span class="header-section-number">1.2.11</span> No ser repetitivo<a class="anchor" aria-label="anchor" href="#no-ser-repetitivo"><i class="fas fa-link"></i></a>
+</h3>
+<p>Hemos hablado de evitar ser repetitivo. ¿Cuándo hacerlo? Repetir en una operación simple con dos categorías es razonable.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_ga = ing <span class="kw">if</span> grupo==<span class="st">"A"</span>, nq(10)</span>
+<span id="cb23-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_gb = ing <span class="kw">if</span> grupo==<span class="st">"B"</span>, nq(10)</span></code></pre></div>
+<p>Si tengo que operar 15 veces, mejor hacerlo iterativamente:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> <span class="fu">y</span> = 2001/2015 {</span>
+<span id="cb24-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xtile</span> decil_ing_<span class="ot">`y'</span> = inn <span class="kw">if</span> año == <span class="ot">`y'</span>, nq(10)</span>
+<span id="cb24-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Si involucra múltiples operaciones. A pesar de que solo existan dos categorías, es mejor hacerlo iterativo.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> g <span class="kw">in</span> <span class="st">"A"</span> <span class="st">"B"</span> {</span>
+<span id="cb25-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> ingreso &gt;= 0 <span class="kw">if</span> grupo == <span class="st">"`g'"</span></span>
+<span id="cb25-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xtile</span> decil_ingreso_<span class="ot">`g'</span> = ingreso <span class="co">/// </span></span>
+<span id="cb25-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> grupo==<span class="st">"`g'"</span>  &amp; ingreso &gt; 0, nq(10)  </span>
+<span id="cb25-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> decil_ingreso_<span class="ot">`g'</span> = 0 <span class="co">/// </span></span>
+<span id="cb25-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> grupo==<span class="st">"`g'"</span>  &amp; ingreso == 0</span>
+<span id="cb25-7"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> decil_ingreso_<span class="ot">`g'</span> <span class="st">"Deciles de ingreso"</span></span>
+<span id="cb25-8"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb25-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><u>¿Como evitar ser repetitivo? </u></p>
+<ul>
+<li>Cuando necesites cambiar <strong>solo una cosa</strong> en el código utilizar un <em>loop</em>. <code>foreach</code> y <code>forvalues</code> iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez.</li>
+<li>Cuando necesites cambiar <strong>múltiples cosas</strong> dentro de un código, define un programa dentro del do-file utilizando <code>program</code>. De este modo tu podrás especificar más de un argumento.</li>
+<li>Cuando necesites repetir un código en <strong>múltiples do.files</strong>, pueden definir un programa en un <code>ado-file</code>, guardarlo y llamarlo cuando lo necesites. Es importante que el código agregue automáticamente la ruta en donde se encuentran guardados estos programas.</li>
+</ul>
+<p><strong>Algunas ayudas:</strong></p>
+<ul>
+<li>Cuando algunas lineas de código necesiten cambiar entre repeticiones utilizar <code>if/else</code> y <code>forvalues</code>. Estos iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez.</li>
+<li>Cuando definas programas dentro de un do-file, agrega una linea que diga <code>cap program drop &lt;program_name&gt;</code> antes de <code>program define</code>. Automáticamente se eliminará y redefinirá el programa cada vez que ejecutes el código.</li>
+</ul>
+</div>
+<div id="mensajes-finales-sobre-estilo-de-codificación" class="section level3" number="1.2.12">
+<h3>
+<span class="header-section-number">1.2.12</span> Mensajes finales sobre estilo de codificación<a class="anchor" aria-label="anchor" href="#mensajes-finales-sobre-estilo-de-codificaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Haz las cosas lo más simples posibles para ti (y tu equipo) de hoy y del futuro.</li>
+<li>No confíes tanto en ti de hoy y menos en el del futuro. Es mejor programar <strong>defensivamente</strong>.</li>
+<li>Ser consistente en formato, estilo, organización y nombres. Sigue estrategias.</li>
+<li>Reducir en lo posible pegado de códigos y repetición innecesaria.</li>
+<li>Testear regularmente.</li>
+<li>Documentar a menudo, estratégicamente, pero mínimamente.</li>
+</ul>
+</div>
+</div>
+<div id="organización-de-un-proyecto-en-stata" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Organización de un proyecto en Stata<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><i class="fas fa-link"></i></a>
+</h2>
+<div id="flujo-de-trabajo-en-stata" class="section level3" number="1.3.1">
+<h3>
+<span class="header-section-number">1.3.1</span> Flujo de trabajo en Stata<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo-en-stata"><i class="fas fa-link"></i></a>
+</h3>
+<p>Hasta el momento uno de los mayores mensajes es <strong>adoptar un sistema de organización</strong> compartirlo en el equipo y adherirse a él. Este debe incluir:</p>
+<ol style="list-style-type: decimal">
+<li>Estructuras de directorio.</li>
+<li>Estilo de codificación.<br>
+</li>
+<li>Convenciones para escribir nombres.<br>
+</li>
+<li>Convenciones para exportar datos.</li>
+</ol>
+<p>Hemos visto en detalle (2) y (3). Algunas cosas de (4) (más detalles en otro capítulo). En esta sección nos enfocaremos en (1). Esta sección se basa en una de las guías de <a href="https://asjadnaqvi.medium.com/">Asjad Nqvi</a>. Muy buenos recursos. Muy recomendado. También revisaremos algunos elementos de ().</p>
+<ul>
+<li>Un proyecto de análisis de datos contempla: planificar el trabajo, documentar las actividades, crear y verificar variables, generar y presentar análisis estadístico, replicar resultados y archivar.</li>
+<li>Todo lo anterior es a lo que nos referiremos como flujo de trabajo.</li>
+<li>Un buen flujo de trabajo es esencial para que tu y tus colaboradores(as) y los interesados en tu trabajo puedan replicarlo.</li>
+<li>Replicar es clave para generar información confiable y correcta.</li>
+</ul>
+<p>La administración del flujo de trabajo se hace al <strong>inicio</strong> de un proyecto. No al final. No hacerlo así tiene costos en tiempo y posiblemente induzca errores no forzados. Veremos algunos aspectos relacionados con la administración de datos y <em>scripts</em>. Nuevamente, más que reglas a seguir, lo presentado aquí son una serie de buenas practicas que pueden ayudar a mejorar la gestión del trabajo con Stata. La idea de esto es que finalmente podamos dedicarle más y mejor tiempo al análisis de datos.
+* Nuevamente, tener un flujo de trabajo es clave, incluso los mayores expertos en estos temas tienen problemas con esto. Por ejemplo, en el prólogo de <span class="citation">Long and Long (<a href="an%C3%A1lisis-de-datos-con-r.html#ref-long2009workflow" role="doc-biblioref">2009</a>)</span></p>
+<div class="alert alert-block alert-info">
+<p>When I started, I thought my workflow <strong>was very good and that it was simply a matter of recording what I did”</strong> As writing proceeded (<strong>this book</strong>), I discovered gaps, inefficiencies, and inconsistencies in what I did. Sometimes these involved procedures that I knew were awkward, but where “I never took the time to find a better approach”. Some problems were due to oversights where I had not realized the consequences of the things I did or failed to do.</p>
+</div>
+</div>
+<div id="organización-de-archivos-y-carpetas" class="section level3" number="1.3.2">
+<h3>
+<span class="header-section-number">1.3.2</span> Organización de archivos y carpetas<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-archivos-y-carpetas"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Algunos problemas que son recurrentes:
+<ul>
+<li>Tener múltiples versiones de un archivo y no saber cual es cual.</li>
+<li>No poder encontrar un archivo y pensar que lo has borrado.</li>
+<li>Tu equipo (y tú) no saben cual es el informe final. Hay dos archivos que con el nombre archivo final, pero con distinto contenido.</li>
+</ul>
+</li>
+</ul>
+<p>Para evitar los problemas anteriores es importante diseñar la estructura de la carpeta de trabajo y comprometerse a seguir una alerta.</p>
+<div id="carpetas" class="section level4" number="1.3.2.1">
+<h4>
+<span class="header-section-number">1.3.2.1</span> Carpetas<a class="anchor" aria-label="anchor" href="#carpetas"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li><p>Todo se guarda en carpetas. <strong>TODO</strong>.</p></li>
+<li><p>Estas deben seguir un orden lógico e intuitivo. Como consejo. Colocar números en la carpeta. Al ordenar las carpetas seguirán este orden y no el alfabético.</p></li>
+<li><p>No tener espacios en el nombre de las carpetas.</p></li>
+<li><p>Nunca utilizar (-) entre nombres de una carpeta. Utilizar (_).</p></li>
+<li><p>Evitar nombrar las carpetas con mayúsculas.</p></li>
+<li><p>Siempre escribir un <code>README.txt</code>. Puede ser tedioso, pero muy necesario. Corto, informativo, que explique el flujo de trabajo y las carpetas. Sugerencia: colocar las rutas.</p></li>
+<li><p>En esta figura se ve la idea de como deberia estructurarse las carpetas de un proyecto pequeño</p></li>
+<li><p>Lo mismo, pero para un proyecto grande</p></li>
+<li><p>Lo mismo, pero presentado de otra forma:</p></li>
+<li><p>En la medida que sus carpetas se parezcan más a estas, mucho mejor.</p></li>
+<li><p>Es importante generar dos tipos de carpetas para los resultados <code>trabajo</code> y otras que diga <code>compartir</code>.</p></li>
+<li><p><code>trabajo</code> guarda todos los resultados (ej. tablas, gráficos, documentos) que están siendo trabajados.</p></li>
+<li><p><code>compartir</code> guarda resultados terminados y listos para compartir en alguna etapa del proyecto. Por ejemplo, cuando se quieran compartir resultados intermedios del proyecto.</p></li>
+<li>
+<p>Dos reglas:</p>
+<ul>
+<li>Resultados se comparten solo después que los archivos que lo generan pasen a la carpeta <code>compartir</code>.</li>
+<li>Una vez traspasados a la carpeta compartir. No se modifican. Incluso cuando puedan existir errores.</li>
+</ul>
+</li>
+</ul>
+<p>Ayuda a garantizar que los resultados que se comparte se puedan replicar. Si encuentras errores o decides cambiar algo no cambies los ya posteados. Genera nuevos. Esto también ayuda a la replicabilidad: permite saber que cambios existieron durante un proyecto.</p>
+<p>Un directorio de trabajo estructurado es especialmente <strong>importante para proyectos colaborativos</strong> donde todo se puede desordenar mas fácilmente. Dos directorios son sugeridos cuando se trabaja de forma colaborativa: <code>correo</code> y otras que diga <code>privados</code>. <code>correo</code> guarda intercambios entre colaboradoras mientras que <code>privados</code> guarda el trabajo propio de cada colaborador(a). Otras carpetas que pueden complementar trabajo son <code>porhacer</code> que sea una carpeta que sirva como una lista de tareas <code>poraprender</code>. En cualquier caso, estas carpetas pueden ser parte de <code>privados</code>.</p>
+<p>Cuando se tengan versiones se pueden utilizar dos modos:</p>
+<ul>
+<li>v1, v2, v3, etc.</li>
+<li>Fechas. Si se utilizan estas escribirlo en año/mes/día. De esta forma se ordenara automáticamente desde el último al primero.</li>
+</ul>
+<p>Cuando versiones anteriores no te sean útiles. <strong>Borralas!</strong> No acumules archivos y códigos porque sí. Si por alguna razón deseas dejarlos (ej. necesidad de respaldar lo hecho). Genera una carpeta temporal. Esta puede estar en tú versión personal del proyecto, pero no en el archivo final.</p>
+</div>
+</div>
+<div id="master-do-files" class="section level3" number="1.3.3">
+<h3>
+<span class="header-section-number">1.3.3</span> Master <code>do-files</code><a class="anchor" aria-label="anchor" href="#master-do-files"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Un Master <code>do-file</code> es un <code>do-file</code> que ejecuta todos los códigos relevantes para el proyecto.</li>
+<li>Se basa en la idea de que diferentes <code>do-files</code> se enfocan en diferentes tareas o subtareas. No es buena practica tener un solo código enorme que haga todo el proceso.<br>
+</li>
+<li>Es importante separar tanto todos los <code>do-files</code> (incluyendo el master) en secciones y subsecciones. Por ejemplo: Preámbulo, cargar datos, generar variables, figura I, Tabla 3, etc.</li>
+<li>Crear <code>master_do.files</code> cada proyecto o subproyecto debe tener un archivo maestro que ejecute <strong>todos</strong> los códigos de inicio a fin y genere todos los resultados.</li>
+<li>Cada vez que se termine un proyecto o se obtenga algún resultado es importante ejecutar el <code>master_do.files</code>.</li>
+</ul>
+<p>Ejemplo de master do-file:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-1" aria-hidden="true" tabindex="-1"></a>  *** Información del proyecto aquí ***</span>
+<span id="cb26-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  *** Información sobre directorios ***</span>
+<span id="cb26-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  *** Ejecutar códigos ***</span>
+<span id="cb26-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  * Generación <span class="kw">de</span> datos</span>
+<span id="cb26-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/01_datos_v11.<span class="kw">do</span> </span>
+<span id="cb26-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/02_merge_v2.<span class="kw">do</span> </span>
+<span id="cb26-7"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  * Generación <span class="kw">de</span> tablas</span>
+<span id="cb26-8"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/03_tablas_v4.<span class="kw">do</span> </span>
+<span id="cb26-9"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  * Estimación principal</span>
+<span id="cb26-10"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/04_estimaciones_v11.<span class="kw">do</span> </span>
+<span id="cb26-11"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  * Figuras principales</span>
+<span id="cb26-12"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/05_graficos_v11.<span class="kw">do</span> </span></code></pre></div>
+</div>
+<div id="rutas-de-las-carpetas" class="section level3" number="1.3.4">
+<h3>
+<span class="header-section-number">1.3.4</span> Rutas de las carpetas:<a class="anchor" aria-label="anchor" href="#rutas-de-las-carpetas"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Es importante tener una carpeta principal y referenciar todas las rutas a esa dirección.</li>
+<li>Utilizar siempre <code>/</code> no <code>\textbackslash</code>. Puede causar problemas según el sistema operativo que utilices.</li>
+<li>Utilizar macros para nombrar a las carpetas. Que estos nombres tengan sentido y se relacionen con el flujo de trabajo.</li>
+<li>Recordar que una variable <code>local</code> guarda información temporalmente mientras que <code>global</code> guarda información permanentemente. Esto último hace de los <code>global</code> algo no recomendable de utilizar constantemente. No obstante, es útil para los directorios.</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-1" aria-hidden="true" tabindex="-1"></a>   *** Nota 1: Remplazar esta ruta ***</span>
+<span id="cb27-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> miproyecto <span class="st">"C://Program Files/Dropbox/miproyecto/"</span></span>
+<span id="cb27-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb27-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-4" aria-hidden="true" tabindex="-1"></a>   *** Nota 2: Directorios <span class="kw">de</span> subcarpetas ***</span>
+<span id="cb27-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">clear</span></span>
+<span id="cb27-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> datosbrutos <span class="st">"$miproyecto/datos/brutos"</span></span>
+<span id="cb27-7"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-7" aria-hidden="true" tabindex="-1"></a>   cd <span class="st">"$datosbrutos"</span></span>
+<span id="cb27-8"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">use</span> datos1.dta, <span class="kw">replace</span> </span></code></pre></div>
+</div>
+<div id="utilizar-algún-auxiliar-de-generación-de-código-sublime-text" class="section level3" number="1.3.5">
+<h3>
+<span class="header-section-number">1.3.5</span> Utilizar algún auxiliar de generación de código: Sublime Text<a class="anchor" aria-label="anchor" href="#utilizar-alg%C3%BAn-auxiliar-de-generaci%C3%B3n-de-c%C3%B3digo-sublime-text"><i class="fas fa-link"></i></a>
+</h3>
+<p>Esta sección esta basada en la página web de <a href="https://acarril.github.io/">Alvaro Carril</a>.</p>
+<div id="qué-es-sublime" class="section level4" number="1.3.5.1">
+<h4>
+<span class="header-section-number">1.3.5.1</span> ¿Qué es Sublime?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-sublime"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li><p><a href="https://www.sublimetext.com/">Sublime Text</a> es un editor de códigos gratuito. Este editor permite compilar códigos de distintos lenguajes de programación tales como Stata, Python, R, , entre muchos otros.</p></li>
+<li><p>Tiene algunas herramientas que facilitan el trabajo de programación tales como atajos (<em>shortcuts</em>) o multicolumnas. Veremos varias en esta sección.
+Es muy útil cuando tienes un proyecto grande con códigos de distintos tipos de lenguaje.
+Instalar Sublime</p></li>
+<li><p>Dirígete a <a href="https://www.sublimetext.com/">sublimetext.com</a>. Descarga e instala Sublime Text 4 (ST4) para tu sistema operativo.</p></li>
+<li><p>Es esencial que también instales <code>Package Control</code>, que te permite añadir y eliminar fácilmente complementos adicionales. Si esta bien instalado debiese aparecer en <em>preferences.</em></p></li>
+<li><p>Para installar hay que entrar a sublime, apretar <code>ctrl + shift + p</code>.</p></li>
+<li><p>Tipear <code>Install Package Control</code> y presionar <code>enter</code>.</p></li>
+</ul>
+</div>
+<div id="ejecutar-stata-desde-sublime" class="section level4" number="1.3.5.2">
+<h4>
+<span class="header-section-number">1.3.5.2</span> Ejecutar Stata desde Sublime<a class="anchor" aria-label="anchor" href="#ejecutar-stata-desde-sublime"><i class="fas fa-link"></i></a>
+</h4>
+<p><strong>Para Windows</strong></p>
+<ul>
+<li>
+<strong>Instalar StataEditor:</strong> En ST4 aprete <code>ctrl+shift+p</code>. Escriba <code>install</code> y presione <code>Enter</code>. Ahora busque <code>StataEditor</code> y haga clic en él para instalarlo.</li>
+<li>
+<strong>Instale Pywin32:</strong> repita el proceso anterior pero instalando el complemento <code>Pywin32</code>.</li>
+</ul>
+<p>Configure StataEditor:</p>
+<ul>
+<li>En ST4 vaya a <code>Preferences -&gt; Package Settings -&gt; StataEditor -&gt; Settings - Users</code>
+</li>
+<li>En este archivo en blanco debe escribir la ruta de su ejecutable de Stata y la versión que posee.</li>
+<li>Mi archivo de configuración en Windows se ve así:</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb28-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb28-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"stata_path"</span>: <span class="st">"C:/Program Files/Stata17/StataMP-64.exe"</span>,</span>
+<span id="cb28-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb28-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">"stata_version"</span>: 17,</span>
+<span id="cb28-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb28-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Registre la biblioteca de automatización de Stata:</p>
+<ul>
+<li>Vaya al ejecutable de Stata del que ha copiado la ruta (por ejemplo, StataMP-64.exe).</li>
+<li>Cree un acceso directo en su escritorio.</li>
+<li>Ahora haga clic con el botón derecho en este nuevo acceso directo y seleccione ``Propiedades”.</li>
+<li>En el campo ``Destino”, añada /Registro al final (con un espacio precedente). En mi caso es:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="st">"C:\Program Files\Stata17\StataMP-64.exe"</span> /Register</span></code></pre></div>
+<p>Aplicar y aceptar los cambios. Apretar sobre el acceso directo el click derecho y ejecutar como administrador. Y listo!</p>
+<p><strong>Para Mac</strong></p>
+<ul>
+<li>Para instalar el Editor Mejorado de Stata en ST4, inicie la paleta de comandos con <code>Cmd+shift+p</code>, escriba `<code>install" y presione</code>Enter`.</li>
+<li>Ahora busque <code>Stata Improved Editor</code> y haga clic en él para instalarlo.</li>
+<li>Reinicie ST4 y listo!</li>
+</ul>
+<p>Autoguardado</p>
+<ul>
+<li>Sublime permite auto-guardar los códigos.</li>
+<li>De esta forma no hay que preocuparse en casos de que no hayas respaldado tu código.</li>
+<li>Para esto hay que escribir vamos a instalar el paquete <code>autosave</code> y adicionalmente vamos a agregar a ``preferencias”:</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb30-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb30-1" aria-hidden="true" tabindex="-1"></a>``save_on_focus_lost<span class="st">": true.</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Análisis de Datos con Stata, R y Python</strong>" was written by Nicolás Campos Bijit. It was last built on Agosto 2024.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
