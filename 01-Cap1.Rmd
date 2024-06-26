@@ -2,6 +2,9 @@
 editor_options:
   markdown:
     wrap: 72
+output: 
+bibliography: "references.bib"
+link-citations: true
 ---
 
 ```{r global options, include=FALSE}
@@ -10,9 +13,7 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 
 # Buenas prácticas de programación y visualización
 
-### Introducción
-
-#### Programación defensiva
+## Programación defensiva
 
 **Las personas somos malas escribiendo códigos**
 
@@ -23,73 +24,78 @@ Esta sección esta basada en los trabajos y recursos publicados por [Nick Eubank
 * Es necesario diseñar estrategias que tomen en cuenta el hecho de que vamos a cometer errores al escribir un código.
 * Tener buenas estrategias es más relevante cuando existe trabajo colaborativo, que puede **amplificar los errores**.
 
-En esta sección revisaremos cuatro ``buenas practicas'' de programación. Estas practicas no son solo aplicables a Stata, más bien son guías generales para escribir códigos en cualquier lenguaje. 
+En esta sección revisaremos cuatro **buenas practicas** de programación. Estas practicas no son solo aplicables a Stata, más bien son guías generales para escribir códigos en cualquier lenguaje de programación. 
 
 1. Usar testeos o pruebas.
 2. No duplicar información.
 3. No transcribir información, siempre exportarla.
 4. Usar un estilo correcto. 
  
-Con estos elementos podremos:
+<u>Con estos elementos podremos:</u>
     
 * **Minimizar** las oportunidades de generar errores al codificar.
 * **Maximizar** la probabilidad de que cuando se cometa un error (lo que ocurrirá!) se pueda detectar con mayor facilidad. 
 
-**¿Necesito entender estos principios?**
-
+<u>¿Necesito entender estos principios?</u>
 
 @chang2015economics testearon la reproducibilidad de 67 artículos **publicados**. Todos con alguna sección empírica. Encuentran que: 
     
 * Solo 29 artículos fueron totalmente replicables.
-* 29 artículos tenían problemas al tratar \textit{missing values.}
+* 29 artículos tenían problemas al tratar *missing values*.
 * 9 poseen datos incorrectos o errores de codificación.
     
-\citet{christensen2018transparency} indican que Chang y Li utilizan una versión poco estricta de replicabilidad. 
+@christensen2018transparency indican que @chang2015economics utilizan una versión poco estricta de replicabilidad. 
     
 <div class="alert alert-block alert-info">
 <b></b> (...) Chang and Li (2015) use a qualitative definition of replication, and test only key results of the paper, and this appears to lead to a fairly generous interpretation of replicability. (...) </div>
 
 <div class="alert alert-block alert-info">
-<b></b>  (...) To our minds, this is evidence that even when data are available (which they sometimes are not) \textbf{a non-negligible fraction of empirical economics research cannot be reproduced}, even when using the original data and a relatively non-stringent conceptual understanding of what constitutes replication success. </div>
+<b></b>  (...) To our minds, this is evidence that even when data are available (which they sometimes are not) **a non-negligible fraction of empirical economics research cannot be reproduced**, even when using the original data and a relatively non-stringent conceptual understanding of what constitutes replication success. </div>
   
-¿Qué podemos aprender de esta historia?
+<u>¿Qué podemos aprender de esta historia?</u>
 
-* Todos y todas tienen problemas para codificar.
+* Todos y todas tienen problemas para codificar (pasa hasta en las mejores familias).
 * Hoy el **trabajo es colaborativo**. También tienes que confiar en los demás. 
 * Hay cosas que no se pueden resolver con ser cuidadoso(a) al codificar. ¿Si los datos están mal? 
-* Reproducibilidad y replicabilidad son claves. Buenas referencias se encuentran en la página de [Julia Schulte-Cloos](https://jschultecloos.github.io/).
+* Reproducibilidad y replicabilidad son claves. Buenas referencias sobre estos temas se encuentran en la página de [Julia Schulte-Cloos](https://jschultecloos.github.io/).
 
-#### Practica I: escribir pruebas
+### Practica I: escribir una prueba o test
 
-¿Qué es escribir pruebas?
+<u>¿Qué significa escribir una prueba o test?</u>
 
 [Nick Eubank](https://www.nickeubank.com/) indica que si el tuviese que elegir solo una practica elegiría agregar pruebas o tests a los códigos.
 
-¿Qué es una prueba?
+<u>¿Qué es una prueba?</u>
 
-* Son afirmaciones que tienen como respuesta un valor lógico.
-* Buscan chequear una condición particular, en caso de que no se cumpla esta condición, la ejecución se detiene. 
+* Son afirmaciones que tienen como respuesta un valor lógico (verdadero o falso).
+* Buscan chequear si una condición particular es cierta. En el caso de que no lo sea, es decir de que no se cumpla esta condición, la ejecución del código se detiene. 
 
-¿Por qué agregar estos chequeos, si yo siempre chequeo o reviso mis códigos? 
+<u>¿Por qué agregar estos chequeos, si yo siempre chequeo o reviso mis códigos? </u>
 
-1. Test se ejecutan **cada vez** que corres tu código
-  + La mayoría testea la **primera** vez que escribe un código.
-  + Si hay una entrega el testeo disminuye rápidamente.
-  + Si ya ha pasado algún tiempo. Únicamente ejecuto el código y espero los resultados. Entender un código (incluso el que uno(a) misma escribió es difícil). 
-  + Un error que se comete en una de las múltiples ediciones del código pueda ser detectado con facilidad al testear. 
-2. Genera el hábito de chequear permanentemente a un **costo razonable**
-  + La mayoría se para a chequear los datos cuando detecta algún error o bien sospecha que existe un problema.
-  + Si nos acostumbramos a escribir pruebas al final de los códigos o bien cada vez que se hagan cierto tipo de operaciones (ej. siempre después de unir bases de datos), iremos generando el hábito de chequear constantemente, pero sin sobre-invertir en revisiones posteriores. 
-3. Ayuda a **detectar** problemas rápidamente
-  + Se donde esta el error. Puedo corregirlo rápidamente. 
-  + Esto es especialmente importante en Stata dado que no nos indica en que linea del código se produjo el error. % Chequear bien esto. 
-4. Escribir pruebas ayuda a detectar más problemas de los **previstos**
-  + Los errores de un código se manifiestan de múltiples formas y muchas veces son consecuencia de errores anteriores. 
-  + Por ejemplo...
-  + Si tengo valores duplicados mi estadística descriptiva estará mala. 
-  + El problema surge de no darle un tratamiento correcto a los valores duplicados. No surge de algún problema en el código que genera la estadística descriptiva. 
+<u>1. Test se ejecutan **cada vez** que corres tu código</u>
 
-**Ejemplo 1:** Para escribir pruebas en Stata utilizaremos el comando `|assert|`. Notar que este comando detiene la ejecución del código cuando **la condición no se cumple**. 
+  * La mayoría testea la **primera** vez que escribe un código.
+  * Si hay algún apuro por terminar el testeo del código disminuye rápidamente.
+  * Si ya ha pasado algún tiempo desde la última vez que lo ejecuté. Únicamente ejecuto el código y espero los resultados. Entender un código (incluso el que uno(a) misma escribió es difícil después de un tiempo). 
+  * Un error que se comete en una de las múltiples ediciones del código pueda ser detectado con facilidad al testear. 
+
+<u>2. Genera el hábito de chequear permanentemente a un **costo razonable**</u>
+
+  * La mayoría se para a chequear los datos cuando detecta algún error o bien sospecha que existe un problema.
+  * Si nos acostumbramos a escribir pruebas al final de los códigos o bien cada vez que se hagan cierto tipo de operaciones (ej. siempre después de unir bases de datos), iremos generando el hábito de chequear constantemente, pero sin invertir demasiado tiempo en revisiones posteriores. 
+  
+<u>3. Ayuda a **detectar** problemas rápidamente</u>
+  * Se donde esta el error. Puedo corregirlo rápidamente. 
+  
+<u>4. Escribir pruebas ayuda a detectar más problemas de los **previstos**</u>
+
+  * Los errores de un código se manifiestan de múltiples formas y muchas veces son consecuencia de errores anteriores. 
+  * Si tengo valores duplicados mi estadística descriptiva estará mala. 
+  * El problema surge de no darle un tratamiento correcto a los valores duplicados. No surge de algún problema en el código que genera la estadística descriptiva. 
+  
+#### El comando `|assert|`
+  
+**Ejemplo:** Para escribir pruebas en Stata utilizaremos el comando `|assert|`. Notar que este comando detiene la ejecución del código cuando **la condición no se cumple**. 
 
 Testear si la base de datos tiene 100 observaciones:
 ```{stata, results="hide"}
@@ -97,7 +103,7 @@ count
 assert `r(N)' == 100
 ```
 
-Testear si la variable ` tasa_desempleo` toma valores razonables:
+Testear si la variable `tasa_desempleo` esta en su rango:
 ```{stata, results="hide"}
 assert tasa_desempleo| > 0 & tasa_desempleo| < 100
 ```
@@ -108,12 +114,14 @@ edad > 0
 ```
 
 <div class="alert alert-block alert-warning">
-<b>Ejercicio 3.1.1:</b>
+<b>Ejercicio:</b>
 
 Instrucciones:
 
+* Descargar carpeta [Ejercicio 1](/Users/ncamposbijit/Library/CloudStorage/Dropbox/Nicolas/Cursos/01 Libro - análisis de datos/docs/ejercicios/ejercicio1/ejercicio1.zip)
 * Descargar carpeta *ejercicios - Clase 1*
 * Abrir `ejercicios_clase1.do` y fijar directorio de trabajo en la carpeta descargada.
+
 
 Preguntas:
 
@@ -707,3 +715,4 @@ Codificación colaborativa
 * Para trabajo colaborativo existen editores de códigos que se enfocan en que dos o más personas puedan programar desde sus computadoras. 
 * Una buena página es [Code Share](https://codeshare.io/bvz4Ow)
 * Muy útil para pedir ayuda o hacer una revisión final. 
+

@@ -476,3 +476,5 @@ proceso
 primer-archivo-en-r-markdown
 directorio-de-trabajo
 componentes-de-r-markdown
+practica-i-escribir-una-prueba-o-test
+el-comando-assert

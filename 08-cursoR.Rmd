@@ -4846,4 +4846,3 @@ tour.html](01figuras/C8.1.png)
 -   Code Chunk: cargar paquetes, datos, visualizaciones.
 
 ![](01figuras/C8.5.png)
-# Referencias
