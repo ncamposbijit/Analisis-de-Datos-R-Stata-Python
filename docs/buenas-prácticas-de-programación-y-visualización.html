@@ -147,8 +147,10 @@
 <li>La mayoría se para a chequear los datos cuando detecta algún error o bien sospecha que existe un problema.</li>
 <li>Si nos acostumbramos a escribir pruebas al final de los códigos o bien cada vez que se hagan cierto tipo de operaciones (ej. siempre después de unir bases de datos), iremos generando el hábito de chequear constantemente, pero sin invertir demasiado tiempo en revisiones posteriores.</li>
 </ul>
-<p><u>3. Ayuda a <strong>detectar</strong> problemas rápidamente</u>
-* Se donde esta el error. Puedo corregirlo rápidamente.</p>
+<p><u>3. Ayuda a <strong>detectar</strong> problemas rápidamente</u></p>
+<ul>
+<li>Se donde esta el error. Puedo corregirlo rápidamente.</li>
+</ul>
 <p><u>4. Escribir pruebas ayuda a detectar más problemas de los <strong>previstos</strong></u></p>
 <ul>
 <li>Los errores de un código se manifiestan de múltiples formas y muchas veces son consecuencia de errores anteriores.</li>
@@ -171,43 +173,44 @@
 <p><b>Ejercicio:</b></p>
 <p>Instrucciones:</p>
 <ul>
-<li>Descargar carpeta <a href="/Users/ncamposbijit/Library/CloudStorage/Dropbox/Nicolas/Cursos/01%20Libro%20-%20ana%CC%81lisis%20de%20datos/docs/ejercicios/ejercicio1/ejercicio1.zip">Ejercicio 1</a>
+<li>Descargar los <a href="https://github.com/ncamposbijit/Analisis-de-Datos-Stata-R-Python/blob/c6b19e61b6c657d3354c31650781ef708ab5074f/docs/ejercicios/ejercicio1/ejercicio1.zip">datos</a>
 </li>
-<li>Descargar carpeta <em>ejercicios - Clase 1</em>
-</li>
-<li>Abrir <code>ejercicios_clase1.do</code> y fijar directorio de trabajo en la carpeta descargada.</li>
 </ul>
 <p>Preguntas:</p>
 <ol style="list-style-type: decimal">
 <li>La base de datos <em>World Development Indicator (WDI)</em> tiene observaciones duplicadas. <strong>Escriba un test que falle cuando existen valores duplicados</strong>.</li>
 <li>Los países en la base de datos <code>Polity</code> deberían ser un subconjunto de los países que están en la base WDI. <strong>Escriba un test que falle debido a este problema</strong>.</li>
 </ol>
+<ul>
+<li>Las soluciones de todos los ejercicios se encuentran <a href="">aquí</a>
+</li>
+</ul>
 </div>
 <p>¿Cuando escribir tests?</p>
 <ul>
-<li>Después de juntar bases: <strong>Siempre</strong> incluir test después de utilizar un <code>merge</code>.</li>
-<li>Después manipulaciones complejas de datos: Si piensas que fue difícil, incluye un test.</li>
+<li>Después de juntar bases: <strong>Siempre</strong> incluir test después de utilizar un <code>merge</code> o bien de <code>append</code> .</li>
+<li>Después manipulaciones complejas de datos: Si piensas que fue difícil hacer un proceso, incluye un test.</li>
 <li>Después de eliminar observaciones: <strong>Siempre</strong> incluir test después de utilizar un <code>drop</code>.</li>
 </ul>
 <div class="alert alert-block alert-info">
 <p><b>Regla general</b> siempre que te veas a ti misma(o) revisando o chequeando algún segmento de código interactivamente <strong>escribe un test</strong>.</p>
 </div>
 </div>
-<div id="practica-ii-no-duplicar-información" class="section level4" number="1.1.1.2">
-<h4>
-<span class="header-section-number">1.1.1.2</span> Practica II: no duplicar información<a class="anchor" aria-label="anchor" href="#practica-ii-no-duplicar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
-</h4>
-<p>Todo en un solo sitio</p>
+</div>
+<div id="practica-ii-no-duplicar-información" class="section level3" number="1.1.2">
+<h3>
+<span class="header-section-number">1.1.2</span> Practica II: no duplicar información<a class="anchor" aria-label="anchor" href="#practica-ii-no-duplicar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li>Información debe estar expresada una sola vez en un código.</li>
 <li>Si la información esta en muchas partes en el código, tendrás que buscar todos esos lugares.</li>
-<li>Veamos un ejemplo…</li>
 </ul>
-<p>Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite.</p>
+<p>Veamos un ejemplo…</p>
+<p>Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite, 110 en este caso.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var1 &gt; 110 </span>
 <span id="cb4-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var2 &gt; 110 </span>
 <span id="cb4-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var3 &gt; 110 </span></code></pre></div>
-<p>Lo anterior funciona… ¿Cual es el problema entonces?</p>
+<p>Lo anterior funciona… <u>¿Cual es el problema entonces?</u></p>
 <ul>
 <li>Imaginemos que queremos cambiar el límite de 110 a 100. Del modo en que esta escrito, vamos a tener que hacer cambios <strong>3 veces!</strong>
 </li>
@@ -215,22 +218,21 @@
 </ul>
 <p><strong>Ejemplo 2:</strong> Para evitar el problema anterior, es mejor escribir:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> lim = 110 </span>
-<span id="cb5-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var1 &gt; <span class="ot">`lim'</span></span>
-<span id="cb5-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var2 &gt; <span class="ot">`lim'</span> </span>
-<span id="cb5-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var3 &gt; <span class="ot">`lim'</span> </span></code></pre></div>
+<span id="cb5-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var1 &gt; <span class="ot">`lim'</span></span>
+<span id="cb5-4"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var2 &gt; <span class="ot">`lim'</span> </span>
+<span id="cb5-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var3 &gt; <span class="ot">`lim'</span> </span></code></pre></div>
 <p>De esta forma, en caso de decidir cambiar la restricción, solo tendrás que hacer <strong>un cambio</strong>. Minimizando la posibilidad de cometer un error.</p>
 <div class="alert alert-block alert-warning">
-<p><b>Ejercicio 3.1.2:</b></p>
-<ul>
-<li>Todas las regresiones que se encuentran en el código tienen la misma base, es decir, el mismo conjunto de variables que se repite.</li>
-<li>La idea es consolidar la base con el fin de evitar duplicación de información.</li>
-<li>Con este fin, agregar <code>population</code> como control en todas las regresiones. Nuevamente, no dupliques información.</li>
-</ul>
+<p><b>Ejercicio 2:</b>
+*
+* Todas las regresiones que se encuentran en el código tienen la misma base, es decir, el mismo conjunto de variables que se repite.
+* La idea es consolidar la base con el fin de evitar duplicación de información.
+* Con este fin, agregar <code>population</code> como control en todas las regresiones. Nuevamente, no dupliques información.</p>
 </div>
-</div>
-<div id="practica-iii-no-transcribir-exportar-información" class="section level4" number="1.1.1.3">
+<div id="practica-iii-no-transcribir-exportar-información" class="section level4" number="1.1.2.1">
 <h4>
-<span class="header-section-number">1.1.1.3</span> Practica III: no transcribir, exportar información<a class="anchor" aria-label="anchor" href="#practica-iii-no-transcribir-exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.2.1</span> Practica III: no transcribir, exportar información<a class="anchor" aria-label="anchor" href="#practica-iii-no-transcribir-exportar-informaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <p>Nunca transcribir</p>
 <ul>
@@ -264,9 +266,9 @@
 <p>Calcula el promedio de <code>literacy_rate</code> y guárdalo en una macro local. Generar un formato tal que solo tenga dos decimales. Guarda el valor como <em>string</em> en un archivo <code>.tex</code> en la misma carpeta.</p>
 </div>
 </div>
-<div id="practica-iv-estilo-importa" class="section level4" number="1.1.1.4">
+<div id="practica-iv-estilo-importa" class="section level4" number="1.1.2.2">
 <h4>
-<span class="header-section-number">1.1.1.4</span> Practica IV: estilo importa<a class="anchor" aria-label="anchor" href="#practica-iv-estilo-importa"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.2.2</span> Practica IV: estilo importa<a class="anchor" aria-label="anchor" href="#practica-iv-estilo-importa"><i class="fas fa-link"></i></a>
 </h4>
 <p>Algunos comentarios sobre estilo</p>
 <ul>
@@ -312,13 +314,13 @@
 <span id="cb9-3"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb9-3" aria-hidden="true" tabindex="-1"></a>su var1</span></code></pre></div>
 </div>
 </div>
-<div id="estilo-de-codificación-en-stata" class="section level3" number="1.1.2">
+<div id="estilo-de-codificación-en-stata" class="section level3" number="1.1.3">
 <h3>
-<span class="header-section-number">1.1.2</span> Estilo de codificación en Stata<a class="anchor" aria-label="anchor" href="#estilo-de-codificaci%C3%B3n-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3</span> Estilo de codificación en Stata<a class="anchor" aria-label="anchor" href="#estilo-de-codificaci%C3%B3n-en-stata"><i class="fas fa-link"></i></a>
 </h3>
-<div id="más-allá-del-orden" class="section level4" number="1.1.2.1">
+<div id="más-allá-del-orden" class="section level4" number="1.1.3.1">
 <h4>
-<span class="header-section-number">1.1.2.1</span> Más allá del orden<a class="anchor" aria-label="anchor" href="#m%C3%A1s-all%C3%A1-del-orden"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.1</span> Más allá del orden<a class="anchor" aria-label="anchor" href="#m%C3%A1s-all%C3%A1-del-orden"><i class="fas fa-link"></i></a>
 </h4>
 <p>Un buen estilo es seguir una estrategia</p>
 <ul>
@@ -331,9 +333,9 @@
 <li>Ahora veremos algunas estrategias y buenas practicas que pueden ayudar a mejorar el estilo de codificación individual y de tu equipo.</li>
 </ul>
 </div>
-<div id="códigos-cortos" class="section level4" number="1.1.2.2">
+<div id="códigos-cortos" class="section level4" number="1.1.3.2">
 <h4>
-<span class="header-section-number">1.1.2.2</span> Códigos cortos<a class="anchor" aria-label="anchor" href="#c%C3%B3digos-cortos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.2</span> Códigos cortos<a class="anchor" aria-label="anchor" href="#c%C3%B3digos-cortos"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Ningún segmento de código debiese ser mayor a 100 - 150 carácteres.</li>
@@ -365,9 +367,9 @@
 <li>Usar variables globales rara vez.</li>
 </ul>
 </div>
-<div id="nombres-descriptivos" class="section level4" number="1.1.2.3">
+<div id="nombres-descriptivos" class="section level4" number="1.1.3.3">
 <h4>
-<span class="header-section-number">1.1.2.3</span> Nombres Descriptivos<a class="anchor" aria-label="anchor" href="#nombres-descriptivos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.3</span> Nombres Descriptivos<a class="anchor" aria-label="anchor" href="#nombres-descriptivos"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Nombres adecuados remplazan comentarios y hacen del código un archivo auto contenido. * <strong>Utilizar nombres completos</strong>. Abreviaciones solo en el caso de estar seguro que cualquier lector puede entenderlo sin ambigüedad.</li>
@@ -408,9 +410,9 @@
 <li>Estos nombres nos permiten pensar en el flujo del proyecto sin tener que mirar los códigos.</li>
 </ul>
 </div>
-<div id="ojo-con-el-álgebra" class="section level4" number="1.1.2.4">
+<div id="ojo-con-el-álgebra" class="section level4" number="1.1.3.4">
 <h4>
-<span class="header-section-number">1.1.2.4</span> Ojo con el álgebra<a class="anchor" aria-label="anchor" href="#ojo-con-el-%C3%A1lgebra"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.4</span> Ojo con el álgebra<a class="anchor" aria-label="anchor" href="#ojo-con-el-%C3%A1lgebra"><i class="fas fa-link"></i></a>
 </h4>
 <p>Separa el álgebra en partes.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = <span class="co">///</span></span>
@@ -424,17 +426,17 @@
 <span id="cb13-5"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pop_total = poblacion_miles * 1000</span>
 <span id="cb13-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = pib_total_real / pob_total </span></code></pre></div>
 </div>
-<div id="consistencia" class="section level4" number="1.1.2.5">
+<div id="consistencia" class="section level4" number="1.1.3.5">
 <h4>
-<span class="header-section-number">1.1.2.5</span> Consistencia<a class="anchor" aria-label="anchor" href="#consistencia"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.5</span> Consistencia<a class="anchor" aria-label="anchor" href="#consistencia"><i class="fas fa-link"></i></a>
 </h4>
 <p>Ser consistentes
 * Hay cosas de estilo que son solo un tema de gusto. Por ejemplo, hay quienes escriben <code>nivel_empleo_anual</code> y otras que escribe <code>NivelEmpleoAnual</code>.
 * No importa la elección de un estilo u otro. Lo que importa es que todas y todos los miembros del equipo utilicen <strong>la misma</strong> convención.</p>
 </div>
-<div id="chequear-errores" class="section level4" number="1.1.2.6">
+<div id="chequear-errores" class="section level4" number="1.1.3.6">
 <h4>
-<span class="header-section-number">1.1.2.6</span> Chequear errores<a class="anchor" aria-label="anchor" href="#chequear-errores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.6</span> Chequear errores<a class="anchor" aria-label="anchor" href="#chequear-errores"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Hemos aprendido que es importante escribir pruebas o testeos. Especialmente relevante después de operaciones complicadas o pegado de bases de datos.</li>
@@ -447,9 +449,9 @@
 <span id="cb15-2"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
 <p>Normalmente el error da suficiente información. A pesar de lo anterior, en algunas circunstancias, no es tan claro saber cual es el error. Cuando ustedes se hayan encontrado con un error, que no les fue fácil descifrar, ** tienen que escribir un comentario que lo indique**. Facilitara mucho el trabajo colaborativo.</p>
 </div>
-<div id="separar-tipos-de-códigos" class="section level4" number="1.1.2.7">
+<div id="separar-tipos-de-códigos" class="section level4" number="1.1.3.7">
 <h4>
-<span class="header-section-number">1.1.2.7</span> Separar tipos de códigos<a class="anchor" aria-label="anchor" href="#separar-tipos-de-c%C3%B3digos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.7</span> Separar tipos de códigos<a class="anchor" aria-label="anchor" href="#separar-tipos-de-c%C3%B3digos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Separar códigos lentos de los rápidos</p>
 <ul>
@@ -458,18 +460,18 @@
 <li>Este criterio cambia en caso de que todos los códigos sean rápidos.</li>
 </ul>
 </div>
-<div id="automatización" class="section level4" number="1.1.2.8">
+<div id="automatización" class="section level4" number="1.1.3.8">
 <h4>
-<span class="header-section-number">1.1.2.8</span> Automatización<a class="anchor" aria-label="anchor" href="#automatizaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.8</span> Automatización<a class="anchor" aria-label="anchor" href="#automatizaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Todo lo que se pueda automatizar debe ser automatizado.</li>
 <li>Nunca hacer trabajo que vaya a obtener resultados de forma interactiva. Lo interactivo es siempre para inspeccionar.</li>
 </ul>
 </div>
-<div id="abstracción" class="section level4" number="1.1.2.9">
+<div id="abstracción" class="section level4" number="1.1.3.9">
 <h4>
-<span class="header-section-number">1.1.2.9</span> Abstracción<a class="anchor" aria-label="anchor" href="#abstracci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.9</span> Abstracción<a class="anchor" aria-label="anchor" href="#abstracci%C3%B3n"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Abstraer para eliminar pasos redundantes.<br>
@@ -513,9 +515,9 @@
 <span id="cb19-7"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb19-7" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_restometro_pc) byvar(metroarea)</span></code></pre></div>
 <p>Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel de agregación sin inducir errores.</p>
 </div>
-<div id="documentación-y-comentarios" class="section level4" number="1.1.2.10">
+<div id="documentación-y-comentarios" class="section level4" number="1.1.3.10">
 <h4>
-<span class="header-section-number">1.1.2.10</span> Documentación y comentarios<a class="anchor" aria-label="anchor" href="#documentaci%C3%B3n-y-comentarios"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.10</span> Documentación y comentarios<a class="anchor" aria-label="anchor" href="#documentaci%C3%B3n-y-comentarios"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>No escribas documentación que no vas a mantener.</li>
@@ -543,9 +545,9 @@
 <span id="cb21-6"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  calcular_perdida_bienestar, elasticidad(<span class="ot">`elasticidad'</span>) </span></code></pre></div>
 <p>Menos comentarios que el anterior. <strong>Sin números mágicos</strong>. Pero es más informativo e interno consistentemente dado que no puedo cambiar algunos de los parámetros sin modificar el resultado. Comentarios sirven en su justa medida: es imposible desprender del mismo código sin saber la tabla.</p>
 </div>
-<div id="identificadores-únicos" class="section level4" number="1.1.2.11">
+<div id="identificadores-únicos" class="section level4" number="1.1.3.11">
 <h4>
-<span class="header-section-number">1.1.2.11</span> Identificadores únicos<a class="anchor" aria-label="anchor" href="#identificadores-%C3%BAnicos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.11</span> Identificadores únicos<a class="anchor" aria-label="anchor" href="#identificadores-%C3%BAnicos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Bases de datos con Identificadores únicos</p>
 <ul>
@@ -564,9 +566,9 @@
 <div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">variable</span> does <span class="kw">not</span> uniquely identify the observations</span></code></pre></div>
 <p>Si encuentro plausible que alguna variable tenga <em>missing</em> puedo colocar la opción <code>missok</code>.</p>
 </div>
-<div id="no-ser-repetitivo" class="section level4" number="1.1.2.12">
+<div id="no-ser-repetitivo" class="section level4" number="1.1.3.12">
 <h4>
-<span class="header-section-number">1.1.2.12</span> No ser repetitivo<a class="anchor" aria-label="anchor" href="#no-ser-repetitivo"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3.12</span> No ser repetitivo<a class="anchor" aria-label="anchor" href="#no-ser-repetitivo"><i class="fas fa-link"></i></a>
 </h4>
 <p>Hemos hablado de evitar ser repetitivo. ¿Cuándo hacerlo? Repetir en una operación simple con dos categorías es razonable.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_ga = ing <span class="kw">if</span> grupo==<span class="st">"A"</span>, nq(10)</span>
@@ -604,13 +606,13 @@
 </ul>
 </div>
 </div>
-<div id="organización-de-un-proyecto-en-stata" class="section level3" number="1.1.3">
+<div id="organización-de-un-proyecto-en-stata" class="section level3" number="1.1.4">
 <h3>
-<span class="header-section-number">1.1.3</span> Organización de un proyecto en Stata<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.4</span> Organización de un proyecto en Stata<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-un-proyecto-en-stata"><i class="fas fa-link"></i></a>
 </h3>
-<div id="flujo-de-trabajo-en-stata" class="section level4" number="1.1.3.1">
+<div id="flujo-de-trabajo-en-stata" class="section level4" number="1.1.4.1">
 <h4>
-<span class="header-section-number">1.1.3.1</span> Flujo de trabajo en Stata<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo-en-stata"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.4.1</span> Flujo de trabajo en Stata<a class="anchor" aria-label="anchor" href="#flujo-de-trabajo-en-stata"><i class="fas fa-link"></i></a>
 </h4>
 <p>Hasta el momento uno de los mayores mensajes es <strong>adoptar un sistema de organización</strong> compartirlo en el equipo y adherirse a él. Este debe incluir:</p>
 <ol style="list-style-type: decimal">
@@ -637,9 +639,9 @@ When I started, I thought my workflow <span style="color:red"> “was very good 
 </span></span>
 </div>
 </div>
-<div id="organización-de-archivos-y-carpetas" class="section level4" number="1.1.3.2">
+<div id="organización-de-archivos-y-carpetas" class="section level4" number="1.1.4.2">
 <h4>
-<span class="header-section-number">1.1.3.2</span> Organización de archivos y carpetas<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-archivos-y-carpetas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.4.2</span> Organización de archivos y carpetas<a class="anchor" aria-label="anchor" href="#organizaci%C3%B3n-de-archivos-y-carpetas"><i class="fas fa-link"></i></a>
 </h4>
 <p>¿Les suena familiar?</p>
 <ul>
@@ -726,13 +728,13 @@ When I started, I thought my workflow <span style="color:red"> “was very good 
 <span id="cb27-8"><a href="buenas-pr%C3%A1cticas-de-programaci%C3%B3n-y-visualizaci%C3%B3n.html#cb27-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">use</span> datos1.dta, <span class="kw">replace</span> </span></code></pre></div>
 </div>
 </div>
-<div id="buenas-practicas-de-visualización" class="section level3" number="1.1.4">
+<div id="buenas-practicas-de-visualización" class="section level3" number="1.1.5">
 <h3>
-<span class="header-section-number">1.1.4</span> Buenas practicas de visualización<a class="anchor" aria-label="anchor" href="#buenas-practicas-de-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.5</span> Buenas practicas de visualización<a class="anchor" aria-label="anchor" href="#buenas-practicas-de-visualizaci%C3%B3n"><i class="fas fa-link"></i></a>
 </h3>
-<div id="principios-de-una-buena-visualización-de-datos" class="section level4" number="1.1.4.1">
+<div id="principios-de-una-buena-visualización-de-datos" class="section level4" number="1.1.5.1">
 <h4>
-<span class="header-section-number">1.1.4.1</span> Principios de una buena visualización de datos<a class="anchor" aria-label="anchor" href="#principios-de-una-buena-visualizaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.5.1</span> Principios de una buena visualización de datos<a class="anchor" aria-label="anchor" href="#principios-de-una-buena-visualizaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
 </h4>
 <p>Un gráfico mal hecho desinforma, gráficos mal hechos son inefectivos. Comunican mal la información o incluso la distorsionan. Las personas tenemos un procesamiento visual limitado. Existe uno previo e inconsciente y uno posterior consciente. Entender este aspecto es importante si queremos diseñar visualizaciones que sean efectivas.</p>
 <p>Esta sección esta basada en <strong>An Economist’s Guide to Visualizing Data</strong> ().</p>
@@ -753,20 +755,20 @@ When I started, I thought my workflow <span style="color:red"> “was very good 
 </li>
 </ul>
 </div>
-<div id="siete-gráficos-alternativos" class="section level4" number="1.1.4.2">
+<div id="siete-gráficos-alternativos" class="section level4" number="1.1.5.2">
 <h4>
-<span class="header-section-number">1.1.4.2</span> Siete gráficos alternativos<a class="anchor" aria-label="anchor" href="#siete-gr%C3%A1ficos-alternativos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.5.2</span> Siete gráficos alternativos<a class="anchor" aria-label="anchor" href="#siete-gr%C3%A1ficos-alternativos"><i class="fas fa-link"></i></a>
 </h4>
 </div>
 </div>
-<div id="sublime-text" class="section level3" number="1.1.5">
+<div id="sublime-text" class="section level3" number="1.1.6">
 <h3>
-<span class="header-section-number">1.1.5</span> Sublime Text<a class="anchor" aria-label="anchor" href="#sublime-text"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.6</span> Sublime Text<a class="anchor" aria-label="anchor" href="#sublime-text"><i class="fas fa-link"></i></a>
 </h3>
 <p>Esta sección esta basada en la página web de <a href="https://acarril.github.io/">Alvaro Carril</a>.</p>
-<div id="qué-es-sublime" class="section level4" number="1.1.5.1">
+<div id="qué-es-sublime" class="section level4" number="1.1.6.1">
 <h4>
-<span class="header-section-number">1.1.5.1</span> ¿Qué es Sublime?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-sublime"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.6.1</span> ¿Qué es Sublime?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-sublime"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li><p><a href="https://www.sublimetext.com/">Sublime Text</a> es un editor de códigos gratuito. Este editor permite compilar códigos de distintos lenguajes de programación tales como Stata, Python, R, , entre muchos otros.</p></li>
@@ -779,9 +781,9 @@ Instalar Sublime</p></li>
 <li><p>Tipear <code>Install Package Control</code> y presionar <code>enter</code>.</p></li>
 </ul>
 </div>
-<div id="ejecutar-stata-desde-sublime" class="section level4" number="1.1.5.2">
+<div id="ejecutar-stata-desde-sublime" class="section level4" number="1.1.6.2">
 <h4>
-<span class="header-section-number">1.1.5.2</span> Ejecutar Stata desde Sublime<a class="anchor" aria-label="anchor" href="#ejecutar-stata-desde-sublime"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.6.2</span> Ejecutar Stata desde Sublime<a class="anchor" aria-label="anchor" href="#ejecutar-stata-desde-sublime"><i class="fas fa-link"></i></a>
 </h4>
 <p>Para Windows</p>
 <ul>

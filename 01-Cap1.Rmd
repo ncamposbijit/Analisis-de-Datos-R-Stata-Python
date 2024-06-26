@@ -85,6 +85,7 @@ En esta sección revisaremos cuatro **buenas practicas** de programación. Estas
   * Si nos acostumbramos a escribir pruebas al final de los códigos o bien cada vez que se hagan cierto tipo de operaciones (ej. siempre después de unir bases de datos), iremos generando el hábito de chequear constantemente, pero sin invertir demasiado tiempo en revisiones posteriores. 
   
 <u>3. Ayuda a **detectar** problemas rápidamente</u>
+
   * Se donde esta el error. Puedo corregirlo rápidamente. 
   
 <u>4. Escribir pruebas ayuda a detectar más problemas de los **previstos**</u>
@@ -118,43 +119,43 @@ edad > 0
 
 Instrucciones:
 
-* Descargar carpeta [Ejercicio 1](/Users/ncamposbijit/Library/CloudStorage/Dropbox/Nicolas/Cursos/01 Libro - análisis de datos/docs/ejercicios/ejercicio1/ejercicio1.zip)
-* Descargar carpeta *ejercicios - Clase 1*
-* Abrir `ejercicios_clase1.do` y fijar directorio de trabajo en la carpeta descargada.
-
+* Descargar los  [datos](https://github.com/ncamposbijit/Analisis-de-Datos-Stata-R-Python/blob/c6b19e61b6c657d3354c31650781ef708ab5074f/docs/ejercicios/ejercicio1/ejercicio1.zip)
 
 Preguntas:
 
 1. La base de datos *World Development Indicator (WDI)* tiene observaciones duplicadas. **Escriba un test que falle cuando existen valores duplicados**.
 2. Los países en la base de datos `Polity` deberían ser un subconjunto de los países que están en la base WDI. **Escriba un test que falle debido a este problema**.
+
+* Las soluciones de todos los ejercicios se encuentran  [aquí]()
+
+
 </div>
 
 ¿Cuando escribir tests?
 
-* Después de juntar bases: **Siempre** incluir test después de utilizar  un `merge`.
-* Después manipulaciones complejas de datos: Si piensas que fue difícil, incluye un test. 
+* Después de juntar bases: **Siempre** incluir test después de utilizar  un `merge` o bien de `append` .
+* Después manipulaciones complejas de datos: Si piensas que fue difícil hacer un proceso, incluye un test. 
 * Después de eliminar observaciones: **Siempre** incluir test después de utilizar  un `drop`.
 
 <div class="alert alert-block alert-info">
 <b>Regla general</b> siempre que te veas a ti misma(o) revisando o chequeando algún segmento de código interactivamente **escribe un test**.
 </div>
 
-#### Practica II: no duplicar información
-
-Todo en un solo sitio
+### Practica II: no duplicar información
 
 * Información  debe estar expresada una sola vez en un código. 
 * Si la información esta en muchas partes en el código, tendrás que buscar todos esos lugares. 
-* Veamos un ejemplo...
 
-Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite.
+Veamos un ejemplo...
+
+Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite, 110 en este caso.
 ```{stata, results="hide"}
 drop if var1 > 110 
 drop if var2 > 110 
 drop if var3 > 110 
 ```
 
-Lo anterior funciona... ¿Cual es el problema entonces? 
+Lo anterior funciona... <u>¿Cual es el problema entonces?</u> 
 
 * Imaginemos que queremos cambiar el límite de 110 a 100. Del modo en que esta escrito, vamos a tener que hacer cambios **3 veces!**
 * Si estas restricciones se encuentran en distintas partes de tú código, se puede inducir un error. 
@@ -162,6 +163,7 @@ Lo anterior funciona... ¿Cual es el problema entonces?
 **Ejemplo 2:** Para evitar el problema anterior, es mejor escribir:
 ```{stata, results="hide"}
 local lim = 110 
+
     drop if var1 > `lim'
     drop if var2 > `lim' 
     drop if var3 > `lim' 
@@ -170,8 +172,8 @@ local lim = 110
 De esta forma, en caso de decidir cambiar la restricción, solo tendrás que hacer **un cambio**. Minimizando la posibilidad de cometer un error. 
 
 <div class="alert alert-block alert-warning">
-<b>Ejercicio 3.1.2:</b>
-
+<b>Ejercicio 2:</b>
+* 
 * Todas las regresiones que se encuentran en el código tienen la misma base, es decir, el mismo conjunto de variables que se repite. 
 * La idea es consolidar la base con el fin de evitar duplicación de información. 
 * Con este fin, agregar `population` como control en todas las regresiones. Nuevamente, no dupliques información. 
