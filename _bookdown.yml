@@ -7,7 +7,3 @@ view: https://github.com/ncamposbijit/ncamposbijit/Analisis-de-Datos-Stata-nivel
 language:
   ui:
     chapter_name:
-rmd_files:
-- index.Rmd
-- 01-Cap1.Rmd
-- 02-Cap2.Rmd

@@ -101,7 +101,7 @@
   <main class="col-sm-12 col-md-9 col-lg-7" id="content">
 <!--bookdown:title:end-->
 <!--bookdown:title:start-->
-<div id="buenas-prácticas-de-programación-y-visualización" class="section level1" number="1">
+<div id="id_01-chap01" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Buenas prácticas de programación y visualización</h1>
 <div id="programación-defensiva" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Programación defensiva</h2>
@@ -182,12 +182,12 @@
 <h4><span class="header-section-number">1.1.1.1</span> El comando <code>|assert|</code></h4>
 <p><strong>Ejemplo:</strong> Para escribir pruebas en Stata utilizaremos el comando <code>|assert|</code>. Notar que este comando detiene la ejecución del código cuando <strong>la condición no se cumple</strong>.</p>
 <p>Testear si la base de datos tiene 100 observaciones:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> </span>
-<span id="cb1-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="ot">`r(N)&#39;</span> == 100</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="id_01-chap01.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span> </span>
+<span id="cb1-2"><a href="id_01-chap01.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> <span class="ot">`r(N)&#39;</span> == 100</span></code></pre></div>
 <p>Testear si la variable <code>tasa_desempleo</code> esta en su rango:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> tasa_desempleo| &gt; 0 &amp; tasa_desempleo| &lt; 100</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="id_01-chap01.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">assert</span> tasa_desempleo| &gt; 0 &amp; tasa_desempleo| &lt; 100</span></code></pre></div>
 <p>Testear si la variable <code>edad</code> es siempre positiva:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb3-1" aria-hidden="true" tabindex="-1"></a>edad &gt; 0</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="id_01-chap01.html#cb3-1" aria-hidden="true" tabindex="-1"></a>edad &gt; 0</span></code></pre></div>
 <div class="alert alert-block alert-warning">
 <p><b>Ejercicio:</b></p>
 <p>Instrucciones:</p>
@@ -221,20 +221,20 @@
 <li>Si la información esta en muchas partes en el código, tendrás que buscar todos esos lugares.</li>
 </ul>
 <p><em>Ejemplo:</em> Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite, 110 en este caso.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var1 &gt; 110 </span>
-<span id="cb4-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var2 &gt; 110 </span>
-<span id="cb4-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var3 &gt; 110 </span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="id_01-chap01.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var1 &gt; 110 </span>
+<span id="cb4-2"><a href="id_01-chap01.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var2 &gt; 110 </span>
+<span id="cb4-3"><a href="id_01-chap01.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> var3 &gt; 110 </span></code></pre></div>
 <p>Lo anterior funciona… <u>¿Cual es el problema entonces?</u></p>
 <ul>
 <li>Imaginemos que queremos cambiar el límite de 110 a 100. Del modo en que esta escrito, vamos a tener que hacer cambios <strong>3 veces!</strong></li>
 <li>Si estas restricciones se encuentran en distintas partes de tú código, se puede inducir un error.</li>
 </ul>
 <p><strong>Ejemplo:</strong> Para evitar el problema anterior, es mejor escribir:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> lim = 110 </span>
-<span id="cb5-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var1 &gt; <span class="ot">`lim&#39;</span></span>
-<span id="cb5-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var2 &gt; <span class="ot">`lim&#39;</span> </span>
-<span id="cb5-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var3 &gt; <span class="ot">`lim&#39;</span> </span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="id_01-chap01.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> lim = 110 </span>
+<span id="cb5-2"><a href="id_01-chap01.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="id_01-chap01.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var1 &gt; <span class="ot">`lim&#39;</span></span>
+<span id="cb5-4"><a href="id_01-chap01.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var2 &gt; <span class="ot">`lim&#39;</span> </span>
+<span id="cb5-5"><a href="id_01-chap01.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">drop</span> <span class="kw">if</span> var3 &gt; <span class="ot">`lim&#39;</span> </span></code></pre></div>
 <p>De esta forma, en caso de decidir cambiar la restricción, solo tendrás que hacer <strong>un cambio</strong>. Minimizando la posibilidad de cometer un error.</p>
 <div class="alert alert-block alert-warning">
 <p><b>Ejercicio 2:</b></p>
@@ -263,11 +263,11 @@
 </ul></li>
 </ul>
 <p><strong>Ejemplo: importar una tabla desde Stata a <span class="math inline">\(\LaTeX\)</span> directamente</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb6-1" aria-hidden="true" tabindex="-1"></a>eststo <span class="kw">clear</span></span>
-<span id="cb6-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb6-2" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> polity gdp_per_cap</span>
-<span id="cb6-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb6-3" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> polity gdp_per_cap under5_mortality</span>
-<span id="cb6-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb6-4" aria-hidden="true" tabindex="-1"></a>esttab <span class="kw">using</span> nombredelarchivo.tex, <span class="kw">replace</span> <span class="co">///</span></span>
-<span id="cb6-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="bn">title</span>(<span class="st">&quot;Mis estimaciones&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="id_01-chap01.html#cb6-1" aria-hidden="true" tabindex="-1"></a>eststo <span class="kw">clear</span></span>
+<span id="cb6-2"><a href="id_01-chap01.html#cb6-2" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> polity gdp_per_cap</span>
+<span id="cb6-3"><a href="id_01-chap01.html#cb6-3" aria-hidden="true" tabindex="-1"></a>eststo: <span class="kw">reg</span> polity gdp_per_cap under5_mortality</span>
+<span id="cb6-4"><a href="id_01-chap01.html#cb6-4" aria-hidden="true" tabindex="-1"></a>esttab <span class="kw">using</span> nombredelarchivo.tex, <span class="kw">replace</span> <span class="co">///</span></span>
+<span id="cb6-5"><a href="id_01-chap01.html#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="bn">title</span>(<span class="st">&quot;Mis estimaciones&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Lo importante es que todo lo que se produzca en Stata debe ir directamente a el producto final. Para una revisión detallada ver <a href="https://medium.com/the-stata-guide/the-stata-to-latex-guide-6e7ed5622856">Stata to LaTeX Guide</a>. Una excelente referencia para hacer tablas mucho más avanzadas.</li>
 </ul>
@@ -285,13 +285,13 @@
 <li><p>Para ello tres aspectos son claves:</p></li>
 </ul>
 <p>1.<strong>Utilizar espacios</strong>. Usar espacios siempre después de utilizar un operador. Por ejemplo:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> var1=var2+var3      <span class="co">/// Mal</span></span>
-<span id="cb7-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> var1 = var2 + var3  <span class="co">/// Bien</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="id_01-chap01.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> var1=var2+var3      <span class="co">/// Mal</span></span>
+<span id="cb7-2"><a href="id_01-chap01.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> var1 = var2 + var3  <span class="co">/// Bien</span></span></code></pre></div>
 <ul>
 <li>Con criterio…</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb8-1" aria-hidden="true" tabindex="-1"></a>hours + minutes / 60 + seconds / 3600 </span>
-<span id="cb8-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb8-2" aria-hidden="true" tabindex="-1"></a>hours + minutes/60 + seconds/3600</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="id_01-chap01.html#cb8-1" aria-hidden="true" tabindex="-1"></a>hours + minutes / 60 + seconds / 3600 </span>
+<span id="cb8-2"><a href="id_01-chap01.html#cb8-2" aria-hidden="true" tabindex="-1"></a>hours + minutes/60 + seconds/3600</span></code></pre></div>
 <p>2.<strong>Nombrar las variables para que sean informativas en si mismas.</strong> No escribir <code>var1</code>, si puedes escribir: <code>tasa_desempleo</code>. Requiere más trabajo, pero facilita la lectura. Agregar las unidades en las etiquetas facilita la lectura (<code>en porcentaje</code>). o bien (<code>== 1</code>) para indicar una variable dicotomica.</p>
 <p>3.<strong>Escribir comentarios</strong></p>
 <ul>
@@ -305,9 +305,9 @@
 <li>La brevedad no debe afectar nunca la comprensión. Esto también aplica para los comandos (ejemplo de <a href="https://michaelshill.net/2015/07/31/in-stata-coding-style-is-the-essential/">Michael Shill</a>).</li>
 </ul>
 <p><em>Ejemplo:</em></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> var1</span>
-<span id="cb9-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> var1</span>
-<span id="cb9-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb9-3" aria-hidden="true" tabindex="-1"></a>su var1</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="id_01-chap01.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> var1</span>
+<span id="cb9-2"><a href="id_01-chap01.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> var1</span>
+<span id="cb9-3"><a href="id_01-chap01.html#cb9-3" aria-hidden="true" tabindex="-1"></a>su var1</span></code></pre></div>
 </div>
 </div>
 <div id="estilo-de-codificación-en-stata" class="section level2" number="1.2">
@@ -353,12 +353,12 @@
 <li>Los nombres pueden ser más cortos cuando se utilicen con frecuencia o el objeto este inmediatamente después.</li>
 </ul>
 <p><strong>Ejemplo:</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb10-1" aria-hidden="true" tabindex="-1"></a>beta_mco = (educacion&#39; * educacion)^(-1) * <span class="co">///</span></span>
-<span id="cb10-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb10-2" aria-hidden="true" tabindex="-1"></a>           (educacion&#39; * log_salarios)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="id_01-chap01.html#cb10-1" aria-hidden="true" tabindex="-1"></a>beta_mco = (educacion&#39; * educacion)^(-1) * <span class="co">///</span></span>
+<span id="cb10-2"><a href="id_01-chap01.html#cb10-2" aria-hidden="true" tabindex="-1"></a>           (educacion&#39; * log_salarios)</span></code></pre></div>
 <p>Mejor escrito sería:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb11-1" aria-hidden="true" tabindex="-1"></a>X = educacion</span>
-<span id="cb11-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb11-2" aria-hidden="true" tabindex="-1"></a>Y = log_salarios</span>
-<span id="cb11-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb11-3" aria-hidden="true" tabindex="-1"></a>beta_educ_salarios = (X&#39;*X)^(-1)*(X&#39;*Y) </span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="id_01-chap01.html#cb11-1" aria-hidden="true" tabindex="-1"></a>X = educacion</span>
+<span id="cb11-2"><a href="id_01-chap01.html#cb11-2" aria-hidden="true" tabindex="-1"></a>Y = log_salarios</span>
+<span id="cb11-3"><a href="id_01-chap01.html#cb11-3" aria-hidden="true" tabindex="-1"></a>beta_educ_salarios = (X&#39;*X)^(-1)*(X&#39;*Y) </span></code></pre></div>
 <ul>
 <li>No ser tacaño(a) al nombrar variables, archivos, carpetas.</li>
 <li>Probablemente lo escribas solo una vez. No ahorres espacio. Siempre pensar en la claridad.</li>
@@ -381,16 +381,16 @@
 <ul>
 <li>Separa el álgebra en partes. Por ejemplo, el siguiente código puede inducir a un error, dado que no esta separado en partes.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = <span class="co">///</span></span>
-<span id="cb12-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    (cons + ggob + <span class="kw">export</span> - import - impuestos)* 10^6 <span class="co">///</span></span>
-<span id="cb12-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    /(indice_precios * poblacion_miles * 1000)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="id_01-chap01.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = <span class="co">///</span></span>
+<span id="cb12-2"><a href="id_01-chap01.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    (cons + ggob + <span class="kw">export</span> - import - impuestos)* 10^6 <span class="co">///</span></span>
+<span id="cb12-3"><a href="id_01-chap01.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    /(indice_precios * poblacion_miles * 1000)</span></code></pre></div>
 <p>Este código es más largo, pero mucho más entendible:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_millones_nominal = <span class="co">///</span></span>
-<span id="cb13-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    (cons + ggob + <span class="kw">export</span> - import - impuestos)</span>
-<span id="cb13-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_total_real = pib_millones_nominal * 10^6 <span class="co">///</span></span>
-<span id="cb13-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    / indice_precios</span>
-<span id="cb13-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pop_total = poblacion_miles * 1000</span>
-<span id="cb13-6"><a href="buenas-prácticas-de-programación-y-visualización.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = pib_total_real / pob_total </span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="id_01-chap01.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_millones_nominal = <span class="co">///</span></span>
+<span id="cb13-2"><a href="id_01-chap01.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    (cons + ggob + <span class="kw">export</span> - import - impuestos)</span>
+<span id="cb13-3"><a href="id_01-chap01.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_total_real = pib_millones_nominal * 10^6 <span class="co">///</span></span>
+<span id="cb13-4"><a href="id_01-chap01.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    / indice_precios</span>
+<span id="cb13-5"><a href="id_01-chap01.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pop_total = poblacion_miles * 1000</span>
+<span id="cb13-6"><a href="id_01-chap01.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> pib_percapita_real = pib_total_real / pob_total </span></code></pre></div>
 </div>
 <div id="ser-consistentes" class="section level3" number="1.2.5">
 <h3><span class="header-section-number">1.2.5</span> Ser consistentes</h3>
@@ -405,11 +405,11 @@
 <li>Hemos aprendido que es importante escribir pruebas o testeos. Especialmente relevante después de operaciones complicadas o pegado de bases de datos.</li>
 <li>Stata en algunas ocasiones indica los errores que se comenten, sin la necesidad de colocar estas pruebas. Por ejemplo:</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">string</span> x = <span class="st">&quot;hola&quot;</span></span>
-<span id="cb14-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">y</span> = x^2</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="id_01-chap01.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">string</span> x = <span class="st">&quot;hola&quot;</span></span>
+<span id="cb14-2"><a href="id_01-chap01.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> <span class="fu">y</span> = x^2</span></code></pre></div>
 <p>Stata retorna el siguiente error:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">type</span> mismatch </span>
-<span id="cb15-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="id_01-chap01.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">type</span> mismatch </span>
+<span id="cb15-2"><a href="id_01-chap01.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r</span>(109);</span></code></pre></div>
 <p>Normalmente el error da suficiente información. A pesar de lo anterior, en algunas circunstancias, no es tan claro saber cual es el error. Cuando ustedes se hayan encontrado con un error, que no les fue fácil descifrar, ** tienen que escribir un comentario que lo indique y explique**. Facilitara mucho el trabajo colaborativo. Eviten que otras personas tengan que invertir tiempo descifrando los mismos errores que ustedes.</p>
 </div>
 <div id="separar-tipos-de-códigos" class="section level3" number="1.2.7">
@@ -440,36 +440,36 @@
 </ul>
 <p><strong>Ejemplo:</strong> Supongamos que queremos ver la correlación espacial del consumo de papas fritas. Queremos testear si el consumo per-capita de papas fritas esta correlacionado con el consumo promedio percapita de las otras comunas de la misma región.</p>
 <p>Primero tenemos que calcular el consumo per-capita del resto:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_pc_papitas = <span class="kw">total</span>(pc_papitas), <span class="kw">by</span>(region)</span>
-<span id="cb16-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_obs = <span class="fu">count</span>(pc_papitas), <span class="kw">by</span>(region)</span>
-<span id="cb16-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> consumo_papitas_resto_pc = <span class="co">///</span></span>
-<span id="cb16-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb16-4" aria-hidden="true" tabindex="-1"></a>(total_pc_papitas - pc_papitas)/(total_obs - 1)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="id_01-chap01.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_pc_papitas = <span class="kw">total</span>(pc_papitas), <span class="kw">by</span>(region)</span>
+<span id="cb16-2"><a href="id_01-chap01.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_obs = <span class="fu">count</span>(pc_papitas), <span class="kw">by</span>(region)</span>
+<span id="cb16-3"><a href="id_01-chap01.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> consumo_papitas_resto_pc = <span class="co">///</span></span>
+<span id="cb16-4"><a href="id_01-chap01.html#cb16-4" aria-hidden="true" tabindex="-1"></a>(total_pc_papitas - pc_papitas)/(total_obs - 1)</span></code></pre></div>
 <p>Ahora podemos ver si existe correlación. <u>¿Pero si queremos cambiar el nivel de agregación?</u> Tal vez si existe correlación, pero a nivel de área metropolitana.</p>
 <p>Copiemos el código de nuevo y calculemos esto.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_pc_papitas = <span class="kw">total</span>(pc_papitas), <span class="kw">by</span>(metroarea)</span>
-<span id="cb17-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_obs = <span class="fu">count</span>(pc_papitas), <span class="kw">by</span>(region)</span>
-<span id="cb17-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> consumo_papitas_restometro_pc = <span class="co">///</span></span>
-<span id="cb17-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb17-4" aria-hidden="true" tabindex="-1"></a>(total_pc_papitas - pc_papitas)/(total_obs - 1)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="id_01-chap01.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_pc_papitas = <span class="kw">total</span>(pc_papitas), <span class="kw">by</span>(metroarea)</span>
+<span id="cb17-2"><a href="id_01-chap01.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> total_obs = <span class="fu">count</span>(pc_papitas), <span class="kw">by</span>(region)</span>
+<span id="cb17-3"><a href="id_01-chap01.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> consumo_papitas_restometro_pc = <span class="co">///</span></span>
+<span id="cb17-4"><a href="id_01-chap01.html#cb17-4" aria-hidden="true" tabindex="-1"></a>(total_pc_papitas - pc_papitas)/(total_obs - 1)</span></code></pre></div>
 <p><strong>Noten que hay un error</strong>. Se nos olvido remplazar región por <code>metroarea</code>. Este error se puede propagar si seguimos haciendo operaciones.</p>
 <p>Una alternativa al copiar y pega es escribir una función con propósito general (ado - file, programa, función, etc) que calcule la variable que deseamos bajo distintos parámetros (noten que esto se relaciona con automatizar)</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> consumo_papitas_resto </span>
-<span id="cb18-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">syntax</span>, invar(varname) outvar(<span class="bn">name</span>) byvar(varname)</span>
-<span id="cb18-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">tempvar</span> tot_invar count_invar </span>
-<span id="cb18-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> <span class="ot">`tot_invar&#39;</span> = <span class="kw">total</span>(<span class="ot">`invar&#39;</span>), <span class="kw">by</span>(<span class="ot">`byvar&#39;</span>)</span>
-<span id="cb18-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> <span class="ot">`count_invar&#39;</span> = <span class="fu">count</span>(&#39;invar&#39;), <span class="kw">by</span>(&#39;byvar&#39;) </span>
-<span id="cb18-6"><a href="buenas-prácticas-de-programación-y-visualización.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gen</span> <span class="ot">`outvar&#39;</span> = (<span class="ot">`tot_invar&#39;</span> - <span class="ot">`invar&#39;</span>) <span class="co">///</span></span>
-<span id="cb18-7"><a href="buenas-prácticas-de-programación-y-visualización.html#cb18-7" aria-hidden="true" tabindex="-1"></a>    / (<span class="ot">`count_invar&#39;</span> - 1) </span>
-<span id="cb18-8"><a href="buenas-prácticas-de-programación-y-visualización.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="id_01-chap01.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">program</span> consumo_papitas_resto </span>
+<span id="cb18-2"><a href="id_01-chap01.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">syntax</span>, invar(varname) outvar(<span class="bn">name</span>) byvar(varname)</span>
+<span id="cb18-3"><a href="id_01-chap01.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">tempvar</span> tot_invar count_invar </span>
+<span id="cb18-4"><a href="id_01-chap01.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> <span class="ot">`tot_invar&#39;</span> = <span class="kw">total</span>(<span class="ot">`invar&#39;</span>), <span class="kw">by</span>(<span class="ot">`byvar&#39;</span>)</span>
+<span id="cb18-5"><a href="id_01-chap01.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">egen</span> <span class="ot">`count_invar&#39;</span> = <span class="fu">count</span>(&#39;invar&#39;), <span class="kw">by</span>(&#39;byvar&#39;) </span>
+<span id="cb18-6"><a href="id_01-chap01.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">gen</span> <span class="ot">`outvar&#39;</span> = (<span class="ot">`tot_invar&#39;</span> - <span class="ot">`invar&#39;</span>) <span class="co">///</span></span>
+<span id="cb18-7"><a href="id_01-chap01.html#cb18-7" aria-hidden="true" tabindex="-1"></a>    / (<span class="ot">`count_invar&#39;</span> - 1) </span>
+<span id="cb18-8"><a href="id_01-chap01.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
 <p>Con el programa podemos escribir los bloques de código anteriores como:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-1" aria-hidden="true" tabindex="-1"></a>* Caso 1 : a nivel <span class="kw">de</span> región</span>
-<span id="cb19-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-3" aria-hidden="true" tabindex="-1"></a>consumo_papitas_resto, invar(pc_papitas) <span class="co">///</span></span>
-<span id="cb19-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-4" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_resto_pc) byvar(region)</span>
-<span id="cb19-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-6" aria-hidden="true" tabindex="-1"></a>* Caso 2 : a nivel <span class="kw">de</span> area metropolitana</span>
-<span id="cb19-7"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-8" aria-hidden="true" tabindex="-1"></a>consumo_papitas_resto, invar(pc_papitas)  <span class="co">///</span></span>
-<span id="cb19-9"><a href="buenas-prácticas-de-programación-y-visualización.html#cb19-9" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_restometro_pc) byvar(metroarea)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="id_01-chap01.html#cb19-1" aria-hidden="true" tabindex="-1"></a>* Caso 1 : a nivel <span class="kw">de</span> región</span>
+<span id="cb19-2"><a href="id_01-chap01.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="id_01-chap01.html#cb19-3" aria-hidden="true" tabindex="-1"></a>consumo_papitas_resto, invar(pc_papitas) <span class="co">///</span></span>
+<span id="cb19-4"><a href="id_01-chap01.html#cb19-4" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_resto_pc) byvar(region)</span>
+<span id="cb19-5"><a href="id_01-chap01.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="id_01-chap01.html#cb19-6" aria-hidden="true" tabindex="-1"></a>* Caso 2 : a nivel <span class="kw">de</span> area metropolitana</span>
+<span id="cb19-7"><a href="id_01-chap01.html#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="id_01-chap01.html#cb19-8" aria-hidden="true" tabindex="-1"></a>consumo_papitas_resto, invar(pc_papitas)  <span class="co">///</span></span>
+<span id="cb19-9"><a href="id_01-chap01.html#cb19-9" aria-hidden="true" tabindex="-1"></a>outvar(consumo_papitas_restometro_pc) byvar(metroarea)</span></code></pre></div>
 <p>Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel de agregación sin inducir errores por ir copiando y pegando códigos, además automatizamos un comando y evitamos repetición.</p>
 </div>
 <div id="crear-códigos-autoexplicativos-que-complementen-a-la-documentación" class="section level3" number="1.2.10">
@@ -479,10 +479,10 @@
 <li>Lo mejor es que los códigos deben sean autoexplicativos.</li>
 <li>Veamos un ejemplo. Imaginemos queremos estimar una elasticidad de demanda para hacer un análisis de bienestar.</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb20-1" aria-hidden="true" tabindex="-1"></a>* Elasticidad = Cambio porcentual en la cantidad / Cambio Porcentual en precio</span>
-<span id="cb20-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb20-2" aria-hidden="true" tabindex="-1"></a>* Elasticidad = -0,4 / 0,2 = -2</span>
-<span id="cb20-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb20-3" aria-hidden="true" tabindex="-1"></a>* Mirar Informe 1, Tabla 2A.</span>
-<span id="cb20-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    calcular_perdida_bienestar, elasticidad(3)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="id_01-chap01.html#cb20-1" aria-hidden="true" tabindex="-1"></a>* Elasticidad = Cambio porcentual en la cantidad / Cambio Porcentual en precio</span>
+<span id="cb20-2"><a href="id_01-chap01.html#cb20-2" aria-hidden="true" tabindex="-1"></a>* Elasticidad = -0,4 / 0,2 = -2</span>
+<span id="cb20-3"><a href="id_01-chap01.html#cb20-3" aria-hidden="true" tabindex="-1"></a>* Mirar Informe 1, Tabla 2A.</span>
+<span id="cb20-4"><a href="id_01-chap01.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    calcular_perdida_bienestar, elasticidad(3)</span></code></pre></div>
 <ul>
 <li><p><u>Problema:</u> código contradice comentario. Cuando tenemos dos fuentes o más fuentes que informan sobre el mismo objeto, es probable que estas se puedan contradecir. El problema de inconsistencia interna es especialmente importante para documentación, comentarios, notas, etc.</p></li>
 <li><p>Para evitar este problema es necesario mantener los comentarios al día tal como se hace con los códigos.</p></li>
@@ -491,12 +491,12 @@
 <li><p>Volviendo al ejemplo. ¿Como le decimos al lector del código debe tener una elasticidad de 2 y no de 3?</p></li>
 </ul>
 <p>Ejemplo de un código auto-explicativo:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb21-1" aria-hidden="true" tabindex="-1"></a>* Mirar Informe 1: Tabla 2A. </span>
-<span id="cb21-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> cambio_porcentual_cantidad = -0,4</span>
-<span id="cb21-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> cambio_porcentual_precio = 0,2 </span>
-<span id="cb21-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> elasticidad = <span class="ot">`cambio_porcentual_cantidad&#39;</span> <span class="co">///</span></span>
-<span id="cb21-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  / <span class="ot">`cambio_porcentual_precio&#39;</span></span>
-<span id="cb21-6"><a href="buenas-prácticas-de-programación-y-visualización.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  calcular_perdida_bienestar, elasticidad(<span class="ot">`elasticidad&#39;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="id_01-chap01.html#cb21-1" aria-hidden="true" tabindex="-1"></a>* Mirar Informe 1: Tabla 2A. </span>
+<span id="cb21-2"><a href="id_01-chap01.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> cambio_porcentual_cantidad = -0,4</span>
+<span id="cb21-3"><a href="id_01-chap01.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> cambio_porcentual_precio = 0,2 </span>
+<span id="cb21-4"><a href="id_01-chap01.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> elasticidad = <span class="ot">`cambio_porcentual_cantidad&#39;</span> <span class="co">///</span></span>
+<span id="cb21-5"><a href="id_01-chap01.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  / <span class="ot">`cambio_porcentual_precio&#39;</span></span>
+<span id="cb21-6"><a href="id_01-chap01.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  calcular_perdida_bienestar, elasticidad(<span class="ot">`elasticidad&#39;</span>) </span></code></pre></div>
 <p>Menos comentarios que el anterior. <strong>Sin números mágicos</strong>, los parámetros estan definidos por variables locales, en vez de imputados directamente. Este código es más informativo y es internamente consistente dado que no puedo cambiar algunos de los parámetros sin modificar el resultado. Comentarios sirven en su justa medida: es imposible desprender del mismo código sin saber la tabla.</p>
 <div id="pensar-siempre-en-la-unidad-de-observación-e-identificar-los-id-que-identifican-unicamente-a-la-unidad-de-observación" class="section level4" number="1.2.10.1">
 <h4><span class="header-section-number">1.2.10.1</span> Pensar siempre en la unidad de observación e identificar los id que identifican unicamente a la unidad de observación</h4>
@@ -512,28 +512,28 @@
 </ul></li>
 <li>Una forma de verificar estos dos hechos es utilizando el comando <code>isid</code>. Este comando chequea si las variables especificadas identifican únicamente a las observaciones. Si esto no ocurre arrojara el siguiente mensaje:</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">variable</span> does <span class="kw">not</span> uniquely identify the observations</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="id_01-chap01.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">variable</span> does <span class="kw">not</span> uniquely identify the observations</span></code></pre></div>
 <p>Si encuentro plausible que alguna variable tenga <em>missing</em> puedo colocar la opción <code>missok</code>.</p>
 </div>
 </div>
 <div id="no-ser-repetitivo" class="section level3" number="1.2.11">
 <h3><span class="header-section-number">1.2.11</span> No ser repetitivo</h3>
 <p>Hemos hablado de evitar ser repetitivo. ¿Cuándo hacerlo? Repetir en una operación simple con dos categorías es razonable.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_ga = ing <span class="kw">if</span> grupo==<span class="st">&quot;A&quot;</span>, nq(10)</span>
-<span id="cb23-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_gb = ing <span class="kw">if</span> grupo==<span class="st">&quot;B&quot;</span>, nq(10)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="id_01-chap01.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_ga = ing <span class="kw">if</span> grupo==<span class="st">&quot;A&quot;</span>, nq(10)</span>
+<span id="cb23-2"><a href="id_01-chap01.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">xtile</span> decil_ing_gb = ing <span class="kw">if</span> grupo==<span class="st">&quot;B&quot;</span>, nq(10)</span></code></pre></div>
 <p>Si tengo que operar 15 veces, mejor hacerlo iterativamente:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> <span class="fu">y</span> = 2001/2015 {</span>
-<span id="cb24-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xtile</span> decil_ing_<span class="ot">`y&#39;</span> = inn <span class="kw">if</span> año == <span class="ot">`y&#39;</span>, nq(10)</span>
-<span id="cb24-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="id_01-chap01.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> <span class="fu">y</span> = 2001/2015 {</span>
+<span id="cb24-2"><a href="id_01-chap01.html#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xtile</span> decil_ing_<span class="ot">`y&#39;</span> = inn <span class="kw">if</span> año == <span class="ot">`y&#39;</span>, nq(10)</span>
+<span id="cb24-3"><a href="id_01-chap01.html#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Si involucra múltiples operaciones. A pesar de que solo existan dos categorías, es mejor hacerlo iterativo.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> g <span class="kw">in</span> <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> {</span>
-<span id="cb25-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> ingreso &gt;= 0 <span class="kw">if</span> grupo == <span class="st">&quot;`g&#39;&quot;</span></span>
-<span id="cb25-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xtile</span> decil_ingreso_<span class="ot">`g&#39;</span> = ingreso <span class="co">/// </span></span>
-<span id="cb25-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> grupo==<span class="st">&quot;`g&#39;&quot;</span>  &amp; ingreso &gt; 0, nq(10)  </span>
-<span id="cb25-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> decil_ingreso_<span class="ot">`g&#39;</span> = 0 <span class="co">/// </span></span>
-<span id="cb25-6"><a href="buenas-prácticas-de-programación-y-visualización.html#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> grupo==<span class="st">&quot;`g&#39;&quot;</span>  &amp; ingreso == 0</span>
-<span id="cb25-7"><a href="buenas-prácticas-de-programación-y-visualización.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> decil_ingreso_<span class="ot">`g&#39;</span> <span class="st">&quot;Deciles de ingreso&quot;</span></span>
-<span id="cb25-8"><a href="buenas-prácticas-de-programación-y-visualización.html#cb25-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="id_01-chap01.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> g <span class="kw">in</span> <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> {</span>
+<span id="cb25-2"><a href="id_01-chap01.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">assert</span> ingreso &gt;= 0 <span class="kw">if</span> grupo == <span class="st">&quot;`g&#39;&quot;</span></span>
+<span id="cb25-3"><a href="id_01-chap01.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">xtile</span> decil_ingreso_<span class="ot">`g&#39;</span> = ingreso <span class="co">/// </span></span>
+<span id="cb25-4"><a href="id_01-chap01.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> grupo==<span class="st">&quot;`g&#39;&quot;</span>  &amp; ingreso &gt; 0, nq(10)  </span>
+<span id="cb25-5"><a href="id_01-chap01.html#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> decil_ingreso_<span class="ot">`g&#39;</span> = 0 <span class="co">/// </span></span>
+<span id="cb25-6"><a href="id_01-chap01.html#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> grupo==<span class="st">&quot;`g&#39;&quot;</span>  &amp; ingreso == 0</span>
+<span id="cb25-7"><a href="id_01-chap01.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> decil_ingreso_<span class="ot">`g&#39;</span> <span class="st">&quot;Deciles de ingreso&quot;</span></span>
+<span id="cb25-8"><a href="id_01-chap01.html#cb25-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><u>¿Como evitar ser repetitivo? </u></p>
 <ul>
 <li>Cuando necesites cambiar <strong>solo una cosa</strong> en el código utilizar un <em>loop</em>. <code>foreach</code> y <code>forvalues</code> iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez.</li>
@@ -638,18 +638,18 @@
 <li>Cada vez que se termine un proyecto o se obtenga algún resultado es importante ejecutar el <code>master_do.files</code>.</li>
 </ul>
 <p>Ejemplo de master do-file:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-1" aria-hidden="true" tabindex="-1"></a>  *** Información del proyecto aquí ***</span>
-<span id="cb26-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  *** Información sobre directorios ***</span>
-<span id="cb26-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  *** Ejecutar códigos ***</span>
-<span id="cb26-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  * Generación <span class="kw">de</span> datos</span>
-<span id="cb26-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/01_datos_v11.<span class="kw">do</span> </span>
-<span id="cb26-6"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/02_merge_v2.<span class="kw">do</span> </span>
-<span id="cb26-7"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  * Generación <span class="kw">de</span> tablas</span>
-<span id="cb26-8"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/03_tablas_v4.<span class="kw">do</span> </span>
-<span id="cb26-9"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  * Estimación principal</span>
-<span id="cb26-10"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/04_estimaciones_v11.<span class="kw">do</span> </span>
-<span id="cb26-11"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  * Figuras principales</span>
-<span id="cb26-12"><a href="buenas-prácticas-de-programación-y-visualización.html#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/05_graficos_v11.<span class="kw">do</span> </span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="id_01-chap01.html#cb26-1" aria-hidden="true" tabindex="-1"></a>  *** Información del proyecto aquí ***</span>
+<span id="cb26-2"><a href="id_01-chap01.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  *** Información sobre directorios ***</span>
+<span id="cb26-3"><a href="id_01-chap01.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  *** Ejecutar códigos ***</span>
+<span id="cb26-4"><a href="id_01-chap01.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  * Generación <span class="kw">de</span> datos</span>
+<span id="cb26-5"><a href="id_01-chap01.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/01_datos_v11.<span class="kw">do</span> </span>
+<span id="cb26-6"><a href="id_01-chap01.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/02_merge_v2.<span class="kw">do</span> </span>
+<span id="cb26-7"><a href="id_01-chap01.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  * Generación <span class="kw">de</span> tablas</span>
+<span id="cb26-8"><a href="id_01-chap01.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/03_tablas_v4.<span class="kw">do</span> </span>
+<span id="cb26-9"><a href="id_01-chap01.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  * Estimación principal</span>
+<span id="cb26-10"><a href="id_01-chap01.html#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/04_estimaciones_v11.<span class="kw">do</span> </span>
+<span id="cb26-11"><a href="id_01-chap01.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  * Figuras principales</span>
+<span id="cb26-12"><a href="id_01-chap01.html#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">do</span> ./dofiles/05_graficos_v11.<span class="kw">do</span> </span></code></pre></div>
 </div>
 <div id="rutas-de-las-carpetas" class="section level3" number="1.3.4">
 <h3><span class="header-section-number">1.3.4</span> Rutas de las carpetas:</h3>
@@ -659,14 +659,14 @@
 <li>Utilizar macros para nombrar a las carpetas. Que estos nombres tengan sentido y se relacionen con el flujo de trabajo.</li>
 <li>Recordar que una variable <code>local</code> guarda información temporalmente mientras que <code>global</code> guarda información permanentemente. Esto último hace de los <code>global</code> algo no recomendable de utilizar constantemente. No obstante, es útil para los directorios.</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb27-1" aria-hidden="true" tabindex="-1"></a>   *** Nota 1: Remplazar esta ruta ***</span>
-<span id="cb27-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb27-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> miproyecto <span class="st">&quot;C://Program Files/Dropbox/miproyecto/&quot;</span></span>
-<span id="cb27-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb27-3" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb27-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb27-4" aria-hidden="true" tabindex="-1"></a>   *** Nota 2: Directorios <span class="kw">de</span> subcarpetas ***</span>
-<span id="cb27-5"><a href="buenas-prácticas-de-programación-y-visualización.html#cb27-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">clear</span></span>
-<span id="cb27-6"><a href="buenas-prácticas-de-programación-y-visualización.html#cb27-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> datosbrutos <span class="st">&quot;$miproyecto/datos/brutos&quot;</span></span>
-<span id="cb27-7"><a href="buenas-prácticas-de-programación-y-visualización.html#cb27-7" aria-hidden="true" tabindex="-1"></a>   cd <span class="st">&quot;$datosbrutos&quot;</span></span>
-<span id="cb27-8"><a href="buenas-prácticas-de-programación-y-visualización.html#cb27-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">use</span> datos1.dta, <span class="kw">replace</span> </span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="id_01-chap01.html#cb27-1" aria-hidden="true" tabindex="-1"></a>   *** Nota 1: Remplazar esta ruta ***</span>
+<span id="cb27-2"><a href="id_01-chap01.html#cb27-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> miproyecto <span class="st">&quot;C://Program Files/Dropbox/miproyecto/&quot;</span></span>
+<span id="cb27-3"><a href="id_01-chap01.html#cb27-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb27-4"><a href="id_01-chap01.html#cb27-4" aria-hidden="true" tabindex="-1"></a>   *** Nota 2: Directorios <span class="kw">de</span> subcarpetas ***</span>
+<span id="cb27-5"><a href="id_01-chap01.html#cb27-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">clear</span></span>
+<span id="cb27-6"><a href="id_01-chap01.html#cb27-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> datosbrutos <span class="st">&quot;$miproyecto/datos/brutos&quot;</span></span>
+<span id="cb27-7"><a href="id_01-chap01.html#cb27-7" aria-hidden="true" tabindex="-1"></a>   cd <span class="st">&quot;$datosbrutos&quot;</span></span>
+<span id="cb27-8"><a href="id_01-chap01.html#cb27-8" aria-hidden="true" tabindex="-1"></a>   <span class="kw">use</span> datos1.dta, <span class="kw">replace</span> </span></code></pre></div>
 </div>
 <div id="utilizar-algún-auxiliar-de-generación-de-código-sublime-text" class="section level3" number="1.3.5">
 <h3><span class="header-section-number">1.3.5</span> Utilizar algún auxiliar de generación de código: Sublime Text</h3>
@@ -697,10 +697,10 @@ Instalar Sublime</p></li>
 <li>En este archivo en blanco debe escribir la ruta de su ejecutable de Stata y la versión que posee.</li>
 <li>Mi archivo de configuración en Windows se ve así:</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb28-1" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb28-2"><a href="buenas-prácticas-de-programación-y-visualización.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;stata_path&quot;</span>: <span class="st">&quot;C:/Program Files/Stata17/StataMP-64.exe&quot;</span>,</span>
-<span id="cb28-3"><a href="buenas-prácticas-de-programación-y-visualización.html#cb28-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;stata_version&quot;</span>: 17,</span>
-<span id="cb28-4"><a href="buenas-prácticas-de-programación-y-visualización.html#cb28-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="id_01-chap01.html#cb28-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb28-2"><a href="id_01-chap01.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;stata_path&quot;</span>: <span class="st">&quot;C:/Program Files/Stata17/StataMP-64.exe&quot;</span>,</span>
+<span id="cb28-3"><a href="id_01-chap01.html#cb28-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;stata_version&quot;</span>: 17,</span>
+<span id="cb28-4"><a href="id_01-chap01.html#cb28-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Registre la biblioteca de automatización de Stata:</p>
 <ul>
 <li>Vaya al ejecutable de Stata del que ha copiado la ruta (por ejemplo, StataMP-64.exe).</li>
@@ -708,7 +708,7 @@ Instalar Sublime</p></li>
 <li>Ahora haga clic con el botón derecho en este nuevo acceso directo y seleccione ``Propiedades”.</li>
 <li>En el campo ``Destino”, añada /Registro al final (con un espacio precedente). En mi caso es:</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;C:\Program Files\Stata17\StataMP-64.exe&quot;</span> /Register</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="id_01-chap01.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;C:\Program Files\Stata17\StataMP-64.exe&quot;</span> /Register</span></code></pre></div>
 <p>Aplicar y aceptar los cambios. Apretar sobre el acceso directo el click derecho y ejecutar como administrador. Y listo!</p>
 <p><strong>Para Mac</strong></p>
 <ul>
@@ -722,7 +722,7 @@ Instalar Sublime</p></li>
 <li>De esta forma no hay que preocuparse en casos de que no hayas respaldado tu código.</li>
 <li>Para esto hay que escribir vamos a instalar el paquete <code>autosave</code> y adicionalmente vamos a agregar a ``preferencias”:</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb30-1"><a href="buenas-prácticas-de-programación-y-visualización.html#cb30-1" aria-hidden="true" tabindex="-1"></a>``save_on_focus_lost<span class="st">&quot;: true.</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb30-1"><a href="id_01-chap01.html#cb30-1" aria-hidden="true" tabindex="-1"></a>``save_on_focus_lost<span class="st">&quot;: true.</span></span></code></pre></div>
 
 </div>
 </div>

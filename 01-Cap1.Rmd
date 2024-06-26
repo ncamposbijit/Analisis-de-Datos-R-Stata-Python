@@ -1,14 +1,8 @@
----
-editor_options:
-  markdown:
-    wrap: 72
----
-
 ```{r global options, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRUE, results="hide", eval = FALSE)
 ```
 
-# Buenas prácticas de programación y visualización
+# Buenas prácticas de programación
 
 ## Programación defensiva
 

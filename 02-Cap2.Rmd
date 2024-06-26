@@ -1,13 +1,7 @@
----
-editor_options:
-  markdown:
-    wrap: 72
----
 
+# Programar do - files {#01-chap02}
 
-# Programar do - files
-
-### Programar en Stata
+## Programar en Stata
 
 Esta sección esta basada en: **An introduction to Stata Programing** (\cite{baum2009introduction}), en notas de clase de la profesora [Erin Hengel](https://www.erinhengel.com/), en **Advanced Stata Topics** del profesor Alexander C. Lembcke, en **Seventy-six Stata tips** \cite{newton2009seventy}, en **Top 10 ``gotchas"** de \cite{shaw2015top} y en **Data Management Using Stata. A Practical Handbook** de \cite{mitchell2010data}. 
 
