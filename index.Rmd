@@ -9,4 +9,6 @@ output:
 bibliography: references.bib
 biblio-style: apalike
 link-citations: yes
+description: Libro enfocado en enseñar análisis de datos utilizando Stata, R y Python
 ---
+# Introducción
