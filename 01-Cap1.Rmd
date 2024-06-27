@@ -8,16 +8,16 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRU
 
 **Las personas somos malas escribiendo códigos**
 
-Esta sección esta basada en los trabajos y recursos publicados por [Nick Eubank](https://www.nickeubank.com/).
+Esta sección está basada en los trabajos y recursos publicados por [Nick Eubank](https://www.nickeubank.com/).
     
-* La filosofía de escribir un código esta motivada por el hecho de que las personas somos **malas escribiendo códigos**.
+* La filosofía de escribir un código está motivada por el hecho de que las personas somos **malas escribiendo códigos**.
 * Si queremos evitar errores **no es suficiente con ser cuidadoso(a)**
 * Es necesario diseñar estrategias que tomen en cuenta el hecho de que vamos a cometer errores al escribir un código.
 * Tener buenas estrategias es más relevante cuando existe trabajo colaborativo, que puede **amplificar los errores**.
 
-En esta sección revisaremos cuatro **buenas practicas** de programación. Estas practicas no son solo aplicables a Stata, más bien son guías generales para escribir códigos en cualquier lenguaje de programación. 
+En esta sección revisaremos cuatro **buenas prácticas** de programación. Estas prácticas no son solo aplicables a Stata, más bien son guías generales para escribir códigos en cualquier lenguaje de programación. 
 
-1. Usar testeos o pruebas.
+1. Usar pruebas o tests.
 2. No duplicar información.
 3. No transcribir información, siempre exportarla.
 4. Usar un estilo correcto. 
@@ -50,11 +50,11 @@ En esta sección revisaremos cuatro **buenas practicas** de programación. Estas
 * Hay cosas que no se pueden resolver con ser cuidadoso(a) al codificar. ¿Si los datos están mal? 
 * Reproducibilidad y replicabilidad son claves. Buenas referencias sobre estos temas se encuentran en la página de [Julia Schulte-Cloos](https://jschultecloos.github.io/).
 
-### Practica I: escribir una prueba o test
+### Práctica I: escribir una prueba o test
 
 <u>¿Qué significa escribir una prueba o test?</u>
 
-[Nick Eubank](https://www.nickeubank.com/) indica que si el tuviese que elegir solo una practica elegiría agregar pruebas o tests a los códigos.
+[Nick Eubank](https://www.nickeubank.com/) indica que si él tuviese que elegir solo una práctica, elegiría agregar pruebas o tests a los códigos.
 
 <u>¿Qué es una prueba?</u>
 
@@ -66,8 +66,8 @@ En esta sección revisaremos cuatro **buenas practicas** de programación. Estas
 <u>1. Test se ejecutan **cada vez** que corres tu código</u>
 
   * La mayoría testea la **primera** vez que escribe un código.
-  * Si hay algún apuro por terminar el testeo del código disminuye rápidamente.
-  * Si ya ha pasado algún tiempo desde la última vez que lo ejecuté. Únicamente ejecuto el código y espero los resultados. Entender un código (incluso el que uno(a) misma escribió es difícil después de un tiempo). 
+  * Si hay algún apuro por terminar, el testeo del código disminuye rápidamente.
+  * Si ya ha pasado algún tiempo desde la última vez que lo ejecuté, únicamente ejecuto el código y espero los resultados. Entender un código (incluso el que uno(a) mismo(a) escribió es difícil después de un tiempo). 
   * Un error que se comete en una de las múltiples ediciones del código pueda ser detectado con facilidad al testear. 
 
 <u>2. Genera el hábito de chequear permanentemente a un **costo razonable**</u>
@@ -77,12 +77,12 @@ En esta sección revisaremos cuatro **buenas practicas** de programación. Estas
   
 <u>3. Ayuda a **detectar** problemas rápidamente</u>
 
-  * Se donde esta el error. Puedo corregirlo rápidamente. 
+  * Sé donde está el error. Puedo corregirlo rápidamente. 
   
 <u>4. Escribir pruebas ayuda a detectar más problemas de los **previstos**</u>
 
   * Los errores de un código se manifiestan de múltiples formas y muchas veces son consecuencia de errores anteriores. 
-  * Si tengo valores duplicados mi estadística descriptiva estará mala. 
+  * Si tengo valores duplicados, mi estadística descriptiva estará mal. 
   * El problema surge de no darle un tratamiento correcto a los valores duplicados. No surge de algún problema en el código que genera la estadística descriptiva. 
   
 #### El comando `|assert|`
@@ -95,9 +95,9 @@ count
 assert `r(N)' == 100
 ```
 
-Testear si la variable `tasa_desempleo` esta en su rango:
+Testear si la variable `tasa_desempleo` está en su rango:
 ```{stata, results="hide"}
-assert tasa_desempleo| > 0 & tasa_desempleo| < 100
+assert tasa_desempleo > 0 & tasa_desempleo < 100
 ```
 
 Testear si la variable `edad` es siempre positiva: 
@@ -117,25 +117,23 @@ Preguntas:
 1. La base de datos *World Development Indicator (WDI)* tiene observaciones duplicadas. **Escriba un test que falle cuando existen valores duplicados**.
 2. Los países en la base de datos `Polity` deberían ser un subconjunto de los países que están en la base WDI. **Escriba un test que falle debido a este problema**.
 
-* Las soluciones de todos los ejercicios se encuentran  [aquí](https://github.com/ncamposbijit/Analisis-de-Datos-Stata-R-Python/blob/e44fa03b99ddf308e025a28f16f55953e25795f2/docs/ejercicios/soluciones.do)
-
-
+* Las soluciones de todos los ejercicios se encuentran [aquí](https://github.com/ncamposbijit/Analisis-de-Datos-Stata-R-Python/blob/e44fa03b99ddf308e025a28f16f55953e25795f2/docs/ejercicios/soluciones.do)
 </div>
 
 ¿Cuando escribir tests?
 
-* Después de juntar bases: **Siempre** incluir test después de utilizar  un `merge` o bien de `append` .
-* Después manipulaciones complejas de datos: Si piensas que fue difícil hacer un proceso, incluye un test. 
-* Después de eliminar observaciones: **Siempre** incluir test después de utilizar  un `drop`.
+* Después de juntar bases: **Siempre** incluir test después de utilizar un `merge` o bien de `append`.
+* Después de manipulaciones complejas de datos: Si piensas que fue difícil hacer un proceso, incluye un test.
+* Después de eliminar observaciones: **Siempre** incluir test después de utilizar un `drop`.
 
 <div class="alert alert-block alert-info">
 <b>Regla general</b> siempre que te veas a ti misma(o) revisando o chequeando algún segmento de código interactivamente **escribe un test**.
 </div>
 
-### Practica II: no duplicar información
+### Práctica II: no duplicar información
 
-* Información  debe estar expresada una sola vez en un código. 
-* Si la información esta en muchas partes en el código, tendrás que buscar todos esos lugares. 
+* Información debe estar expresada una sola vez en un código.
+* Si la información está en muchas partes en el código, tendrás que buscar todos esos lugares.
 
 *Ejemplo:* Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite, 110 en este caso.
 ```{stata, results="hide"}
@@ -144,9 +142,9 @@ drop if var2 > 110
 drop if var3 > 110 
 ```
 
-Lo anterior funciona... <u>¿Cual es el problema entonces?</u> 
+Lo anterior funciona... <u>¿Cuál es el problema entonces?</u> 
 
-* Imaginemos que queremos cambiar el límite de 110 a 100. Del modo en que esta escrito, vamos a tener que hacer cambios **3 veces!**
+* Imaginemos que queremos cambiar el límite de 110 a 100. Del modo en que está escrito, vamos a tener que hacer cambios **3 veces!**
 * Si estas restricciones se encuentran en distintas partes de tú código, se puede inducir un error. 
 
 **Ejemplo:** Para evitar el problema anterior, es mejor escribir:
@@ -165,24 +163,26 @@ De esta forma, en caso de decidir cambiar la restricción, solo tendrás que hac
 
 * Todas las regresiones que se encuentran en el código tienen la misma base, es decir, el mismo conjunto de variables que se repite. 
 
-* La idea es consolidar la base con el fin de evitar duplicación de información. 
+* La idea es consolidar
+
+ la base con el fin de evitar duplicación de información. 
 
 * Con este fin, agregar `population` como control en todas las regresiones. Nuevamente, no dupliques información. 
 </div>
 
-#### Practica III: nunca transcribir directamente información, todo automatizado
+#### Práctica III: nunca transcribir directamente información, todo automatizado
 
 * **Nunca se debe transcribir resultados**. Todo debe ser exportado de forma tal que pueda ser actualizado automáticamente.  
-* No cumplir con esta practica es una importante fuente de errores
-* **Errores de transcripción:** Si me equivoco en el décimo decimal no es tan grave, si cambio un signo si lo es. 
+* No cumplir con esta práctica es una importante fuente de errores.
+* **Errores de transcripción:** Si me equivoco en el décimo decimal no es tan grave, si cambio un signo sí lo es. 
 * **Problemas para actualizar:** Es probable que al actualizar un código (como sucede usualmente en cualquier proyecto), olvidemos traspasar los resultados. 
-* ¿Como evitar este problema? 
-  + Para usuarios de $\LaTeX$  cada resultado debe ser guardado en archivos `.tex`. 
-  + Hacer esto no solo con las tablas (ej. `putexcel`). También hacerlo con cualquier estadística que aparezca en el texto. (Por ejemplo, ``El promedio de edad de la muestra es de 43 años". Este 43 debe obtenerse automáticamente desde tú código, no debes transcribirlo.)
+* ¿Cómo evitar este problema? 
+  + Para usuarios de $\LaTeX$ cada resultado debe ser guardado en archivos `.tex`.
+  + Hacer esto no solo con las tablas (ej. `putexcel`). También hacerlo con cualquier estadística que aparezca en el texto. (Por ejemplo, "El promedio de edad de la muestra es de 43 años". Este 43 debe obtenerse automáticamente desde tu código, no debes transcribirlo.)
   + Para esto: debes generar el número que se desea citar. Convertirlo a `string` y guardarlo (ej. `midato.tex`). Llamarlo desde $\LaTeX$ con `\input{midato.tex}`.
   + Para usuarios de Word es un poco más complejo, pero posible `putdocx`. 
   + Otra alternativa es utilizar Stata Markdown. 
-  + Independiente de la estrategia que utilizes la buena practica guarda relación con el hecho de que el producto final (artículo academico, reporte, nota, etc) debe estar **conectada** con cualquier estadística que se genere dentro de un proceso de análisis de datos. 
+  + Independiente de la estrategia que utilices la buena práctica guarda relación con el hecho de que el producto final (artículo académico, reporte, nota, etc) debe estar **conectado** con cualquier estadística que se genere dentro de un proceso de análisis de datos. 
   
 **Ejemplo: importar una tabla desde Stata a $\LaTeX$ directamente**
 ```{stata, results="hide"}
@@ -193,7 +193,7 @@ esttab using nombredelarchivo.tex, replace ///
        title("Mis estimaciones")
 ```
 
-* Lo importante es que todo lo que se produzca en Stata debe ir directamente a el producto final. Para una revisión detallada ver [Stata to LaTeX Guide](https://medium.com/the-stata-guide/the-stata-to-latex-guide-6e7ed5622856). Una excelente referencia para hacer tablas mucho más avanzadas. 
+* Lo importante es que todo lo que se produzca en Stata debe ir directamente al producto final. Para una revisión detallada ver [Stata to LaTeX Guide](https://medium.com/the-stata-guide/the-stata-to-latex-guide-6e7ed5622856). Una excelente referencia para hacer tablas mucho más avanzadas. 
 
 <div class="alert alert-block alert-warning">
 <b>Ejercicio 3:</b>
@@ -201,14 +201,14 @@ esttab using nombredelarchivo.tex, replace ///
 Calcula el promedio de `literacy_rate` y guárdalo en una macro local. Generar un formato tal que solo tenga dos decimales. Guarda el valor como *string* en un archivo `.tex` en la misma carpeta. 
 </div>
 
-### Practica IV: estilo importa
+### Práctica IV: estilo importa
 
 * Estilo no se refiere a la estética del código ni al orden.
 * Tiene que ver con la facilidad con el que este se puede **leer**. Al igual que cuando se escribe, lo importante es ser claro. 
 
 * Para ello tres aspectos son claves:
   
-1.**Utilizar espacios**. Usar espacios siempre después de utilizar un operador. Por ejemplo: 
+1. **Utilizar espacios**. Usar espacios siempre después de utilizar un operador. Por ejemplo: 
   
 ```{stata, results="hide"}
 gen var1=var2+var3      /// Mal
@@ -221,16 +221,16 @@ hours + minutes / 60 + seconds / 3600
 hours + minutes/60 + seconds/3600
 ```
   
-2.**Nombrar las variables para que sean informativas en si mismas.** No escribir `var1`, si puedes escribir: `tasa_desempleo`. Requiere más trabajo, pero facilita la lectura. Agregar las unidades en las etiquetas facilita la lectura (`en porcentaje`). o bien (`== 1`) para indicar una variable dicotomica. 
+2. **Nombrar las variables para que sean informativas en sí mismas.** No escribir `var1`, si puedes escribir: `tasa_desempleo`. Requiere más trabajo, pero facilita la lectura. Agregar las unidades en las etiquetas facilita la lectura (`en porcentaje`). o bien (`== 1`) para indicar una variable dicotómica. 
 
-3.**Escribir comentarios**
+3. **Escribir comentarios**
 
   + Ejercicio para explicar en pocas palabras lo que se ha hecho. 
   + Existe un equilibrio entre parsimonia y calidad del comentario. 
   + Establecer el objetivo del comentario claramente es muy importante. 
-  + No hay una regla para escribir comentarios, pero si algunos consejos (ver, @gentzkow2014code)
+  + No hay una regla para escribir comentarios, pero sí algunos consejos (ver, @gentzkow2014code)
   + Utilizar imperativo si lo tiene que corregir otra persona (ej. modifica parámetros aquí, fija directorio). 
-  + Debe incluir suficiente contexto para que alguien que no trabaje directamente en eso entienda que se debe hacer.
+  + Debe incluir suficiente contexto para que alguien que no trabaje directamente en eso entienda qué se debe hacer.
   + Los comentarios largos deben explicar secciones de código. Importante escribir el código por bloques. 
   + La brevedad no debe afectar nunca la comprensión. Esto también aplica para los comandos (ejemplo de [Michael Shill](https://michaelshill.net/2015/07/31/in-stata-coding-style-is-the-essential/)). 
 
@@ -245,34 +245,34 @@ su var1
 
 ### Ser ordenado no es condición suficiente para tener un buen estilo de codificación 
 
-* Primera idea: Un buen estilo de codificación  es seguir una estrategia. Hay ciertos guías, pero lo relevante es seguir una y se consistente. 
-* Los códigos tienen distintas audiencias. La primera es tu computadora. Si tu computadora no entiende tú código es el peor de los mundos. 
-* Una de las audiencias más importantes son tus colaboradores y colaboradoras. Si ellos/as no lo entienden. **El problema es tuyo en primer lugar.**
+* Primera idea: Un buen estilo de codificación es seguir una estrategia. Hay ciertas guías, pero lo relevante es seguir una y ser consistente. 
+* Los códigos tienen distintas audiencias. La primera es tu computadora. Si tu computadora no entiende tu código, es el peor de los mundos. 
+* Una de las audiencias más importantes son tus colaboradores y colaboradoras. Si ellos/as no lo entienden, **el problema es tuyo en primer lugar.**
 * No hay un solo buen estilo. No hay una guía que pueda sustituir experiencia o estrategias ya probadas de trabajo de equipo. 
 * Lo importante es **tener estrategias** y **utilizarlas** en la medida de que sea positivo para el producto final. 
-* Ahora veremos algunas estrategias y buenas practicas que pueden ayudar a mejorar el estilo de codificación individual y de tu equipo en base a dos referencias adicionales:  \citet{gentzkow2014code} y de una guía confeccionada por [Michael Stepner](https://michaelstepner.com/). 
+* Ahora veremos algunas estrategias y buenas prácticas que pueden ayudar a mejorar el estilo de codificación individual y de tu equipo en base a dos referencias adicionales:  \citet{gentzkow2014code} y de una guía confeccionada por [Michael Stepner](https://michaelstepner.com/). 
       
 ### Escribe códigos cortos
 
-* Ningún segmento de código debiese ser mayor a 100 - 150 carácteres. 
+* Ningún segmento de código debiese ser mayor a 100 - 150 caracteres. 
 * Códigos largos, debiesen ser escritos de forma más pequeña como ado-files. 
-* Si tienes dificultades para reducir un código a estos estándares, es probable que tengas que pensar en como estructurarlo de mejor forma. 
-* Cada segmento de código o funciones debiesen tener un propósito **claro e intuitivo** para lectores experimentados en el lenguaje de programación que se este utilizando. 
-* Los do - files deben ser cortos y deben tener un objetivo claro. 
+* Si tienes dificultades para reducir un código a estos estándares, es probable que tengas que pensar en cómo estructurarlo de mejor forma. 
+* Cada segmento de código o funciones debiesen tener un propósito **claro e intuitivo** para lectores experimentados en el lenguaje de programación que se esté utilizando. 
+* Los do-files deben ser cortos y deben tener un objetivo claro. 
 * Todo do-file debe tener un propósito que pueda ser **explicado en una oración.** De hecho, hay que hacerlo. En el preámbulo. Cada do-file debe indicar claramente su objetivo.   
 * Un proyecto debería tener varios `do-files` con las siguientes características.
-  + **Cortos:** Debes ser capaz de leer un do-file completo en poco minutos y entender el objetivo. Una buena regla es que no sean más largos de 250 - 350 lineas. No es estricta esta regla. Hay ocasiones que se justifican códigos más largos. Lo importante es la claridad. No sacrificarla nunca. 
+  + **Cortos:** Debes ser capaz de leer un do-file completo en pocos minutos y entender el objetivo. Una buena regla es que no sean más largos de 250 - 350 líneas. No es estricta esta regla. Hay ocasiones que se justifican códigos más largos. Lo importante es la claridad. No sacrificarla nunca. 
   + **Autocontenidos:** Cada do-file interactúa con otros solo a través de los archivos que carga y de los que guarda. Es importante entender tu proyecto como un flujo estructurado con pasos predeterminados. 
   + **Enfocados:** Un `do-file` cumple un propósito determinado. Cada parte se debe entender como un paso intuitivo para lograr ese propósito. 
 
 ### El nombre de las variables debe caracterizarla
-* Nombres adecuados remplazan comentarios y hacen el código auto contenido. 
+* Nombres adecuados reemplazan comentarios y hacen el código auto contenido. 
 * **Utilizar nombres completos**. Abreviaciones solo en el caso de estar seguro que cualquier lector puede entenderlo sin ambigüedad. 
 * Si se utilizan abreviaciones. Ser consistente. Utilizar siempre las mismas a lo largo del código. Documentarlas, especialmente con bases de datos complejas. 
-* Cuando no se pueda ser suficientemente claro en un nombre, utilizar si o si \verb|label variable| para dar una descripción (ej. agregar unidad de medida, o que tipo de variable es).
-* `labels` especifican información. (ej, `edad` con el `label` *edad al 31 de enero* es más informativa que `edad` y más corto que `edad_31enero`.
-* No utilizar nombres en dos (o más) archivos que no expliciten porque son diferentes. Por ejemplo: `version_final.do` y `version_final_ahorasiquesiestavezsi.do`. 
-* Los nombres pueden ser más cortos cuando se utilicen con frecuencia o el objeto este inmediatamente después. 
+* Cuando no se pueda ser suficientemente claro en un nombre, utilizar sí o sí \verb|label variable| para dar una descripción (ej. agregar unidad de medida, o qué tipo de variable es).
+* `labels` especifican información. (ej, `edad` con el `label` *edad al 31 de enero* es más informativa que `edad` y más corto que `edad_31enero`).
+* No utilizar nombres en dos (o más) archivos que no expliciten por qué son diferentes. Por ejemplo: `version_final.do` y `version_final_ahorasiquesiestavezsi.do`. 
+* Los nombres pueden ser más cortos cuando se utilicen con frecuencia o el objeto esté inmediatamente después. 
 
 **Ejemplo:** 
 ```{stata, results="hide"}
@@ -290,17 +290,19 @@ beta_educ_salarios = (X'*X)^(-1)*(X'*Y)
 * No ser tacaño(a) al nombrar variables, archivos, carpetas. 
 * Probablemente lo escribas solo una vez. No ahorres espacio. Siempre pensar en la claridad. 
 * Para el caso de una figura:
-  + `c_1.pdf` es un pesimo nombre. 
+  + `c_
+
+1.pdf` es un pésimo nombre. 
   + `correlaciones.pdf` es un mal nombre. 
   + `T1_CORRELACIONES_INGRESO_MORTALIDAD.PDF` es un mejor nombre.
 * Para el caso de una carpeta:
   + `datos/brutos/interregional` es un mal nombre.
   + `datos/brutos/Estimaciones Censo Interregional 2010 - 2021` es un buen nombre. 
-* Estos nombres nos permiten pensar en el flujo lógico del proyecto sin tener que mirar los códigos nuevamente. Ayudate constanmente. 
+* Estos nombres nos permiten pensar en el flujo lógico del proyecto sin tener que mirar los códigos nuevamente. Ayúdate constantemente. 
 
-### Ten especial cuidado cuando uses algebra en los códigos. 
+### Ten especial cuidado cuando uses álgebra en los códigos. 
 
-* Separa el álgebra en partes. Por ejemplo, el siguiente código puede inducir a un error, dado que no esta separado en partes. 
+* Separa el álgebra en partes. Por ejemplo, el siguiente código puede inducir a un error, dado que no está separado en partes. 
 
 ```{stata, results="hide"}
 gen pib_percapita_real = ///
@@ -315,7 +317,7 @@ gen pib_millones_nominal = ///
 gen pib_total_real = pib_millones_nominal * 10^6 ///
     / indice_precios
 gen pop_total = poblacion_miles * 1000
-gen pib_percapita_real = pib_total_real / pob_total 
+gen pib_percapita_real = pib_total_real / pop_total 
 ```
 
 ### Ser consistentes 
@@ -338,11 +340,11 @@ Stata retorna el siguiente error:
 type mismatch 
 r(109);
 ```
-Normalmente el error da suficiente información. A pesar de lo anterior, en algunas circunstancias, no es tan claro saber cual es el error. Cuando ustedes se hayan encontrado con un error, que no les fue fácil descifrar, ** tienen que escribir un comentario que lo indique y explique**. Facilitara mucho el trabajo colaborativo. Eviten que otras personas tengan que invertir tiempo descifrando los mismos errores que ustedes. 
+Normalmente el error da suficiente información. A pesar de lo anterior, en algunas circunstancias, no es tan claro saber cuál es el error. Cuando ustedes se hayan encontrado con un error, que no les fue fácil descifrar, **tienen que escribir un comentario que lo indique y explique**. Facilitará mucho el trabajo colaborativo. Eviten que otras personas tengan que invertir tiempo descifrando los mismos errores que ustedes. 
 
 ### Separar tipos de códigos
 
-* Separar códigos lentos de los rápidos
+* Separar códigos lentos de los rápidos.
 * Códigos lentos que rara vez se piensan ejecutar idealmente debiesen estar separados de los códigos rápidos que se quieren ejecutar múltiples ocasiones. 
 * Evito tener que ejecutar un código lento cada vez que necesito actualizar algún resultado. 
 * Este criterio cambia en caso de que todos los códigos sean rápidos. Si todos son computacionalmente no demandantes, lo importante es respetar el flujo de trabajo y la claridad de los procesos de análisis. 
@@ -350,17 +352,17 @@ Normalmente el error da suficiente información. A pesar de lo anterior, en algu
 ### Automatizar todo lo que se pueda automatizar
 
 * Todo lo que se pueda automatizar debe ser automatizado. Por ejemplo, escriban ado-files que cambien para subconjuntos. Que los iteradores tengan números que se obtengan a partir del código, no por algo que ustedes tengan que escribir. 
-* Nunca hacer trabajo que vaya a obtener resultados de forma interactiva. Lo interactivo es siempre y unicamente para inspeccionar. En todo caso, al inspeccionar deberían hacer un código de todas formas. Esto les va a ayudar a saber que estaban pensando en el primer momento que vieron los datos que quieren analizar. 
+* Nunca hacer trabajo que vaya a obtener resultados de forma interactiva. Lo interactivo es siempre y únicamente para inspeccionar. En todo caso, al inspeccionar deberían hacer un código de todas formas. Esto les va a ayudar a saber qué estaban pensando en el primer momento que vieron los datos que quieren analizar. 
    
 ### Abstraer para eliminar pasos redundantes.  
-* Abstraer con fines de hacer códigos más claros. **No por otras razones**. A nadie le importa saber que puedes abstraer demasiado, si nadie entiende la razón de hacerlo. La claridad es lo que mñas importa. 
+* Abstraer con fines de hacer códigos más claros. **No por otras razones**. A nadie le importa saber que puedes abstraer demasiado, si nadie entiende la razón de hacerlo. La claridad es lo que más importa. 
 * Abstracción es esencial para escribir un buen código por al menos dos razones: 
   + Al eliminar la redundancia se reducen las posibilidades de cometer errores.
-  + Aumenta la claridad. Para cualquier lector será más facil leer un código no redundante. 
+  + Aumenta la claridad. Para cualquier lector será más fácil leer un código no redundante. 
 
-**Ejemplo:** Supongamos que queremos ver la correlación espacial del consumo de papas fritas. Queremos testear si el consumo per-capita de papas fritas esta correlacionado con el consumo promedio percapita de las otras comunas de la misma región. 
+**Ejemplo:** Supongamos que queremos ver la correlación espacial del consumo de papas fritas. Queremos testear si el consumo per-cápita de papas fritas está correlacionado con el consumo promedio per-cápita de las otras comunas de la misma región. 
 
-Primero tenemos que calcular el consumo per-capita del resto: 
+Primero tenemos que calcular el consumo per-cápita del resto: 
 
 ```{stata, results="hide"}
 egen total_pc_papitas = total(pc_papitas), by(region)
@@ -369,7 +371,7 @@ gen consumo_papitas_resto_pc = ///
 (total_pc_papitas - pc_papitas)/(total_obs - 1)
 ```
 
-Ahora podemos ver si existe correlación. <u>¿Pero si queremos cambiar el nivel de agregación?</u> Tal vez si existe correlación, pero a nivel de área metropolitana. 
+Ahora podemos ver si existe correlación. <u>¿Pero si queremos cambiar el nivel de agregación?</u> Tal vez sí existe correlación, pero a nivel de área metropolitana. 
 
 Copiemos el código de nuevo y calculemos esto. 
 
@@ -380,9 +382,9 @@ gen consumo_papitas_restometro_pc = ///
 (total_pc_papitas - pc_papitas)/(total_obs - 1)
 ```
 
-**Noten que hay un error**. Se nos olvido remplazar región por `metroarea`. Este error se puede propagar si seguimos haciendo operaciones. 
+**Noten que hay un error**. Se nos olvidó reemplazar región por `metroarea`. Este error se puede propagar si seguimos haciendo operaciones. 
 
-Una alternativa al copiar y pega es escribir una función con propósito general (ado - file, programa, función, etc) que calcule la variable que deseamos bajo distintos parámetros (noten que esto se relaciona con automatizar)
+Una alternativa al copiar y pegar es escribir una función con propósito general (ado-file, programa, función, etc) que calcule la variable que deseamos bajo distintos parámetros (noten que esto se relaciona con automatizar)
 
 ```{stata, results="hide"}
 program consumo_papitas_resto 
@@ -398,12 +400,12 @@ end
 Con el programa podemos escribir los bloques de código anteriores como: 
 
 ```{stata, results="hide"}
-* Caso 1 : a nivel de región
+* Caso 1: a nivel de región
 
 consumo_papitas_resto, invar(pc_papitas) ///
 outvar(consumo_papitas_resto_pc) byvar(region)
 
-* Caso 2 : a nivel de area metropolitana
+* Caso 2: a nivel de área metropolitana
 
 consumo_papitas_resto, invar(pc_papitas)  ///
 outvar(consumo_papitas_restometro_pc) byvar(metroarea)
@@ -414,8 +416,8 @@ Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel 
 ### Crear códigos autoexplicativos que complementen a la documentación 
 
 * No escribas documentación que no vas a mantener.
-* Lo mejor es que los códigos deben sean autoexplicativos. 
-* Veamos un ejemplo. Imaginemos queremos estimar una elasticidad de demanda para hacer un análisis de bienestar. 
+* Lo mejor es que los códigos sean autoexplicativos. 
+* Veamos un ejemplo. Imaginemos que queremos estimar una elasticidad de demanda para hacer un análisis de bienestar. 
 ```{stata, results="hide"}
 * Elasticidad = Cambio porcentual en la cantidad / Cambio Porcentual en precio
 * Elasticidad = -0,4 / 0,2 = -2
@@ -427,8 +429,8 @@ Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel 
 
 * Para evitar este problema es necesario mantener los comentarios al día tal como se hace con los códigos. 
 * Hacer esto es costoso. Mantener un código extenso al mismo tiempo que una larga documentación no es sencillo. 
-* Dado esta restricción, es importante *escribir códigos que sean claros sin la necesidad de escribir comentarios extensos*. 
-* Volviendo al ejemplo. ¿Como le decimos al lector del código debe tener una elasticidad de 2 y no de 3? 
+* Dada esta restricción, es importante *escribir códigos que sean claros sin la necesidad de escribir comentarios extensos*. 
+* Volviendo al ejemplo. ¿Cómo le decimos al lector del código debe tener una elasticidad de 2 y no de 3? 
    
 Ejemplo de un código auto-explicativo: 
 ```{stata, results="hide"}
@@ -440,17 +442,19 @@ Ejemplo de un código auto-explicativo:
   calcular_perdida_bienestar, elasticidad(`elasticidad') 
 ```
 
-Menos comentarios que el anterior. **Sin números mágicos**, los parámetros estan definidos por variables locales, en vez de imputados directamente. Este código es más informativo y es internamente consistente dado que no puedo cambiar algunos de los parámetros sin modificar el resultado. Comentarios sirven en su justa medida: es imposible desprender del mismo código sin saber la tabla. 
+Menos comentarios que el anterior. **Sin números mágicos**, los parámetros están definidos por variables locales, en vez de imputados directamente. Este código es más informativo y es internamente consistente dado que no puedo cambiar algunos de los parámetros sin modificar el resultado. Comentarios sirven en su justa medida: es imposible desprender del mismo código sin saber la tabla. 
   
-#### Pensar siempre en la unidad de observación e identificar los id que identifican unicamente a la unidad de observación
+#### Pensar siempre en la unidad de observación e identificar los ID que identifican únicamente a la unidad
+
+ de observación
 
 * ID permiten saber la unidad de observación (hogar, empresas, lugares, hogar-año, empresa-mes-lugar). 
-* Conocer ID únicos es esencial para entender los datos. Indican que es lo que describen los datos. 
-* También nos sirven para entender como juntar estos datos con otras fuentes de información.  
+* Conocer ID únicos es esencial para entender los datos. Indican qué es lo que describen los datos. 
+* También nos sirven para entender cómo juntar estos datos con otras fuentes de información.  
 * Dos reglas que siempre tener en cuenta:
   + No tienen que existir observaciones duplicadas que tengan el mismo ID único. 
   + Los ID no pueden tener *missings*.
-* Una forma de verificar estos dos hechos es utilizando el comando `isid`. Este comando chequea si las variables especificadas identifican únicamente a las observaciones. Si esto no ocurre arrojara el siguiente mensaje: 
+* Una forma de verificar estos dos hechos es utilizando el comando `isid`. Este comando chequea si las variables especificadas identifican únicamente a las observaciones. Si esto no ocurre arrojará el siguiente mensaje: 
 
 ```{stata, results="hide"}
 variable does not uniquely identify the observations
@@ -469,7 +473,7 @@ xtile decil_ing_gb = ing if grupo=="B", nq(10)
 Si tengo que operar 15 veces, mejor hacerlo iterativamente: 
 ```{stata, results="hide"}
 forvalues y = 2001/2015 {
-    xtile decil_ing_`y' = inn if año == `y', nq(10)
+    xtile decil_ing_`y' = ing if año == `y', nq(10)
 }
 ```
 
@@ -479,23 +483,23 @@ Si involucra múltiples operaciones. A pesar de que solo existan dos categorías
 foreach g in "A" "B" {
 	assert ingreso >= 0 if grupo == "`g'"
 	xtile decil_ingreso_`g' = ingreso /// 
-	if grupo=="`g'"  & ingreso > 0, nq(10)	
+	if grupo=="`g'" & ingreso > 0, nq(10)	
 	replace decil_ingreso_`g' = 0 /// 
-	if grupo=="`g'"  & ingreso == 0
+	if grupo=="`g'" & ingreso == 0
 	label var decil_ingreso_`g' "Deciles de ingreso"
 }
 ```
 
-<u>¿Como evitar ser repetitivo? </u>
+<u>¿Cómo evitar ser repetitivo? </u>
 
 * Cuando necesites cambiar **solo una cosa** en el código utilizar un *loop*. `foreach` y `forvalues` iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez. 
-* Cuando necesites cambiar **múltiples cosas** dentro de un código, define un programa dentro del do-file utilizando `program`. De este modo tu podrás especificar más de un argumento. 
-* Cuando necesites repetir un código en **múltiples do.files**, pueden definir un programa en un `ado-file`, guardarlo y llamarlo cuando lo necesites. Es importante que el código agregue automáticamente la ruta en donde se encuentran guardados estos programas. 
+* Cuando necesites cambiar **múltiples cosas** dentro de un código, define un programa dentro del do-file utilizando `program`. De este modo tú podrás especificar más de un argumento. 
+* Cuando necesites repetir un código en **múltiples do-files**, pueden definir un programa en un `ado-file`, guardarlo y llamarlo cuando lo necesites. Es importante que el código agregue automáticamente la ruta en donde se encuentran guardados estos programas. 
 
 **Algunas ayudas:**
 
-* Cuando algunas lineas de código necesiten cambiar entre repeticiones utilizar `if/else` y `forvalues`. Estos iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez. 
-* Cuando definas programas dentro de un do-file, agrega una linea que diga `cap program drop <program_name>` antes de `program define`. Automáticamente se eliminará y redefinirá el programa cada vez que ejecutes el código. 
+* Cuando algunas líneas de código necesiten cambiar entre repeticiones utilizar `if/else` y `forvalues`. Estos iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez. 
+* Cuando definas programas dentro de un do-file, agrega una línea que diga `cap program drop <program_name>` antes de `program define`. Automáticamente se eliminará y redefinirá el programa cada vez que ejecutes el código. 
 
 ### Mensajes finales sobre estilo de codificación
 
@@ -510,7 +514,7 @@ foreach g in "A" "B" {
 
 ### Flujo de trabajo en Stata
 
-Hasta el momento uno de los mayores mensajes es **adoptar un sistema de organización** compartirlo en el equipo y adherirse a él. Este debe incluir: 
+Hasta el momento uno de los mayores mensajes es **adoptar un sistema de organización**, compartirlo en el equipo y adherirse a él. Este debe incluir: 
    
 1. Estructuras de directorio. 
 2. Estilo de codificación.  
@@ -519,12 +523,12 @@ Hasta el momento uno de los mayores mensajes es **adoptar un sistema de organiza
 
 Hemos visto en detalle (2) y (3). Algunas cosas de (4) (más detalles en otro capítulo). En esta sección nos enfocaremos en (1). Esta sección se basa en una de las guías de [Asjad Nqvi](https://asjadnaqvi.medium.com/). Muy buenos recursos. Muy recomendado. También revisaremos algunos elementos de \alert{The Workflow of Data Analysis} (\cite{long2009workflow}).
 
-* Un proyecto de análisis de datos contempla: planificar el trabajo, documentar las actividades, crear y verificar variables, generar y presentar análisis estadístico, replicar resultados y archivar. 
+* Un proyecto de análisis de datos contempla: planificar el trabajo, documentar las actividades, crear y verificar variables, generar y presentar análisis estadísticos, replicar resultados y archivar. 
 * Todo lo anterior es a lo que nos referiremos como flujo de trabajo. 
-* Un buen flujo de trabajo es esencial para que tu y tus colaboradores(as) y los interesados en tu trabajo puedan replicarlo.
+* Un buen flujo de trabajo es esencial para que tú y tus colaboradores(as) y los interesados en tu trabajo puedan replicarlo.
 * Replicar es clave para generar información confiable y correcta. 
 
-La administración del flujo de trabajo se hace al **inicio** de un proyecto. No al final. No hacerlo así tiene costos en tiempo y posiblemente induzca errores no forzados. Veremos algunos aspectos relacionados con la administración de datos y *scripts*. Nuevamente, más que reglas a seguir, lo presentado aquí son una serie de buenas practicas que pueden ayudar a mejorar la gestión del trabajo con Stata. La idea de esto es que finalmente podamos dedicarle más y mejor tiempo al análisis de datos. 
+La administración del flujo de trabajo se hace al **inicio** de un proyecto. No al final. No hacerlo así tiene costos en tiempo y posiblemente induzca errores no forzados. Veremos algunos aspectos relacionados con la administración de datos y *scripts*. Nuevamente, más que reglas a seguir, lo presentado aquí son una serie de buenas prácticas que pueden ayudar a mejorar la gestión del trabajo con Stata. La idea de esto es que finalmente podamos dedicarle más y mejor tiempo al análisis de datos. 
 * Nuevamente, tener un flujo de trabajo es clave, incluso los mayores expertos en estos temas tienen problemas con esto. Por ejemplo, en el prólogo de @long2009workflow
 
 <div class="alert alert-block alert-info">
@@ -534,9 +538,9 @@ When I started, I thought my workflow **was very good and that it was simply a m
 ### Organización de archivos y carpetas
 
 * Algunos problemas que son recurrentes: 
-  * Tener múltiples versiones de un archivo y no saber cual es cual.
+  * Tener múltiples versiones de un archivo y no saber cuál es cuál.
   * No poder encontrar un archivo y pensar que lo has borrado. 
-  * Tu equipo (y tú) no saben cual es el informe final. Hay dos archivos que con el nombre archivo final, pero con distinto contenido. 
+  * Tu equipo (y tú) no saben cuál es el informe final. Hay dos archivos que con el nombre archivo final, pero con distinto contenido. 
    
 Para evitar los problemas anteriores es importante diseñar la estructura de la carpeta de trabajo y comprometerse a seguir una alerta.
 
@@ -549,7 +553,7 @@ Para evitar los problemas anteriores es importante diseñar la estructura de la 
 * Evitar nombrar las carpetas con mayúsculas. 
 * Siempre escribir un `README.txt`. Puede ser tedioso, pero muy necesario. Corto, informativo, que explique el flujo de trabajo y las carpetas. Sugerencia: colocar las rutas. 
 
-* En esta figura se ve la idea de como deberia estructurarse las carpetas de un proyecto pequeño
+* En esta figura se ve la idea de cómo debería estructurarse las carpetas de un proyecto pequeño
 ```{r, echo=FALSE, out.width="50%"}
 knitr::include_graphics("01figuras/C2.2.1.png")
 ```
@@ -577,21 +581,23 @@ knitr::include_graphics("01figuras/C2.2.4.png)")
   * Resultados se comparten solo después que los archivos que lo generan pasen a la carpeta `compartir`.
   * Una vez traspasados a la carpeta compartir. No se modifican. Incluso cuando puedan existir errores. 
 
-Ayuda a garantizar que los resultados que se comparte se puedan replicar. Si encuentras errores o decides cambiar algo no cambies los ya posteados. Genera nuevos. Esto también ayuda a la replicabilidad: permite saber que cambios existieron durante un proyecto. 
+Ayuda a garantizar que los resultados que se comparten se puedan replicar. Si encuentras errores o decides cambiar algo no cambies los ya posteados. Genera nuevos. Esto también ayuda a la replicabilidad: permite saber qué cambios existieron durante un proyecto. 
     
-Un directorio de trabajo estructurado es especialmente **importante para proyectos colaborativos** donde todo se puede desordenar mas fácilmente. Dos directorios son sugeridos cuando se trabaja de forma colaborativa: `correo` y otras que diga `privados`. `correo` guarda intercambios entre colaboradoras mientras que `privados` guarda el trabajo propio de cada colaborador(a). Otras carpetas que pueden complementar trabajo son `porhacer` que sea una carpeta que sirva como una lista de tareas `poraprender`. En cualquier caso, estas carpetas pueden ser parte de `privados`. 
+Un directorio de trabajo estructurado es especialmente **importante para proyectos colaborativos** donde todo se puede desordenar más fácilmente. Dos directorios son sugeridos cuando se trabaja de forma colaborativa: `correo` y otras que diga `privados`. `correo` guarda intercambios entre colaboradoras mientras que `privados` guarda el trabajo propio de cada colaborador(a). Otras carpetas
+
+ que pueden complementar trabajo son `porhacer` que sea una carpeta que sirva como una lista de tareas `poraprender`. En cualquier caso, estas carpetas pueden ser parte de `privados`. 
 
 Cuando se tengan versiones se pueden utilizar dos modos: 
     
 * v1, v2, v3, etc.
-* Fechas. Si se utilizan estas escribirlo en año/mes/día. De esta forma se ordenara automáticamente desde el último al primero. 
+* Fechas. Si se utilizan estas escribirlo en año/mes/día. De esta forma se ordenará automáticamente desde el último al primero. 
 
-Cuando versiones anteriores no te sean útiles. **Borralas!** No acumules archivos y códigos porque sí. Si por alguna razón deseas dejarlos (ej. necesidad de respaldar lo hecho). Genera una carpeta temporal. Esta puede estar en tú versión personal del proyecto, pero no en el archivo final. 
+Cuando versiones anteriores no te sean útiles. **Bórralas!** No acumules archivos y códigos porque sí. Si por alguna razón deseas dejarlos (ej. necesidad de respaldar lo hecho). Genera una carpeta temporal. Esta puede estar en tu versión personal del proyecto, pero no en el archivo final. 
 
 ### Master `do-files`
 
 * Un Master `do-file` es un `do-file` que ejecuta todos los códigos relevantes para el proyecto. 
-* Se basa en la idea de que diferentes `do-files` se enfocan en diferentes tareas o subtareas. No es buena practica tener un solo código enorme que haga todo el proceso.  
+* Se basa en la idea de que diferentes `do-files` se enfocan en diferentes tareas o subtareas. No es buena práctica tener un solo código enorme que haga todo el proceso.  
 * Es importante separar tanto todos los `do-files` (incluyendo el master) en secciones y subsecciones. Por ejemplo: Preámbulo, cargar datos, generar variables, figura I, Tabla 3, etc. 
 * Crear `master_do.files` cada proyecto o subproyecto debe tener un archivo maestro que ejecute **todos** los códigos de inicio a fin y genere todos los resultados. 
 * Cada vez que se termine un proyecto o se obtenga algún resultado es importante ejecutar el `master_do.files`.
@@ -615,12 +621,12 @@ Ejemplo de master do-file:
 ### Rutas de las carpetas:
 
 * Es importante tener una carpeta principal y referenciar todas las rutas a esa dirección. 
-* Utilizar siempre `/` no `\textbackslash`. Puede causar problemas según el sistema operativo que utilices.
+* Utilizar siempre `/` no `\`. Puede causar problemas según el sistema operativo que utilices.
 * Utilizar macros para nombrar a las carpetas. Que estos nombres tengan sentido y se relacionen con el flujo de trabajo. 
 * Recordar que una variable `local` guarda información temporalmente mientras que `global` guarda información permanentemente. Esto último hace de los `global` algo no recomendable de utilizar constantemente. No obstante, es útil para los directorios. 
     
 ```{stata, results="hide"}
-   *** Nota 1: Remplazar esta ruta ***
+   *** Nota 1: Reemplazar esta ruta ***
    global miproyecto "C://Program Files/Dropbox/miproyecto/"
    
    *** Nota 2: Directorios de subcarpetas ***
@@ -631,7 +637,7 @@ Ejemplo de master do-file:
 ```
 
 ### Utilizar algún auxiliar de generación de código: Sublime Text
-Esta sección esta basada en la página web de [Alvaro Carril](https://acarril.github.io/). 
+Esta sección está basada en la página web de [Alvaro Carril](https://acarril.github.io/). 
 
 #### ¿Qué es Sublime?
 
@@ -641,15 +647,15 @@ Es muy útil cuando tienes un proyecto grande con códigos de distintos tipos de
 Instalar Sublime
 
 * Dirígete a [sublimetext.com](https://www.sublimetext.com/). Descarga e instala Sublime Text 4 (ST4) para tu sistema operativo.
-* Es esencial que también instales `Package Control`, que te permite añadir y eliminar fácilmente complementos adicionales. Si esta  bien instalado debiese aparecer en *preferences.*
-* Para installar hay que entrar a sublime, apretar `ctrl + shift + p`. 
+* Es esencial que también instales `Package Control`, que te permite añadir y eliminar fácilmente complementos adicionales. Si está bien instalado, debiese aparecer en *preferences.*
+* Para instalar hay que entrar a sublime, apretar `ctrl + shift + p`. 
 * Tipear `Install Package Control` y presionar `enter`. 
        
 #### Ejecutar Stata desde Sublime 
 
 **Para Windows**
 
-* **Instalar StataEditor:** En ST4 aprete `ctrl+shift+p`. Escriba `install` y presione `Enter`. Ahora busque `StataEditor` y haga clic en él para instalarlo.
+* **Instalar StataEditor:** En ST4 apreta `ctrl+shift+p`. Escriba `install` y presione `Enter`. Ahora busque `StataEditor` y haga clic en él para instalarlo.
 * **Instale Pywin32:** repita el proceso anterior pero instalando el complemento `Pywin32`.
 
 Configure StataEditor:
@@ -668,16 +674,16 @@ Registre la biblioteca de automatización de Stata:
 
 * Vaya al ejecutable de Stata del que ha copiado la ruta (por ejemplo, StataMP-64.exe). 
 * Cree un acceso directo en su escritorio. 
-* Ahora haga clic con el botón derecho en este nuevo acceso directo y seleccione ``Propiedades". 
-* En el campo ``Destino", añada /Registro al final (con un espacio precedente). En mi caso es:
+* Ahora haga clic con el botón derecho en este nuevo acceso directo y seleccione "Propiedades". 
+* En el campo "Destino", añada /Registro al final (con un espacio precedente). En mi caso es:
 ```{stata}
 "C:\Program Files\Stata17\StataMP-64.exe" /Register
 ```
-Aplicar y aceptar los cambios. Apretar sobre el acceso directo el click derecho y ejecutar como administrador. Y listo!
+Aplicar y aceptar los cambios. Apretar sobre el acceso directo el clic derecho y ejecutar como administrador. ¡Y listo!
 
 **Para Mac**
 
-* Para instalar el Editor Mejorado de Stata en ST4, inicie la paleta de comandos con `Cmd+shift+p`, escriba ``install" y presione `Enter`. 
+* Para instalar el Editor Mejorado de Stata en ST4, inicie la paleta de comandos con `Cmd+shift+p`, escriba "install" y presione `Enter`. 
 * Ahora busque `Stata Improved Editor` y haga clic en él para instalarlo. 
 * Reinicie ST4 y listo!
 
@@ -685,9 +691,8 @@ Autoguardado
 
 * Sublime permite auto-guardar los códigos. 
 * De esta forma no hay que preocuparse en casos de que no hayas respaldado tu código. 
-* Para esto hay que escribir vamos a instalar el paquete `autosave` y adicionalmente vamos a agregar a ``preferencias": 
+* Para esto hay que escribir vamos a instalar el paquete `autosave` y adicionalmente vamos a agregar a "preferencias": 
 ```{stata}
-``save_on_focus_lost": true.
+"save_on_focus_lost": true.
 ```
-        
-
+```
