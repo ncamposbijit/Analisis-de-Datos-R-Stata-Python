@@ -1,0 +1,3829 @@
+```{r global options, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, echo = TRUE, warning = FALSE, error = TRUE, results="hide", eval = FALSE)
+```
+# Curso de Stata Avanzado
+
+## Buenas prácticas de programación
+
+### Programación defensiva
+
+**Las personas somos malas escribiendo códigos**
+
+Esta sección está basada en los trabajos y recursos publicados por [Nick Eubank](https://www.nickeubank.com/).
+    
+* La filosofía de escribir un código está motivada por el hecho de que las personas somos **malas escribiendo códigos**.
+* Si queremos evitar errores **no es suficiente con ser cuidadoso(a)**
+* Es necesario diseñar estrategias que tomen en cuenta el hecho de que vamos a cometer errores al escribir un código.
+* Tener buenas estrategias es más relevante cuando existe trabajo colaborativo, que puede **amplificar los errores**.
+
+En esta sección revisaremos cuatro **buenas prácticas** de programación. Estas prácticas no son solo aplicables a Stata, más bien son guías generales para escribir códigos en cualquier lenguaje de programación. 
+
+1. Usar pruebas o tests.
+2. No duplicar información.
+3. No transcribir información, siempre exportarla.
+4. Usar un estilo correcto. 
+ 
+<u>Con estos elementos podremos:</u>
+    
+* **Minimizar** las oportunidades de generar errores al codificar.
+* **Maximizar** la probabilidad de que cuando se cometa un error (lo que ocurrirá!) se pueda detectar con mayor facilidad. 
+
+<u>¿Necesito entender estos principios?</u>
+
+@chang2015economics testearon la reproducibilidad de 67 artículos **publicados**. Todos con alguna sección empírica. Encuentran que: 
+    
+* Solo 29 artículos fueron totalmente replicables.
+* 29 artículos tenían problemas al tratar *missing values*.
+* 9 poseen datos incorrectos o errores de codificación.
+    
+@christensen2018transparency indican que @chang2015economics utilizan una versión poco estricta de replicabilidad. 
+    
+<div class="alert alert-block alert-info">
+<b></b> (...) Chang and Li (2015) use a qualitative definition of replication, and test only key results of the paper, and this appears to lead to a fairly generous interpretation of replicability. (...) </div>
+
+<div class="alert alert-block alert-info">
+<b></b>  (...) To our minds, this is evidence that even when data are available (which they sometimes are not) **a non-negligible fraction of empirical economics research cannot be reproduced**, even when using the original data and a relatively non-stringent conceptual understanding of what constitutes replication success. </div>
+  
+<u>¿Qué podemos aprender de esta historia?</u>
+
+* Todos y todas tienen problemas para codificar (pasa hasta en las mejores familias).
+* Hoy el **trabajo es colaborativo**. También tienes que confiar en los demás. 
+* Hay cosas que no se pueden resolver con ser cuidadoso(a) al codificar. ¿Si los datos están mal? 
+* Reproducibilidad y replicabilidad son claves. Buenas referencias sobre estos temas se encuentran en la página de [Julia Schulte-Cloos](https://jschultecloos.github.io/).
+
+#### Práctica I: escribir una prueba o test
+
+<u>¿Qué significa escribir una prueba o test?</u>
+
+[Nick Eubank](https://www.nickeubank.com/) indica que si él tuviese que elegir solo una práctica, elegiría agregar pruebas o tests a los códigos.
+
+<u>¿Qué es una prueba?</u>
+
+* Son afirmaciones que tienen como respuesta un valor lógico (verdadero o falso).
+* Buscan chequear si una condición particular es cierta. En el caso de que no lo sea, es decir de que no se cumpla esta condición, la ejecución del código se detiene. 
+
+<u>¿Por qué agregar estos chequeos, si yo siempre chequeo o reviso mis códigos? </u>
+
+<u>1. Test se ejecutan **cada vez** que corres tu código</u>
+
+  * La mayoría testea la **primera** vez que escribe un código.
+  * Si hay algún apuro por terminar, el testeo del código disminuye rápidamente.
+  * Si ya ha pasado algún tiempo desde la última vez que lo ejecuté, únicamente ejecuto el código y espero los resultados. Entender un código (incluso el que uno(a) mismo(a) escribió es difícil después de un tiempo). 
+  * Un error que se comete en una de las múltiples ediciones del código pueda ser detectado con facilidad al testear. 
+
+<u>2. Genera el hábito de chequear permanentemente a un **costo razonable**</u>
+
+  * La mayoría se para a chequear los datos cuando detecta algún error o bien sospecha que existe un problema.
+  * Si nos acostumbramos a escribir pruebas al final de los códigos o bien cada vez que se hagan cierto tipo de operaciones (ej. siempre después de unir bases de datos), iremos generando el hábito de chequear constantemente, pero sin invertir demasiado tiempo en revisiones posteriores. 
+  
+<u>3. Ayuda a **detectar** problemas rápidamente</u>
+
+  * Sé donde está el error. Puedo corregirlo rápidamente. 
+  
+<u>4. Escribir pruebas ayuda a detectar más problemas de los **previstos**</u>
+
+  * Los errores de un código se manifiestan de múltiples formas y muchas veces son consecuencia de errores anteriores. 
+  * Si tengo valores duplicados, mi estadística descriptiva estará mal. 
+  * El problema surge de no darle un tratamiento correcto a los valores duplicados. No surge de algún problema en el código que genera la estadística descriptiva. 
+  
+##### El comando `|assert|`
+  
+**Ejemplo:** Para escribir pruebas en Stata utilizaremos el comando `|assert|`. Notar que este comando detiene la ejecución del código cuando **la condición no se cumple**. 
+
+Testear si la base de datos tiene 100 observaciones:
+```{stata, results="hide"}
+count 
+assert `r(N)' == 100
+```
+
+Testear si la variable `tasa_desempleo` está en su rango:
+```{stata, results="hide"}
+assert tasa_desempleo > 0 & tasa_desempleo < 100
+```
+
+Testear si la variable `edad` es siempre positiva: 
+```{stata, results="hide"}
+edad > 0
+```
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio:</b>
+
+Instrucciones:
+
+* Descargar los  [datos](https://github.com/ncamposbijit/Analisis-de-Datos-Stata-R-Python/blob/c6b19e61b6c657d3354c31650781ef708ab5074f/docs/ejercicios/ejercicio1/ejercicio1.zip)
+
+Preguntas:
+
+1. La base de datos *World Development Indicator (WDI)* tiene observaciones duplicadas. **Escriba un test que falle cuando existen valores duplicados**.
+2. Los países en la base de datos `Polity` deberían ser un subconjunto de los países que están en la base WDI. **Escriba un test que falle debido a este problema**.
+
+* Las soluciones de todos los ejercicios se encuentran [aquí](https://github.com/ncamposbijit/Analisis-de-Datos-Stata-R-Python/blob/e44fa03b99ddf308e025a28f16f55953e25795f2/docs/ejercicios/soluciones.do)
+</div>
+
+¿Cuando escribir tests?
+
+* Después de juntar bases: **Siempre** incluir test después de utilizar un `merge` o bien de `append`.
+* Después de manipulaciones complejas de datos: Si piensas que fue difícil hacer un proceso, incluye un test.
+* Después de eliminar observaciones: **Siempre** incluir test después de utilizar un `drop`.
+
+<div class="alert alert-block alert-info">
+<b>Regla general</b> siempre que te veas a ti misma(o) revisando o chequeando algún segmento de código interactivamente **escribe un test**.
+</div>
+
+#### Práctica II: no duplicar información
+
+* Información debe estar expresada una sola vez en un código.
+* Si la información está en muchas partes en el código, tendrás que buscar todos esos lugares.
+
+*Ejemplo:* Imaginemos que quiero eliminar todas las observaciones que toman un valor mayor a un cierto límite, 110 en este caso.
+```{stata, results="hide"}
+drop if var1 > 110 
+drop if var2 > 110 
+drop if var3 > 110 
+```
+
+Lo anterior funciona... <u>¿Cuál es el problema entonces?</u> 
+
+* Imaginemos que queremos cambiar el límite de 110 a 100. Del modo en que está escrito, vamos a tener que hacer cambios **3 veces!**
+* Si estas restricciones se encuentran en distintas partes de tú código, se puede inducir un error. 
+
+**Ejemplo:** Para evitar el problema anterior, es mejor escribir:
+```{stata, results="hide"}
+local lim = 110 
+
+    drop if var1 > `lim'
+    drop if var2 > `lim' 
+    drop if var3 > `lim' 
+```
+    
+De esta forma, en caso de decidir cambiar la restricción, solo tendrás que hacer **un cambio**. Minimizando la posibilidad de cometer un error. 
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 2:</b>
+
+* Todas las regresiones que se encuentran en el código tienen la misma base, es decir, el mismo conjunto de variables que se repite. 
+
+* La idea es consolidar
+
+ la base con el fin de evitar duplicación de información. 
+
+* Con este fin, agregar `population` como control en todas las regresiones. Nuevamente, no dupliques información. 
+</div>
+
+#### Práctica III: nunca transcribir directamente información, todo automatizado
+
+* **Nunca se debe transcribir resultados**. Todo debe ser exportado de forma tal que pueda ser actualizado automáticamente.  
+* No cumplir con esta práctica es una importante fuente de errores.
+* **Errores de transcripción:** Si me equivoco en el décimo decimal no es tan grave, si cambio un signo sí lo es. 
+* **Problemas para actualizar:** Es probable que al actualizar un código (como sucede usualmente en cualquier proyecto), olvidemos traspasar los resultados. 
+* ¿Cómo evitar este problema? 
+  + Para usuarios de $\LaTeX$ cada resultado debe ser guardado en archivos `.tex`.
+  + Hacer esto no solo con las tablas (ej. `putexcel`). También hacerlo con cualquier estadística que aparezca en el texto. (Por ejemplo, "El promedio de edad de la muestra es de 43 años". Este 43 debe obtenerse automáticamente desde tu código, no debes transcribirlo.)
+  + Para esto: debes generar el número que se desea citar. Convertirlo a `string` y guardarlo (ej. `midato.tex`). Llamarlo desde $\LaTeX$ con `\input{midato.tex}`.
+  + Para usuarios de Word es un poco más complejo, pero posible `putdocx`. 
+  + Otra alternativa es utilizar Stata Markdown. 
+  + Independiente de la estrategia que utilices la buena práctica guarda relación con el hecho de que el producto final (artículo académico, reporte, nota, etc) debe estar **conectado** con cualquier estadística que se genere dentro de un proceso de análisis de datos. 
+  
+**Ejemplo: importar una tabla desde Stata a $\LaTeX$ directamente**
+```{stata, results="hide"}
+eststo clear
+eststo: reg polity gdp_per_cap
+eststo: reg polity gdp_per_cap under5_mortality
+esttab using nombredelarchivo.tex, replace ///
+       title("Mis estimaciones")
+```
+
+* Lo importante es que todo lo que se produzca en Stata debe ir directamente al producto final. Para una revisión detallada ver [Stata to LaTeX Guide](https://medium.com/the-stata-guide/the-stata-to-latex-guide-6e7ed5622856). Una excelente referencia para hacer tablas mucho más avanzadas. 
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3:</b>
+
+Calcula el promedio de `literacy_rate` y guárdalo en una macro local. Generar un formato tal que solo tenga dos decimales. Guarda el valor como *string* en un archivo `.tex` en la misma carpeta. 
+</div>
+
+#### Práctica IV: estilo importa
+
+* Estilo no se refiere a la estética del código ni al orden.
+* Tiene que ver con la facilidad con el que este se puede **leer**. Al igual que cuando se escribe, lo importante es ser claro. 
+
+* Para ello tres aspectos son claves:
+  
+1. **Utilizar espacios**. Usar espacios siempre después de utilizar un operador. Por ejemplo: 
+  
+```{stata, results="hide"}
+gen var1=var2+var3      /// Mal
+gen var1 = var2 + var3  /// Bien
+```
+  
+  + Con criterio... 
+```{stata, results="hide"}
+hours + minutes / 60 + seconds / 3600 
+hours + minutes/60 + seconds/3600
+```
+  
+2. **Nombrar las variables para que sean informativas en sí mismas.** No escribir `var1`, si puedes escribir: `tasa_desempleo`. Requiere más trabajo, pero facilita la lectura. Agregar las unidades en las etiquetas facilita la lectura (`en porcentaje`). o bien (`== 1`) para indicar una variable dicotómica. 
+
+3. **Escribir comentarios**
+
+  + Ejercicio para explicar en pocas palabras lo que se ha hecho. 
+  + Existe un equilibrio entre parsimonia y calidad del comentario. 
+  + Establecer el objetivo del comentario claramente es muy importante. 
+  + No hay una regla para escribir comentarios, pero sí algunos consejos (ver, @gentzkow2014code)
+  + Utilizar imperativo si lo tiene que corregir otra persona (ej. modifica parámetros aquí, fija directorio). 
+  + Debe incluir suficiente contexto para que alguien que no trabaje directamente en eso entienda qué se debe hacer.
+  + Los comentarios largos deben explicar secciones de código. Importante escribir el código por bloques. 
+  + La brevedad no debe afectar nunca la comprensión. Esto también aplica para los comandos (ejemplo de [Michael Shill](https://michaelshill.net/2015/07/31/in-stata-coding-style-is-the-essential/)). 
+
+*Ejemplo:*
+```{stata, results="hide"}
+summarize var1
+sum var1
+su var1
+```
+
+#### Estilo de codificación en Stata
+
+#### Ser ordenado no es condición suficiente para tener un buen estilo de codificación 
+
+* Primera idea: Un buen estilo de codificación es seguir una estrategia. Hay ciertas guías, pero lo relevante es seguir una y ser consistente. 
+* Los códigos tienen distintas audiencias. La primera es tu computadora. Si tu computadora no entiende tu código, es el peor de los mundos. 
+* Una de las audiencias más importantes son tus colaboradores y colaboradoras. Si ellos/as no lo entienden, **el problema es tuyo en primer lugar.**
+* No hay un solo buen estilo. No hay una guía que pueda sustituir experiencia o estrategias ya probadas de trabajo de equipo. 
+* Lo importante es **tener estrategias** y **utilizarlas** en la medida de que sea positivo para el producto final. 
+* Ahora veremos algunas estrategias y buenas prácticas que pueden ayudar a mejorar el estilo de codificación individual y de tu equipo en base a dos referencias adicionales:  \citet{gentzkow2014code} y de una guía confeccionada por [Michael Stepner](https://michaelstepner.com/). 
+      
+#### Escribe códigos cortos
+
+* Ningún segmento de código debiese ser mayor a 100 - 150 caracteres. 
+* Códigos largos, debiesen ser escritos de forma más pequeña como ado-files. 
+* Si tienes dificultades para reducir un código a estos estándares, es probable que tengas que pensar en cómo estructurarlo de mejor forma. 
+* Cada segmento de código o funciones debiesen tener un propósito **claro e intuitivo** para lectores experimentados en el lenguaje de programación que se esté utilizando. 
+* Los do-files deben ser cortos y deben tener un objetivo claro. 
+* Todo do-file debe tener un propósito que pueda ser **explicado en una oración.** De hecho, hay que hacerlo. En el preámbulo. Cada do-file debe indicar claramente su objetivo.   
+* Un proyecto debería tener varios `do-files` con las siguientes características.
+  + **Cortos:** Debes ser capaz de leer un do-file completo en pocos minutos y entender el objetivo. Una buena regla es que no sean más largos de 250 - 350 líneas. No es estricta esta regla. Hay ocasiones que se justifican códigos más largos. Lo importante es la claridad. No sacrificarla nunca. 
+  + **Autocontenidos:** Cada do-file interactúa con otros solo a través de los archivos que carga y de los que guarda. Es importante entender tu proyecto como un flujo estructurado con pasos predeterminados. 
+  + **Enfocados:** Un `do-file` cumple un propósito determinado. Cada parte se debe entender como un paso intuitivo para lograr ese propósito. 
+
+#### El nombre de las variables debe caracterizarla
+* Nombres adecuados reemplazan comentarios y hacen el código auto contenido. 
+* **Utilizar nombres completos**. Abreviaciones solo en el caso de estar seguro que cualquier lector puede entenderlo sin ambigüedad. 
+* Si se utilizan abreviaciones. Ser consistente. Utilizar siempre las mismas a lo largo del código. Documentarlas, especialmente con bases de datos complejas. 
+* Cuando no se pueda ser suficientemente claro en un nombre, utilizar sí o sí \verb|label variable| para dar una descripción (ej. agregar unidad de medida, o qué tipo de variable es).
+* `labels` especifican información. (ej, `edad` con el `label` *edad al 31 de enero* es más informativa que `edad` y más corto que `edad_31enero`).
+* No utilizar nombres en dos (o más) archivos que no expliciten por qué son diferentes. Por ejemplo: `version_final.do` y `version_final_ahorasiquesiestavezsi.do`. 
+* Los nombres pueden ser más cortos cuando se utilicen con frecuencia o el objeto esté inmediatamente después. 
+
+**Ejemplo:** 
+```{stata, results="hide"}
+beta_mco = (educacion' * educacion)^(-1) * ///
+           (educacion' * log_salarios)
+```
+
+Mejor escrito sería:
+```{stata, results="hide"}
+X = educacion
+Y = log_salarios
+beta_educ_salarios = (X'*X)^(-1)*(X'*Y) 
+```
+
+* No ser tacaño(a) al nombrar variables, archivos, carpetas. 
+* Probablemente lo escribas solo una vez. No ahorres espacio. Siempre pensar en la claridad. 
+* Para el caso de una figura:
+  + `c_
+
+1.pdf` es un pésimo nombre. 
+  + `correlaciones.pdf` es un mal nombre. 
+  + `T1_CORRELACIONES_INGRESO_MORTALIDAD.PDF` es un mejor nombre.
+* Para el caso de una carpeta:
+  + `datos/brutos/interregional` es un mal nombre.
+  + `datos/brutos/Estimaciones Censo Interregional 2010 - 2021` es un buen nombre. 
+* Estos nombres nos permiten pensar en el flujo lógico del proyecto sin tener que mirar los códigos nuevamente. Ayúdate constantemente. 
+
+#### Ten especial cuidado cuando uses álgebra en los códigos. 
+
+* Separa el álgebra en partes. Por ejemplo, el siguiente código puede inducir a un error, dado que no está separado en partes. 
+
+```{stata, results="hide"}
+gen pib_percapita_real = ///
+    (cons + ggob + export - import - impuestos)* 10^6 ///
+    /(indice_precios * poblacion_miles * 1000)
+```
+
+Este código es más largo, pero mucho más entendible:
+```{stata, results="hide"}
+gen pib_millones_nominal = ///
+    (cons + ggob + export - import - impuestos)
+gen pib_total_real = pib_millones_nominal * 10^6 ///
+    / indice_precios
+gen pop_total = poblacion_miles * 1000
+gen pib_percapita_real = pib_total_real / pop_total 
+```
+
+#### Ser consistentes 
+
+* Hay cosas de estilo que son solo un tema de gusto. Por ejemplo, hay quienes escriben `nivel_empleo_anual` y otras que escriben `NivelEmpleoAnual`. 
+* No importa la elección de un estilo u otro. Lo que importa es que todas y todos los miembros del equipo utilicen **la misma** convención. 
+   
+#### Chequear errores
+
+* Hemos aprendido que es importante escribir pruebas o testeos. Especialmente relevante después de operaciones complicadas o pegado de bases de datos.
+* Stata en algunas ocasiones indica los errores que se comenten, sin la necesidad de colocar estas pruebas. Por ejemplo:  
+
+```{stata, results="hide"}
+gen string x = "hola"
+gen y = x^2
+```
+   
+Stata retorna el siguiente error: 
+```{stata, results="hide"}
+type mismatch 
+r(109);
+```
+Normalmente el error da suficiente información. A pesar de lo anterior, en algunas circunstancias, no es tan claro saber cuál es el error. Cuando ustedes se hayan encontrado con un error, que no les fue fácil descifrar, **tienen que escribir un comentario que lo indique y explique**. Facilitará mucho el trabajo colaborativo. Eviten que otras personas tengan que invertir tiempo descifrando los mismos errores que ustedes. 
+
+#### Separar tipos de códigos
+
+* Separar códigos lentos de los rápidos.
+* Códigos lentos que rara vez se piensan ejecutar idealmente debiesen estar separados de los códigos rápidos que se quieren ejecutar múltiples ocasiones. 
+* Evito tener que ejecutar un código lento cada vez que necesito actualizar algún resultado. 
+* Este criterio cambia en caso de que todos los códigos sean rápidos. Si todos son computacionalmente no demandantes, lo importante es respetar el flujo de trabajo y la claridad de los procesos de análisis. 
+
+#### Automatizar todo lo que se pueda automatizar
+
+* Todo lo que se pueda automatizar debe ser automatizado. Por ejemplo, escriban ado-files que cambien para subconjuntos. Que los iteradores tengan números que se obtengan a partir del código, no por algo que ustedes tengan que escribir. 
+* Nunca hacer trabajo que vaya a obtener resultados de forma interactiva. Lo interactivo es siempre y únicamente para inspeccionar. En todo caso, al inspeccionar deberían hacer un código de todas formas. Esto les va a ayudar a saber qué estaban pensando en el primer momento que vieron los datos que quieren analizar. 
+   
+#### Abstraer para eliminar pasos redundantes.  
+* Abstraer con fines de hacer códigos más claros. **No por otras razones**. A nadie le importa saber que puedes abstraer demasiado, si nadie entiende la razón de hacerlo. La claridad es lo que más importa. 
+* Abstracción es esencial para escribir un buen código por al menos dos razones: 
+  + Al eliminar la redundancia se reducen las posibilidades de cometer errores.
+  + Aumenta la claridad. Para cualquier lector será más fácil leer un código no redundante. 
+
+**Ejemplo:** Supongamos que queremos ver la correlación espacial del consumo de papas fritas. Queremos testear si el consumo per-cápita de papas fritas está correlacionado con el consumo promedio per-cápita de las otras comunas de la misma región. 
+
+Primero tenemos que calcular el consumo per-cápita del resto: 
+
+```{stata, results="hide"}
+egen total_pc_papitas = total(pc_papitas), by(region)
+egen total_obs = count(pc_papitas), by(region)
+gen consumo_papitas_resto_pc = ///
+(total_pc_papitas - pc_papitas)/(total_obs - 1)
+```
+
+Ahora podemos ver si existe correlación. <u>¿Pero si queremos cambiar el nivel de agregación?</u> Tal vez sí existe correlación, pero a nivel de área metropolitana. 
+
+Copiemos el código de nuevo y calculemos esto. 
+
+```{stata, results="hide"}
+egen total_pc_papitas = total(pc_papitas), by(metroarea)
+egen total_obs = count(pc_papitas), by(region)
+gen consumo_papitas_restometro_pc = ///
+(total_pc_papitas - pc_papitas)/(total_obs - 1)
+```
+
+**Noten que hay un error**. Se nos olvidó reemplazar región por `metroarea`. Este error se puede propagar si seguimos haciendo operaciones. 
+
+Una alternativa al copiar y pegar es escribir una función con propósito general (ado-file, programa, función, etc) que calcule la variable que deseamos bajo distintos parámetros (noten que esto se relaciona con automatizar)
+
+```{stata, results="hide"}
+program consumo_papitas_resto 
+    syntax, invar(varname) outvar(name) byvar(varname)
+    tempvar tot_invar count_invar 
+    egen `tot_invar' = total(`invar'), by(`byvar')
+    egen `count_invar' = count('invar'), by('byvar') 
+    gen `outvar' = (`tot_invar' - `invar') ///
+    / (`count_invar' - 1) 
+end 
+```
+
+Con el programa podemos escribir los bloques de código anteriores como: 
+
+```{stata, results="hide"}
+* Caso 1: a nivel de región
+
+consumo_papitas_resto, invar(pc_papitas) ///
+outvar(consumo_papitas_resto_pc) byvar(region)
+
+* Caso 2: a nivel de área metropolitana
+
+consumo_papitas_resto, invar(pc_papitas)  ///
+outvar(consumo_papitas_restometro_pc) byvar(metroarea)
+```
+
+Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel de agregación sin inducir errores por ir copiando y pegando códigos, además automatizamos un comando y evitamos repetición.
+
+#### Crear códigos autoexplicativos que complementen a la documentación 
+
+* No escribas documentación que no vas a mantener.
+* Lo mejor es que los códigos sean autoexplicativos. 
+* Veamos un ejemplo. Imaginemos que queremos estimar una elasticidad de demanda para hacer un análisis de bienestar. 
+```{stata, results="hide"}
+* Elasticidad = Cambio porcentual en la cantidad / Cambio Porcentual en precio
+* Elasticidad = -0,4 / 0,2 = -2
+* Mirar Informe 1, Tabla 2A.
+    calcular_perdida_bienestar, elasticidad(3)
+```
+
+* <u>Problema:</u> código contradice comentario. Cuando tenemos dos fuentes o más fuentes que informan sobre el mismo objeto, es probable que estas se puedan contradecir. El problema de inconsistencia interna es especialmente importante para documentación, comentarios, notas, etc. 
+
+* Para evitar este problema es necesario mantener los comentarios al día tal como se hace con los códigos. 
+* Hacer esto es costoso. Mantener un código extenso al mismo tiempo que una larga documentación no es sencillo. 
+* Dada esta restricción, es importante *escribir códigos que sean claros sin la necesidad de escribir comentarios extensos*. 
+* Volviendo al ejemplo. ¿Cómo le decimos al lector del código debe tener una elasticidad de 2 y no de 3? 
+   
+Ejemplo de un código auto-explicativo: 
+```{stata, results="hide"}
+* Mirar Informe 1: Tabla 2A. 
+  local cambio_porcentual_cantidad = -0,4
+  local cambio_porcentual_precio = 0,2 
+  local elasticidad = `cambio_porcentual_cantidad' ///
+  / `cambio_porcentual_precio'
+  calcular_perdida_bienestar, elasticidad(`elasticidad') 
+```
+
+Menos comentarios que el anterior. **Sin números mágicos**, los parámetros están definidos por variables locales, en vez de imputados directamente. Este código es más informativo y es internamente consistente dado que no puedo cambiar algunos de los parámetros sin modificar el resultado. Comentarios sirven en su justa medida: es imposible desprender del mismo código sin saber la tabla. 
+  
+#### Pensar siempre en la unidad de observación e identificar los ID que identifican únicamente a la unidad
+
+ de observación
+
+* ID permiten saber la unidad de observación (hogar, empresas, lugares, hogar-año, empresa-mes-lugar). 
+* Conocer ID únicos es esencial para entender los datos. Indican qué es lo que describen los datos. 
+* También nos sirven para entender cómo juntar estos datos con otras fuentes de información.  
+* Dos reglas que siempre tener en cuenta:
+  + No tienen que existir observaciones duplicadas que tengan el mismo ID único. 
+  + Los ID no pueden tener *missings*.
+* Una forma de verificar estos dos hechos es utilizando el comando `isid`. Este comando chequea si las variables especificadas identifican únicamente a las observaciones. Si esto no ocurre arrojará el siguiente mensaje: 
+
+```{stata, results="hide"}
+variable does not uniquely identify the observations
+```
+
+Si encuentro plausible que alguna variable tenga *missing* puedo colocar la opción `missok`.
+
+#### No ser repetitivo
+
+Hemos hablado de evitar ser repetitivo. ¿Cuándo hacerlo? Repetir en una operación simple con dos categorías es razonable.
+```{stata, results="hide"}
+xtile decil_ing_ga = ing if grupo=="A", nq(10)
+xtile decil_ing_gb = ing if grupo=="B", nq(10)
+```
+
+Si tengo que operar 15 veces, mejor hacerlo iterativamente: 
+```{stata, results="hide"}
+forvalues y = 2001/2015 {
+    xtile decil_ing_`y' = ing if año == `y', nq(10)
+}
+```
+
+Si involucra múltiples operaciones. A pesar de que solo existan dos categorías, es mejor hacerlo iterativo. 
+
+```{stata, results="hide"}
+foreach g in "A" "B" {
+	assert ingreso >= 0 if grupo == "`g'"
+	xtile decil_ingreso_`g' = ingreso /// 
+	if grupo=="`g'" & ingreso > 0, nq(10)	
+	replace decil_ingreso_`g' = 0 /// 
+	if grupo=="`g'" & ingreso == 0
+	label var decil_ingreso_`g' "Deciles de ingreso"
+}
+```
+
+<u>¿Cómo evitar ser repetitivo? </u>
+
+* Cuando necesites cambiar **solo una cosa** en el código utilizar un *loop*. `foreach` y `forvalues` iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez. 
+* Cuando necesites cambiar **múltiples cosas** dentro de un código, define un programa dentro del do-file utilizando `program`. De este modo tú podrás especificar más de un argumento. 
+* Cuando necesites repetir un código en **múltiples do-files**, pueden definir un programa en un `ado-file`, guardarlo y llamarlo cuando lo necesites. Es importante que el código agregue automáticamente la ruta en donde se encuentran guardados estos programas. 
+
+**Algunas ayudas:**
+
+* Cuando algunas líneas de código necesiten cambiar entre repeticiones utilizar `if/else` y `forvalues`. Estos iteran por el mismo código múltiples veces, cambiando el valor de una variable local cada vez. 
+* Cuando definas programas dentro de un do-file, agrega una línea que diga `cap program drop <program_name>` antes de `program define`. Automáticamente se eliminará y redefinirá el programa cada vez que ejecutes el código. 
+
+#### Mensajes finales sobre estilo de codificación
+
+* Haz las cosas lo más simples posibles para ti (y tu equipo) de hoy y del futuro.
+* No confíes tanto en ti de hoy y menos en el del futuro. Es mejor programar **defensivamente**. 
+* Ser consistente en formato, estilo, organización y nombres. Sigue estrategias.
+* Reducir en lo posible pegado de códigos y repetición innecesaria. 
+* Testear regularmente.
+* Documentar a menudo, estratégicamente, pero mínimamente. 
+
+### Organización de un proyecto en Stata
+
+#### Flujo de trabajo en Stata
+
+Hasta el momento uno de los mayores mensajes es **adoptar un sistema de organización**, compartirlo en el equipo y adherirse a él. Este debe incluir: 
+   
+1. Estructuras de directorio. 
+2. Estilo de codificación.  
+3. Convenciones para escribir nombres.  
+4. Convenciones para exportar datos.  
+
+Hemos visto en detalle (2) y (3). Algunas cosas de (4) (más detalles en otro capítulo). En esta sección nos enfocaremos en (1). Esta sección se basa en una de las guías de [Asjad Nqvi](https://asjadnaqvi.medium.com/). Muy buenos recursos. Muy recomendado. También revisaremos algunos elementos de \alert{The Workflow of Data Analysis} (\cite{long2009workflow}).
+
+* Un proyecto de análisis de datos contempla: planificar el trabajo, documentar las actividades, crear y verificar variables, generar y presentar análisis estadísticos, replicar resultados y archivar. 
+* Todo lo anterior es a lo que nos referiremos como flujo de trabajo. 
+* Un buen flujo de trabajo es esencial para que tú y tus colaboradores(as) y los interesados en tu trabajo puedan replicarlo.
+* Replicar es clave para generar información confiable y correcta. 
+
+La administración del flujo de trabajo se hace al **inicio** de un proyecto. No al final. No hacerlo así tiene costos en tiempo y posiblemente induzca errores no forzados. Veremos algunos aspectos relacionados con la administración de datos y *scripts*. Nuevamente, más que reglas a seguir, lo presentado aquí son una serie de buenas prácticas que pueden ayudar a mejorar la gestión del trabajo con Stata. La idea de esto es que finalmente podamos dedicarle más y mejor tiempo al análisis de datos. 
+* Nuevamente, tener un flujo de trabajo es clave, incluso los mayores expertos en estos temas tienen problemas con esto. Por ejemplo, en el prólogo de @long2009workflow
+
+<div class="alert alert-block alert-info">
+When I started, I thought my workflow **was very good and that it was simply a matter of recording what I did"** As writing proceeded (**this book**), I discovered gaps, inefficiencies, and inconsistencies in what I did. Sometimes these involved procedures that I knew were awkward, but where "I never took the time to find a better approach". Some problems were due to oversights where I had not realized the consequences of the things I did or failed to do. 
+</div>
+
+#### Organización de archivos y carpetas
+
+* Algunos problemas que son recurrentes: 
+  * Tener múltiples versiones de un archivo y no saber cuál es cuál.
+  * No poder encontrar un archivo y pensar que lo has borrado. 
+  * Tu equipo (y tú) no saben cuál es el informe final. Hay dos archivos que con el nombre archivo final, pero con distinto contenido. 
+   
+Para evitar los problemas anteriores es importante diseñar la estructura de la carpeta de trabajo y comprometerse a seguir una alerta.
+
+##### Carpetas
+
+* Todo se guarda en carpetas. **TODO**.
+* Estas deben seguir un orden lógico e intuitivo. Como consejo. Colocar números en la carpeta. Al ordenar las carpetas seguirán este orden y no el alfabético. 
+* No tener espacios en el nombre de las carpetas. 
+* Nunca utilizar (-) entre nombres de una carpeta. Utilizar (\_). 
+* Evitar nombrar las carpetas con mayúsculas. 
+* Siempre escribir un `README.txt`. Puede ser tedioso, pero muy necesario. Corto, informativo, que explique el flujo de trabajo y las carpetas. Sugerencia: colocar las rutas. 
+
+* En esta figura se ve la idea de cómo debería estructurarse las carpetas de un proyecto pequeño
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("01figuras/C2.2.1.png")
+```
+
+* Lo mismo, pero para un proyecto grande
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("01figuras/C2.2.3.png)")
+```
+
+* Lo mismo, pero presentado de otra forma: 
+
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("01figuras/C2.2.4.png)")
+```
+
+* En la medida que sus carpetas se parezcan más a estas, mucho mejor. 
+
+* Es importante generar dos tipos de carpetas para los resultados `trabajo` y otras que diga `compartir`. 
+
+* `trabajo` guarda todos los resultados (ej. tablas, gráficos, documentos) que están siendo trabajados. 
+* `compartir` guarda resultados terminados y listos para compartir en alguna etapa del proyecto. Por ejemplo, cuando se quieran compartir resultados intermedios del proyecto. 
+    
+* Dos reglas:
+
+  * Resultados se comparten solo después que los archivos que lo generan pasen a la carpeta `compartir`.
+  * Una vez traspasados a la carpeta compartir. No se modifican. Incluso cuando puedan existir errores. 
+
+Ayuda a garantizar que los resultados que se comparten se puedan replicar. Si encuentras errores o decides cambiar algo no cambies los ya posteados. Genera nuevos. Esto también ayuda a la replicabilidad: permite saber qué cambios existieron durante un proyecto. 
+    
+Un directorio de trabajo estructurado es especialmente **importante para proyectos colaborativos** donde todo se puede desordenar más fácilmente. Dos directorios son sugeridos cuando se trabaja de forma colaborativa: `correo` y otras que diga `privados`. `correo` guarda intercambios entre colaboradoras mientras que `privados` guarda el trabajo propio de cada colaborador(a). Otras carpetas
+
+ que pueden complementar trabajo son `porhacer` que sea una carpeta que sirva como una lista de tareas `poraprender`. En cualquier caso, estas carpetas pueden ser parte de `privados`. 
+
+Cuando se tengan versiones se pueden utilizar dos modos: 
+    
+* v1, v2, v3, etc.
+* Fechas. Si se utilizan estas escribirlo en año/mes/día. De esta forma se ordenará automáticamente desde el último al primero. 
+
+Cuando versiones anteriores no te sean útiles. **Bórralas!** No acumules archivos y códigos porque sí. Si por alguna razón deseas dejarlos (ej. necesidad de respaldar lo hecho). Genera una carpeta temporal. Esta puede estar en tu versión personal del proyecto, pero no en el archivo final. 
+
+#### Master `do-files`
+
+* Un Master `do-file` es un `do-file` que ejecuta todos los códigos relevantes para el proyecto. 
+* Se basa en la idea de que diferentes `do-files` se enfocan en diferentes tareas o subtareas. No es buena práctica tener un solo código enorme que haga todo el proceso.  
+* Es importante separar tanto todos los `do-files` (incluyendo el master) en secciones y subsecciones. Por ejemplo: Preámbulo, cargar datos, generar variables, figura I, Tabla 3, etc. 
+* Crear `master_do.files` cada proyecto o subproyecto debe tener un archivo maestro que ejecute **todos** los códigos de inicio a fin y genere todos los resultados. 
+* Cada vez que se termine un proyecto o se obtenga algún resultado es importante ejecutar el `master_do.files`.
+
+Ejemplo de master do-file:
+```{stata, results="hide"}
+  *** Información del proyecto aquí ***
+  *** Información sobre directorios ***
+  *** Ejecutar códigos ***
+  * Generación de datos
+  do ./dofiles/01_datos_v11.do 
+  do ./dofiles/02_merge_v2.do 
+  * Generación de tablas
+  do ./dofiles/03_tablas_v4.do 
+  * Estimación principal
+  do ./dofiles/04_estimaciones_v11.do 
+  * Figuras principales
+  do ./dofiles/05_graficos_v11.do 
+```
+
+#### Rutas de las carpetas:
+
+* Es importante tener una carpeta principal y referenciar todas las rutas a esa dirección. 
+* Utilizar siempre `/` no `\`. Puede causar problemas según el sistema operativo que utilices.
+* Utilizar macros para nombrar a las carpetas. Que estos nombres tengan sentido y se relacionen con el flujo de trabajo. 
+* Recordar que una variable `local` guarda información temporalmente mientras que `global` guarda información permanentemente. Esto último hace de los `global` algo no recomendable de utilizar constantemente. No obstante, es útil para los directorios. 
+    
+```{stata, results="hide"}
+   *** Nota 1: Reemplazar esta ruta ***
+   global miproyecto "C://Program Files/Dropbox/miproyecto/"
+   
+   *** Nota 2: Directorios de subcarpetas ***
+   clear
+   global datosbrutos "$miproyecto/datos/brutos"
+   cd "$datosbrutos"
+   use datos1.dta, replace 
+```
+
+#### Utilizar algún auxiliar de generación de código: Sublime Text
+Esta sección está basada en la página web de [Alvaro Carril](https://acarril.github.io/). 
+
+##### ¿Qué es Sublime?
+
+* [Sublime Text](https://www.sublimetext.com/) es un editor de códigos gratuito. Este editor permite compilar códigos de distintos lenguajes de programación tales como Stata, Python, R, \LaTeX, entre muchos otros. 
+* Tiene algunas herramientas que facilitan el trabajo de programación tales como atajos (*shortcuts*) o multicolumnas. Veremos varias en esta sección.
+Es muy útil cuando tienes un proyecto grande con códigos de distintos tipos de lenguaje. 
+Instalar Sublime
+
+* Dirígete a [sublimetext.com](https://www.sublimetext.com/). Descarga e instala Sublime Text 4 (ST4) para tu sistema operativo.
+* Es esencial que también instales `Package Control`, que te permite añadir y eliminar fácilmente complementos adicionales. Si está bien instalado, debiese aparecer en *preferences.*
+* Para instalar hay que entrar a sublime, apretar `ctrl + shift + p`. 
+* Tipear `Install Package Control` y presionar `enter`. 
+       
+##### Ejecutar Stata desde Sublime 
+
+**Para Windows**
+
+* **Instalar StataEditor:** En ST4 apreta `ctrl+shift+p`. Escriba `install` y presione `Enter`. Ahora busque `StataEditor` y haga clic en él para instalarlo.
+* **Instale Pywin32:** repita el proceso anterior pero instalando el complemento `Pywin32`.
+
+Configure StataEditor:
+
+* En ST4 vaya a `Preferences -> Package Settings -> StataEditor -> Settings - Users`
+* En este archivo en blanco debe escribir la ruta de su ejecutable de Stata y la versión que posee. 
+* Mi archivo de configuración en Windows se ve así: 
+```{stata}
+{
+  "stata_path": "C:/Program Files/Stata17/StataMP-64.exe",
+   "stata_version": 17,
+}
+```
+
+Registre la biblioteca de automatización de Stata:
+
+* Vaya al ejecutable de Stata del que ha copiado la ruta (por ejemplo, StataMP-64.exe). 
+* Cree un acceso directo en su escritorio. 
+* Ahora haga clic con el botón derecho en este nuevo acceso directo y seleccione "Propiedades". 
+* En el campo "Destino", añada /Registro al final (con un espacio precedente). En mi caso es:
+```{stata}
+"C:\Program Files\Stata17\StataMP-64.exe" /Register
+```
+Aplicar y aceptar los cambios. Apretar sobre el acceso directo el clic derecho y ejecutar como administrador. ¡Y listo!
+
+**Para Mac**
+
+* Para instalar el Editor Mejorado de Stata en ST4, inicie la paleta de comandos con `Cmd+shift+p`, escriba "install" y presione `Enter`. 
+* Ahora busque `Stata Improved Editor` y haga clic en él para instalarlo. 
+* Reinicie ST4 y listo!
+
+Autoguardado
+
+* Sublime permite auto-guardar los códigos. 
+* De esta forma no hay que preocuparse en casos de que no hayas respaldado tu código. 
+* Para esto hay que escribir vamos a instalar el paquete `autosave` y adicionalmente vamos a agregar a "preferencias": 
+```{stata}
+"save_on_focus_lost": true.
+```
+
+## Programar do - files 
+
+### Programar en Stata
+
+Esta sección esta basada en: **An introduction to Stata Programing** (\cite{baum2009introduction}), en notas de clase de la profesora [Erin Hengel](https://www.erinhengel.com/), en **Advanced Stata Topics** del profesor Alexander C. Lembcke, en **Seventy-six Stata tips** \cite{newton2009seventy}, en **Top 10 ``gotchas"** de \cite{shaw2015top} y en **Data Management Using Stata. A Practical Handbook** de \cite{mitchell2010data}. 
+
+#### ¿Qué es programar en Stata?
+
+Programar en Stata es: 
+
+* Escribir `do - files`: una secuencia de comandos ejecutables a través de un archivo `.do`.
+* Escribir los que formalmente en Stata es un *programa*: un conjunto de comandos que incluyen el comando `program`.  Un programa en Stata se guarda como un *ado - file*.
+* Escribir lenguaje de programación matricial: denominado mata.
+
+#### do - files
+
+El uso de `do-file` garantiza la replicabilidad del análisis de datos utilizando Stata. Recordar que un `do-file` puede llamar a otros (ej. `master do.file`. La jerarquización de los `do-file` puede ser importante para proyectos grandes o complejos. Es importante evitar trabajar en Stata interactivamente. Únicamente hay que hacerlo para inspeccionar datos (recordar practicas Sección 3.1). 
+
+#### ado - files
+
+Sirven para crear tus propios \textit{comandos} en Stata. Una vez que armes tu programa y lo guardes en la carpeta de `ado-file` puedes utilizarlo como cualquier otro comando de Stata. Por ejemplo, puedes agregar las opciones *if*, *in range* y otras. También puedes escribir un documento de ayuda (*help*} que explique el programa. Crear tus propios comandos es una muy buena forma de ser más eficiente al trabajar con Stata (recordar Sección 1). 
+
+Mata para ado-files: Los `ado-files` pueden realizar tareas más complejas que involucren ejecutar el comando múltiples veces. 
+
+* El lenguaje de programación mata es mucho más rápido que un `ado-file`.
+* Útil para realizar tareas que sean intensivas computacionalmente. 
+* No es solo un lenguajes de programación que utiliza matrices. También sirve para tareas que involucran texto o listas. 
+* Próximante discutiremos este lenguaje. 
+
+### Comandos y funciones claves (y algunos detalles)}
+
+Revisaremos algunos aspectos necesarios para mejorar la eficiencia al trabajar en Stata.
+
+* Directorios y uso de `profile.do`.
+* Tipos de comandos. 
+* Tipos de datos y uso de `compress`. 
+* Uso de `capture`, `preserve` y `restore`.  
+
+#### Directorios
+
+* `cd` y `pwd` sirven para fijar y conocer mis directorios. Es importante utilizar **dobles comillas** en los casos en que la ruta del directorio tenga espacios. 
+* El comando `sysdir` provee una lista de los directorios importantes para Stata. 
+* El comando `update` sirve para actualizar los comandos. 
+* La carpeta `PLUS` es el directorio donde se guardan comandos descargados. Si utilizas `ssc`, se guardara en esta carpeta.   
+* `PERSONAL` para tus propios `ado-files`. 
+
+#### Profile do
+
+¿Qué es profile do? 
+
+* Una opción no tan conocida es la utilización de `profile.do`
+* Este archivo se ejecuta cada vez que Stata se inicia. Si no tienes uno guardado no pasa nada. 
+* Este `do-file` permite, por ejemplo, fijar tu directorio de trabajo inicial, cambiar características de los gráficos, generar atajos.  
+* También se puede hacer que Stata abra un log-file y lo guarde siempre en el mismo lugar. 
+* Cada vez que inicies sesión Stata ira por `profile.do`. Si lo encuentra lo va a ejecutar.     
+* Stata recomienda guardar `profile.do` en *home directory* (ver *help profilew para ususarios de windows y profilem para Mac*). 
+* Vamos a ver como modificar `profile.do`. En particular: 
+  + Ajustes generales. 
+  + Establecer las características de los gráficos.
+  + Establecer atajos 
+  + Abrir, cerrar y guardar un log-file con la fecha.
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.3.1:</b>
+
+Instrucciones
+
+1. Descargar carpeta *ejercicios-clase3*.
+2. Abrir `profile.do` e inspeccionar cada una de las lineas del código. 
+
+Preguntas
+
+1. Agrega dos elementos a alguna sección. 
+2. Modifica las carpetas según las características de tu computadora.
+3. Guarda `profile.do` en el *home directory*. Ejecutar nuevamente Stata y verificar que el código se ha ejecutado.
+</div>
+
+#### Tipos de comandos
+
+Comandos r-class y e-class
+
+* Muchos comandos en Stata (ej. `summarize`, `correlate`, `regress`) hacen que sea posible utilizar sus resultados una vez que estos son ejecutados. 
+* `summarize` y `correlate` son comandos `r-class`. Es decir, comandos que guardan sus resultados en `r()`. 
+* `regress` es un comando `e-class`. Es decir, comandos que guardan sus resultados en `e()`.
+* `return list` retorna los valores guardados en `r()`
+
+```{stata}
+* r-class
+sysuse auto.dta, clear 
+summarize mpg 
+return list 
+
+summarize mpg, detail 
+return list 
+display "La asimetría de mpg es" r(skewness) 
+summarize price, detail 
+return list 
+```
+
+Su limitación es que solo están disponibles los valores del último comando `r-class` ejecutado. 
+
+Los comandos `e-class` son comandos de *estimación*. Para verlos `ereturn list` y para llamarlos individualmente `e(nombre)`. Guardan más información que los de `r-class` : matrices, vectores y funciones. La información de los comandos `e-class` sigue estando disponible una vez que utilizamos algún comando `r`-class`. **Aquí una diferencia!**
+
+Un ejemplo clásico son las estimaciones de regresión lineal. 
+```{stata}
+regress mpg weight length rep78 
+display "La regresión se estimo para " e(N) " observaciones." 
+ereturn list
+```
+
+En general cualquier comando de estimación se guarda en esta clase de formato.
+
+#### Tipos de datos
+
+numeric y string
+
+* La mayor distinción entre tipos de datos es entre *numeric* y *string*. 
+* Al trabajar con datos muchas veces es necesario realizar conversiones entre estos dos formatos. Los comandos `destring`, `tostring` y `encode` son útiles para estas tareas (si alguien tiene dudas con alguno me escriben). 
+* *strings* pueden soportar un máximo de 244 caracteres con un `byte` por cada carácter. 
+* Por ejemplo, una variable del tipo `str20` requiere 20 `bytes` por observación.
+
+Clasificación de los datos
+
+* Para las variables en formato *numeric* los tipos de datos son: `byte`, `int`, `long`, `float` y `double`.
+* Los tres primeros solo puede almacenar valores enteros. `long` puede almacenar todos los números de 9 dígitos, pero es limitado para 10 dígitos.
+* `float` y `double` pueden almacenar números grandes. 
+* No asumir que `float` será aritméticamente exacto. Por ejemplo: 
+```{stata}
+    display float(16777216)
+        16777216
+    display float(16777217)
+        16777216
+```
+
+¿Como utilizar esto para programar efectivamente en Stata? 
+
+* IDs con muchos dígitos (y caracteres) guardarlos como *string*. No como `integers`, `float` o `doubles`. 
+* No confiar en test exactos contra una constante con datos en formato `float`. Utilizar formato `double` para cualquier serie que necesita ser precisa (ej. suma de los residuos de una regresión). 
+* Utiliza `integers` cuando sea apropiado (ej. variables dicotómicas). Guardar valores como `int` o `byte` ayuda a utilizar de forma más eficiente el espacio en el disco. 
+* `compress` examina cada variable y determina si estas pueden ser guardadas de forma más eficiente. **Utilizarlo**.
+
+Si se especifican valores iniciales fuera de los rangos permitidos para cada tipo de dato el resultado será un *missing*.
+```{stata}
+clear all 
+set obs 10 
+generate byte var1 = 101
+summarize var1 
+```
+Notar que no se genera ninguna alerta de *missing* cuando este se crea. Esto es distinto para variables que ya existen. 
+
+```{stata}
+clear all
+set obs 10
+generate byte var1 = 1
+replace var1 = 101
+```
+
+Si el valor esta fuera de los rangos permitidos, la variable se guarda en un formato mayor. `byte` a `int`, `int` a `long`, a `float` a `double`. En este caso un mensaje aparece.
+
+#### capture, preserve y restore
+
+Manejando errores: capture
+
+* Sirve para evitar que Stata aborte cuando detecta un error. 
+* Bueno para cuando quieres borrar algo que ya no se encuentra. Lo malo es que suprime todos los errores y oculta todo lo que puede ir mal. 
+```{stata}
+set obs 10
+generate byte var1 = 5
+generate byte var2 = 10 
+capture drop var1 var2 var3 
+describe var1 var2
+```
+
+Código crea `var1` y `var2`, luego las elimina incluyendo una variable que no existe. Al contrario de lo que se intuye, no se borran las variables, dado que hay una variable que no existe. La recomendación es siempre utilizar `capture` con moderación. Puede ser utilizado en bloque para así no tener que utilizarlo en cada linea. 
+```{stata}
+sysuse auto.dta, clear
+capture{
+reg price mpg-trunk
+reg price mpg-weight
+reg price mpg-foreign
+}
+ereturn list 
+```
+
+preserve y restore
+
+* Algunos comandos en Stata remplazan la base actual por una nueva (ej. `collapse` o  `contract`).
+* Utilizar `preserve` y `restore` es útil en estos casos. 
+* En caso de que queramos obtener estadística descriptiva agregada y asociarla a observaciones podemos utilizar estos comandos. 
+```{stata}
+* Ejemplo con collapse
+sysuse auto.dta, clear
+generate lprice = log(price)
+preserve
+collapse (max) max_lprice=lprice max_mpg=mpg ///
+(iqr) iqr_lprince = lprice iqr_mpg = mpg if !missing(rep78), by(rep78) 
+sort rep78 
+tempfile repstats
+save `repstats'
+restore 
+sort rep78 
+merge m:1 rep78 using `repstats'
+assert _merge != 2
+summarize lprice max_lprice max_mpg 
+
+* Ejemplo con contract
+sysuse auto.dta, clear
+preserve
+contract mpg, cfreq(cumfreq) percent(percentage) cpercent(cumpercent)
+sort mpg 
+tempfile mpgfreq
+save `mpgfreq'
+restore 
+sort mpg
+merge m:1 mpg using `mpgfreq'
+assert _merge != 2
+summarize _freq cumfreq percentage cumpercent
+```
+
+#### Missing values
+
+* En general uno utiliza `if variable !=.` para evitar incluir **missings**.
+* Mejor practica es `variable <.` para excluir todos los valores en *missing*. Otra opción es `if !missing(variable)`.
+* Los *missing*  están codificados internamente como valores mayores a cualquier número. El menor valor de todos los *missing* es el punto. Al utilizar `if variable <.` es como decir, solo utiliza los números. 
+* Como vimos en la Sección 3.1 hay muchos problemas al no tratar bien los *missings*. Este problema se incrementa al momento de trabajar con bases de datos imposibles de inspeccionar. Veremos algunas recomendaciones que pueden ser utiles para evitar estos errores. 
+
+Los comandos tratan distinto a los missings
+
+* Cualquier función de datos *missing* será *missing*. 
+* Cuando se calcula un promedio o una desviación estándar solo valores no missing son considerados (ej. `sum`).  
+* Algunos comandos en Stata manejan los *missing* de otras formas. Por ejemplo, las funciones `max`, `min` y las funciones para filas de `egen`:  `rowmax()`,  `rowmean()`,  `rowmin()`,  `rowsd()` y  `rowtotal()` ignoran los *missing*. Por ejemplo, `rowmean(x1,x2,x3)` calcula el promedio de las variables y solo retornara *missing* si todas lo son. 
+* Por ejemplo, `rowmean(x1,x2,x3)` calcula el promedio de las variables y solo retornara *missing* si todas lo son. 
+* `collapse (sum)` trata a los *missing* como ceros.
+
+Calcular un promedio con missings
+```{stata}
+clear
+set obs 10 
+gen var1 = rnormal()
+gen var2 = 5 
+gen var3 = .
+gen promedio = (var1 + var2 + var3)/3
+egen promedio1 = rowmean(var1 var2 var3)
+```
+
+PromedioSinMissing da como resultado *missings*. PromedioConMissing no considera *missings*. Es importante tratar de entender como funcionan los `missings` de los comandos que utilizas. 
+
+Generar variables considerando missings: Al crear una variable *dicotómica*, `gen` y `gen byte` tratan a los *missing* de formas distintas. 
+```{stata}
+    local N = 500
+    set obs `N'
+    gen indicador = uniform() < .5
+    replace indicador =. if mod(_n, 2) == 0
+    
+    * Si indicador es missing, variable sera missing
+    gen variable_primercaso = 1 if indicador == 1 
+    replace variable_primercaso = 0 if indicador == 0
+    * Si indicador es missing, variable sera cero. 
+    gen variable_segundocaso=(indicador==1)
+    \end{minted}
+    \end{itemize}
+```
+
+`sum()` considera *missing* como ceros. 
+```{stata}
+    clear all 
+    set obs 4 
+    generate byte var1 = cond(mod(_n,2)==1, 1, .)
+    generate byte var1sum = sum(var1)
+    list, noobs
+```
+
+`max()` trata a los *missing* como si no estuviesen allí.
+```{stata}
+  display max(-5,.)
+```
+
+tabmiss, mvdecode y mvencode
+
+* En ocasiones los *missing* difieren en notación (ej. al importar datos de otro paquete). Siempre que trabajes con una base de datos nueva es importante recodificar. Notar que no todos tienen que ir a un punto. Todo depende del origen de los *missing*.
+* `mvdecode` y `mvencode` pueden ser útiles en este tipo de casos.
+* `mvdecode` permite recodificar valores numéricos como *missing*. Útil cuando valores son representados como -99, -999. 
+* `mvencode` hace lo inverso. Mapea *missing* como numéricos. 
+* El comando `tabmiss` inspecciona todas las variables de una base de datos y reporta los `missing` totales y como fracción del total de observaciones. 
+```{stata}
+clear all 
+set seed 1234
+local N = 50
+set obs `N'
+gen income = abs(int(rnormal(0,5)))
+assert income >= 0
+replace income =. if mod(_n, 2) == 0
+* Para ver los missing en variables
+tabmiss 
+
+* Transformar un valor númerico a missing
+mvdecode income, mv(2)
+
+* Transformar varios valores númericos a missing.
+mvdecode income, mv(2 5)
+
+* Transformar varios a missing, pero identific ́andolos.
+mvdecode income, mv(3 = .a \ 6 = .b)
+
+* Missings se cambian de vuelta a su valor original.
+mvencode income, mv(.a = 3 \ .b = 6)
+```
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.3.2: </b> 
+
+Instrucciones
+
+Abrir `ejercicios-clase3.do` y ejecute las líneas correspondientes al ejercicio 2. 
+
+Pregunta
+
+Compare las opciones 1, 2 y 3 en relación a como tratan los *missing*. Explique las diferencias entre cada una de estas opciones.  
+</div>
+
+generate, replace y missing: Sólo unas pequeños detalles. 
+```{stata}
+clear 
+cd "$ejercicio3"
+use census2c, clear
+
+* Opción 1
+gen smallpop_o1 = 1 if pop<=5000
+replace smallpop_o1 = 0 if pop>5000
+
+* Opción 2
+gen smallpop_o2 = (pop <= 5000) 
+
+* Opcion 3
+gen smallpop_o3 = (pop <= 5000) if !missing(pop)
+```
+
+Opción 1 es la típica. Ojo no esta considerando *missing*. Es necesario agregar `& !missing(pop)`. Escrito de esta forma, si `pop` es *missing*, `smallpop` será *cero*. Opción 2 es más simple, pero si cualquier valor de `pop` es *missing* será evaluado como un cero también. La razón es que los *missing* en Stata son considerados como números muy grandes para el programa. La Opción 3 soluciona el problema. 
+
+#### String a numeric y al revés
+
+De string a numeric
+
+* Si las variables han sido mal clasificadas como *string* puedes utilizar la función `real()`.
+* Por ejemplo: `generate idpaciente = real(pacienteid)`. 
+* El comando anterior genera *missing* para todas las observaciones que no puedan ser interpretadas como numéricas. 
+* Mucho mejor es utilizar  `destring, replace`.
+* Otro caso usual es que tenemos datos en formato `string` y queremos que tengan un equivalente. El comando `encode`. No es aconsejable utilizar este comando para valores numéricos guardados como *string*.
+
+De numeric a string
+
+* Hay veces en las que se quiere generar un equivalente *string* a valores numéricos. 
+* Tres comandos: `string()` , `tostring()` y `decode()`. 
+* Un ejemplo es querer mantener los 0 que estan al inicio de un código ID. 
+* El comando `tostring zip, format(\%05.0f) generate(idstring)` genera un *string* de cinco digitos con los ceros al inicio. 
+* `decode()` sirve para un caso en que tengas un id en numérico, pero que no la tengas en *string*.
+
+Strings entre comillas: importa poner las comillas bien. 
+```{stata}
+display "Este es un string normal"
+
+display "Este no es un string con "comillas" "
+
+display `"Este si es un string con "comillas""'
+```
+
+#### Funciones para generar variables
+
+generate y replace: función `cond()`
+
+* Si quiero que un resultado sea "a" si una *condición es verdadera* y "b" si es *falsa*. 
+* La función `cond(x,a,b)` posee esta capacidad sin la necesidad de utilizar `if`. 
+```{stata}
+* Útil para construir una tabla
+generate netmarr2x = cond(marr/divr > 2, 1, 2) 
+label define netmarr2xc 1 "marr > 2 divr" 2 "marr <= 2 divr" 
+label values netmarr2x netmarr2xc 
+tabstat pop medage, by(netmarr2x) 
+```
+
+Las observaciones en Stata estás numeradas desde el 1. `_N` es el mayor número de observaciones, mientras que el actual es `_n`. `sort` (ascendete) y `gsort` (ascendete o descendente) alteran el orden de las observaciones. Como recomendación eviten generar variables o condiciones que dependan de la posición especifica de una observación.
+```{stata}
+* Ejemplo 1: uso de gsort
+gsort region -pop 
+by region: generate totpop = sum(pop)
+
+* Ejemplo 2: uso de _n y _N
+by region: list region totpop if _n == _N
+
+* Ejemplo 3: sort
+generate largepop = 0
+replace largepop = 1 if pop > 5000 & !missing(pop)
+gen smallpop = (pop <= 5000) if !missing(pop)
+generate popsize = smallpop + 2*largepop
+label variable popsize "Population size code"
+label define popsize 1  "<= 5 million" 2 "> 5 million", modify
+label values popsize popsize 
+bysort region popsize: egen meanpop2 = mean(pop) 
+```
+
+`recode` para variables discretas: `recode` crea una nueva variable basada en otra variable.
+```{stata}
+* Esta no es una buena opción 
+replace newcode = 5 if oldcode == 2 
+replace newcode = 8 if oldcode == 3 
+replace newcode = 12 if inlist(oldcode, 5, 6, 7)
+* Esta si es una buena opción 
+recode oldcode (2 = 5) (3 = 8) (5/7 = 12), gen(newcode) 
+```
+
+El signo ($=$) es para indicar valor antiguo a valor nuevo. No es necesario aplicarlo linea por linea. `recode` produce **un código más eficiente**.
+
+`recode` para variables continuas: `recode(x,x1,x2,x3,x4,xn)` para variables continuas de forma tal de generar intervalos tal que $x \leq x_1 ; x_1 \leq x \leq x_2$ y así sucesivamente. Los resultados son iguales a los límites creados. 
+```{stata}
+use census2c, clear
+generate breaks = recode(medage, 29, 30, 31, 32, 33)
+```
+
+Otros comandos que cumplen una función parecida son `floor` y `ceil()`. Ambos sirven para generar un valor entero. El primero para redondear hacia abajo y el otro hacia arriba. `floor(x)` retorna el entero $n$ tal que $n \leq x < n + 1$ mientras que `ceil(x)` es tal que $n - 1 < x \leq n$.
+```{stata}
+use census2c, clear
+generate popurbfloor = floor(popurb)
+generate popurbceil = ceil(popurb)
+```
+
+`irecode` para variables continuas: `irecode(x,x1,x2,x3,x4,x_n)` es una alternativa para categorizar grupos también. Por ejemplo: 
+```{stata}
+generate size = irecode(pop, 1000, 4000, 8000, 20000)
+label define popsize 0 "<1m" 1 "1-4m" 2 "4-8m" 3 ">8m" 
+label values size popsize
+tabstat pop, stat(mean min max) by(size)
+```
+ Categorizara cada grupo según el intervalo en el que este. **Parte del cero!**. $x \leq x_1 \rightarrow 0 $, $x_1 \leq x \leq x_2 \rightarrow 1$ y así sucesivamente. 
+
+Crear cuartiles con `xtile`: Con `xtile` podemos querer clasificar las variables según cuantiles (quintiles, deciles, cuartiles, etc). 
+```{stata}
+* Creamos cuartiles para población 
+xtile popcuart = pop , nq(4)
+tabstat pop, stat(n mean min max) by(popcuart)
+```
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.3.3:</b> 
+
+Instrucciones
+
+1. Cargar la base `auto.dta`
+
+Pregunta
+
+1. Genere una variable que sirva para redondear hacia abajo la variable `mpg` en  en múltiplos de 5, de modo que cualquier valor de 10 a 14 se redondee a 10, cualquier valor de 15 a 19 a 15 y así sucesivamente.
+</div>
+
+#### Funciones de egen
+
+Todos y todas conocemos algunas de las típicas funciones de `egen`. 
+```{stata}
+clear 
+* Ejemplo del uso de egen
+generate size = irecode(pop, 1000, 4000, 8000, 20000)
+label define popsize 0 "<1m" 1 "1-4m" 2 "4-8m" 3 ">8m" 
+label values size popsize
+bysort size: egen avgpop = mean(pop)
+generate popratio = 100 * pop / avgpop 
+format popratio \%7.2f
+list state pop avgpop popratio if size == 0 
+```
+
+Otras funciones son `iqr()`, `kurt()`,`mad()`, `mdev()`, `median()`, `mode()`, `pc()`, `pctile()`, `rank()`, `sd()`, `skwe()`, `std()`. 
+
+egenmore
+
+* Menos conocida es la colección de funciones adicionales de `egen` hechas por [Nicholas J. Cox.](https://www.durham.ac.uk/staff/n-j-cox/)
+* Estas funciones están contenidas en el comando `egenmore`. 
+* `bom()` y `eom()` crean variables de fechas que corresponde al primer y último día de un mes determinado. 
+* `corr()` calcula correlaciones y covarianzas mientras que `var()` calcular la varianza. 
+* `semean()` calcula la desviación estándar del error de una media. 
+* `record()` permite calcular el valor más alto o más bajo de una serie.
+```{stata}
+* Ejemplo 1: Generar variable que tenga la primera palabra de una frase (wordof)
+egen firstword = wordof(make),	word(1)
+list firstword make in	1/15
+
+* Ejemplo 2: Para generar automáticamente valores extremos (outside, 1,5 RIQ)
+egen	extrmpg = outside(mpg)
+tab	extrmpg,	missing
+
+```
+
+`rall()` y `rany()` son útiles para el análisis de datos. Evaluan una condición y genera un indicador si todas o alguna observación la cumple. 
+```{stata}
+set obs 12
+gen a = 1 in 1 
+gen b = 2 in 2/4
+gen c  = -3  in 5/7
+gen d = 4  in 8/10
+gen e = . in 11/12
+egen any = rany(a b c d e) , c(@ > 0 & !missing(@))
+egen all = rall(a b c d e) , c(@ > 0 & !missing(@)) 
+```
+
+### Macros locales y globales
+
+#### Nombrar macros
+
+* Una macro es un **contenedor** que puede almacenar números o nombres de variables.
+* Puede ser `local` o `global`. La primera es temporal, la segunda no.  
+* Un ejemplo de variable local es:
+```{stata}
+local NivelEstres Nada Medio Moderado Severo 
+display "Los niveles de estrés son: `NivelEstres'"
+```
+El primer comando define la macro y sus valores.  Para llamar a la macro hay que utilizar las comillas ("). `local nombre texto` $\rightarrow$ `local nombre = text` $\rightarrow$ `local nombre = "text"`. 
+
+Ojo con las rutas:
+
+* En ocasiones voy a querer utilizar una macro dentro de la ruta de una carpeta. 
+* Es importante utilizar siempre `/` o bien `\\`. De otra forma no lo reconocerá.  
+```{stata}
+local filename base.dta 
+use "H:\ECStata\`filename'"
+r(601);
+* Para corregir el error, dos caminos: 
+use "H:\ECStata\\`filename'" 
+use "H:/ECStata/`filename'"
+```
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.3.4:</b> Compare los siguientes comandos y comente las diferencias:
+
+* `display "Dos mas dos = 2 + 2"`
+* `display "Dos mas dos `= 2 + 2'"`
+</div>
+
+Ojo con el signo igual: Algunas veces es bueno colocar un signo $=$ al definir macros. Por ejemplo, cuando redefinimos variables. 
+```{stata}
+local contador 0
+local NivelEstres Nada Medio Moderado Severo 
+foreach a of local NivelEstres { 
+local contador = `contador' + 1 
+display "Nivel de Estres `contador' : `a'"
+}
+```
+La primera parte sirve para definir la `macro` mientras que la segunda sirve para dar cuenta de su valor actual. Al actualizar, ocupen igual. 
+
+Sin signo igual: En algunas ocasiones queremos escribir una `macro` dentro de un *loop*. En estos casos es conveniente evitar el signo igual. 
+```{stata}
+local contador 0
+local NivelEstres Nada Medio Moderado Severo 
+foreach a of local NivelEstres {
+local contador = `contador' + 1 
+local nuevalista `nuevalista' `contador' 'a' 
+} 
+display "`nuevalista'" 
+```
+El `local nuevalista` define una macro como *string* que posee su propio contenido, el valor de contar y el valor del iterador. 
+
+#### Generar variables, contadores y condiciones con macros
+
+Podemos utilizar macros para renombrar variables. 
+```{stata}
+clear 
+forvalues a = 10/20{ 
+gen v`a' = rnormal()
+}
+
+* Renombramos variables 
+forvalues i = 11/15 { 
+rename v`i' x`=1960 + `i''
+}
+
+```
+En este fragmento de código, Stata evalúa la expresión `1960 + 'i'` antes de evaluar la macro externa. Por ejemplo, cuando pase por el iterador `i = 11`, el nuevo nombre de la variable será `x1971`. 
+    
+Resumir condiciones: Podemos utilizar macros para resumir condiciones. Esto es útil para estimar modelos o generar estadística descriptiva.
+```{stata}
+clear 
+sysuse auto 
+local cond "if foreign==0"
+local varlist "mpg rep78 trunk weight turn"
+
+* Estimar la regresión considerando la condicíòn
+reg price `varlist' `cond'
+```
+
+Agrupar en base a una condición: Imaginemos que ahora queremos estimar una regresión para todas las compañías de auto que empiezan empiezan con B.
+```{stata}
+local autoname B 
+reg price mpg weight if substr(make,1,1)=="`autoname'"
+```
+
+La mejor manera de pensar en esto es hacer lo que hace Stata: reemplazar `"ctyname"` por su contenido `substr(país,1,1)=="`ctyname'"`. Al hacerlo, se convierte en `substr(país,1,1)=="B"`. Si se omiten las comillas dobles, se obtiene `substr(country,1,1)==B`, lo que da lugar a un error. 
+
+Contadores: Las macros también pueden ser útiles para contadores. 
+```{stata}
+* Para adelante
+local i = 1 
+local ++i 
+di `i' 
+
+* Para atrás
+local i = 1
+local --i 
+di `i' 
+```
+Muy útil para hacer gráficos o guardar datos en matrices. 
+
+Utilizar una macro para estimar regresiones: Imaginen que desean estimar regresiones sobre un conjunto de variables donde una parte de este conjunto esta fija y la otra parte es variable. 
+```{stata}
+local rhs mpg weight
+reg price `rhs' if foreign == 0 
+local rhs "`rhs' headroom trunk"  
+reg price `rhs' if foreign == 0 
+```
+
+¿Qué ocurre si queremos hacerlo por separado? ¿Uno a uno? 
+```{stata}
+local rhs "mpg weight \`add_var'" 
+local add_var "headroom"
+reg price `rhs' if foreign == 0  
+local add_var "trunk" 
+reg price `rhs' if foreign == 0  
+local add_var "turn" 
+reg price `rhs' if foreign == 0  
+```
+
+Lo que ocurre cuando hacemos referencia a una macro es que su valor se introduce en ese punto. El uso de una barra invertida en su lugar hace que se introduzca la referencia de la macro, es decir, no se sustituirá el valor de `add_var` sino el término ``add_var'`. Así que cada vez que llamamos a la local `rhs` el valor actual de el local `add_var` es sustituido.
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.3.5: </b> 
+
+Instrucciones
+
+1. Cargar la base `auto.dta`
+
+Preguntas
+
+1. Defina una variable macro llamada `control` que contenga `mpg`, `rep78` y `headroom`. Estime una regresión entre `price` y `control` para vehículos extranjeros y de nuevo para vehículos domésticos. 
+
+2. Ejecute `summarize mpg` junto con `return list`. Defina dos macros `display` `local mean1 r(mean)` y `local mean2 = r(mean)`. ¿Son iguales? 
+</div>
+
+#### Globales
+
+Crear macros globales
+
+* Se crean con el comando `global`.
+* Útiles para fijar directorios o programas. 
+* En otros casos es mejor utilizar `local`.
+```{stata}
+* Para generarla 
+global variable
+
+* En caso de querer llamarla
+display $variable
+```
+
+#### Funciones extendidas de macros
+
+¿Qué son las funciones de macros extendidas?
+
+* Stata también define ciertas macro. Estas se denominan *extended macro functions* o macros extendidas. 
+* En algunos casos contienen información sobre tu sistema operativo, sobre la última estimación que se realizo o sobre la base de datos. 
+* El `help extended_fcn` y la documentación que la acompaña proporcionan una descripción completa de la sintaxis de cada función de macro extendida (hay muchas). Muchas tienen ligeras variaciones de sintaxis entre ellas (por ejemplo, algunas requieren que las macros estén entre comillas dobles; otras no lo permiten).
+```{stata}
+* La sintaxis general es: 
+local nombremacro: función macro extendida
+```
+
+Mirar labels
+```{stata}
+* Para mirar los labels de trunk
+sysuse auto, clear
+local tlab : variable label trunk 
+display "`tlab'"
+```
+`variable label` recupera el nombre asignado a una variable.  
+
+Contar dentro de un local
+```{stata}
+* Para contar dentro de un local
+local NivelEstres Nada Medio Moderado Severo 
+local wds: word count `NivelEstres' 
+display "Hay `wds' niveles de estres:"
+forvalues i = 1/`wds' {
+local wd: word `i' of `NivelEstres'
+display "Nivel `i' is `wd'"
+}
+```
+`word count` y `word` como funciones de extensión que operan sobre *strings*.
+
+Conocer tipos de datos
+```{stata}
+* Para conocer tipos de datos
+sysuse auto, clear
+local stortype : type make 
+display "`stortype'"
+```
+
+Ojos con las comillas dobles (nuevamente): Algunas veces las macros contienen comillas dobles. Para poder escribirlos sin errores es necesario modificar levemente la forma en que se llama a la variable `local`
+```{stata}
+* Con error 
+local answers yes no "do not know" 
+display "`answers'"
+
+* Sin error 
+local answers yes no "do not know" 
+display `"`answers'"'
+```
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.3.6: </b> 
+
+Preguntas
+
+1. Use una macro extendida para mostrar el tipo de dato (ej. `int`, `float`, `long`,...) de `mpg`. Revise el `help` de `extended_fcn`. 
+2. Use una macro extendida para retornar el valor del label asociado a `foreign` cuando es igual a 1. 
+3. Use una macro extendida para mostrar solo la primera variable de ``controls'`.
+4. Utilice una función extendida de macros para mostrar todos los archivos de su directorio actual (sugerencia: utilice comillas compuestas cuando muestre los nombres de los archivos).
+</div>
+
+#### Funciones de macro extendidas para listas
+
+Stata también define ciertas macro para operar sobre listas. Estas funciones permiten combinar listas, buscar elementos dentro de una lista o bien buscar elementos comunes entre dos listas. Conveniente revisar `help macrolist` para más funciones.
+```{stata}
+* Sintaxis: 
+local nombre macro: list función
+
+* Ejemplo de lista
+local animales "gato perro gato loro loro" 
+local uniqanimales : list uniq animales 
+display "`uniqanimales'"
+```
+
+Función levelsof: El comando `levelsof` lista los valores distintos de una variable. Al agregar la opción `local(nombremacro)` esto se guardara como una macro.  
+```{stata}
+* Sintaxis básica
+sysuse auto, clear
+levelsof rep78 
+display "`r(levels)'"
+
+* Sintaxis cuando hay variables categóricas.
+levelsof foreign, local(levels)
+foreach l of local levels {
+di "-> foreign = `: label (foreign) `l''"
+reg price mpg if foreign == `l'
+}
+```
+
+#### Manipulación de locales vía listas de macros
+
+Listas de macros: Las `macro lists` permiten obtener el número de elementos de una macro, trabajar con valores duplicados, ordenar elementos. Veremos cuatro aplicaciones:
+
+1. Elementos duplicados.
+2. Agregar y remover elementos.
+3. Uniones e intersecciones.
+4. Ordenar elementos.
+
+Elementos duplicados: `dups` extrae todos los elementos sobrantes.
+```{stata}
+* Deja solo los unicos
+local fib 0 1 1 2 3
+local fib_nodups : list uniq fib
+display "`fib_nodups'"
+
+* Quita todo los duplicados
+local fib 0 1 1 2 3
+local fib_dups : list dups fib
+display "`fib_dups'"
+```
+
+Agregar y remover elementos: Es básicamente pegar elementos de una macro con otra. Definamos dos variables locales: `vars` y `coef` y peguémoslos. 
+```{stata}
+local vars x y z 
+local coefs a b c 
+local vars_coefs `vars' `coefs'
+display "`vars_coefs'"
+```
+
+Para remover tenemos que definir un nuevo local con los elementos que queremos quitar y sustraerlo del original. Supongamos que queremos actualizar el contenido de `vars` eliminado  "y". 
+```{stata}
+local not y
+local vars : list vars - not
+display "`vars'"
+```
+
+Unión de elementos: Podemos pegar todos los elementos diferentes entre dos listas. 
+```{stata}
+local A house tree car
+local B computer car bike
+local all_things : list A | B
+display "`all_things'"
+```
+Noten que los elementos de `car` no fueron pegados. Notar que esto es distinto a simplemente pegar macros entre sí. 
+
+Intersección de elementos: Podemos hacer la intersección entre dos elementos de una lista. Esto corresponde a los elementos que pertenecen a ambas macros.  
+```{stata}
+local A house tree car
+local B computer car bike
+local common_things : list A & B
+display "`common_things'"
+```
+Noten que en este caso solo `car` se mantiene. 
+
+Ordenar elementos: En ocasiones queremos ordenar los elementos de una lista contenida en una macro. 
+```{stata}
+local names camila camilo pedro paula
+local names : list sort names
+display "`names'"
+```
+
+Para hacer que los elementos de una macro se ordenen aleatoriamente es conveniente utilizar mata
+```{stata}
+local nums 1 2 3 4 5
+mata : st_local("random_nums", ///
+invtokens(jumble(tokens(st_local("nums"))')'))
+display "`random_nums'"
+```
+
+#### creturn
+
+Macros con creturn
+
+* En algunos casos al utilizar `local` o `global` vamos a querer fijar algunos parámetros. 
+* Para este propósito utilizar `creturn`. Algunos ejemplos son: `c(current_date)`, `c(pwd)`, `c(current_time)`, `c(stata_version)`, `c(pi)`, `c(alpha)`, `c(Wdays)`.
+ 
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.3.7: </b> 
+
+Preguntas
+
+1. Define una macro llamada comestibles con peras, manzanas, fresas, yogur, vino y queso en ella. Ponla en orden alfabético.
+2. Define una macro llamada unión que contenga los miembros de la macro *animales* y *comestibles* y luego utiliza una función de lista extendida de la macro para mostrar el número de palabras que contiene.
+3. Ordena *unión* y muestra la posición de la palabra "vino" utilizando una función de lista extendida de macros. 
+</div>
+
+### Estructuras de datos
+
+#### Escalares
+
+* Los escalares pueden contener valores numéricos o *strings*. Un escalar solo puede contener un valor. 
+* La sintaxis para generar un escalar es `scalar scalar_name = exp`.
+```{stata}
+quietly: summarize mpg 
+scalar mean_mpg = r(mean)
+quietly: summarize rep78
+scalar mean_rep78 = r(mean)
+display "r(mean) guarda el promedio de rep78: " r(mean) 
+display "Pero tambien podemos recuperarlo:" mean_mpg
+```
+
+Para utilizar un escalar en una operación solo es necesario llamarlo por su nombre. Para listar el contenido de todos los escalares `scalar list`. Para borrar `scalar drop scalar_name` o si quiero eliminar todo `scalar drop _all`. Los escalares permiten parametrizar un `do-file`.
+```{stata}
+use fem2, clear 
+scalar lb1 = 80 
+scalar ub1 = 88 
+scalar lb2 = 89 
+scalar ub2 = 97 
+forvalues i = 1/2 {
+display _n "IQ" "lb`i'" "-" "ub`i'" 
+tabulate anxiety if inrange(iq, lb`i', ub`i')
+}
+```
+
+#### Elementos y operaciones con matrices
+
+Stata puede generar matrices. 
+```{stata}
+reg weight age age2
+matrix b = e(b)
+matrix list b
+matrix V = e(V)
+matrix list V
+```
+
+Las matrices son muy importantes para guardar resultados y exportarlos de forma conveniente. También son útiles para cuando se quieren hacer estimaciones de muchos parámetros y para distintos conjuntos de datos. 
+
+Operaciones con matrices: Se puede operar con matrices. Por ejemplo, sabemos que $b = (X'X)^{-1}X'y$ y que $V = \sigma^{2}(X'X)^{-1}$. Si queremos extraer solo la matriz $X'y$ tenemos que operar, calculando $\frac{1}{\sigma^{2}}V^{-1}b$. 
+```{stata}
+matrix define b = e(b)' 
+matrix define xty = inv(V) * b /e(rmse)^2
+matrix list xty 
+```
+
+`e(b)’` indica la traspuesta, mientras que `inv()` es para calcular la matriz inversa. 
+
+Llamar a los elementos de una matriz: Se puede acceder a los escalares contenidos en las matrices. Por ejemplo, si queremos obtener los elementos de la matriz $e(b)$ tenemos:
+```{stata}
+display "The coefficient on weight is: " _b[weight] 
+display "Its standard error is: " _se[weight] 
+* Valores predichos 
+generate anxietyhat = _b[_cons] + _b[weight] * weight + /// 
+_b[age] * age + _b[age2] * age2
+```
+
+También podemos utilizar las posiciones de los elementos de la matriz (`b[i,k)]`).
+
+#### Funciones
+
+Solo disponibles para comandos `e-class`. Por ejemplo, si estimamos una regresión veremos que la unica función disponible es `e(sample)`. 
+```{stata}
+sysuse auto 
+regress mpg weight length rep78
+ereturn list
+```
+
+`e(sample)` nos indica si una determinada observación se utilizó para estimar la regresión. Es decir, es igual a uno si una observación estaba en la muestra de estimación y 0 si fue excluida.
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.4.1:</b> 
+
+Preguntas:
+
+1. Estime una regresión de mpg  contra weight length rep78 utilizando base de datos auto, pero solo para los autos extranjeros (`foreign == 1`). 
+2. Genere una nueva variable, llamada `enmuestra` que tome los valores dados por la función `e(sample)`.
+3. Utilizando `br`, observe los valores de `enmuestra`. ¿Qué observa?
+4. Calcule la estadística de `mpg` solo para las observaciones que fueron incluidas en la regresión. 
+</div>
+
+### Iteradores
+
+#### Foreach
+
+`foreach` y `forvalues`: `forvalues` itera sobre una lista de números y `foreach` recorre los elementos de una macro, o los nombres de las variables de una lista de variables, o los elementos de una lista de números. 
+```{stata}
+* Foreach
+foreach animal in cats and dogs { 
+display "`animal'"
+}
+
+* Forvalues 
+forvalues i = 1(1)100 { 
+generate x`i' = runiform()
+}
+```
+
+Hay algunas variaciones en `foreach` según el tipo de lista. La sintaxis es similar a la recien presentada, pero difiere en dos aspectos: 
+
+* `in` se remplaza por `of`.
+* Hay que llamar al identificador. 
+* Veamos como iterar sobre una lista de **globales y locales**.
+\end{itemize}
+
+```{stata}
+* Sobre locales y globales
+local money "Franc Dollar Lira Pound" 
+foreach currency of local money { 
+display "`currency'"
+}
+```
+
+Veamos como iterar sobre una **lista de variables**:
+```{stata}
+* Sobre lista de variables
+foreach var of varlist mpg weight-turn { 
+quietly summarize `var' summarize `var' if `var' > r(mean)
+}
+```
+
+Veamos como iterar sobre una **lista de de nuevas variables**:
+```{stata}
+* Sobre lista de nuevas variables
+foreach var of newlist z1-z20 { 
+generate `var' = runiform()
+}
+```
+
+Veamos como iterar sobre una **lista de números**:
+```{stata}
+foreach num of numlist 1 4/8 13(2)21 103 { 
+display `num'
+}
+```
+
+#### Combinar macros con iteradores
+
+`foreach` y `forvalues` combinados con macros pueden utilizarse para ahorrarnos mucho trabajo. Podemos generar tun conjunto de locales a partir de iteraciones. 
+```{stata}
+use replicate.dta, replace
+levelsof cty
+local ctries "`r(levels)'" 
+
+foreach ctr in `ctries' { 
+        sum hours_t if cty == "`ctr'" 
+        local nombre `ctr' = `r(mean)'
+} 
+```
+
+Como ya hemos visto, el comando `levelsof` devuelve una lista de todos los valores distintos de una variable categórica y los guarda en la macro `r(levels)`. Esto lo hace en el caso de que nosotros no le asignemos un nombre. Podemos utilizar esta lista para los países y años de nuestra muestra para definir dos iteraciones que recorran todos los valores posibles. Para cada valor resumimos la población y definimos una macro local compuesta por el código de país y el año (por ejemplo, USA1990) que toma el valor de la población en ese año para ese país. 
+
+Una aplicación del `forvalues`:
+```{stata}
+use gdp4cty, clear 
+forvalues i = 1/4 {
+generate double lngdp'i' = log(gdp'i')
+summarize lngdp'i'
+}
+```
+
+Utilizando dos `forvalues`:
+```{stata}
+forvalues y = 1995(2)1999 {
+    forvalues i = 2(2)4 {
+        summarize gdp`i'_`y'
+    }
+}
+```
+
+`foreach` y `recode`:
+```{stata}
+use gdp4cty, clear 
+local ctycode 111 112 136 134 
+local i 0
+foreach c of local ctycode{ 
+        local ++i 
+        local rc "`rc' (`i'=`c')" 
+}
+display "`rc'"
+recode cc `rc', gen(newcc)
+```
+
+Loops anidados: `foreach` y `forvalues`
+```{stata}
+use gdp4cty, clear 
+local country US UK DE FR 
+local yrlist 1995 1999 
+forvalues i = 1/4 {
+    local cnaine: word `i' of `country'
+    display "`cnaine'"
+    foreach y of local yrlist {
+            rename gdp`i'_`y' gdp`cnaine'_`y'
+    } 
+}
+```
+
+En estos casos es bueno utilizar espacios para hacer el código más amigable. Ojo que a Stata no le interesa esto para ejecutar, es solo una cuestión de estilo. 
+```{stata}
+sysuse auto, clear
+foreach y of varlist mpg rep78 headroom trunk weight length { 
+    foreach x of varlist rep78 price displacement gear_ratio foreign { 
+    regress `y' `x'
+} 
+```
+
+También útil para estimar regresiones.
+
+Tokenize: Podemos almacenar los elementos de la lista de países en macros numeradas con `tokenize`. 
+```{stata}
+use gdp4cty, clear
+local country US UK DE FR 
+local yrlist 1995 1999 
+local ncty: word count `country'
+display "`ncty'"
+tokenize `country'
+forvalues i = 1/`ncty'{
+    foreach y of local yrlist {
+            rename gdp`i'_`y' gdp``i''_`y'
+        }
+}
+```
+
+Aquí los nombres de los países se almacenan como valores de las macros numeradas. Debemos referenciar doblemente la macro $i$. El contenido de esa macro la primera vez que se pasa por el bucle es el número 1. Para acceder al primer código de país, debemos referenciar la macro $`1'$. 
+
+#### While loop
+
+Realiza la iteración o se repite una lista de comandos mientras la condición `while` sea verdadera. La sintaxis es:  
+```{stata}
+while exp { 
+hace algo
+}
+```
+    
+¿Cuando es útil? : **Cuando no este seguro(a) cuantas veces se realizará la iteración**. Notar que si no hay convergencia, va iterar infinitamente. 
+```{stata}
+while reldif (nueva, antigua) > 0.001 { 
+}
+```
+
+También se puede combinar con macros. Es importante utilizar los incrementales:
+```{stata}
+local i=1 
+while `i'<=5 {
+display "loop number" `i' 
+local i = `i'+1
+}
+```
+La primera parte define el inicio del contador, mientras que la segunda indica la condición para que sea ejecutado. El `local` final actualiza (incremental). Si el incremento es unitario podemos utilizar `local ++i`.
+
+#### Branching
+
+Hacer una cosa en caso de que alguna condición sea cierta y otra cosa en caso de que sea falsa. La sintaxis básica es: 
+```{stata}
+if algo es verdadero { 
+hacer esto
+} else {
+hacer lo contrario
+}
+```
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.4.2:</b> 
+
+Preguntas
+
+1. Defina una macro llamada mimacro que sea igual a un número entero aleatorio entre 1 y 99. 
+2. Utilizando `if` y `else` muestre un mensaje que diga si es par o impar. 
+</div>
+
+#### Aplicaciones
+
+Seguir secuencias especiales: `creturn` posee varias constantes y valores a los que se puede acceder. Por ejemplo: 
+
+* `c(filename)` nombre del último nombre del archivo guardado. 
+* `c(alpha/ALPHA)` lista de letras minúsculas/mayusculas.  
+* `c(Mons)` lista de nombres de los meses abreviados. 
+* `c(Months)` lista de los nombres de los meses no abreviados.
+* `c(Wdays)` lista de los dias de la semana abreviados a tres caracteres. 
+* `c(Weekdays)` lista de los días de la semana no abreviados. 
+
+Con un iterador es posible aplicar estas listas para agregar labels. Suponga que tenemos valores de 1 a 12 que representan meses. 
+```{stata}
+clear all
+set obs 12
+gen month = _n 
+tokenize `c(Months)' 
+forvalues i = 1/12 {
+    label define monthlab `i' "``i''" , modify 
+                   }
+label val month monthlab
+```
+
+#### Monitorear un loop
+
+Ejemplo proveniente de \cite{newton2009seventy} (Stata tip 41). Cualquier *loop* puede ser modificado para que muestre su progreso con el comando `_dots`. Esto es importante para cuando se requieren hacer procesos que toman varias horas y es necesario monitorear avances.  
+```{stata}
+_dots 0, title(Loop ejecutando) reps(75) 
+forvalues i = 1/75 { 
+_dots ‘i’ 0
+}
+
+----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5
+..................................................    50
+.........................
+```
+
+El primer comando `_dots` establece las lineas. Titulo y número de repeticiones son opcionales. `reps` solo acepta enteros como argumento. `_dots ‘i’ 0`  tiene dos elementos: 
+    
+* El primer argumento es el número de repetición, que registra el número de intentos en curso. En el ejemplo, esta automáticamente determinado por el *loop*.
+* El segundo argumento es el código de retorno, el cual indica el tipo de símbolo. En el ejemplo tenemos un 0. 
+* Los códigos de retorno alternativos producen una "s" (-1), "." (), "x" roja (1), una "e" (2), una "n" (3) o un "?" (cualquier otro valor). 
+
+Ejemplo no numérico: La idea es definir una macro local para que actue como un contador. 
+```{stata}
+sysuse auto
+_dots 0, reps(10)
+foreach var of varlist price - gear_ratio {
+  sum `var', d
+  local i = `i'+1
+  _dots `i' 0
+}
+```
+
+Contar repeticiones:
+
+* El número de repeticiones en `rep` no es calculado por `_dots`. Es necesario contar manualmente las variables e introducir el número. 
+* Esto lo vamos a hacer con la ayuda de una función de macro extendida `sizeof`. 
+* `unab` permite ingresar una lista de variable abreviada y expandirla, de forma tal de que la pueda contar. 
+
+```{stata}
+sysuse auto
+unab myvars : price - gear_ratio
+local N : list sizeof myvars
+_dots 0, reps(`N')
+foreach var of varlist `myvars' {
+  ...
+  local i = `i'+1
+  _dots `i' 0
+}
+```
+
+Un ejemplo más complejo es: 
+```{stata}
+noisily _dots 0, title(Looping until 70 successes...) 
+local rep 1 
+local nsuccess 0 
+while ‘nsuccess’ < 70 { 
+local fail = uniform() < .2 
+local nsuccess = ‘nsuccess’ + (‘fail’ == 0) 
+noisily _dots ‘rep++’ ‘fail’
+}
+```
+
+Se ejecuta hasta que logre 70 aciertos. En este ejemplo artificial, cada iteración tiene un éxito aleatorio con una probabilidad del 80%. Los éxitos se indican con un punto (.) y los fracasos con una x.
+
+### Manejo de bases de datos
+
+#### Prefijo: by
+
+Los prefijos en Stata ejecutan tareas repetitivas sin la necesidad de especificar el rango de valores sobre la tarea que es ejecutada. Un prefijo muy conocido es `by`. Por ejemplo, `by varlist [, sort]: command`. `command` es repetido para cada valor de la variable. Es más, repeticiones siguen el orden de la variable sea *string* o *numeric*.
+```{stata}
+use bpress, clear
+bysort sex agegrp: summarize bp 
+```
+
+#### Prefijo: xi
+
+`xi` es útil para cuando queremos producir un variable indicador para las observaciones que son distintas entre si.  
+```{stata}
+xi i.agegrp
+```
+El ejemplo le esta diciendo a Stata que genere variables indicadores. Esto es muy útil para reducir los códigos.  
+
+Interpretando prefijo xi: `xi` es comúnmente utilizado como un prefijo. La principal ventaja es cuando existen múltiples interacciones entre las variables. 
+```{stata}
+* Caso 1: incluye indicadores de ambas variables.
+xi: regress bp i.agegrp i.sex
+
+* Caso 2: incluye además interacciones entre ellas.
+xi: regress bp i.agegrp*i.sex
+
+* Caso 3: Interactúa una variable continua con una discreta.
+xi: regress bp i.agegrp*bp0
+
+* Caso 4: Incluye solo interacciones con variable continua (además de principal). 
+xi: regress bp i.agegrp|bp0 
+```
+
+#### Prefijo: statsby
+
+`statsby` permite ampliar `by`. Este último tiene la limitación de permitir únicamente un comando. 
+```{stata}
+statsby mean=r(mean) sd=r(sd) n=r(N), by(agegrp sex): summarize bp
+```
+Se produce una nueva base de datos con una observación por grupo con los estadísticos incorporados. **Útil para calcular estadística descriptiva**. 
+
+#### Prefijo: rolling
+
+`statsby` permite obtener estadísticas para sub-muestras que no se traslapan. `rolling` sirve para sub-muestras traslapadas. Por ejemplo, al trabajar con series de tiempo se quiere calcular estadísticas para datos que están traslapados (el. calcular una media móvil). 
+
+Vamos a calcular medias y medianas utilizando una ventana de 90 días:
+```{stata}
+use ibm, clear 
+rolling mean=r(mean) median=r(p50), window(90): summarize spx, d 
+tsset end 
+tsline mean
+```
+
+`start` y `end` indican el inicio y fin de la ventana. 
+
+#### Merge y Append
+
+Recomendaciones para utilizar merge
+
+* Especifique siempre el tipo de fusión (1:1, m:1 o 1:m). Si no se especifica el tipo de fusión, se llama a la versión antigua y no robusta de la fusión.
+* Nunca haga fusiones de muchos a muchos (m:m), o al menos, sólo hágalo cuando tenga una muy buena razón.
+* Incluya siempre la opción `assert()` para indicar qué patrón de observaciones coincidentes espera.
+* Incluya siempre la opción `keep()` para indicar qué observaciones deben conservarse del conjunto de datos fusionados.
+* Siempre que sea posible, incluya la opción `keepusing()` y enumere explícitamente qué variables pretende añadir al conjunto de datos; puede incluir esta opción incluso cuando mantenga todas las variables de los datos utilizados.
+* Utilice la opción `nogen`, excepto cuando piense utilizar explícitamente la variable `_merge` más adelante. Nunca debe guardar un conjunto de datos que tenga `_merge`; si necesita esta variable más adelante, dele un nombre más informativo.
+
+Con respecto a especificar `_merge` y `assert` notar que: 
+```{stata}
+     merge ..., assert(match master) keep(match)
+
+     * Es equivalente a: 
+     merge ...
+     assert _merge==1 | _merge==3
+     keep if _merge==3
+```
+
+Append con ciudado: 
+
+* El comando `append` es muy útil para manejos de bases de datos. Una precaución común es con respecto al nombre de las variables. Si dos variables (ej. PRECIO y precio) difieren, se generaran dos columnas nuevas al hacer el `append` en vez de una. 
+* Una precaución un poco menos conocida guarda relación con el tipo de variables. ¿Qué ocurre si dos variables se llaman igual, pero **estan guardadas en formatos distintos**? 
+* En este caso, el orden en el cual se combine la base de datos va a importar y puede generar diferencias al momento de pegar datos. Esto es especialmente importante cuando una variable esta guardada en numérico en una base de datos y en `string` en la otra. 
+
+Veamos un ejemplo con la base `auto.dta`. Vamos a crear dos bases de datos según la procedencia de los autos y ejecutar el comando `append`. 
+```{stata}
+sysuse auto 
+drop if foreign
+save autodom 
+sysuse auto 
+drop if !foreign 
+rename foreign nondom 
+generate str foreign = "foreign" if nondom 
+save autofor
+
+use autdom 
+append using autofor 
+describe foreign 
+```
+Notar que `append` genera el siguiente mensaje: `foreign is str 7 in using data byt will be byte now`. Noten que el contenido de la variable string se ha perdido: 22 casos son ahora *missing*.
+
+¿Qué ocurre si hacemos el proceso al revés? Vamos a cargar autos extranjeros y le vamos a pegar autos domésticos:
+```{stata}
+use autfor 
+append using autodom, force
+describe foreign 
+codebook foreign
+```
+El formato de los datos de la primer base de datos manda.
+* No utilizar force sin cuidado. 
+* Con distintos tipos de datos, `append` es sensible al orden en que los archivos son pegados. **Tener cuidado y revisar consistencia en los datos**. Hacer test aquí tambíen es importante.  
+
+## Programar ado - files
+
+### Escribir programas en Stata
+
+En esta sección aprenderemos a escribir nuestros propios comandos en Stata. Escribir programas en Stata tiene muchas ventajas relacionadas con las buenas practicas que vimos en la Sección 1. 
+
+Vamos a utilizar `program` para escribir los programas. Es posible equipar cualquier comando con las opciones típicas usuales (ej. `if` o `inrange`. Discutiremos mayormente programas del tipo `r-class` y algunos comentarios con respecto a los del tipo `e-class`. 
+
+**¿Por qué debiese escribir mis propios programas en Stata?** Automatizar procesos que se ejecutan frecuentemente y donde los resultados dependen de algún tipo de heterogeneidad.  
+
+### ¿Por qué escribir programas?: Abstracción
+
+* Abstraer para eliminar pasos redundantes.  
+* Abstraer con fines de hacer códigos más claros. **No por otras razones**. 
+* Abstracción es esencial para escribir un buen código por al menos dos razones: 
+  + Al eliminar la redundancia se reducen las posibilidades de cometer errores.
+  + Aumenta la claridad. Para cualquier lector será más facil leer un código no redundante. 
+
+Veamos un ejemplo: Supongamos que queremos ver la correlación espacial del consumo de papas fritas. Queremos testear si el consumo per-capita de papas fritas esta correlacionado con el consumo promedio percapita de las otras comunas de la misma región. Primero tenemos que calcular el consumo per-capita del resto: 
+```{stata}
+egen total_pc_papitas = total(pc_papitas), by(region)
+egen total_obs = count(pc_papitas), by(region)
+gen consumo_papitas_resto_pc = ///
+(total_pc_papitas - pc_papitas)/(total_obs - 1)
+```
+
+Ahora podemos ver si existe correlación. ¿Pero si queremos cambiar el nivel de agregación? Tal vez si existe correlación, pero a nivel de área metropolitana. Copiemos el código de nuevo y calculemos esto. 
+```{stata}
+egen total_pc_papitas = total(pc_papitas), by(metroarea)
+egen total_obs = count(pc_papitas), by(region)
+gen consumo_papitas_restometro_pc = ///
+(total_pc_papitas - pc_papitas)/(total_obs - 1)
+```
+Noten que hay un error. Se nos olvido remplazar región por `metroarea`. Este error se puede propagar si seguimos haciendo operaciones. Una alternativa al copiar y pegar es escribir una función con propósito general que calcule la variable que deseamos bajo distintos parámetros. 
+```{stata}
+program consumo_papitas_resto 
+    syntax, invar(varname) outvar(name) byvar(varname)
+    tempvar tot_invar count_invar 
+    egen `tot_invar' = total(`invar'), by(`byvar')
+    egen `count_invar' = count('invar'), by('byvar') 
+    gen `outvar' = (`tot_invar' - `invar') ///
+    / (`count_invar' - 1) 
+end 
+```
+
+Con el programa podemos escribir los bloques de código anteriores como: 
+```{stata}
+* Caso 1 
+consumo_papitas_resto, invar(pc_papitas) ///
+outvar(consumo_papitas_resto_pc) byvar(region)
+
+* Caso 2
+consumo_papitas_resto, invar(pc_papitas)  ///
+outvar(consumo_papitas_restometro_pc) byvar(metroarea)
+
+```
+
+Hemos escrito la función de forma totalmente general. Podemos cambiar el nivel de agregación sin inducir errores.
+
+Estructura de un programa en Stata: La sintaxis más simple es: 
+```{stata}
+    program nombredelprograma
+        display "Lo que va a hacer el programa"
+    end 
+```
+
+Cuando se ha definido un programa con `program`, este se vuelve indistinguible de cualquier otro comando de Stata. Es importante estar seguros(as) de que no estoy escribiendo el mismo nombre que otro programa. Para garantizar lo anterior, es bueno utilizar el comando `which`. 
+```{stata}
+which tabmiss
+```
+
+Guardar un programa en Stata
+
+* Hay dos lugares en donde puedes guardar tus `ado-files`.
+* Cuando se ha definido un programa con `program`, este se vuelve indistinguible de cualquier otro comando de Stata. 
+* En el directorio de trabajo del proyecto. 
+* Se puede hacer una carpeta nueva en la sección de códigos que indique los programas. 
+* Otra opción es guardarlo en el directorio `Personal` de Stata. Para entrar escriban `personal` en la consola. 
+
+Nombrar un programa en Stata
+
+* Es posible darle cualquier nombre a un programa mientras no sea un nombre que ya es utilizado por Stata.
+* Si por ejemplo, creas un programa llamado `summarize` Stata lo va a ignorar y utilizará su propio comando. 
+
+### Mis primeros programas en Stata
+
+#### Programa 1
+Vamos  escribir nuestro primer programa:
+```{stata}
+  * Mi primer programa en Stata
+    program minombrees 
+        display "Hola, mi nombre es "
+    end 
+```
+Noten que al ejecutarlo no se genera ningún resultado. Lo que hemos hecho es definir un comando llamado `minombrees` con una simple función. Esta es la idea principal de un programa. Ejecuten nuevamente el programa. Al hacer esto observaran que se genera un error. Esto es porque al igual que las variables, no es posible asignar dos nombres iguales a un programa. Para evitar esto, es importante utilizar `program drop minombrees` antes de cargar el comando nuevamente. Este es un buen momento para utilizar `capture`. 
+
+#### Programa 2
+
+Vamos  escribir un programa que permita calcular un promedio. Vamos a escribir un comando que nos permita crear una nueva variable que contenga los valores promedio y que muestre el resultado en la pantalla. Esto sería igual que escribir: 
+```{stata}
+    sysuse auto, clear
+    egen mimedia_mpg = mean(mpg)
+    tab mean_mpg 
+```
+
+Podemos evitar la repetición de estos dos comandos armando un programa:
+```{stata}
+program drop _all 
+capture program drop mymean
+program mymean 
+    egen media_`1' = mean(`1')
+    tab media_`1'
+end 
+
+* Aplicamos este programa 
+sysuse auto, clear
+mimedia mpg
+```
+
+Noten que hemos utilizado ``1'`. Este nos indica cualquier variable que este en la primera posición. Si incluimos más de una variable. **Solo va a considerar la primera variable**.
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.5.1: </b> 
+
+Preguntas
+
+1. Escriba un programa que permita ver todas las etiquetas (`labels`) de una base de datos.
+2. Aplique este programa a la base `auto.dta`.
+</div>
+
+#### Programa 3
+
+Vamos a reescribir el programa para permitir un número arbitrario de variables. La macro '0' contiene toda la cadena, '1' el primer elemento, '2' el segundo, etc. Podemos hacer una iteración sobre todos los elementos sin saber cuántos hay utilizando la técnica de desplazamiento incremental que implementaremos con `macro_shift`. 
+```{stata}
+capture program drop mimedia 
+program define mimedia 
+    while "`1'"!="" { 
+        egen mean_`1'=mean(`1') 
+        tab mean_`1' 
+        macro shift
+    }
+end
+
+sysuse auto, clear
+mimedia price mpg rep78 
+```
+
+El comando `macro shift` sirve como incremental. Termina cuando encuentra un vacio, lo que explica la presencia del `while`. Notar que `"`1'"` habla de la posición. Es una buena tecnica para garantizar que el iterador seguirá cuando este vacio. 
+
+#### Programa 4
+
+Modificamos un poco el programa para que despliegue los resultados en la consola de Stata. Adicionalmente, agregamos un `quietly`.
+```{stata}
+capture program drop mimedia 
+program define mimedia 
+    while "`1'"!="" { 
+        qui: egen `1'_mean = mean(`1') 
+        display "Media de `1' = " `1'_mean 
+        macro shift
+    }
+end
+
+sysuse auto, clear
+mimedia price mpg rep78 
+```
+
+#### Programa 5
+
+El comando `macro shift` es útil, pero puede ser lento. Agregando variables locales usuales y un incremental es mucho mejor. Ojo con las dobles comillas. 
+```{stata}
+capture program drop mimedia 
+program define mimedia 
+    local i = 1
+    while "``i''"~="" { 
+        qui: egen ``i''_mean = mean(``i'') 
+        display "Media de `i' = " ``i''_mean 
+        local ++i
+    }
+end
+```
+
+### Programa con distintos argumentos
+
+El programa de los ejemplos anteriores soporta un solo argumento. Ahora vamos a ver un programa que considere explícitamente que los argumentos de un programa pueden tomar roles distintos. 
+```{stata}
+program drop _all 
+capture program drop show 
+program define show
+    tempvar obs 
+    quietly gen `obs' = `1' ///
+    if (ctycode == "`2'" & year ==`3')
+    sort `obs'
+    display "`1' of country `2' in `3' is: " `obs' 
+end
+```
+
+`tempvar` crea una variable temporal que existe mientras el programa se ejecuta pero que se elimina automáticamente una vez que el programa termina su ejecución. Es importante estar seguros(as) de que cualquier *string* están en comillas dobles. 
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.5.2:</b> 
+
+Preguntas
+
+1. Escriba un programa que reporte la mediana de la diferencia entre dos variables.
+2. Aplique este programa a la base `auto.dta`.
+</div>
+
+### Opción Syntax
+
+Renombrando argumentos:
+
+* De momento hemos escrito los programas utilizando `'1', '2', '3'` con el fin de introducir el uso de programas en Stata. 
+* Sin embargo, esta notación puede ser un poco confusa y provocar errores en la codificación. Podemos asignar nombres de mayor significado a los argumentos del programa. 
+```{stata}
+program drop _all 
+capture program drop show 
+program define show
+    args var cty yr
+    tempvar obs 
+    quietly gen `obs' = `var' ///
+    if (ctycode == "`cty'" & year ==`yr')
+    sort `obs'
+    display "`1' of country `2' in `3' is: " `obs' 
+end
+```
+
+El comando`args` asigna a las variables locales `var`, `cty`, `yr` los valores de `'1'`, `'2'`, `'3'`. Noten que si llaman al programa con cuatro argumentos **no** retorna un error. Un método mucho más robusto y mejor para llamar a los argumentos de un programa es utilizar `syntax`. En vez de referirnos a cada elemento de un programa por su posición, vamos a especificar la "gramática" del programa. 
+
+La sintaxis de Stata es: 
+```{stata}
+[by varlist:] command [varlist] [=exp] [in range] [, options]
+```
+
+`varlist` denota la lista de variables, `command` el comando a ejecutar, `exp` denota una expresión algebraica, `range` denota un rango para las observaciones mientras que `,options` denota la lista de opciones propias de un comando. Utilizar `syntax` en un programa hace que Stata verifique  si un programa satisface la sintaxis. En caso de que no la cumpla, arrojara un error. 
+
+Syntax
+* El comando `syntax` almacena en macros locales todos los elementos típicos de un comando en Stata. 
+* Por ejemplo, `syntax` también puede definir condicionales como `if` o `in`. 
+```{stata}
+    program ... 
+        syntax varlist(min = 2) [if] [in]
+```
+
+Si quieren hacer programas más complejos, con otras características es importante revisar [syntax](https://www.stata.com/manuals/psyntax.pdf#psyntax).
+
+Uno de los primeros elementos de `syntax` es `varlist`. Es posible indicar el mínimo o máximo de variables. 
+* Por ejemplo: `varlist(min = 2 max = 2)`. 
+* Si tienes solo una variable puedes utilizar `varname`. 
+* Es equivalente a `varlist(min = 1 max = 1)`.
+* La macro que guarda las variables siempre se llama `varlist`. 
+
+Ejemplo 1: programa para calcular percentiles
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric)
+    quietly summarize `varlist', detail 
+    scalar range = r(max) - r(min)
+    scalar p7525 = r(p75) - r(p25)
+    scalar p9010 = r(p90) - r(p10)
+    display as result _n "Rangos de percentiles para `varlist'"
+    display as txt "75-25 : " p7525
+    display as txt "90-10:  " p9010 
+    display as txt "Range: " range
+end 
+```
+
+El programa anterior nos permite obtener los percentiles de alguna variable al mismo tiempo que los muestra en la consola. Noten que tambíen he incluido que tipo de comando es. En este caso es un comando `r-class`. `program` es quien determina el nombre del programa. `syntax` permite determinar los elementos de tu programa. En el ejemplo define el tipo y el límite de variables. También puede definir condicionales como `if` o `in`. 
+
+Los escalares definidos durante el programa se pueden utilizar. Esto no siempre es conveniente. Como recomendación es bueno **guardar los programas como variables temporales**. 
+
+Ejemplo 2: programa para calcular percentiles con variables locales
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric)
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010'
+    display as txt "Range: " `range'
+```
+
+### Return
+
+* Una característica importante de los comandos de Stata es su capacidad de reportar los resultados de forma tal de que los usuarios y usuarias podamos utilizarlos posteriormente. 
+* El comando `return` nos permite guardar los escalares y hacerlos accesibles, sin tener el problema que vimos en el ejemplo anterior.  
+* Notar que el lado izquierdo del escalar de retorno se refiere al nombre de la macro, el lado derecho debe hacer referencia a la macro una vez más para extraer el valor almacenado en ese nombre, por lo que debe utilizar dos comillas. 
+
+Ejemplo 3: programa para calcular percentiles con return
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric)
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010 '
+    display as txt "Range: " `range'
+    foreach r of local res {
+        return scalar `r' = ``r''
+        }
+end 
+```
+
+### Implementar opciones al programa
+
+Podemos agregar distintas opciones al programa. Una opción es agregar como opcional que el programa de un resultado en la consola. Al incluir $[ ]$ en `syntax` significa un componente **opcional** en el comando. 
+
+Ejemplo 4: implementar opciones al programa (imprimir por defecto)
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric) [, PRINT]
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    if "`print'" == "print" {
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010 '
+    display as txt "Range: " `range'
+    }
+    foreach r of local res {
+        return scalar `r' = ``r''
+        }
+end 
+```
+
+Ejemplo 5: implementar opciones al programa (no imprimir por defecto)
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric) [, noPRINT]
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    if "`print'" != "noprint" {
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010 '
+    display as txt "Range: " `range'
+    }
+    foreach r of local res {
+        return scalar `r' = ``r''
+        }
+end 
+```
+
+### Incluir if/in al programa
+
+Incluir un subconjunto de observaciones
+
+* Cualquier comando debiese incluir `if` o `in range`.
+* Nuevamente, estas opciones son manejadas dentro del comando `syntax`. Para incluir estas opciones hay que agregar `[if]` y `[in]`. 
+* Con estos comandos puedo ejecutar el programa para sub-muestras. Es importante asegurar que la sub-muestra no es vacía. Para ello es importante calcular `r(N)`, chequear que sea distinto de cero y agregar un título que lo indique. 
+* El comando `marksample touse` utiliza la información provista por `if` o `in` en caso de que estos sean indicados en el programa. Este comando genera una variable local `touse` que es igual a 1 si las variables entran en el calculo que hace el programa y 0 en caso contrario. 
+* Utilizaremos `'touse'` para calcular el número de observaciones que se utilizan después de aplicar los condicionales. Es necesario agregar `'touse'` en cada parte del programa que trabaje con la variable de *input*.
+
+Ejemplo 6: Incluir un subconjunto de observaciones
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric) [, noPRINT]
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    if "`print'" != "noprint" {
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010 '
+    display as txt "Range: " `range'
+    }
+    foreach r of local res {
+        return scalar `r' = ``r''
+        }
+end 
+```
+
+### Generalizar el comando para incluir múltiples variables
+
+Algunas consideraciones
+
+* Si quiero ejecutar el programa sobre múltiples variables, es necesario ajustar un poco el programa. 
+* Tengo que indicarle a  `syntax` que hay más de una variable. Además, tengo que indicarle al programa que en caso de que existan más variables muestre los resultados en una tabla. 
+* Guardaremos los resultados en matrices (no escalares) y vamos a aplicar una **función de macro extendida** con el fin de contar el número de filas que esta matriz debiese tener. 
+* Agregaremos también una la opción \verb |format| para cambiar el formato y la opción `mat` que permite a la matriz ser guardada automáticamente con el nombre indicado. 
+
+Ejemplo 7
+```{stata}
+program drop _all 
+program pctrange, rclass
+version 17 
+    syntax varlist(min = 1 numeric ts) [if] [in] [, noPRINT FORmat(passthru) MATrix(string)] 
+    marksample touse 
+    quietly count if `touse'
+    if `r(N)' == 0 {
+        error 2000
+    }
+    local nvar: word count `varlist'
+    if `nvar' == 1 {
+        local res range p7525 p9010
+        tempname `res'    
+    
+        quietly summarize `varlist' if `touse', detail 
+        scalar `range' = r(max) - r(min)
+        scalar `p7525' = r(p75) - r(p25)
+        scalar `p9010' = r(p90) - r(p10)
+        if "`print'" != "noprint" {
+            display as result _n "Rangos de percentiles para `varlist', N = `r(N)'"
+            display as txt "75-25 : " `p7525'
+            display as txt "90-10:  " `p9010 '
+            display as txt "Range: " `range'
+    }
+    
+    foreach r of local res {
+        return scalar `r' = ``r''
+    }
+    return scalar N = r(N)
+    }
+    else {
+    tempname rmat 
+      matrix `rmat' = J(`nvar', 3, .)
+      local i 0 
+        foreach v of varlist `varlist'{
+        local ++i 
+        quietly summarize `v' if `touse', detail 
+        matrix `rmat'[`i' ,1] = r(max) - r(min)
+        matrix `rmat'[`i', 2] = r(p75) - r(p25)
+        matrix `rmat'[`i', 3] = r(p90) - r(p10)
+        local rown `rown' `v'
+    }
+      
+      matrix colnames `rmat' = Range P75-P25 P90-P10 
+      matrix rownames `rmat' = `rown' 
+
+      if "`print'" != "noprint" {
+          local form ", noheader"
+          if "`format'" != "" {
+                local form "`form' `format'" 
+          }
+          matrix list `rmat' `form'
+                                }
+
+      if "`matrix'" != "" {
+            matrix `matrix' = `rmat'
+      }
+      return matrix rmat = `rmat'
+      }
+      return local varname `varlist'
+end 
+```
+
+### Agregar prefijos a los programas
+
+Prefijo by
+
+* Ahora vamos a hacer que nuestro programa pueda utilizar el prefijo `by`. 
+* Para agregar esta opción simplemente hay qyue modificar `program`.
+```{stata}
+program pctrange, rclass byable(recall)
+```
+
+También podemos permitir que la lista de variables incluya **operadores de series de tiempo** (ej. `L.pib`, `D.ingreso`). Para incorporar estos elementos tenemos que modificar `syntax`.
+```{stata}
+    syntax varlist(min = 1 numeric ts) [if] [in] ///
+    [, noPRINT  FORmat(passthru) MATrix(string)]
+```
+
+### Programas para complementar función egen
+
+Es posible programar funciones adicionales de `egen`. El nombre de estos programas deben empezar con `_g`. Una diferencia importante entre este tipo de programas y los que ya hemos escrito guarda relación con el hecho de que hay que tener en cuenta la nueva variable que se va a crear. La sintaxis es la siguiente: 
+```{stata}
+egen [type] newvarname = fcn(arguments) [if] [in] [, options]
+```
+
+El cambio que haremos en la sintaxis del programa será que incluiremos un `touse` para hacer la nueva variable. 
+
+Ejemplo 8: programa función egen
+```{stata}
+* Programas de egen 
+program drop _all
+program _gpct9010
+    syntax newvarname =/exp [if] [in] 
+    tempvar touse 
+    mark `touse' `if' `in' 
+    quietly summarize `exp' if `touse', detail 
+    quietly generate `typlist' `varlist' = r(p90) - r(p10) if `touse'
+end
+
+* Aplicación del programa
+sysuse auto, clear
+egen rango9010 = pct9010(price)
+```
+
+Programas con funciones de egen con prefijo by
+
+* Agregamos `[, *]` que corresponde a las opciones. En `egen` el prefijo `by` es una opción. 
+* Con el fin de permitirle al programa que pueda producir un rango de percentil separado para cada grupos utilizaremos `pctile` en vez de `summarize`. 
+* El cambio que haremos en la sintaxis del programa será que incluiremos un `touse` para hacer la nueva variable. 
+
+Ejemplo 9: programa función egen con prefijo by
+```{stata}
+* Programa con opción by. 
+program drop _all
+program _gpct9010
+syntax newvarname =/exp [if] [in] [, *] 
+tempvar touse p90 p10 
+mark `touse' `if' `in' 
+quietly {
+          egen double `p90' = pctile(`exp') if `touse', `options' p(90) 
+          egen double `p10' = pctile(`exp') if `touse', `options' p(10)
+          generate `typlist' `varlist' = `p90' - `p10' if `touse' } 
+end
+
+* Aplicación del programa
+sysuse auto, clear
+egen rango9010 = pct9010(price)
+bysort rep78 foreign: egen rango9010_prefijoby = pct9010(price)
+```
+
+Generalización de la función egen para soportar todos los pares de cuantiles
+
+* Hemos desarrollado una función de `egen` que permite calcular un rango entre percentiles para una lista de variables especifica. 
+* Puede ser util tomar ventaja de `egen pctile()` para poder calcular cualquier percentil de la lista de variables especificadas. 
+* Vamos a agregar dos opciones a la función `egen` : `lo()` y `hi()`. En caso de que no especifiquemos, por defecto se calcula el rango interquartil. La función de `egen` ahora se llamará `_gpctrange.ado`. 
+
+Ejemplo 10: función `egen` más general
+```{stata}
+* Programa con opción by. 
+program drop _all
+program _gpctrange
+syntax newvarname =/exp [if] [in] [, LO(integer 25) HI(integer 75) *] 
+
+if `hi' > 99 | `lo' < 1 {
+    display as error ///
+        "Percentiles `lo' `hi' deben estar entre 1 y 99." 
+    error 198 
+}
+if `hi' <= `lo' {
+    display as error ///
+            "Percentiles `lo' `hi' deben estar en orden ascendente"
+    error 198 
+}
+tempvar touse phi plo 
+mark `touse' `if' `in' 
+quietly {
+          egen double `phi' = pctile(`exp') if `touse', `options' p(`hi') 
+          egen double `plo' = pctile(`exp') if `touse', `options' p(`lo')
+          generate `typlist' `varlist' = `phi' - `plo' if `touse' 
+          } 
+end
+
+sysuse auto, clear
+bysort rep78: egen iqr = pctrange(price) if inrange(rep78,3,5)
+bysort rep78: egen p8020 = pctrange(price) if inrange(rep78,3,5), hi(80) lo(20)
+tabstat iqr if inrange(rep78, 3, 5), by(rep78)
+tabstat p8020 if inrange(rep78, 3, 5), by(rep78)
+```
+
+
+### Syntax
+Algunas consideraciones
+
+* Como hemos visto hay dos formas en los que un programa de Stata puede interpretar lo que ingresamos.
+* Por posición tal como lo hace `args` o como lo hicimos con los números entre las comillas.  
+* De acuerdo a la gramática del programa utilizando `syntax`.
+* `syntax` guarda los componentes en macros locales particulares a las cuales podemos acceder posteriormente. 
+* Por ejemplo `'if'` `'in'` `'varlist'` son macros locales a las que podemos acceder tal como vimos la clase pasada. 
+* Ahora vamos a ver algunas opciones de `syntax` que nos permitirán tener más herramientas para escribir nuestros programas. 
+* Al utilizar dentro de un programa paréntesis cuadrados estoy indicando que esas partes son opcionales. 
+* Por ejemplo, estas dos versiones son equivalentes, salvo que en la segunda linea todo es opcional: 
+```{stata}
+    * Nada opcional
+    syntax varlist if in title(string) adjust(real 1) 
+    
+    * Todo opcional
+    syntax [varlist] [if] [, adjust (real 1) title(string)]
+```
+
+Vamos a mirar las macros generadas por syntax:
+```{stata}
+capture program drop myprog
+program myprog 
+syntax varlist [if] [in] [, adjust(real 1) title(string)] 
+    display "varlist contiene |`varlist'|" 
+    display "if contiene |`if'|" 
+    display "in contiene |`in'|" 
+    display "adjust contiene |`adjust'|" 
+    display "title contiene |`title'|" 
+end
+```
+
+Vamos a aplicar lo aprendido en un ejemplo sencillo:
+```{stata}
+capture program drop miprograma
+program miprograma
+    syntax varlist [if] [in] [, adjust(real 1) title(string)]
+    display 
+    if "`title'" != "" {
+        display "`title':"
+    }
+    foreach var of local varlist{
+        quietly summarize `var' `if' `in'
+        display "`var'" " "%9.0g r(mean)*`adjust'
+    }
+end
+```
+
+`marksample` y `touse`: Un error común es utilizar una muestra en una parte del programa y otra distinta en otra parte. La solución es crear una variable que contiene un 1 si la observación fue utilizada y un 0 en caso contrario. 
+```{stata}
+capture program drop miprograma
+program miprograma
+    syntax varlist [if] [in] [, adjust(real 1) title(string)]
+    marksample touse
+    display 
+    if "`title'" != "" {
+        display "`title':"
+    }
+    foreach var of local varlist{
+        quietly summarize `var' `if' `touse'
+        display "`var'" " " r(mean)*`adjust'
+    }
+end
+```
+
+### Varlist
+
+`varlist` específica la macro que contiene las variables que van a ingresar al programa como *inputs*. Las opciones de `varlist` son: 
+* `default = none`. Especifica como la `varlist` se va a llenar. Por defecto se llena con todas las variables. 
+* `min`, `max` especifica el número de variables permitidas. 
+* `numeric`, `string` especifican que criterio deben cumplir **todas** las variables que ingresas al programa. 
+* `ts` permite que la `varlist` contenga operadores de series de tiempo. 
+* `fv` permite que la `varlist` contenga variables categóricas. 
+
+### Opciones
+
+Las opciones permiten hacer requeridos o opcionales. Por ejemplo, `regress, noconstant`. Las opciones pueden ser una `numlist`, una `varlist` (ej. `by(varlist) option`, una `namelist` tal como el nombre de una matriz o de una nueva variable. Como regla general, cualquier característica que pudieran encontrar en un comando de Stata, la pueden agregar en un programa. Para las opciones es importante recordar que las mayúsculas indican la menor abreviación posible. 
+
+* `replace`, `detail`, `constant` son opciones de **on**. 
+* `noreplace`, `nodetail`, `noconstant` son opciones de **off**.  Ojo las macros que retornan tienen los mismos nombres que en el caso anterior. 
+* `title` y `adjust` también son otros opcionales. El primero permite ingresar un título al comando mientras que el segundo permite ajustar los resultados por algún escalar. 
+* Hay muchas otras. Veamos un ejemplo...
+```{stata}
+capture program drop miprograma
+program miprograma
+    syntax varlist [if] [in] [, adjust(real 1) title(string)]
+    display 
+    if "`title'" != "" {
+        displa "`title':"
+    }
+    foreach var of local varlist{
+        quietly summarize `var' `if' `in'
+        display "`var'" " "%9.0g r(mean)*`adjust'
+    }
+end
+```
+
+### Programa para calcular percentiles
+
+Una versión simple para una variable:
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric)
+    quietly summarize `varlist', detail 
+    scalar range = r(max) - r(min)
+    scalar p7525 = r(p75) - r(p25)
+    scalar p9010 = r(p90) - r(p10)
+    display as result _n "Rangos de percentiles para `varlist'"
+    display as txt "75-25 : " p7525
+    display as txt "90-10:  " p9010 
+    display as txt "Range: " range
+end 
+```
+
+Algunas consideraciones
+
+* El programa anterior nos permite obtener los percentiles de alguna variable al mismo tiempo que los muestra en la consola. 
+* Noten que también he incluido que tipo de comando es. En este caso es un comando `r-class`.
+* Los escalares definidos en el programa se pueden utilizar. Esto no siempre es conveniente. 
+* Como recomendación es bueno **guardar los resultados esperados de los programas como variables temporales**. 
+
+Versión que incluye variables guardadas localmente:
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric)
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010'
+    display as txt "Range: " `range'
+```
+
+### Programa con opción return
+
+Una característica importante de los comandos de Stata es su **capacidad de reportar los resultados** de forma tal de que los usuarios y usuarias podamos utilizarlos posteriormente. El comando `return` nos permite guardar los escalares y hacerlos accesibles, sin tener el problema de los escalares que vimos en los ejemplos anteriores.  
+  
+Programa para calcular percentiles con return:
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric)
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010 '
+    display as txt "Range: " `range'
+    foreach r of local res {
+        return scalar `r' = ``r''
+        }
+end 
+```
+
+Sobre la forma en que llamamos a return:
+```{stata}
+    foreach r of local res {
+        return scalar `r' = ``r''
+    }
+```
+
+Notar que el lado izquierdo de `scalar('r')` se refiere al nombre de los elementos de la macro `res`. El lado derecho hace referencia a la macro una vez más para extraer el valor almacenado en ese nombre. En este caso es importante notar que se deben utilizar dos comillas (ej. `"range"`). Noten también que si utilizamos `scalar list` no hay resultados, sin embargo, al utilizar la opción **return** ahora podemos rescatar los resultados con `return list`.
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.6.3: </b> 
+
+Preguntas
+
+1. Escriba un programa llamado `misuma` que sea del tipo `r-class`.
+2. Este programa debe entregar en la lista de `return list` el número total de observaciones, la suma total y el promedio de la variable. 
+3. Aplicarla  en `auto.dta`. 
+</div>
+
+### Agregar opciones al programa
+
+Podemos agregar distintas opciones al programa. Para este ejemplo vamos a agregar como opcional que el programa de un resultado en la consola. Recordemos que incluir $[ ]$ en `syntax` significa un componente **opcional** en el comando. 
+
+Implementar opciones al programa (imprimir por defecto):
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric) [, PRINT]
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    if "`print'" == "print" {
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010 '
+    display as txt "Range: " `range'
+    }
+    foreach r of local res {
+        return scalar `r' = ``r''
+        }
+end 
+```
+
+
+Implementar opciones al programa (no imprimir por defecto):
+```{stata}
+program pctrange, rclass 
+version 17 
+    syntax varlist(max = 1 numeric) [, noPRINT]
+    local res "range p7525 p9010"
+    tempname `res'    
+    display as result _n "Rangos de percentiles para `varlist'"
+    quietly summarize `varlist', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    if "`print'" != "noprint" {
+    display as txt "75-25 : " `p7525'
+    display as txt "90-10:  " `p9010 '
+    display as txt "Range: " `range'
+    }
+    foreach r of local res {
+        return scalar `r' = ``r''
+        }
+end 
+```
+
+Incluir un subconjunto de observaciones
+
+* Cualquier comando debiese incluir `if` o `in range`.
+* Nuevamente, estas opciones son manejadas dentro del comando `syntax`. Para incluir estas opciones hay que agregar `[if]` y `[in]`. 
+* Con estos comandos puedo ejecutar el programa para sub-muestras. Es importante asegurar que la sub-muestra no este vacía.
+* Para ello es importante calcular `r(N)`, chequear que sea distinto de cero y agregar un título que lo indique. 
+* El comando `marksample touse` utiliza la información provista por `if` o `in` en caso de que estos sean indicados en el programa. 
+* Este comando genera una variable local `touse` que es igual a 1 si las variables entran en el calculo que hace el programa y 0 en caso contrario. 
+* Utilizaremos ``touse'` para calcular el número de observaciones que se utilizan después de aplicar los condicionales.
+* Es necesario agregar ``touse'` en cada parte del programa que trabaje con la variable de *input*.
+
+Incluir un subconjunto de observaciones:
+```{stata}
+program drop _all 
+program pctrange, rclass 
+syntax varlist(max = 1 numeric) [if] [in] [, noPRINT]
+    marksample touse 
+    quietly count if `touse'
+    if `r(N)' == 0 {
+        error 2000
+    }
+    local res range p7525 p9010
+    tempname `res'    
+    
+    quietly summarize `varlist' if `touse', detail 
+    scalar `range' = r(max) - r(min)
+    scalar `p7525' = r(p75) - r(p25)
+    scalar `p9010' = r(p90) - r(p10)
+    if "`print'" != "noprint" {
+        display as result _n "Rangos de percentiles para `varlist', N = `r(N)'"
+        display as txt "75-25 : " `p7525'
+        display as txt "90-10:  " `p9010 '
+        display as txt "Range: " `range'
+    }
+    foreach r of local res {
+        return scalar `r' = ``r''
+        }
+    return scalar N = r(N)
+    return local varname `varlist'
+
+end 
+```
+
+<div class="alert alert-block alert-warning">
+<b>Ejercicio 3.6.2: </b> 
+
+Preguntas
+
+1. Ajuste el programa del ejercicio 1 con el fin de incluir la opción `if`. Guárdelo como `misuma2`.
+2. Aplicarla  en `auto.dta`. 
+</div>
+
+### Generalizar el comando para incluir múltiples variables
+
+Algunas consideraciones
+
+* Si quiero ejecutar el programa sobre múltiples variables, es necesario ajustar un poco el programa. 
+* Tengo que indicarle a  `syntax` que hay más de una variable. Además, tengo que indicarle al programa que en caso de que existan más variables muestre los resultados en una tabla. 
+* Guardaremos los resultados en matrices (no escalares) y vamos a aplicar una **función de macro extendida** con el fin de contar el número de filas que esta matriz debiese tener. 
+* Agregaremos también una la opción `format` para cambiar el formato y la opción `mat` que permite a la matriz ser guardada automáticamente con el nombre indicado. 
+```{stata}
+program drop _all 
+program pctrange, rclass
+version 17 
+    syntax varlist(min = 1 numeric ts) [if] [in] [, noPRINT FORmat(passthru) MATrix(string)] 
+    marksample touse 
+    quietly count if `touse'
+    if `r(N)' == 0 {
+        error 2000
+    }
+    local nvar: word count `varlist'
+    if `nvar' == 1 {
+        local res range p7525 p9010
+        tempname `res'    
+    
+        quietly summarize `varlist' if `touse', detail 
+        scalar `range' = r(max) - r(min)
+        scalar `p7525' = r(p75) - r(p25)
+        scalar `p9010' = r(p90) - r(p10)
+        if "`print'" != "noprint" {
+            display as result _n "Rangos de percentiles para `varlist', N = `r(N)'"
+            display as txt "75-25 : " `p7525'
+            display as txt "90-10:  " `p9010 '
+            display as txt "Range: " `range'
+    }
+        foreach r of local res {
+        return scalar `r' = ``r''
+    }
+    return scalar N = r(N)
+    }
+    else {
+    tempname rmat 
+      matrix `rmat' = J(`nvar', 3, .)
+      local i 0 
+        foreach v of varlist `varlist'{
+        local ++i 
+        quietly summarize `v' if `touse', detail 
+        matrix `rmat'[`i' ,1] = r(max) - r(min)
+        matrix `rmat'[`i', 2] = r(p75) - r(p25)
+        matrix `rmat'[`i', 3] = r(p90) - r(p10)
+        local rown `rown' `v'
+        }
+      matrix colnames `rmat' = Range P75-P25 P90-P10 
+      matrix rownames `rmat' = `rown' 
+
+      if "`print'" != "noprint" {
+          local form ", noheader"
+          if "`format'" != "" {
+                local form "`form' `format'" 
+          }
+          matrix list `rmat' `form'
+                                }
+
+      if "`matrix'" != "" {
+            matrix `matrix' = `rmat'
+      }
+      return matrix rmat = `rmat'
+      }
+      return local varname `varlist'
+end
+```
+
+### Agregar prefijos a los programas
+
+prefijo by: Ahora vamos a hacer que nuestro programa pueda utilizar el prefijo `by`. Para agregar esta opción simplemente hay que modificar `program`.
+```{stata}
+program pctrange, rclass byable(recall)
+```
+
+También podemos permitir que la lista de variables incluya **operadores de series de tiempo** (ej. `L.pib`, `D.ingreso`). 
+```{stata}
+syntax varlist(min = 1 numeric ts) 
+```
+
+### Programas para complementar función egen
+
+Es posible programar funciones adicionales de `egen` (*extended generate*). El nombre de estos programas deben empezar con `_g`. Una diferencia entre este tipo de programas y los ya hechos es que en estos hay que tener en cuenta la nueva variable que se va a crear. La sintaxis es la siguiente: 
+```{stata}
+egen [type] newvarname = fcn(arguments) [if] [in] [, options]
+```
+    
+El cambio que vamos a hacer en la sintaxis del programa será que incluiremos un `touse` para hacer la nueva variable. 
+
+Vamos a escribir un programa para calcular un rango en particular:
+```{stata}
+* Programas de egen 
+program drop _all
+program _gpct9010
+    syntax newvarname =/exp [if] [in] 
+    tempvar touse 
+    mark `touse' `if' `in' 
+    quietly summarize `exp' if `touse', detail 
+    quietly generate `typlist' `varlist' = r(p90) - r(p10) if `touse'
+end
+
+* Aplicación del programa
+sysuse auto, clear
+egen rango9010 = pct9010(price)
+```
+
+Programas con funciones de egen con prefijo by: 
+
+* Agregamos [, *] que corresponde a las opciones. En `egen`el prefijo `by` es una opción. 
+* Con el fin de permitirle al programa que pueda producir un rango de percentil separado para distintos grupos utilizaremos `pctile` en vez de `summarize`. 
+```{stata}
+* Programa con opción by. 
+program drop _all
+program _gpct9010
+syntax newvarname =/exp [if] [in] [, *] 
+tempvar touse p90 p10 
+mark `touse' `if' `in' 
+quietly {
+          egen double `p90' = pctile(`exp') if `touse', `options' p(90) 
+          egen double `p10' = pctile(`exp') if `touse', `options' p(10)
+          generate `typlist' `varlist' = `p90' - `p10' if `touse' } 
+end
+
+* Aplicación del programa
+sysuse auto, clear
+egen rango9010 = pct9010(price)
+bysort rep78 foreign: egen rango9010_prefijoby = pct9010(price)
+```
+
+### Generalización de la función egen
+
+Hemos desarrollado una función de `egen` que permite calcular un rango entre percentiles para una lista de variables especifica. Puede ser útil tomar ventaja de `egen pctile()` para poder calcular cualquier percentil de la lista de variables especificadas. Vamos a agregar dos opciones a la función `egen` : `lo()` y `hi()`. En caso de que no especifiquemos, por defecto se calcula el rango interquartil. La función de `egen` ahora se llamará `_gpctrange.ado`. 
+
+Función egen más general para percentiles:
+```{stata}
+* Programa con opción by. 
+program drop _all
+program _gpctrange
+syntax newvarname =/exp [if] [in] [, LO(integer 25) HI(integer 75) *] 
+
+if `hi' > 99 | `lo' < 1 {
+    display as error ///
+        "Percentiles `lo' `hi' deben estar entre 1 y 99." 
+    error 198 
+}
+if `hi' <= `lo' {
+    display as error ///
+            "Percentiles `lo' `hi' deben estar en orden ascendente"
+    error 198 
+}
+tempvar touse phi plo 
+mark `touse' `if' `in' 
+quietly {
+          egen double `phi' = pctile(`exp') if `touse', `options' p(`hi') 
+          egen double `plo' = pctile(`exp') if `touse', `options' p(`lo')
+          generate `typlist' `varlist' = `phi' - `plo' if `touse' 
+          } 
+end
+
+sysuse auto, clear
+bysort rep78: egen iqr = pctrange(price) if inrange(rep78,3,5)
+bysort rep78: egen p8020 = pctrange(price) if inrange(rep78,3,5), hi(80) lo(20)
+bysort rep78: egen p8020 = pctrange(price) if inrange(rep78,3,5) ///
+& foreign==1, hi(80) lo(20)
+
+* Utilizar estas nuevas variables con otros comandos
+tabstat iqr if inrange(rep78, 3, 5), by(rep78)
+tabstat p8020 if inrange(rep78, 3, 5), by(rep78)
+```
+
+### Documentar tu programa
+
+Escribir un help
+
+* Es necesario y recomendado mantener una documentación de los programas que se escriban para un proyecto. 
+* Esta documentación debe estar actualizada e incluir cualquier modificación. **Importante hacerlo mientras se hace el programa y no al final**.
+* Vamos a aprender un poco de SMCL (*Stata Markup and Control Language file*). Básicamente es el lenguaje con el que se escriben los `help` en Stata. También es el lenguaje con el que se muestran los resultados de `display`. 
+* Los archivos se pueden escribir en cualquier procesador de texto, pero deben ser guardados en formato `.smcl`. También deben ser guardados en la misma carpeta en donde se encuentra el `ado-file` relacionado con el archivo. 
+* Hay que empezar los códigos con $\{smcl\}$ con el fin de indicarle a Stata que el texto que viene será en formato SMCL.
+* Las etiquetas de SMCL van entre llaves ($\{\}$) y se pueden leer de dos formas principalmente: 
+  + $\{tag:text\}$ etiquetar el texto que se esta escribiendo.
+  + $\{tag\}$ etiquetar todo lo que viene hasta que se cambie en otra parte del texto. 
+
+Por ejemplo, si quiero poner texto en *itálica* tengo que ocupar la **etiqueta** *it*: 
+```{stata}
+* Una palabra/frase en particular
+{it:este texto aparecerá en itálica}
+
+* Todo el bloque de texto
+{it} Todo lo que este aquí aparecerá en itálica. ///
+Esto va a ocurrir hasta que aparezca un nuevo ///
+tipo de etiqueta. 
+```
+
+Etiquetas de SMCL
+
+* **Texto:** {it}, {bf}, {sf}, {ul}. Itálica, negrita, texto normal, subrayado, repectivamente. 
+* **Texto en formato Stata:** {cmd}, {error}, {result}, {text}.
+* **{Destacar una referencia:** {hi}.
+* **Opciones de comando:** {opt}.
+* **Insertar linea horizontal:** {hline}.
+* **Volver a dejar el texto a su estado normal:** {reset}.
+* **Formato de documento:** {title:text}, {center}, {ralign}, {lalign}, {tab}. 
+* **Párrafos:** Hay dos opciones para escribirlos. 
+  + {p #1 #2 #3 #4}.  
+  + {p} = {p 0 0 0 0}
+* Los números indican los siguientes elementos de un párrafo: 
+  + El primer número (#1) es cuántos caracteres hay que sangrar en la primera línea.
+  + El segundo número (#2) es cuántos caracteres hay que sangrar en la segunda y tercera línea.
+  + El tercer número (#3) es cuán lejos de la derecha debe estar el margen.
+  + El cuarto número (#4) es para el ancho total del párrafo. 
+  + {phang}: es equivalente a {p 4 8 2}.
+  + {pstd}: es equivalente a {p 4 4 2}.
+  + {phang2}: es equivalente a {p 8 12 2}.
+  + {p2col}: Para separar el texto en dos columnas. 
+  + {p_end}: Para terminar un párrafo. Útil cuando tienes dos parrafos en formatos distintos. 
+
+### Escribir programas e-class
+
+Vamos a aprender algunos elementos que nos van a permitir escribir nuestros propios comandos de estimación en Stata. Muchos de los conceptos que hemos visto aplican también para este tipo de comandos. Es necesario recordar algunas convenciones que nos van a ser útiles para poder escribir nuestros programas. 
+
+* Los resultados se guardan en `|e()` y se puede acceder a ellos con `ereturn list`. 
+* El número de observaciones es `e(N)` y para identificar que observaciones fueron incluidas en la estimación es necesario utilizar la función `e(sample)`.
+* Los coeficientes estimados se guardan en un vector `e(b)` y la matriz de varianza covarianza se guarda en `e(V)`. 
+* El comando `ereturn name = exp` retorna un escalar, mientras que `ereturn local name value` y `ereturn matrix name matname` retorna una macro y una matriz respectivamente. 
+* El comando `ereturn post` envía las estimaciones de `b` y `V` a sus ubicaciones oficiales.
+* Para devolver el vector de coeficientes y su matriz de varianza, es necesario crear el vector de coeficientes, digamos $beta$, y su matriz de varianza-covarianza, digamos $vce$.
+```{stata}
+ereturn post `beta' 'vce', esample(`touse')
+```
+También podemos definir la muestra de estimación incluida en la estimación con `touse`. Ahora es posible guardar los elementos en `e()`. Por ejemplo, es posible utilizar `ereturn scalar`, `ereturn local` o `ereturn matrix`. 
+
+Es conveniente utilizar los nombres típicamente asignados para guardar resultados de los programas `e(df_m)` o `e(df_r)`. Sin embargo, se pueden nombrar como deseen.
+
+
+### Marksample, Mark y Markout
+
+`marksample` y `mark` son alternativas. `mark` no es muy utilizado. Ambos comandos crean un indicador que marcan que observaciones será utilizadas. Los ocupadmos en los programas en Stata. La idea es indicarle al programa la muestra relevante. `markout` marca la variable con un indicador igual a 0 si cualquier variable en `varlist` indicada contiene un *missing*.
+
+Marksample
+
+* `marksample` se utiliza en programas en los que los argumentos se analizan mediante el comando `syntax`. 
+* Crea una variable temporal, almacena el nombre de la variable temporal en un local, y rellena la variable temporal con 0 y 1 según si la observación debe ser utilizada.
+```{stata}
+program ....
+syntax ...
+marksample touse
+rest of code .... if `touse'
+end
+```
+
+Mark
+
+* `mark` utiliza la variable temporal `touse` basada en las expresiones de `if` e `in`. 
+* Si no hay expresiones de `if` e `in`, `touse` será 1 para cada observación en los datos. 
+* Si indico una condición, solo las observaciones que cumplan esta condición tendrán un 1 en `touse`. 
+* `Mark` actualiza `touse` de forma tal de que revisa *missing*.
+    
+Mark y Markout
+
+* `mark` parte con una variable temporal previamente creada.  
+* `markout` modifica la variable creada por `mark` poniéndola a cero en las observaciones que tienen valores perdidos registrados para cualquiera de las variables en *varlist*. 
+```{stata}
+program ....
+tempvar touse
+mark `touse' ...
+markout `touse' ...
+rest of code ... if `touse'
+end
+```
+
+Marksample vs. Markout
+
+* `marksample` es mejor que `mark`. Disminuye la probabilidad de que se olvide alguna restricción. 
+* `markout` puede ser utilizados después de `mark` o bien `marksample`. 
+```{stata}
+program ...
+tempvar touse
+mark `touse' ...
+markout `touse' ...
+rest of code ... if `touse'
+end
+
+prgraom myprog
+syntax varlist [if] [in]
+marksample touse
+...
+end
+
+* Equivale a: 
+program myprog
+version 17.0
+syntax varlist [if] [in]
+tempvar touse
+mark `touse' `if' `in'
+markout `touse' `varlist'
+...
+end
+```
+
+`markout` también puede ser usado con `marksample`:
+```{stata}
+program ...
+syntax ... [, Denom(varname) ... ]
+marksample touse
+markout `touse' `denom'
+rest of code ... if `touse'
+end
+```
+
+Ejemplo Marksample y Markout:
+```{stata}
+program cwsumm
+syntax [varlist(fv ts)] [if] [in] [aweight fweight] [, Detail noFormat]
+marksample touse
+summarize `varlist' [`weight'`exp'] if `touse', `detail' `format'
+end
+```
+
+### Sortpreserve
+
+Si está escribiendo un programa de Stata que cambia temporalmente el orden de los datos y quieres que los datos se ordenen en su orden original al final de la ejecución, puede ahorrar un poco de programación incluyendo `sortpreserve`. Para ellos debemos escribir: `program miprograma, sortpreserve`. Stata automáticamente reordenara las variables como estaban originalmente. Al agregar esta opción se genera una variable temporal llamada `_sortindex` la que contiene el orden original de los datos. 
+
+## Exportar Información
+
+Exportar información es parte importante del proceso de análisis de datos. En esta sección veremos algunas herramientas que permiten conectar los resultados del análisis hecho en Stata con los reportes que queremos crear en Word. 
+
+### Stata Markdown
+
+* Herramienta para crear informes que sean reproducibles y en donde los datos, códigos y operaciones están conectadas.  
+* Básicamente una intersección entre texto narrativo y
+* Es posible generar informes en distintos formatos (ej. html, docx, pdf). Hoy veremos como generar un informe en Word y una presentación en HTML. 
+* Stata Markdown es especialmente útil para: 
+  + **Informes rutinarios:** Informe semanas/mensual sobre un conjunto de datos que se actualizan constantemente. 
+  + **Documentar análisis:** Es posible integrar reportes intermedios en un trabajo de análisis de datos. Estos informes pueden ser de utilidad para detectar errores y para supervisión en equipos de trabajo. 
+        
+Stata Markdown y otras herramientas similares son claves para mejorar en términos de \alert{reproducibilidad}. Algunos argumentos basados en \cite{rodriguez2017literate}:
+
+* **Ayuda a documentación:** En la fase de procesamiento de datos podemos describir todos los pasos utilizados para convertir los datos brutos en variables de análisis, produciendo un documento con un buen formato, más claro y legible. Es posible pensar en estos informes como productos intermedios.
+* En la fase de análisis de los datos, podemos incluir el código, explicar las razones para probar determinados modelos, incluir los resultados, las tablas y las figuras, y comentar los resultados, todo ello sin tener que cortar y pegar de forma tediosa y propensa a errores.
+* En la fase de presentación, podemos elaborar un informe centrado en los resultados, con la opción de ocultar los comandos reales utilizados para que no aparezcan en el documento final.
+
+Algunos conceptos
+
+* **Markdown:** Es un lenguaje que permite escribir documentos en texto plano. Los archivos escritos en Markdown tienen la extensión `md`. 
+* **Stata Markdown:** Es la variación especifica para Stata. Se implementa a través del comando `markstat` hecho por [Germán Rodriguez](https://data.princeton.edu/stata/markdown). Estos archivos tiene extensión `.stmd`.
+
+#### Instalación
+
+En Stata, ejecuta estos comandos: 
+
+* `ssc install` markstat
+* `ssc install` whereis  
+* Instalar padcoc desde `pandoc.org/installing`
+* Decirle a `markstat` donde encontrar pandoc. En mi caso es: 
+```{stata}
+whereis pandoc "C:\Users\nicol\AppData\Local\Pandoc\pandoc.exe"
+```
+
+#### Funcionalidades
+
+Algunos elementos que vamos a utilizar en Stata Markdown: 
+
+* Ecuaciones y notación matemática utilizando \LaTeX (para los que lo sepan utilizar). 
+* Hacer títulos y encabezados. 
+* Enfatizar texto (negritas e itálicas). 
+* Armas listas numeradas y no numeradas. 
+* Poder mostrar líneas de código, resultados directamente de Stata. Esto incluye Mata. 
+* Insertar quiebres de páginas: `\newpage`. 
+
+#### Generar un documento
+
+Como mencionamos anteriormente es posible generar un documento de word, pdf o html que contenga todos los códigos, resultados, tablas y figuras hechas en Stata. Para generar un documento es necesario: 
+        
+* Escribir en tu editor de códigos preferido un archivo en formato `stmd`. En nuestro caso escribiremos un archivo que se llama `ejemplo1.stmd`. Guardar el archivo en tu carpeta de trabajo. 
+* Ejecutar el comando `markstat` según el tipo de archivo que desee generar. En nuestro caso será:
+```{stata}
+markstat using ejemplo1, strict docx
+```
+
+### Putdocx
+
+La ventaja de `putdocx` radica en que es posible personalizar un poco más las tablas. Esto permite conectar el informe final con el trabajo de análisis de datos. 
+
+#### Algunos comandos útiles
+
+Crear, pegar y guardar documentos:
+
+* `putdocx begin`: Crea un archivo docx para exportar.
+* `putdocx describe`: Describe los contenidos de archivo. 
+* `putdocx save`: Guarda y cierra el archivo. 
+* `putdocx clear`: Cierra el archivo sin guardar. 
+* `putdocx append`: Combina el contenido de múltiples archivos. 
+
+Insertar quiebres de páginas:
+* `putdocx pagebreak`: Agrega una nueva página.
+* `putdocx sectionbreak`: Agrega una nueva sección. 
+
+Agregar párrafos con texto e imágenes:
+* `putdocx paragraph`: Agrega un nuevo párrafo. 
+* `putdocx text`: Agrega un bloque de texto a un párrafo. 
+* `putdocx image`: Agrega una imagen al párrafo.
+
+#### Tablas:
+
+`putdocx table`: Crea una nueva tabla en el documento la que puede contener resultados de estimaciones, estadística descriptiva o datos. 
+`putdocx sectionbreak`: Agrega una nueva sección. 
+
+## Manejo de grandes bases de datos en Stata
+
+### Estilo de codificación: mejorar velocidad y eficiencia
+
+Esta introducción esta basada en **Suggestions on Stata programming style** de Nicholas J. Cox. 
+
+Un buen estilo de codificación es por sobre todo **claridad**. Lo más importante es tener una **estrategia** y seguirla. En esta sección nos enfocaremos en algunos consejos de codificación que nos van a permitir mejorar la velocidad y eficiencia en el uso de Stata. Este punto es especialmente relevante cuando se trabaja con grandes bases de datos. Una lista de formas básicas de **aumentar la velocidad y eficiencia** al manejar grandes bases de datos:
+
+  + Testear siempre las condiciones claves. Hacerlo lo antes posible.
+  + Utilizar `summarize, meanonly` cuando solo necesite este valor. Como regla general siempre he de preguntarme si lo que estoy obteniendo es útil o no. 
+  + Preferir `foreach` y `forvalues` sobre `while`. Son más rápidos.  
+  + Evitar el uso de `macro shift`. Con muchas variables, se vuelve muy lento. Mejor ocuapar un `forvalues`.
+  + Evitar siempre que sea posible iterar sobre observaciones. Mata puede ser útil en este aspecto. 
+  + Evite usar `preserve` si es posible. Es atractivo para el programar pero puede ser costoso en tiempo cuando se utilizan grandes bases de datos. Es bueno profundizar en el uso de `marksample` con el fin de hacer programas efectivos. 
+  + Las variables temporales se eliminarán automáticamente al final de un programa, pero también considere la posibilidad de eliminarlas cuando ya no sean necesarias para minimizar la sobrecarga de memoria y reducir las posibilidades de que su programa se detenga porque no hay espacio para añadir más variables.  
+  + Especifique el tipo de las variables temporales para minimizar la sobrecarga de memoria. Si se puede utilizar una variable de `bytes`, especifique: `generate bytes 'myvar'` en lugar de dejar que se utilice el tipo por defecto, que desperdiciaría espacio de almacenamiento.
+  + Evite utilizar una variable para mantener una constante; una macro o un escalar suele ser todo lo que se necesita.
+
+### Cargar grandes bases de datos
+
+Cuatro aspectos que considerar siempre que se desee cargar en Stata alguna base de datos de un tamaño considerable: 
+
+1. ¿Necesita todas las variables del conjunto de datos? Si no es así, cargue sólo las variables que necesite:
+```{stata}
+use var1 var2 var3 var4 using data1, clear
+```
+
+2. ¿Necesita todas las observaciones del conjunto de datos? Si no es así, importe sólo las observaciones que necesite: 
+```{stata}
+use data1 if state <= 9, clear
+```
+
+3. ¿Su conjunto de datos ocupa más espacio de almacenamiento del necesario?:
+  + Intenta leer tu conjunto de datos poco a poco y optimizarlo.
+  + Además de solo importar determinadas observaciones o variables, se optimiza el espacio de almacenamiento utilizado `compress`. 
+  + Es posible inspeccionar la base de datos sin cargarla. 
+```{stata}
+describe using data.1.dta
+```
+
+4. ¿Su conjunto de datos contiene muchas observaciones idénticas?: Debe transformar el conjunto de datos en un conjunto de datos ponderado por frecuencia.
+
+### Reducir el uso de memoria
+
+Cuando usted trabaja con un conjunto de datos en Stata, Stata debe cargar todo el conjunto de datos en la memoria de la computadora (RAM). Afortunadamente, las computadoras portátiles de hoy tienen más memoria que la mayoría de los servidores de hace 20 años, y la mayoría de la gente nunca tiene que preocuparse por la cantidad de memoria que Stata está utilizando.
+
+¿Me tengo que preocupar de la memoria?
+
+* Sólo tienes que preocuparte por la memoria si el tamaño de tu conjunto de datos se aproxima a la cantidad de memoria del ordenador que utilizas, y si es mayor, definitivamente tienes un problema. 
+* Si usted trabaja con grandes conjuntos de datos, debe tener cuidado: tratar de usar más memoria de la que tiene terminará mal. 
+* ¿Cuando es mucho?: un Laptop tipico tiene 16gb. 
+
+### Reducir el tamaño de la base de datos
+
+Elimina datos innecesarios. Utiliza tipos de variables pequeños: `help datatypes`. Siempre que crees una variable es una buena practica especificar el tipo de dato. Acortar cadenas o codificarlas: `strings` requieren un byte por caracteres. 
+
+Sin embargo, para las observaciones todas tienen el mismo tamaño. Si tengo una variable que contiene: "Si", "No", "No lo se". La variable utilizara 8 bytes por observación tal como si solo tuviese "No lo se". Si tu cambias "no lo se" por "ns". Ahora solo se utilizaran 2 bytes por observacion. Si tu cambias a: "S", "N", "I" solo utilizara un byte por observación. 
+
+Codificar la variable de `string` como una variable númerica tambien reduce el espacio en memerio a un byte por observación. Se recomiendo agregar `labels` y trabajar los `string` de esta forma cuando sea posible. 
+
+### Eliminar siempre resultados intermedios, incluso temporales
+
+Elimina resultados intermedios. Si creas variables para almacenar resultados intermedios, elimínelas tan pronto como haya terminado con ellas. 
+
+Por ejemplo, el siguiente código crea una variable llamada incomePovertyRatio sólo para poder crear una variable indicadora lowIncome que identifica a los sujetos cuyos ingresos son inferiores al 150% del nivel de pobreza  
+```{stata}
+gen incomePovertyRatio = income/povertyLevel
+gen lowIncome = (incomePovertyRatio < 1.5)
+drop incomePovertyRatio
+```
+Debes eliminar la variable que no utilizas. Hacer esto siempre. 
+
+### Dividir en trozos cuando sea posible
+
+Si un conjunto de datos es demasiado grande para cargarlo en la memoria, para algunas tareas puede dividirlo en un conjunto de conjuntos de datos más pequeños y trabajar con ellos de uno en uno. Puede haber una variable categórica en el conjunto de datos de tal manera que un conjunto de datos separado para cada categoría funcionaría bien, o puede dividirlo por número de observación.
+
+Dividir el conjunto de datos en trozos más pequeños probablemente sólo tiene sentido si puedes reducir el tamaño de cada trozo para que al final puedas combinarlos todos en un único conjunto de datos que pueda cargarse en la memoria.
+
+### Sort
+
+`sort` en Stata es razonablemente eficiente: un millón de valores aleatorios pueden ponerse en orden creciente en menos de 3 segundos con `sort x`. Sin embargo, el comando no tiene una opción inversa para ordenar de mayor a menor. 
+
+`gsort` hace una ordenación decreciente de forma ineficiente - ordena de forma creciente en x, y luego ordena de forma creciente en menos `_n`. Esencialmente está haciendo:
+```{stata}
+  sort x
+  gen long sortvar = -_n
+  sort sortvar
+  drop sortvar
+```
+
+Es mejor negar por usted mismo antes de una ordenación creciente:
+```{stata}
+generate negx = -x
+  sort negx
+```
+
+### Selección de muestra
+
+Separar la selección de variables de la inclusión. Para minimizar la cantidad de memoria utilizada, necesitamos separar la decisión de selección de la muestra de la decisión de inclusión de la variable.
+
+### Precaución con reshape
+
+El comando `reshape` es inexplicablemente lento. 13 segundos por millón de observaciones en mi computadora. Es importante pensar en codificación y buscar más opciones para hacer `reshape`. Se puede escribir un archivo separado para cada año de datos, y luego concatenarlos en un largo conjunto de datos en unos 2 segundos.
+
+### Subexpresiones comunes
+
+A menudo, varias sentencias generate o replace tendrán subexpresiones comunes. 
+```{stata}
+generate y = a if c==d & e==f
+generate x = b if c==d & e==f
+```
+
+Una mejor opcion es precalcularlo. 
+```{stata}
+generate smpl = c==d & e==f
+generate y = a if smpl
+generate x = b if smpl
+```
+
+### Recomendaciones Adicionales
+
+#### Collapse
+
+`collapse` no es muy rápido. El autor, sin duda, supuso que aunque se utilizara con grandes conjuntos de datos, no estaría dentro de una iteración. Pero a veces lo está, y puede convertirse en el paso limitante de la velocidad en un programa de larga duración. Se puede reemplazar fácilmente con código más rápido, pero el beneficio total no es tan grande como uno esperaría. Mejor ocupar `gtools`. 
+
+#### Egen
+
+`egen` tambien puede ser adecuado para que funcione más rapido. Vamos a ver un ejemplo calculando el máximo de una variable. 
+
+#### Regresiones en sub-grupos
+
+Exiten varias opciones para calcular regresiones según el tipo de datos que queramos incluir en nuestra muestra. Vamos a ver distintas opciones y ver su desempeño en bases de datos grandes. 
+
+#### Recode
+
+`recode` puede ser modificado utilizando matrices. Otra opción es utilizar `ggtools`
+
+### Resumen
+
+* Utilizar `compress`. 
+\medskip
+* Mantener solo las variables que se van a utilizar.
+* Mantener solo las observaciones que se van a utilizar. 
+* Cargar solo las variables y observaciones necesarias. 
+* `keepusing` y `nogen` siempre para `merge`.
+* `ftools` y `gtools` (más detalles sección final). 
+* Utilizar `parallel` (más detalles sección final). 
+
+## Mata
+
+### ¿Qué es Mata?
+
+Esta introducción esta basada en la guía de [Asjad Naqvi](https://medium.com/the-stata-guide/mata-statas-end-game-5983c0ee11bd).
+
+* Mata es un lenguaje de programación matricial. 
+* Es más rápido que Stata, pero necesita más precisión (ej. dimensiones de las matrices). 
+* Muchos de los operadores de Mata son similares a R o Matlab. Adicionalmente, incluye sus propios optimizadores y funciones útiles. 
+* Esta sección será una pequeña introducción al lenguaje. Tiene como objetivo mostrarles el abanico de herramientas que Mata posee con el fin de que puedan utilizarlo para hacer sus propios programas. 
+
+La sintaxis básica de Mata
+```{stata}
+* Opción 1 
+mata 
+
+< comando de mata 1 > 
+< comando de mata 2 >
+< y así .... > 
+end 
+
+* Opción 2 
+mata <un comando de mata>
+ 
+* Opción 3 : la versión estricta
+mata: <un comando de mata> 
+  
+```
+
+Si son utilizados dos puntos y **ocurre** un error, Mata será abortado, volverá a Stata y aparecerá un mensaje de error. 
+```{stata}
+* Ejemplo 1
+mata 
+emat = 7 + 3
+emat 
+end
+
+* Ejemplo 2
+mata 
+emat = ("Josefa", "Perez")
+emat = (21\8)
+mmat = (17\6)
+vmat = (25,3\3,11)
+emat, mmat, vmat 
+end
+```
+
+Para buscar ayuda, podemos hacer: 
+```{stata}
+* Ejemplo 1
+help mata comando
+help mata cholesky()
+```
+
+Comandos básicos:Al igual que Stata, Mata posee sus propios comandos. Algunos útiles de recordar son: 
+```{stata}
+mata describe 
+mata clear 
+mata rename nombre
+mata drop nombre1 nombre2
+mata stata
+
+* Ejemplo
+mata 
+mata clear 
+emat = ("Josefa", "Perez")
+emat = (21\8)
+mmat = (17\6)
+vmat = (25,3\3,11)
+mata describe 
+emat, mmat, vmat
+mata rename vmat vmat_renombrada
+mata drop mmat
+emat, vmat_renombrada
+end
+```
+
+**Para hacer comentarios** en Mata hay que utilizar `//`. No funcionan los asteriscos como en Stata. Todo los que se genera en Mata queda en la memoria a menos que Stata se cierre, se use `clear all`en Stata o bien  `mata: mata clear`. Todas las matrices y funciones definidas se mantienen en el espacio de trabajo de Mata espacio de trabajo cuando se termina mata y se puede acceder a ellas cuando se vuelve a entrar en
+mata.
+
+### Matrices
+
+Una forma común de generar una matriz en Mata es importándola desde los datos de Stata.       
+```{stata}
+mata: X = st_data(.,("var1", "var2"))
+```
+
+Definimos la matriz X, que tiene todas las observaciones (filas) y dos columnas `var1` y `var2`. `st_` permite a Mata interactuar con la interfaz de Stata con el fin de pasar información de un lado a otro. Revisar `help m4_stata`. 
+```{stata}
+* Ejemplo 4: confeccionar matrices en base a mata
+sysuse auto.dta
+mata
+mata clear 
+mata: X = st_data(.,("price", "mpg"))
+X
+mata describe
+end 
+```
+
+Otra opción es definir matrices dentro de Mata.       
+```{stata}
+mata A = (1,2 \ 3,4)
+```
+
+Definimos la matriz A, la cual podemos ver escribiendo `mata A`. Veremos una matriz cuadrada de 2x2. Notar que la coma separa elementos **entre columnas** mientras que el *slash* mueve elementos **entre filas**. El uso de paréntesis es opcional en Mata, pero es más conveniente y es una buena práctica de estilo utilizarlos. También se pueden definir matrices especiales. 
+```{stata}
+* Vector fila o Vector columna
+mata 1,2,3
+mata 1\2\3
+
+* Vector fila o Vector columna del 1 al 4
+mata 1..4
+mata 1::4
+```
+
+Finalmente, uno puede generar matrices similar a lo que se hace en Stata.   
+```{stata}
+mata J(2,2,1)
+```
+Este comando genera una matriz de 2x2 rellena de unos. La sintaxis genérica es: `mata J(filas, columnas, constante)`. Para definir una matriz identidad: `mata I(5)`. 
+
+Otro operador útil es `range`:
+```{stata}
+mata range(1,7,2)
+```
+Crea un vector que empieza en 1 y termina en 7 saltándose de 2 en 2 (es decir, `(1,3,5,7)`). Si quiero generar una matriz con números aleatorios provenientes de una distribución uniforme (0,1) : `mata runiform(3,3)`.
+
+Accediendo a los elementos de una matriz
+
+* Podemos acceder a los elementos de una matriz.
+  + `mata A[1,2]`: fila 1, columna 2.
+  + `mata A[1,.]`: **Todas las columnas** de la fila 1.
+  + `mata A[.,2]`: **Todas las filas** de la columna 2.
+* También podemos extraer sub-conjuntos de elementos: 
+```{stata}
+* Empezar de fila 2 columna 1 hasta fila 3 columna 3
+mata A[|2,1\3,3|]       
+* Tomar filas 2 y 3 y columnas de la 1 a la 3.
+mata A[(2::3),(1..3)]   
+```
+  
+Pegando elementos de matrices:
+```{stata}
+mata
+A = runiform(1,2)
+B = runiform(1,2)
+
+* Opción 1 : pegar horizontalmente
+A,B   
+* Opción 2 : pegar verticalmente
+A\B   
+end
+```
+
+`A,B` las pega horizontalmente, es decir por columnas (filas son las mismas). `A\B` las pega vertical, es decir por filas (columnas son las mismas).
+
+Operaciones básicas entre matrices y por elementos: Una vez definidas las matrices, también se dedica bastante tiempo a sumar, restar, multiplicar y dividir matrices entre sí. Vamos a ver algunas operaciones entre matrices y también entre elementos. 
+```{stata}
+mata
+ A = (1,2,3\4,5,6)
+ B = (2,3\4,5\6,7)
+ A * B
+end
+```
+
+`A * B` es una operación entre matrices, de forma tal que el número de filas de A debe ser igual al número de columnas de B. Si queremos que cada elemento de A sea multiplicado por el mismo elemento en B, es necesario trasponer alguna matriz y cambiar el operador. 
+```{stata}
+mata
+ A = (1,2,3\4,5,6)
+ B = (2,3\4,5\6,7)
+  A' :* B
+  A  :* B'
+end
+```
+En el primer caso la matriz resultante corresponde a una matriz de 3x2, en el segundo caso es una matriz de 2x3. 
+
+Operadores lógicos y funciones sobre escalares: Las matrices también pueden ser comparadas a través de operadores lógicos. `A == B` chequea si dos matrices son iguales. Esto también puede hacerse elemento por elemento (por ejemplo `A:>=B`). Tambien se puede utilizar `!=`. 
+
+Mata también tiene funciones sobre escalares: 
+```{stata}
+mata
+  X = (-2, 1 \ 0, 5)
+  abs(X)   // valor absoluto de cada elemento
+  sign(X)  // signo de cada elemento
+  exp(X)   // exponencial de cada elemento
+  sqrt(X)  // raíz cuadrada de cada elemento
+  sin(X)   // seno de cada elemento
+end
+```
+
+Algunas funciones para operar en matrices son: 
+```{stata}
+mata
+A = (5,4\6,7)
+B = (1,6\3,2)
+end
+
+* Número de filas y columnas 
+mata rows(A)
+mata cols(A)
+
+* Suma de las filas/columnas
+mata rowsum(B)
+mata colsum(B)
+
+* Calcular el promedio (retorna un vector fila)
+mata mean(B')' 
+
+* Seleccionar todas las columnas sin ceros
+mata D = (1,0,2,3,0)
+mata selectindex(D) 
+
+* Select para condiciones más flexibles
+select(B, B[.,1]:>2)
+
+* Ordenar matrices 
+mata sort(B,2)  // Ordena según la columna 2 de B
+mata jumble(B) // Aleatoriza las filas de B
+```
+
+Mata contiene varias funciones para extraer propiedades de las matrices:
+```{stata}
+mata
+A = (5,4\6,7)
+det(A)         // Determinante de A
+invsym(A)      // Ibversa de A
+trace(A)       // Traza de A
+rank(A)        // Rango de A
+norm(A)        // Norma de A
+X=.            // Vectores propios
+L=.            // Valores propios
+end
+```
+
+Mata contiene varias funciones para operar o manipular dos matrices: 
+```{stata}
+mata
+A = (5,4\6,7)
+B = (1,6\3,2)
+A' * B            // A x B
+cross(A,B)        // A x B using a solver (faster)
+end
+```
+
+Al igual que Stata, Mata puede utilizar iteradores. While loop:
+```{stata}
+mata
+  x = 1                  // Valor inicial
+  X = 4                  // Valor final
+  while (x <= X) {       // Iniciar condición del while
+  printf("\%g \n", x)     // Alguna operación de Mata aquí
+  x++                    // Incremental
+  }                      // Terminar el while
+end
+```
+
+For Loops:
+```{stata}
+* Este for
+for (expr1; expr2; expr3) {
+stmts
+}
+* Es equivalente a 
+expr1
+while (expr2) {
+stmt
+expr3
+}
+```
+
+Los valores iniciales y finales pueden extraerse de algunas declaraciones condicionales como las dimensiones de las matrices. Mata sólo permite incrementos de 1.
+
+Notar que aquí es bien distinto a Stata: 
+```{stata}
+mata
+   N = 4                      // Valor final
+   for (i=1; i<=N; i++) {     // for loop 
+   printf("%g \n", i)         // some Mata operation here
+   }                          // end for loop
+end
+```
+
+If/else son: 
+```{stata}
+mata
+ x = 3                       // Valor de x
+   
+  for (i=1; i<=5; i++) {     // Empezar el loop
+    if (x > i) {             // if
+      printf("\%g\n", 0)      // Comando de mata si la condición se cumple
+      }
+    else {                   //  en caso contrario
+      printf("\%g\n", 1)      // ejecutar este comando de mata
+      }
+  }
+end
+```
+
+Mata también permite abreviar la sintaxis en caso de que existan dos o mas condiciones. 
+```{stata}
+(a ? b : c)
+```
+
+"a" es la condición, "b" es el valor en caso de que sea verdadero y "c" en caso de que sea falsa. Para el ejemplo, la condición sería: `(x > i ? 1 : 0)`. 
+
+### De Stata a Mata
+
+Estimar un MCO: Un ejemplo estándar es hacer un simple OLS en Mata.
+```{stata}
+sysuse auto, clear
+mata
+ y = st_data(.,"price")
+ X = st_data(.,("mpg", "weight"))
+ X = X, J(rows(X),1,1)
+    beta   = invsym(cross(X,X))*cross(X,y)
+    esq    = (y - X*beta) :^ 2
+    V      = (sum(esq)/(rows(X)-cols(X)))*invsym(cross(X,X))
+    stderr = sqrt(diagonal(V))
+      st_matrix("b", beta)
+      st_matrix("se", stderr)
+end
+```
+
+For Loops
+
+* En Mata, la variable dependiente se importa como el vector y las variables independientes se importan como la matriz X. A esta matriz X se le añade un vector columna de unos para el intercepto. 
+* Como el vector de unos debe tener el mismo número de filas que la matriz X, nótese el uso del operador J().
+* En el último paso, las betas y los errores estándar se exportan a Stata como matrices de Stata.
+
+### Funciones en Mata
+
+Vector: Un ejemplo estándar es hacer un simple OLS en Mata.
+```{stata}
+* Generar un vector 
+mata 
+function zeros(c)
+{
+	a = J(c, 1, 0)
+	return(a)
+}
+b = zeros(3)
+b
+end 
+```
+
+Matriz:
+```{stata}
+* Generar una matriz
+mata 
+function zerosv1(real scalar c, real scalar r)
+{
+real matrix A 
+A = J(c,r,0)
+return(A)
+}
+b = zerosv1(3,2)
+b
+end 
+```
+
+Hacer opcionales:
+```{stata}
+mata 
+function zerosv2(real scalar c,| real scalar r)
+{
+real matrix A
+if (args()==1) r = 1
+A = J(c, r, 0)
+return(A)
+}
+end 
+
+mata 
+zerosv2(3,2)
+end
+
+help m2 syntax
+```
+
+Guardar:
+```{stata}
+mata 
+function zerosfinal(real scalar c,| real scalar r)
+{
+real matrix A
+if (args()==1) r = 1
+A = J(c, r, 0)
+return(A)
+}
+
+mata stata cd "\$ejercicios"
+mata mosave zerosfinal(), replace
+
+end 
+```
+
+Dos referencias recomendadas para profundizar en Mata: 
+
+* An Introduction to Stata Programming, Second Edition (\cite{baum2009introduction})
+* The Mata Book: A Book for Serious Programmers and Those Who Want to Be (\cite{gould2018mata})
+
+

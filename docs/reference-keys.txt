@@ -1,4 +1,5 @@
 introducción
+curso-de-stata-avanzado
 buenas-prácticas-de-programación
 programación-defensiva
 práctica-i-escribir-una-prueba-o-test
@@ -29,6 +30,15 @@ rutas-de-las-carpetas
 utilizar-algún-auxiliar-de-generación-de-código-sublime-text
 qué-es-sublime
 ejecutar-stata-desde-sublime
+programar-do---files
+programar-en-stata
+qué-es-programar-en-stata
+do---files
+ado---files
+comandos-y-funciones-claves-y-algunos-detalles
+directorios
+profile-do
+tipos-de-comandos
 tipos-de-datos
 capture-preserve-y-restore
 missing-values
